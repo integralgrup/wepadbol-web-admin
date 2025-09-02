@@ -77,20 +77,16 @@
                                 <input type="text" class="form-control" id="about_url" name="about_url" value="{{ $language->about_url }}" required>
                             </div>
                             <div class="mb-2">
-                                <label for="sector_url" class="form-label">Sektör URL</label>
-                                <input type="text" class="form-control" id="sector_url" name="sector_url" value="{{ $language->sector_url }}" required>
+                                <label for="product_url" class="form-label">Ürün URL</label>
+                                <input type="text" class="form-control" id="product_url" name="product_url" value="{{ $language->product_url }}" required>
                             </div>
                             <div class="mb-2">
-                                <label for="brand_url" class="form-label">Marka URL</label>
-                                <input type="text" class="form-control" id="brand_url" name="brand_url" value="{{ $language->brand_url }}" required>
+                                <label for="club_url" class="form-label">Kulüp URL</label>
+                                <input type="text" class="form-control" id="club_url" name="club_url" value="{{ $language->club_url }}" required>
                             </div>
                             <div class="mb-2">
-                                <label for="career_url" class="form-label">Kariyer URL</label>
-                                <input type="text" class="form-control" id="career_url" name="career_url" value="{{ $language->career_url }}" required>
-                            </div>
-                            <div class="mb-2">
-                                <label for="catalog_url" class="form-label">Katalog URL</label>
-                                <input type="text" class="form-control" id="catalog_url" name="catalog_url" value="{{ $language->catalog_url }}" required>
+                                <label for="project_url" class="form-label">Proje URL</label>
+                                <input type="text" class="form-control" id="project_url" name="project_url" value="{{ $language->project_url }}" required>
                             </div>
                             <div class="mb-2">
                                 <label for="blog_url" class="form-label">Blog URL</label>
@@ -109,20 +105,20 @@
                                 <input type="text" class="form-control" id="images_folder" name="images_folder" value="{{ $language->images_folder }}" required>
                             </div>
                             <div class="mb-2">
-                                <label for="sector_images_folder" class="form-label">Sektör Görseller Klasörü</label>
-                                <input type="text" class="form-control" id="sector_images_folder" name="sector_images_folder" value="{{ $language->sector_images_folder }}" required>
+                                <label for="product_images_folder" class="form-label">Ürün Görseller Klasörü</label>
+                                <input type="text" class="form-control" id="product_images_folder" name="product_images_folder" value="{{ $language->product_images_folder }}" required>
                             </div>
                             <div class="mb-2">
-                                <label for="brand_images_folder" class="form-label">Marka Görseller Klasörü</label>
-                                <input type="text" class="form-control" id="brand_images_folder" name="brand_images_folder" value="{{ $language->brand_images_folder }}" required>
+                                <label for="club_images_folder" class="form-label">Kulüp Görseller Klasörü</label>
+                                <input type="text" class="form-control" id="club_images_folder" name="club_images_folder" value="{{ $language->club_images_folder }}" required>
                             </div>
                             <div class="mb-2">
                                 <label for="blog_images_folder" class="form-label">Blog Görseller Klasörü</label>
                                 <input type="text" class="form-control" id="blog_images_folder" name="blog_images_folder" value="{{ $language->blog_images_folder }}" required>
                             </div>
                             <div class="mb-2">
-                                <label for="catalog_files_folder" class="form-label">Katalog Dosyaları Klasörü</label>
-                                <input type="text" class="form-control" id="catalog_files_folder" name="catalog_files_folder" value="{{ $language->catalog_files_folder }}" required>
+                                <label for="project_images_folder" class="form-label">Proje Görseller Klasörü</label>
+                                <input type="text" class="form-control" id="project_images_folder" name="project_images_folder" value="{{ $language->project_images_folder }}" required>
                             </div>
                             <div class="mb-2">  
                                 <label for="ga_code" class="form-label">Google Analytics Kodu</label>

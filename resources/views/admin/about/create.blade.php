@@ -62,10 +62,6 @@
                                         <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
                                         <div class="mb-3">
                                             <div>
-                                                <label for="upper_title_{{ $language->lang_code }}" class="form-label">Üst Başlık ({{ $language->lang_code }})</label>
-                                                <input type="text" class="form-control" id="upper_title_{{ $language->lang_code }}" name="upper_title_{{ $language->lang_code }}" {{ $required }}>
-                                            </div>
-                                            <div>
                                                 <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ $language->lang_code }})</label>
                                                 <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" {{ $required }}>
                                             </div>
@@ -86,11 +82,6 @@
                                             <label for="alt_{{ $language->lang_code }}" class="form-label">Alt Metni ({{ $language->lang_code }})</label>
                                             <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="bg_video_{{ $language->lang_code }}" class="form-label">Arka Plan Videosu ({{ $language->lang_code }})</label>
-                                            <input type="file" class="form-control" id="bg_video_{{ $language->lang_code }}" name="bg_video_{{ $language->lang_code }}" accept="video/*">
-                                        </div>
-                                        <div></div>
                                         <div class="mb-3">
                                             <label for="mission_title_{{ $language->lang_code }}" class="form-label">Misyon Başlığı ({{ $language->lang_code }})</label>
                                             <input type="text" class="form-control" id="mission_title_{{ $language->lang_code }}" name="mission_title_{{ $language->lang_code }}" {{ $required }}>

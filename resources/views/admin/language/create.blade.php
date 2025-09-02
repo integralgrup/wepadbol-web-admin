@@ -80,32 +80,26 @@
 
                                         <!-- About URL -->
                                         <div class="mb-2">
-                                            <label for="about_url" class="form-label">About URL <span class="text-danger">*</span></label>
+                                            <label for="about_url" class="form-label">Hakkımızda URL <span class="text-danger">*</span></label>
                                             <input type="text" name="about_url" id="about_url" class="form-control" maxlength="255" required>
                                         </div>
 
                                         <!-- Sector URL -->
                                         <div class="mb-2">
-                                            <label for="sector_url" class="form-label">Sector URL <span class="text-danger">*</span></label>
-                                            <input type="text" name="sector_url" id="sector_url" class="form-control" maxlength="255" required>
+                                            <label for="product_url" class="form-label">Ürün URL <span class="text-danger">*</span></label>
+                                            <input type="text" name="product_url" id="product_url" class="form-control" maxlength="255" required>
                                         </div>
 
                                         <!-- Brand URL -->
                                         <div class="mb-2">
-                                            <label for="brand_url" class="form-label">Brand URL <span class="text-danger">*</span></label>
-                                            <input type="text" name="brand_url" id="brand_url" class="form-control" maxlength="255" required>
+                                            <label for="club_url" class="form-label">Kulüp URL <span class="text-danger">*</span></label>
+                                            <input type="text" name="club_url" id="club_url" class="form-control" maxlength="255" required>
                                         </div>
 
                                         <!-- Career URL -->
                                         <div class="mb-2">
-                                            <label for="career_url" class="form-label">Career URL <span class="text-danger">*</span></label>
-                                            <input type="text" name="career_url" id="career_url" class="form-control" maxlength="255" required>
-                                        </div>
-
-                                        <!-- Catalog URL -->
-                                        <div class="mb-2">
-                                            <label for="catalog_url" class="form-label">Catalog URL <span class="text-danger">*</span></label>
-                                            <input type="text" name="catalog_url" id="catalog_url" class="form-control" maxlength="255" required>
+                                            <label for="project_url" class="form-label">Proje URL <span class="text-danger">*</span></label>
+                                            <input type="text" name="project_url" id="project_url" class="form-control" maxlength="255" required>
                                         </div>
 
                                         <!-- Blog URL -->
@@ -116,67 +110,67 @@
 
                                         <!-- Contact URL -->
                                         <div class="mb-2">
-                                            <label for="contact_url" class="form-label">Contact URL <span class="text-danger">*</span></label>
+                                            <label for="contact_url" class="form-label">İletişim URL <span class="text-danger">*</span></label>
                                             <input type="text" name="contact_url" id="contact_url" class="form-control" maxlength="255" required>
                                         </div>
 
                                         <!-- Uploads Folder -->
                                         <div class="mb-2">
-                                            <label for="uploads_folder" class="form-label">Uploads Folder <span class="text-danger">*</span></label>
+                                            <label for="uploads_folder" class="form-label">Yükleme Klasörü <span class="text-danger">*</span></label>
                                             <input type="text" name="uploads_folder" id="uploads_folder" class="form-control" maxlength="255" required>
                                         </div>
 
                                         <!-- Images Folder -->
                                         <div class="mb-2">
-                                            <label for="images_folder" class="form-label">Images Folder <span class="text-danger">*</span></label>
+                                            <label for="images_folder" class="form-label">Görseller Klasörü <span class="text-danger">*</span></label>
                                             <input type="text" name="images_folder" id="images_folder" class="form-control" maxlength="255" required>
                                         </div>
 
                                         <!-- Sector Images Folder -->
                                         <div class="mb-2">
-                                            <label for="sector_images_folder" class="form-label">Sector Images Folder <span class="text-danger">*</span></label>
-                                            <input type="text" name="sector_images_folder" id="sector_images_folder" class="form-control" maxlength="255" required>
+                                            <label for="product_images_folder" class="form-label">Ürün Görseller Klasörü <span class="text-danger">*</span></label>
+                                            <input type="text" name="product_images_folder" id="product_images_folder" class="form-control" maxlength="255" required>
                                         </div>
 
                                         <!-- Brand Images Folder -->
                                         <div class="mb-2">
-                                            <label for="brand_images_folder" class="form-label">Brand Images Folder <span class="text-danger">*</span></label>
-                                            <input type="text" name="brand_images_folder" id="brand_images_folder" class="form-control" maxlength="255" required>
+                                            <label for="club_images_folder" class="form-label">Kulüp Görseller Klasörü <span class="text-danger">*</span></label>
+                                            <input type="text" name="club_images_folder" id="club_images_folder" class="form-control" maxlength="255" required>
                                         </div>
 
                                         <!-- Blog Images Folder -->
                                         <div class="mb-2">
-                                            <label for="blog_images_folder" class="form-label">Blog Images Folder <span class="text-danger">*</span></label>
+                                            <label for="blog_images_folder" class="form-label">Blog Görseller Klasörü <span class="text-danger">*</span></label>
                                             <input type="text" name="blog_images_folder" id="blog_images_folder" class="form-control" maxlength="255" required>
                                         </div>
 
-                                        <!-- Catalog Files Folder -->
+                                        <!-- Project Images Folder -->
                                         <div class="mb-2">
-                                            <label for="catalog_files_folder" class="form-label">Catalog Files Folder <span class="text-danger">*</span></label>
-                                            <input type="text" name="catalog_files_folder" id="catalog_files_folder" class="form-control" maxlength="255" required>
+                                            <label for="project_images_folder" class="form-label">Proje Görseller Klasörü <span class="text-danger">*</span></label>
+                                            <input type="text" name="project_images_folder" id="project_images_folder" class="form-control" maxlength="255" required>
                                         </div>
 
                                         <!-- GA Code -->
                                         <div class="mb-2">
-                                            <label for="ga_code" class="form-label">Google Analytics Code</label>
+                                            <label for="ga_code" class="form-label">Google Analytics Kodu</label>
                                             <textarea name="ga_code" id="ga_code" class="form-control"></textarea>
                                         </div>
 
                                         <!-- Bitrix Form Code -->
                                         <div class="mb-2">
-                                            <label for="bitrix_form_code" class="form-label">Bitrix Form Code</label>
+                                            <label for="bitrix_form_code" class="form-label">Bitrix Form Kodu</label>
                                             <textarea name="bitrix_form_code" id="bitrix_form_code" class="form-control"></textarea>
                                         </div>
 
                                         <!-- Bitrix Widget Code -->
                                         <div class="mb-2">
-                                            <label for="bitrix_widget_code" class="form-label">Bitrix Widget Code</label>
+                                            <label for="bitrix_widget_code" class="form-label">Bitrix Widget Kodu</label>
                                             <textarea name="bitrix_widget_code" id="bitrix_widget_code" class="form-control"></textarea>
                                         </div>
 
                                         <!-- Sort -->
                                         <div class="mb-2">
-                                            <label for="sort" class="form-label">Sort Order</label>
+                                            <label for="sort" class="form-label">Sıralama</label>
                                             <input type="number" name="sort" id="sort" class="form-control" value="0">
                                         </div>
 

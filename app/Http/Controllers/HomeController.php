@@ -25,14 +25,12 @@ class HomeController extends Controller
 {
     public function index()
     {
+        dd($_SERVER['DOCUMENT_ROOT']);
         $sliders = Slider::where('lang', app()->getLocale())->get();
         $languages = Language::all();
-        $sectors = Sector::where('lang', app()->getLocale())->get();
-        $brands = Brand::where('lang', app()->getLocale())->get();
-        $blogs = Blog::where('lang', app()->getLocale())->get();
         $about = About::where('lang', app()->getLocale())->first();
 
-        return view('home', compact('sliders', 'languages', 'sectors', 'brands', 'blogs', 'about'));
+        return view('home', compact('sliders', 'languages', 'about'));
     }
 
     public function route($slug, $slug2 = null)

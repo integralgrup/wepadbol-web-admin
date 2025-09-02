@@ -46,12 +46,9 @@ class SliderController extends Controller
             foreach ($languages as $language) {
                 if($language->lang_code == 'en'){
                     $request->validate([
-                        'slide_title_' . $language->lang_code => 'required|max:100',
                         'title_' . $language->lang_code => 'required|max:100',
-                        'title_1_' . $language->lang_code => 'nullable|max:100',
-                        'title_2_' . $language->lang_code => 'nullable|max:100',
-                        'button_title_' . $language->lang_code => 'required|max:100',
-                        'url_' . $language->lang_code => 'required|max:255',
+                        'description_' . $language->lang_code => 'nullable|max:255',
+                        'thumbnail_' . $language->lang_code => 'nullable|image|max:2048',
                         'image_' . $language->lang_code => 'nullable|image|max:2048', // Assuming image is optional
                         'alt_' . $language->lang_code => 'required|max:255',
                     ]);
@@ -64,15 +61,20 @@ class SliderController extends Controller
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
+                if ($request->hasFile('thumbnail_en') || $request->hasFile('thumbnail_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'thumbnail_en', $languages[0]);
+                    $thumbnailName = moveFile($request,$language,'thumbnail_' . $language->lang_code, 'thumbnail_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
+                    //dd($thumbnailName);
+                }else{
+                    $thumbnailName = $request->input('old_thumbnail_' . $language->lang_code, null); // Use old thumbnail if no new thumbnail is uploaded
+                }
+
                 Slider::updateOrCreate(
                     ['slider_id' => $slider_id, 'lang' => $request->input('lang_' . $language->lang_code)],
                     [
-                        'slide_title' => $request->input('slide_title_' . $language->lang_code) ?? $request->input('slide_title_en'),
                         'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
-                        'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
-                        'title_2' => $request->input('title_2_' . $language->lang_code) ?? $request->input('title_2_en'),
-                        'button_title' => $request->input('button_title_' . $language->lang_code) ?? $request->input('button_title_en'),
-                        'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),
+                        'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
+                        'thumbnail' => $thumbnailName,
                         'image' => $imageName,
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                         'sort' => $request->input('sort_' . $language->lang_code) ?? 0,

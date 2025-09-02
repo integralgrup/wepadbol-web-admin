@@ -60,12 +60,6 @@
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
                                     <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
                                         <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
-                                        <!-- slide_title -->
-
-                                        <div class="mb-3">
-                                            <label for="slide_title_{{ $language->lang_code }}" class="form-label">Slide Adı ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="slide_title_{{ $language->lang_code }}" name="slide_title_{{ $language->lang_code }}" {{ $required }}>
-                                        </div>
 
                                         <div class="mb-3">
                                             <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ strtoupper($language->lang_code) }})</label>
@@ -74,27 +68,14 @@
 
                                         <!-- title_1 -->
                                         <div class="mb-3">
-                                            <label for="title_1_{{ $language->lang_code }}" class="form-label">Başlık 2 ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" {{ $required }}>
+                                            <label for="description_{{ $language->lang_code }}" class="form-label">Açıklama({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
 
                                         <div class="mb-3">
-                                            <label for="title_2_{{ $language->lang_code }}" class="form-label">Başlık 3 ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="title_2_{{ $language->lang_code }}" name="title_2_{{ $language->lang_code }}" {{ $required }}>
+                                            <label for="thumbnail_{{ $language->lang_code }}" class="form-label">Küçük Görsel ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="file" class="form-control" id="thumbnail_{{ $language->lang_code }}" name="thumbnail_{{ $language->lang_code }}">
                                         </div>
-
-                                        <!-- button_title -->
-                                        <div class="mb-3">
-                                            <label for="button_title_{{ $language->lang_code }}" class="form-label">Buton Başlığı ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="button_title_{{ $language->lang_code }}" name="button_title_{{ $language->lang_code }}" {{ $required }}>
-                                        </div>
-
-                                        <!-- url -->
-                                        <div class="mb-3">
-                                            <label for="url_{{ $language->lang_code }}" class="form-label">URL ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="url_{{ $language->lang_code }}" name="url_{{ $language->lang_code }}" {{ $required }}>
-                                        </div>
-
                                         <div class="mb-3">
                                             <label for="image_{{ $language->lang_code }}" class="form-label">Görsel ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}">

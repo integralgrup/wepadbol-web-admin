@@ -54,14 +54,11 @@
                         foreach($sliders as $item){
                             $slider_id = $item->slider_id;
                             $title[$item->lang] = $item->title;
-                            $slide_title[$item->lang] = $item->slide_title;
-                            $title_1[$item->lang] = $item->title_1;
-                            $title_2[$item->lang] = $item->title_2;
-                            $button_title[$item->lang] = $item->button_title;
+                            $description[$item->lang] = $item->description;
+                            $thumbnail[$item->lang] = $item->thumbnail;
                             $image[$item->lang] = $item->image;
                             $alt[$item->lang] = $item->alt;
                             $sort[$item->lang] = $item->sort;
-                            $url[$item->lang] = $item->url;
 
                         }
                     ?>
@@ -75,30 +72,22 @@
                                 <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
                                     <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
-                                        <!-- slide_title -->
-                                        <div class="mb-3">
-                                            <label for="slide_title_{{ $language->lang_code }}" class="form-label">Slide Adı ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="slide_title_{{ $language->lang_code }}" name="slide_title_{{ $language->lang_code }}" required value="{{ $slide_title[$language->lang_code] ?? '' }}">
-                                        </div>
+                                       
                                         <div class="form-group">
                                             <label for="title_{{ $language->lang_code }}">Başlık ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" name="title_{{ $language->lang_code }}" class="form-control" id="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] ?? '' }}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="title_1_{{ $language->lang_code }}">Başlık 1 ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" name="title_1_{{ $language->lang_code }}" class="form-control" id="title_1_{{ $language->lang_code }}" value="{{ $title_1[$language->lang_code] ?? '' }}">
+                                            <label for="description_{{ $language->lang_code }}">Açıklama ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" name="description_{{ $language->lang_code }}" class="form-control" id="description_{{ $language->lang_code }}" value="{{ $description[$language->lang_code] ?? '' }}">
                                         </div>
                                         <div class="form-group">
-                                            <label for="title_2_{{ $language->lang_code }}">Başlık 2 ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" name="title_2_{{ $language->lang_code }}" class="form-control" id="title_2_{{ $language->lang_code }}" value="{{ $title_2[$language->lang_code] ?? '' }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="button_title_{{ $language->lang_code }}">Buton Başlığı ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" name="button_title_{{ $language->lang_code }}" class="form-control" id="button_title_{{ $language->lang_code }}" value="{{ $button_title[$language->lang_code] ?? '' }}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="url_{{ $language->lang_code }}">URL ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" name="url_{{ $language->lang_code }}" class="form-control" id="url_{{ $language->lang_code }}" value="{{ $url[$language->lang_code] ?? '' }}">
+                                            <label for="thumbnail_{{ $language->lang_code }}">KüçükGörsel ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="file" name="thumbnail_{{ $language->lang_code }}" class="form-control" id="thumbnail_{{ $language->lang_code }}">
+                                            @if(isset($thumbnail[$language->lang_code]))
+                                                <img src="{{ $language->domain .'/'. getFolder(['uploads_folder','images_folder'], $language->lang_code). '/' . $thumbnail[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 100px; margin-top: 10px;">
+                                                <input type="hidden" class="form-control" id="old_thumbnail_{{ $language->lang_code }}" name="old_thumbnail_{{ $language->lang_code }}" value="{{ $thumbnail[$language->lang_code] }}" readonly>
+                                            @endif
                                         </div>
                                         <div class="form-group">
                                             <label for="image_{{ $language->lang_code }}">Resim ({{ strtoupper($language->lang_code) }})</label>

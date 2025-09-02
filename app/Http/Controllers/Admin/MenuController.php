@@ -109,6 +109,7 @@ class MenuController extends Controller
                          ->with('success', 'İşlem başarılı!');
             //return redirect()->route('admin.menu')->with('success', 'Menu item created successfully.');
         } catch (\Exception $e) {
+            throw $e; die();
             return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
         }
        

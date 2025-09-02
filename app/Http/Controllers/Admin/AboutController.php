@@ -64,14 +64,11 @@ class AboutController extends Controller
                     if($language->lang_code == 'en'){
                         $request->validate([
                             'lang_' . $language->lang_code => 'required|string|max:10',
-                            'upper_title_' . $language->lang_code => 'required|string|max:100',
                             'title_' . $language->lang_code => 'required|string|max:100',
                             'title_1_' . $language->lang_code => 'required|string|max:255',
                             'description_' . $language->lang_code => 'required|string',
                             'image_' . $language->lang_code => 'nullable|image|max:2048',
                             'alt_' . $language->lang_code => 'required|string|max:255',
-                            //bg_video should be 50MB limit
-                            'bg_video_' . $language->lang_code => 'nullable|file|mimetypes:video/mp4,video/avi,video/mpeg,video/quicktime|max:51200', // 50MB
                             'mission_title_' . $language->lang_code => 'required|string|max:255',
                             'mission_text_' . $language->lang_code => 'required|string',
                             'mission_image_' . $language->lang_code => 'nullable|image|max:2048',
@@ -90,13 +87,6 @@ class AboutController extends Controller
                         //dd($imageName);
                     }else{
                         $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
-                    }
-
-                    if ($request->hasFile('bg_video_' . $language->lang_code) || $request->hasFile('bg_video_en')) {
-                        $tmpBgVideoPath = createTmpFile($request, 'bg_video_' . $language->lang_code, $languages[0]);
-                        $videoName = moveFile($request,$language, 'bg_video_' . $language->lang_code, 'bg_video_en', 'title_' . $language->lang_code, 'title_en',$language->images_folder, $tmpBgVideoPath);
-                    } else {
-                        $videoName = $request->input('old_bg_video_' . $language->lang_code, null); // Use old video if no new video is uploaded
                     }
 
                     if ($request->hasFile('mission_image_' . $language->lang_code) || $request->hasFile('mission_image_en')) {
@@ -119,13 +109,11 @@ class AboutController extends Controller
                             'lang' => $language->lang_code,
                         ],
                         [
-                            'upper_title' => $request->input('upper_title_' . $language->lang_code) ?: $request->input('upper_title_en'),
                             'title' => $request->input('title_' . $language->lang_code) ?: $request->input('title_en'),
                             'title_1' => $request->input('title_1_' . $language->lang_code) ?: $request->input('title_1_en'),
                             'description' => $request->input('description_' . $language->lang_code) ?: $request->input('description_en'),
                             'image' => $imageName, // save relative path
                             'alt' => $request->input('alt_' . $language->lang_code) ?: $request->input('alt_en'),
-                            'bg_video' => $videoName, // save relative path
                             'mission_title' => $request->input('mission_title_' . $language->lang_code) ?: $request->input('mission_title_en'),
                             'mission_text' => $request->input('mission_text_' . $language->lang_code) ?: $request->input('mission_text_en'),
                             'mission_image' => $missionImageName, // save relative path
@@ -141,7 +129,6 @@ class AboutController extends Controller
                 }
                 //die();
                 @unlink($tmpImgPath);
-                @unlink($tmpBgVideoPath);
                 @unlink($tmpMissionImagePath);
                 @unlink($tmpVisionImagePath);
 
