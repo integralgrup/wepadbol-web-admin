@@ -61,13 +61,13 @@ Route::get('/admin/about/what_we_do/{id}/edit', 'App\Http\Controllers\Admin\Abou
 Route::post('/admin/about/what_we_do', 'App\Http\Controllers\Admin\AboutController@whatWeDoUpdate')->name('admin.about.what_we_do.update');
 Route::delete('/admin/about/what_we_do/{id}', 'App\Http\Controllers\Admin\AboutController@whatWeDoDestroy')->name('admin.about.what_we_do.destroy');
 
-// admin/about/memberships urls
-Route::get('/admin/about/memberships', 'App\Http\Controllers\Admin\AboutController@membershipsIndex')->name('admin.about.memberships');
-Route::get('/admin/about/memberships/create', 'App\Http\Controllers\Admin\AboutController@membershipsCreate')->name('admin.about.memberships.create');
-Route::post('/admin/about/memberships/store', 'App\Http\Controllers\Admin\AboutController@membershipsStore')->name('admin.about.memberships.store');
-Route::get('/admin/about/memberships/{id}/edit', 'App\Http\Controllers\Admin\AboutController@membershipsEdit')->name('admin.about.memberships.edit');
-Route::post('/admin/about/memberships', 'App\Http\Controllers\Admin\AboutController@membershipsUpdate')->name('admin.about.memberships.update');
-Route::delete('/admin/about/memberships/{id}', 'App\Http\Controllers\Admin\AboutController@membershipsDestroy')->name('admin.about.memberships.destroy');
+// admin/about/certificates routes
+Route::get('/admin/about/certificates', 'App\Http\Controllers\Admin\AboutController@certificatesIndex')->name('admin.about.certificates');
+Route::get('/admin/about/certificates/create', 'App\Http\Controllers\Admin\AboutController@certificatesCreate')->name('admin.about.certificates.create');
+Route::post('/admin/about/certificates/store', 'App\Http\Controllers\Admin\AboutController@certificatesStore')->name('admin.about.certificates.store');
+Route::get('/admin/about/certificates/{id}/edit', 'App\Http\Controllers\Admin\AboutController@certificatesEdit')->name('admin.about.certificates.edit');
+Route::post('/admin/about/certificates', 'App\Http\Controllers\Admin\AboutController@certificatesUpdate')->name('admin.about.certificates.update');
+Route::delete('/admin/about/certificates/{id}', 'App\Http\Controllers\Admin\AboutController@certificatesDestroy')->name('admin.about.certificates.destroy');
 
 // admin/about/politics urls
 Route::get('/admin/about/politics', 'App\Http\Controllers\Admin\AboutController@politicsIndex')->name('admin.about.politics');
@@ -114,48 +114,6 @@ Route::post('/admin/brand/{id}/slider2/store', 'App\Http\Controllers\Admin\Brand
 Route::get('/admin/brand/{id}/slider2/{sliderId}/edit', 'App\Http\Controllers\Admin\BrandController@slider2Edit')->name('admin.brand.slider2.edit');
 Route::delete('/admin/brand/{id}/slider2/{sliderId}', 'App\Http\Controllers\Admin\BrandController@slider2Destroy')->name('admin.brand.slider2.destroy');
 
-// Career routes
-Route::get('/admin/career', 'App\Http\Controllers\Admin\CareerController@index')->name('admin.career.index');
-Route::get('/admin/career/create', 'App\Http\Controllers\Admin\CareerController@create')->name('admin.career.create');
-Route::post('/admin/career/store', 'App\Http\Controllers\Admin\CareerController@store')->name('admin.career.store');
-Route::get('/admin/career/{id}/edit', 'App\Http\Controllers\Admin\CareerController@edit')->name('admin.career.edit');
-Route::delete('/admin/career/{id}', 'App\Http\Controllers\Admin\CareerController@destroy')->name('admin.career.destroy');
-
-// Career Slider routes
-Route::get('/admin/career/slider', 'App\Http\Controllers\Admin\CareerController@sliderIndex')->name('admin.career.slider.index');
-Route::get('/admin/career/slider/create', 'App\Http\Controllers\Admin\CareerController@sliderCreate')->name('admin.career.slider.create');
-Route::post('/admin/career/slider/store', 'App\Http\Controllers\Admin\CareerController@sliderStore')->name('admin.career.slider.store');
-Route::get('/admin/career/slider/{sliderId}/edit', 'App\Http\Controllers\Admin\CareerController@sliderEdit')->name('admin.career.slider.edit');
-Route::delete('/admin/career/slider/{sliderId}', 'App\Http\Controllers\Admin\CareerController@sliderDestroy')->name('admin.career.slider.destroy');
-
-// Career Jobs routes
-Route::get('/admin/career/jobs', 'App\Http\Controllers\Admin\CareerController@jobIndex')->name('admin.career.job.index');
-Route::get('/admin/career/jobs/create', 'App\Http\Controllers\Admin\CareerController@jobCreate')->name('admin.career.job.create');
-Route::post('/admin/career/jobs/store', 'App\Http\Controllers\Admin\CareerController@jobStore')->name('admin.career.job.store');
-Route::get('/admin/career/jobs/{jobId}/edit', 'App\Http\Controllers\Admin\CareerController@jobEdit')->name('admin.career.job.edit');
-Route::delete('/admin/career/jobs/{jobId}', 'App\Http\Controllers\Admin\CareerController@jobDestroy')->name('admin.career.job.destroy');
-
-// CatalogGroup routes
-Route::get('/admin/catalog/group', 'App\Http\Controllers\Admin\CatalogController@groupIndex')->name('admin.catalog.group.index');
-Route::get('/admin/catalog/group/create', 'App\Http\Controllers\Admin\CatalogController@groupCreate')->name('admin.catalog.group.create');
-Route::post('/admin/catalog/group/store', 'App\Http\Controllers\Admin\CatalogController@groupStore')->name('admin.catalog.group.store');
-Route::get('/admin/catalog/group/{id}/edit', 'App\Http\Controllers\Admin\CatalogController@groupEdit')->name('admin.catalog.group.edit');
-Route::delete('/admin/catalog/group/{id}', 'App\Http\Controllers\Admin\CatalogController@groupDestroy')->name('admin.catalog.group.destroy');
-
-// Catalog Routes
-Route::get('/admin/catalog/{catalogGroupId}/catalog', 'App\Http\Controllers\Admin\CatalogController@catalogIndex')->name('admin.catalog.index');
-Route::get('/admin/catalog/{catalogGroupId}/create', 'App\Http\Controllers\Admin\CatalogController@catalogCreate')->name('admin.catalog.create');
-Route::post('/admin/catalog/store', 'App\Http\Controllers\Admin\CatalogController@catalogStore')->name('admin.catalog.store');
-Route::get('/admin/catalog/{id}/edit', 'App\Http\Controllers\Admin\CatalogController@catalogEdit')->name('admin.catalog.edit');
-Route::delete('/admin/catalog/{id}', 'App\Http\Controllers\Admin\CatalogController@catalogDestroy')->name('admin.catalog.destroy');
-
-// Catalog File routes
-Route::get('/admin/catalog/{catalogId}/files', 'App\Http\Controllers\Admin\CatalogController@catalogFileIndex')->name('admin.catalog.files.index');
-Route::get('/admin/catalog/{catalogId}/files/create', 'App\Http\Controllers\Admin\CatalogController@catalogFileCreate')->name('admin.catalog.files.create');
-Route::post('/admin/catalog/files/store', 'App\Http\Controllers\Admin\CatalogController@catalogFileStore')->name('admin.catalog.files.store');
-Route::get('/admin/catalog/files/{fileId}/edit', 'App\Http\Controllers\Admin\CatalogController@catalogFileEdit')->name('admin.catalog.files.edit');
-Route::delete('/admin/catalog/files/{fileId}', 'App\Http\Controllers\Admin\CatalogController@catalogFileDestroy')->name('admin.catalog.files.destroy');
-
 // Slider Routes
 Route::get('/admin/slider', 'App\Http\Controllers\Admin\SliderController@index')->name('admin.slider.index');
 Route::get('/admin/slider/create', 'App\Http\Controllers\Admin\SliderController@create')->name('admin.slider.create');
@@ -163,26 +121,40 @@ Route::post('/admin/slider/store', 'App\Http\Controllers\Admin\SliderController@
 Route::get('/admin/slider/{sliderId}/edit', 'App\Http\Controllers\Admin\SliderController@edit')->name('admin.slider.edit');
 Route::delete('/admin/slider/{sliderId}', 'App\Http\Controllers\Admin\SliderController@destroy')->name('admin.slider.destroy');
 
-// Sector routes
-Route::get('/admin/sector', 'App\Http\Controllers\Admin\SectorController@index')->name('admin.sector.index');
-Route::get('/admin/sector/create', 'App\Http\Controllers\Admin\SectorController@create')->name('admin.sector.create');
-Route::post('/admin/sector/store', 'App\Http\Controllers\Admin\SectorController@store')->name('admin.sector.store');
-Route::get('/admin/sector/{sector}/edit', 'App\Http\Controllers\Admin\SectorController@edit')->name('admin.sector.edit');
-Route::delete('/admin/sector/{sector}', 'App\Http\Controllers\Admin\SectorController@destroy')->name('admin.sector.destroy');
+// Product routes
+Route::get('/admin/product', 'App\Http\Controllers\Admin\ProductController@index')->name('admin.product.index');
+Route::get('/admin/product/create', 'App\Http\Controllers\Admin\ProductController@create')->name('admin.product.create');
+Route::post('/admin/product/store', 'App\Http\Controllers\Admin\ProductController@store')->name('admin.product.store');
+Route::get('/admin/product/{id}/edit', 'App\Http\Controllers\Admin\ProductController@edit')->name('admin.product.edit');
+Route::delete('/admin/product/{id}', 'App\Http\Controllers\Admin\ProductController@destroy')->name('admin.product.destroy');
 
-// Sector Slider 1 routes
-Route::get('/admin/sector/{sector}/slider1', 'App\Http\Controllers\Admin\SectorController@slider1Index')->name('admin.sector.slider1.index');
-Route::get('/admin/sector/{sector}/slider1/create', 'App\Http\Controllers\Admin\SectorController@slider1Create')->name('admin.sector.slider1.create');
-Route::post('/admin/sector/{sector}/slider1/store', 'App\Http\Controllers\Admin\SectorController@slider1Store')->name('admin.sector.slider1.store');
-Route::get('/admin/sector/{sector}/slider1/{sliderId}/edit', 'App\Http\Controllers\Admin\SectorController@slider1Edit')->name('admin.sector.slider1.edit');
-Route::delete('/admin/sector/{sector}/slider1/{sliderId}', 'App\Http\Controllers\Admin\SectorController@slider1Destroy')->name('admin.sector.slider1.destroy');
+// Product images routes
+Route::get('/admin/product/{id}/images', 'App\Http\Controllers\Admin\ProductController@imagesIndex')->name('admin.product.images.index');
+Route::get('/admin/product/{id}/images/create', 'App\Http\Controllers\Admin\ProductController@imagesCreate')->name('admin.product.images.create');
+Route::post('/admin/product/{id}/images/store', 'App\Http\Controllers\Admin\ProductController@imagesStore')->name('admin.product.images.store');
+Route::get('/admin/product/{id}/images/{imageId}/edit', 'App\Http\Controllers\Admin\ProductController@imagesEdit')->name('admin.product.images.edit');
+Route::delete('/admin/product/{id}/images/{imageId}', 'App\Http\Controllers\Admin\ProductController@imagesDestroy')->name('admin.product.images.destroy');  
 
-// Sector Slider 2 routes
-Route::get('/admin/sector/{sector}/slider2', 'App\Http\Controllers\Admin\SectorController@slider2Index')->name('admin.sector.slider2.index');
-Route::get('/admin/sector/{sector}/slider2/create', 'App\Http\Controllers\Admin\SectorController@slider2Create')->name('admin.sector.slider2.create');
-Route::post('/admin/sector/{sector}/slider2/store', 'App\Http\Controllers\Admin\SectorController@slider2Store')->name('admin.sector.slider2.store');
-Route::get('/admin/sector/{sector}/slider2/{sliderId}/edit', 'App\Http\Controllers\Admin\SectorController@slider2Edit')->name('admin.sector.slider2.edit');
-Route::delete('/admin/sector/{sector}/slider2/{sliderId}', 'App\Http\Controllers\Admin\SectorController@slider2Destroy')->name('admin.sector.slider2.destroy');
+// Product gallery routes
+Route::get('/admin/product/{id}/gallery', 'App\Http\Controllers\Admin\ProductController@galleryIndex')->name('admin.product.gallery.index');
+Route::get('/admin/product/{id}/gallery/create', 'App\Http\Controllers\Admin\ProductController@galleryCreate')->name('admin.product.gallery.create');
+Route::post('/admin/product/{id}/gallery/store', 'App\Http\Controllers\Admin\ProductController@galleryStore')->name('admin.product.gallery.store');
+Route::get('/admin/product/{id}/gallery/{imageId}/edit', 'App\Http\Controllers\Admin\ProductController@galleryEdit')->name('admin.product.gallery.edit');
+Route::delete('/admin/product/{id}/gallery/{imageId}', 'App\Http\Controllers\Admin\ProductController@galleryDestroy')->name('admin.product.gallery.destroy');
+
+// Product FAQ routes
+Route::get('/admin/product/{id}/faq', 'App\Http\Controllers\Admin\ProductController@faqIndex')->name('admin.product.faq.index');
+Route::get('/admin/product/{id}/faq/create', 'App\Http\Controllers\Admin\ProductController@faqCreate')->name('admin.product.faq.create');
+Route::post('/admin/product/{id}/faq/store', 'App\Http\Controllers\Admin\ProductController@faqStore')->name('admin.product.faq.store');
+Route::get('/admin/product/{id}/faq/{faqId}/edit', 'App\Http\Controllers\Admin\ProductController@faqEdit')->name('admin.product.faq.edit');
+Route::delete('/admin/product/{id}/faq/{faqId}', 'App\Http\Controllers\Admin\ProductController@faqDestroy')->name('admin.product.faq.destroy');
+
+// Product Types routes
+Route::get('/admin/product/{id}/product-type', 'App\Http\Controllers\Admin\ProductController@typeIndex')->name('admin.product.type.index');
+Route::get('/admin/product/{id}/product-type/create', 'App\Http\Controllers\Admin\ProductController@typeCreate')->name('admin.product.type.create');
+Route::post('/admin/product/{id}/product-type/store', 'App\Http\Controllers\Admin\ProductController@typeStore')->name('admin.product.type.store');
+Route::get('/admin/product/{id}/product-type/{typeId}/edit', 'App\Http\Controllers\Admin\ProductController@typeEdit')->name('admin.product.type.edit');
+Route::delete('/admin/product/{id}/product-type/{typeId}', 'App\Http\Controllers\Admin\ProductController@typeDestroy')->name('admin.product.type.destroy');
 
 // Office routes
 Route::get('/admin/office', 'App\Http\Controllers\Admin\OfficeController@index')->name('admin.office.index');

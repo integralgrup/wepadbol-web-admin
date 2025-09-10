@@ -53,6 +53,7 @@
                                 <tr>
                                     <th>#</th>
                                     <th>Başlık</th>
+                                    <th>Görsel</th>
                                     <th>İşlemler</th>
                                 </tr>
                             </thead>
@@ -61,6 +62,11 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->title }}</td>
+                                        <td>
+                                            @if($item->image)
+                                                <img src="{{ $languages[0]->domain .'/'. getFolder(['uploads_folder','images_folder'], $item->lang) . '/' . $item->image }}" alt="{{ $item->title }}" style="width: 100px; height: auto;">
+                                            @endif
+                                        </td>
                                         <td>
                                             <a href="{{ route('admin.about.what_we_do.edit', $item->content_id) }}" class="btn btn-warning btn-sm">
                                                 <i class="bi bi-pencil"></i> Düzenle

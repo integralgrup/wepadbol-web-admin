@@ -54,10 +54,10 @@
                         foreach($whatWeDoContent as $content){
                             $content_id[$content->lang] = $content->content_id;
                             $title[$content->lang] = $content->title;
-                            $title_1[$content->lang] = $content->title_1;
                             $description[$content->lang] = $content->description;
                             $image[$content->lang] = $content->image;
                             $alt[$content->lang] = $content->alt;
+                            $sort[$content->lang] = $content->sort;
                         }
                     ?>
                     <div class="card-body">
@@ -74,10 +74,6 @@
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="title_1_{{ $language->lang_code }}">Başlık 1 ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" value="{{ $title_1[$language->lang_code] }}" required>
-                                        </div>
-                                        <div class="form-group">
                                             <label for="description_{{ $language->lang_code }}">Açıklama ({{ strtoupper($language->lang_code) }})</label>
                                             <textarea class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" required>{{ $description[$language->lang_code] }}</textarea>
                                         </div>
@@ -92,6 +88,10 @@
                                         <div class="form-group">
                                             <label for="alt_{{ $language->lang_code }}">Alt Metin ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" value="{{ $alt[$language->lang_code] }}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="sort_{{ $language->lang_code }}">Sıralama ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="number" class="form-control" id="sort_{{ $language->lang_code }}" name="sort_{{ $language->lang_code }}" value="{{ $sort[$language->lang_code] }}" required>
                                         </div>
                                     </div>
                                 </div>

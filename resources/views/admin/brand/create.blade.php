@@ -64,26 +64,13 @@
                                             <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ $language->lang_code }})</label>
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
-                                        <!-- title_1 -->
-                                        <div class="mb-3">
-                                            <label for="title_1_{{ $language->lang_code }}" class="form-label">Alt Başlık({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" {{ $required }}>
-                                        </div>
                                         <div class="mb-3">
                                             <label for="url_{{ $language->lang_code }}" class="form-label">Alt Başlık({{ $language->lang_code }})</label>
                                             <input type="text" class="form-control" id="url_{{ $language->lang_code }}" name="url_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="seo_url_{{ $language->lang_code }}" class="form-label">SEO Url ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="seo_url_{{ $language->lang_code }}" name="seo_url_{{ $language->lang_code }}" {{ $required }}>
-                                        </div>
-                                        <div class="mb-3">
                                             <label for="image_{{ $language->lang_code }}" class="form-label">Logo ({{ $language->lang_code }})</label>
                                             <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}" accept="image/*" {{ $required }}>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="bg_image_{{ $language->lang_code }}" class="form-label">Görsel ({{ $language->lang_code }})</label>
-                                            <input type="file" class="form-control" id="bg_image_{{ $language->lang_code }}" name="bg_image_{{ $language->lang_code }}" accept="image/*" {{ $required }}>
                                         </div>
                                         <div class="mb-3">
                                             <label for="alt_{{ $language->lang_code }}" class="form-label">Alt Metin ({{ $language->lang_code }})</label>

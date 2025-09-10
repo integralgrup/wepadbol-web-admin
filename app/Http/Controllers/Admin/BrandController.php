@@ -50,15 +50,10 @@ class BrandController extends Controller
                 if($language->lang_code == 'en'){
                     $request->validate([
                         'title_' . $language->lang_code => 'required|max:100',
-                        'title_1_' . $language->lang_code => 'required|max:100',
                         'url_' . $language->lang_code => 'required|max:255',
-                        'seo_url_' . $language->lang_code => 'required|max:255',
                         'description_' . $language->lang_code => 'required',
-                        'bg_image_' . $language->lang_code => 'nullable|max:2048|mimes:webp,svg,jpg,jpeg,png', // Assuming image is optional
-                        // webp or svg or jpg or png
                         'image_' . $language->lang_code => 'nullable|max:2048|mimes:webp,svg,jpg,jpeg,png',
                         'alt_' . $language->lang_code => 'required|max:255',
-                        'url_' . $language->lang_code => 'required|max:255',
                         'seo_title_' . $language->lang_code => 'nullable|max:255',
                         'seo_description_' . $language->lang_code => 'nullable|max:255',
                         'seo_keywords_' . $language->lang_code => 'nullable|max:255',
@@ -73,25 +68,14 @@ class BrandController extends Controller
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
-                if ($request->hasFile('bg_image_' . $language->lang_code) || $request->hasFile('bg_image_en')) {
-                    $tmpImgPath = createTmpFile($request, 'bg_image_en', $languages[0]);
-                    $bgImageName = moveFile($request,$language,'bg_image_' . $language->lang_code, 'bg_image_en', 'alt_' . $language->lang_code, 'alt_en', $language->brand_images_folder, $tmpImgPath);
-                    //dd($bgImageName);
-                }else{
-                    $bgImageName = $request->input('old_bg_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
-                }
-
                 Brand::updateOrCreate(
                     ['brand_id' => $brand_id, 'lang' => $language->lang_code],
                     [
                         'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
-                        'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
                         'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),
-                        'bg_image' => $bgImageName,
                         'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName,
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
-                        'seo_url' => $request->input('seo_url_' . $language->lang_code) ?? $request->input('seo_url_en'),
                         'seo_title' => $request->input('seo_title_' . $language->lang_code) ?? $request->input('seo_title_en'),
                         'seo_description' => $request->input('seo_description_' . $language->lang_code) ?? $request->input('seo_description_en'),
                         'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code) ?? $request->input('seo_keywords_en'),

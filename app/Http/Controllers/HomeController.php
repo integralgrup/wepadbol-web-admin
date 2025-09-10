@@ -25,7 +25,7 @@ class HomeController extends Controller
 {
     public function index()
     {
-        dd($_SERVER['DOCUMENT_ROOT']);
+        //dd($_SERVER['DOCUMENT_ROOT']);
         $sliders = Slider::where('lang', app()->getLocale())->get();
         $languages = Language::all();
         $about = About::where('lang', app()->getLocale())->first();
@@ -42,11 +42,11 @@ class HomeController extends Controller
             $about = About::where('lang', app()->getLocale())->first();
             $how_we_do = DB::table('about_how_we_do')->where('lang', app()->getLocale())->get()->toArray();
             $what_we_do =  DB::table('about_what_we_do')->where('lang', app()->getLocale())->get()->toArray();
-            $memberships = DB::table('about_memberships')->where('lang', app()->getLocale())->get()->toArray();
-            //debug($memberships);
+            $certificates = DB::table('about_certificates')->where('lang', app()->getLocale())->get()->toArray();
+            //debug($certificates);
             $politics = DB::table('about_politics')->where('lang', app()->getLocale())->get()->toArray();
             //dd($politics);
-            return view('about', compact('about', 'how_we_do', 'what_we_do', 'memberships', 'politics'));
+            return view('about', compact('about', 'how_we_do', 'what_we_do', 'certificates', 'politics'));
         }
 
         if($menu->page_type == 'sector') {

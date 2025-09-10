@@ -55,23 +55,23 @@
                             <div class="mb-2">
                                 <label for="path" class="form-label">Resim Dizin</label>
                                 <input type="text" class="form-control" id="path" name="path" value="{{ $language->path }}" required>
-                            </div>
-                            <div class="mb-2">
-                                <label for="title" class="form-label">Başlık</label>
-                                <input type="text" class="form-control" id="title" name="title" value="{{ $language->title }}" required>
-                            </div>
-                            <div class="mb-2" style="display: flex; flex-direction: row; align-items: center; gap: 10px;">
+                            </div><div class="mb-2" style="display: flex; flex-direction: row; align-items: center; gap: 10px;">
                                 <div>
                                     <label for="flag_image" class="form-label">Bayrak Görseli</label>
                                     <input type="file" class="form-control" id="flag_image" name="flag_image" accept="image/*">
                                 </div>
                                 <div>
                                     @if($language->flag_image)
-                                        <img src="{{ $language->domain .'/'. getFolder(['uploads_folder','images_folder'], $language->lang_code) . '/' . $language->flag_image }}" alt="{{ $language->lang_code }}" style="width: 200px; height: auto; margin-top: 10px;">
+                                        <img src="{{ $language->domain .'/'. getFolder(['uploads_folder','images_folder'], $language->lang_code) . '/' . $language->flag_image }}" alt="{{ $language->lang_code }}" style="width: 50px; height: auto; margin-top: 10px;">
                                         <input type="hidden" class="form-control" id="old_flag_image" name="old_flag_image" value="{{ $language->flag_image }}" readonly>
                                     @endif
                                 </div>
                             </div>
+                            <div class="mb-2">
+                                <label for="title" class="form-label">Başlık</label>
+                                <input type="text" class="form-control" id="title" name="title" value="{{ $language->title }}" required>
+                            </div>
+                            
                             <div class="mb-2">
                                 <label for="about_url" class="form-label">Hakkımızda URL</label>
                                 <input type="text" class="form-control" id="about_url" name="about_url" value="{{ $language->about_url }}" required>

@@ -50,6 +50,12 @@
                     </a>
                   </li>
                   <li class="nav-item">
+                    <a href="{{ route('admin.product.index') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Ürünler</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
                     <a href="{{ route('admin.slider.index') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Slider</p>
@@ -68,21 +74,9 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ route('admin.sector.index') }}" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Sektörler</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
                     <a href="{{ route('admin.office.index') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Ofisler</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="{{ route('admin.catalog.group.index') }}" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Katalog Grupları</p>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -102,35 +96,6 @@
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Footer İletişim Yönetimi</p>
                     </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="#" class="nav-link">
-                      <i class="nav-icon bi bi-box-arrow-in-right"></i>
-                    <p>
-                      Kariyer
-                      <i class="nav-arrow bi bi-chevron-right"></i>
-                    </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                      <li class="nav-item">
-                        <a href="{{ route('admin.career.create') }}" class="nav-link">
-                          <i class="nav-icon bi bi-circle"></i>
-                          <p>Kariyer Yönetimi</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="{{ route('admin.career.job.index') }}" class="nav-link">
-                          <i class="nav-icon bi bi-circle"></i>
-                          <p>İş İlanları</p>
-                        </a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="{{ route('admin.career.slider.index') }}" class="nav-link">
-                          <i class="nav-icon bi bi-circle"></i>
-                          <p>Kariyer Slider</p>
-                        </a>
-                      </li>
-                    </ul>
                   </li>
                   
                 </ul>
@@ -163,15 +128,9 @@
                     </a>
                   </li>
                   <li class="nav-item">
-                    <a href="{{ route('admin.about.politics') }}" class="nav-link">
+                    <a href="{{ route('admin.about.certificates') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
-                      <p>Politikalar</p>
-                    </a>
-                  </li>
-                  <li class="nav-item">
-                    <a href="{{ route('admin.about.memberships') }}" class="nav-link">
-                      <i class="nav-icon bi bi-circle"></i>
-                      <p>Üyelikler</p>
+                      <p>Sertifikalar</p>
                     </a>
                   </li>
                 </ul>

@@ -55,12 +55,9 @@
                             $brand_id[$brand->lang] = $brand->brand_id;
                             $url[$brand->lang] = $brand->url;
                             $title[$brand->lang] = $brand->title;
-                            $title_1[$brand->lang] = $brand->title_1;
                             $description[$brand->lang] = $brand->description;
                             $image[$brand->lang] = $brand->image;
-                            $bg_image[$brand->lang] = $brand->bg_image;
                             $alt[$brand->lang] = $brand->alt;
-                            $seo_url[$brand->lang] = $brand->seo_url;
                             $seo_title[$brand->lang] = $brand->seo_title;
                             $seo_description[$brand->lang] = $brand->seo_description;
                             $seo_keywords[$brand->lang] = $brand->seo_keywords;
@@ -81,10 +78,6 @@
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="title_1_{{ $language->lang_code }}">Başlık 1 ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" value="{{ $title_1[$language->lang_code] }}" required>
-                                        </div>
-                                        <div class="form-group">
                                             <label for="url_{{ $language->lang_code }}">URL ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="url_{{ $language->lang_code }}" name="url_{{ $language->lang_code }}" value="{{ $url[$language->lang_code] }}" required>
                                         </div>
@@ -95,18 +88,6 @@
                                                 <img src="{{ $language->domain.'/'. getFolder(['uploads_folder','brand_images_folder'], $language->lang_code) . '/' . $image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
                                                 <input type="hidden" class="form-control" id="old_image_{{ $language->lang_code }}" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}" readonly>
                                             @endif
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="bg_image_{{ $language->lang_code }}">Görsel ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="file" class="form-control" id="bg_image_{{ $language->lang_code }}" name="bg_image_{{ $language->lang_code }}">
-                                            @if($bg_image[$language->lang_code])
-                                                <img src="{{ $language->domain.'/'. getFolder(['uploads_folder','brand_images_folder'], $language->lang_code) . '/' . $bg_image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
-                                                <input type="hidden" class="form-control" id="old_bg_image_{{ $language->lang_code }}" name="old_bg_image_{{ $language->lang_code }}" value="{{ $bg_image[$language->lang_code] }}" readonly>
-                                            @endif
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="seo_url_{{ $language->lang_code }}">SEO URL ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="seo_url_{{ $language->lang_code }}" name="seo_url_{{ $language->lang_code }}" value="{{ $seo_url[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="alt_{{ $language->lang_code }}">Alt Metin ({{ strtoupper($language->lang_code) }})</label>

@@ -6,6 +6,9 @@ if (! function_exists('seoUrl')) {
     //Create seo friendly url
     function seoUrl($text)
     {
+        if(is_array($text)) {
+            dd($text);
+        }
         return Str::slug($text);
     }
 }

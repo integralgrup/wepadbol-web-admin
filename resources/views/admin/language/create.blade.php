@@ -66,16 +66,16 @@
                                             <input type="text" name="domain" id="domain" class="form-control" maxlength="100" required>
                                         </div>
 
-                                        <!-- Path -->
-                                        <div class="mb-2">
-                                            <label for="path" class="form-label">Resim Dizin <span class="text-danger">*</span></label>
-                                            <input type="text" name="path" id="path" class="form-control" maxlength="100" required>
-                                        </div>
-
                                         <!-- Flag Image -->
                                         <div class="mb-2">
                                             <label for="flag_image" class="form-label">Bayrak Görseli <span class="text-danger">*</span></label>
                                             <input type="file" name="flag_image" id="flag_image" class="form-control" accept="image/*" required>
+                                        </div>
+
+                                        <!-- Path -->
+                                        <div class="mb-2">
+                                            <label for="path" class="form-label">Resim Dizin <span class="text-danger">*</span></label>
+                                            <input type="text" name="path" id="path" class="form-control" maxlength="100" required>
                                         </div>
 
                                         <!-- About URL -->

@@ -43,8 +43,8 @@
 
                                 [
                                     'title' => getStaticText(17),
-                                    'section' => '#memberships-section',
-                                    'id' => 'memberships',
+                                    'section' => '#certificates-section',
+                                    'id' => 'certificates',
                                 ],
 
                                 [
@@ -227,8 +227,8 @@
                 </div>
             </section>
 
-            <section class="logos relative bg-[#F4F3EE] pt-[100px] xl:pt-[60px] md:pt-[50px] pb-[120px] 2xl:pb-[90px] xl:pb-[60px] md:pb-[50px] mb-[130px] xl:mb-[100px] lg:mb-[60px] md:mb-[50px]" data-section-id="memberships" id="memberships-section">
-                <div id="memberships" class="absolute left-0 top-[-150px] xs:top-[-50px]"></div>
+            <section class="logos relative bg-[#F4F3EE] pt-[100px] xl:pt-[60px] md:pt-[50px] pb-[120px] 2xl:pb-[90px] xl:pb-[60px] md:pb-[50px] mb-[130px] xl:mb-[100px] lg:mb-[60px] md:mb-[50px]" data-section-id="certificates" id="certificates-section">
+                <div id="certificates" class="absolute left-0 top-[-150px] xs:top-[-50px]"></div>
                 <div class="container max-w-[1650px]">
                     <div class="flex flex-col gap-[60px] 2xl:gap-[45px] md:gap-[30px]">
                         <div class="flex flex-col gap-[20px] text-center items-center">
@@ -240,7 +240,7 @@
                     </div>
                     <div class="logos-slider overflow-hidden reveal">
                         <div class="swiper-wrapper">
-                            <?php foreach ($memberships as $item): ?>
+                            <?php foreach ($certificates as $item): ?>
                                 <div class="swiper-slide">
                                     <a href="#" target="_blank" class="block">
                                         <div class="item w-full h-[170px] md:h-[90px] p-[50px] xl:p-[35px] md:p-[30px] sm:p-[15px] xs:px-0 group">

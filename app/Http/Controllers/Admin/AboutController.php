@@ -199,9 +199,9 @@ class AboutController extends Controller
                 if ($language->lang_code === 'en') {
                     $request->validate([
                         'title_' . $language->lang_code => 'required|string|max:100',
-                        'title_1_' . $language->lang_code => 'required|string|max:255',
                         'description_' . $language->lang_code => 'required|string',
                         'image_' . $language->lang_code => 'nullable|image|max:2048',
+                        'icon_image_' . $language->lang_code => 'nullable|image|max:2048',
                         'alt_' . $language->lang_code => 'required|string|max:255',
                     ]);
                 }
@@ -214,6 +214,14 @@ class AboutController extends Controller
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
+                if ($request->hasFile('icon_image_' . $language->lang_code) || $request->hasFile('icon_image_en')) {
+                    $tmpImgPath = createTmpFile($request, 'icon_image_' . $language->lang_code, $languages[0]);
+                    $iconImageName = moveFile($request, $language, 'icon_image_' . $language->lang_code, 'icon_image_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
+
+                } else {
+                    $iconImageName = $request->input('old_icon_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
+                }
+
                 // Create or update the "how we do" content for the specific language
                 DB::table('about_how_we_do')->updateOrInsert(
                     [
@@ -223,10 +231,11 @@ class AboutController extends Controller
                     [
                         'content_id' => $content_id,
                         'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
-                        'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
                         'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName, // save relative path
+                        'icon_image' => $iconImageName,
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                        'sort' => $request->input('sort_' . $language->lang_code) ?? $request->input('sort_en'),
                     ]
                 );
             }
@@ -286,7 +295,6 @@ class AboutController extends Controller
                 if ($language->lang_code === 'en') {
                     $request->validate([
                         'title_' . $language->lang_code => 'required|string|max:100',
-                        'title_1_' . $language->lang_code => 'required|string|max:255',
                         'description_' . $language->lang_code => 'required|string',
                         'image_' . $language->lang_code => 'nullable|image|max:2048',
                         'alt_' . $language->lang_code => 'required|string|max:255',
@@ -309,10 +317,10 @@ class AboutController extends Controller
                     [
                         'content_id' => $content_id,
                         'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
-                        'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
                         'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName, // save relative path
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                        'sort' => $request->input('sort_' . $language->lang_code) ?? $request->input('sort_en'),
                     ]
                 );
             }
@@ -340,22 +348,22 @@ class AboutController extends Controller
         }
     }
 
-    public function membershipsIndex(Request $request)
+    public function certificatesIndex(Request $request)
     {
-        $membershipsContent = DB::table('about_memberships')
+        $certificatesContent = DB::table('about_certificates')
             ->where('lang', $request->input('lang', 'en')) // Filter by language if provided
             ->get();
         $languages = Language::all();
-        return view('admin.about.memberships.index', compact('membershipsContent', 'languages'));
+        return view('admin.about.certificates.index', compact('certificatesContent', 'languages'));
     }
 
-    public function membershipsCreate()
+    public function certificatesCreate()
     {
         $languages = Language::all();
-        return view('admin.about.memberships.create', compact('languages'));
+        return view('admin.about.certificates.create', compact('languages'));
     }
 
-    public function membershipsStore(Request $request)
+    public function certificatesStore(Request $request)
     {
         try {
 
@@ -364,7 +372,7 @@ class AboutController extends Controller
             if ($request->has('content_id')) {
                 $content_id = $request->input('content_id'); // Use the provided content_id
             } else {
-                $content_id = DB::table('about_memberships')->max('content_id') + 1; // Increment the maximum content_id by 1
+                $content_id = DB::table('about_certificates')->max('content_id') + 1; // Increment the maximum content_id by 1
                 if (!$content_id) {
                     $content_id = 1; // If no content exists, start with 1
                 }   
@@ -375,9 +383,8 @@ class AboutController extends Controller
                 if ($language->lang_code === 'en') {
                     $request->validate([
                         'title_' . $language->lang_code => 'required|string|max:100',
-                        'title_1_' . $language->lang_code => 'required|string|max:255',
-                        'url_' . $language->lang_code => 'required|string|max:255',
                         'image_' . $language->lang_code => 'nullable|image|max:2048',
+                        'pdf_' . $language->lang_code => 'nullable|mimes:pdf|max:15120', // max 15MB
                         'alt_' . $language->lang_code => 'required|string|max:255',
                 ]);
             }
@@ -390,18 +397,26 @@ class AboutController extends Controller
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
+                if ($request->hasFile('pdf_' . $language->lang_code) || $request->hasFile('pdf_en')) {
+                    $tmpPdfPath = createTmpFile($request, 'pdf_' . $language->lang_code, $languages[0]);
+                    $pdfName = moveFile($request, $language, 'pdf_' . $language->lang_code, 'pdf_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpPdfPath);
+
+                } else {
+                    $pdfName = $request->input('old_pdf_' . $language->lang_code, null); // Use old PDF if no new PDF is uploaded
+                }
+
                 // Create or update the "how we do" content for the specific language
-                DB::table('about_memberships')->updateOrInsert(
+                DB::table('about_certificates')->updateOrInsert(
                     [
                         'lang' => $language->lang_code,
                         'content_id' => $content_id, // Use the content_id for grouping
                     ],
                     [
                         'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
-                        'title_1' => $request->input('title_1_' . $language->lang_code) ?? $request->input('title_1_en'),
-                        'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),
                         'image' => $imageName ?? '',
+                        'pdf' => $pdfName ?? '',
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                        'sort' => $request->input('sort_' . $language->lang_code) ?? $request->input('sort_en'),
                     ]
                 );
             } // <-- Add this closing brace for the foreach loop
@@ -409,114 +424,30 @@ class AboutController extends Controller
             if (isset($tmpImgPath)) {
                 @unlink($tmpImgPath);
             }
-            return redirect()->route('admin.about.memberships')->with('success', 'Üyelik içeriği başarıyla kaydedildi.');
+            return redirect()->route('admin.about.certificates')->with('success', 'Üyelik içeriği başarıyla kaydedildi.');
         } catch (\Exception $e) {
             //throw $e;
             return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
         }
     }
 
-    public function membershipsEdit($id)
+    public function certificatesEdit($id)
     {
-        $membershipsContent = DB::table('about_memberships')->where('content_id', $id)->get();
+        $certificatesContent = DB::table('about_certificates')->where('content_id', $id)->get();
         $languages = Language::all();
-        return view('admin.about.memberships.edit', compact('membershipsContent', 'languages'));
+        return view('admin.about.certificates.edit', compact('certificatesContent', 'languages'));
     }
 
-    public function membershipsDestroy(Request $request, $id)
+    public function certificatesDestroy(Request $request, $id)
     {
         try {
-            DB::table('about_memberships')->where('content_id', $id)->delete();
-            return redirect()->route('admin.about.memberships')->with('success', 'Üyelik içeriği başarıyla silindi.');
+            DB::table('about_certificates')->where('content_id', $id)->delete();
+            return redirect()->route('admin.about.certificates')->with('success', 'Üyelik içeriği başarıyla silindi.');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
         }
     }
 
-    // about politics methods
-    public function politicsIndex(Request $request)
-    {
-        $politicsContent = DB::table('about_politics')
-            ->where('lang', $request->input('lang', 'en')) // Filter by language if provided
-            ->get();
-        return view('admin.about.politics.index', compact('politicsContent'));
-    }
-
-    public function politicsCreate()
-    {
-        $languages = Language::all();
-        return view('admin.about.politics.create', compact('languages'));
-    }
-
-    public function politicsStore(Request $request)
-    {  
-        try {
-            $languages = Language::all(); // Fetch all languages for the dropdown
-
-            if ($request->has('content_id')) {
-                $content_id = $request->input('content_id'); // Use the provided content_id
-            } else {
-                $content_id = DB::table('about_politics')->max('content_id') + 1; // Increment the maximum content_id by 1
-                if (!$content_id) {
-                    $content_id = 1; // If no content exists, start with 1
-                }
-            }
-
-            foreach ($languages as $language) {
-                // Validate the request data
-                if($language->lang_code === 'en'){
-                    $request->validate([
-                        'title_' . $language->lang_code => 'required|string|max:100',
-                        'description_' . $language->lang_code => 'required|string',
-                        'image_' . $language->lang_code => 'nullable|image|max:2048',
-                        'alt_' . $language->lang_code => 'required|string|max:255',
-                    ]);
-                }
-
-                if ($request->hasFile('image_' . $language->lang_code) || $request->hasFile('image_en')) {
-                    $tmpImgPath = createTmpFile($request, 'image_' . $language->lang_code, $languages[0]);
-                    $imageName = moveFile($request, $language, 'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
-
-                } else {
-                    $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
-                }
-
-                // Create or update the "how we do" content for the specific language
-                DB::table('about_politics')->updateOrInsert(
-                    [
-                        'lang' => $language->lang_code,
-                        'content_id' => $content_id, // Use the content_id for grouping
-                    ],
-                    [
-                        'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
-                        'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
-                        'image' => $imageName ?? '',
-                        'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
-                    ]
-                );
-            }
-            return redirect()->route('admin.about.politics')->with('success', 'Politika içeriği başarıyla kaydedildi.');
-        } catch (\Exception $e) {
-            throw $e;
-            //return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
-        }
-    }
-
-    public function politicsEdit($id)
-    {
-        $politicsContent = DB::table('about_politics')->where('content_id', $id)->get();
-        $languages = Language::all();
-        return view('admin.about.politics.edit', compact('politicsContent', 'languages'));
-    }
-
-    public function politicsDestroy(Request $request, $id)
-    {
-        try {
-            DB::table('about_politics')->where('content_id', $id)->delete();
-            return redirect()->route('admin.about.politics')->with('success', 'Politika içeriği başarıyla silindi.');
-        } catch (\Exception $e) {
-            return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
-        }
-    }
+    
 
 }

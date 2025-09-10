@@ -66,13 +66,7 @@
                                             <img src="{{ asset( getFolder(['uploads_folder', 'brand_images_folder'] ) . '/' . $item->image) }}" alt="{{ $item->alt }}" class="img-thumbnail" width="100">
                                         </td>
                                         <td>
-                                            <!-- Slider Yönetimi Butonları -->
-                                            <a href="{{ route('admin.brand.slider1.index', $item->brand_id) }}" class="btn btn-info btn-sm">
-                                                <i class="bi bi-images"></i> Slider 1
-                                            </a>
-                                            <a href="{{ route('admin.brand.slider2.index', $item->brand_id) }}" class="btn btn-info btn-sm">
-                                                <i class="bi bi-images"></i> Slider 2
-                                            </a>
+                                            
                                             <a href="{{ route('admin.brand.edit', $item->brand_id) }}" class="btn btn-warning btn-sm">
                                                 <i class="bi bi-pencil"></i> Düzenle
                                             </a>

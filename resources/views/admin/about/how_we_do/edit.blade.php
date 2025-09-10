@@ -54,10 +54,11 @@
                         foreach($howWeDoContent as $content){
                             $content_id[$content->lang] = $content->content_id;
                             $title[$content->lang] = $content->title;
-                            $title_1[$content->lang] = $content->title_1;
                             $description[$content->lang] = $content->description;
                             $image[$content->lang] = $content->image;
+                            $icon_image[$content->lang] = $content->icon_image;
                             $alt[$content->lang] = $content->alt;
+                            $sort[$content->lang] = $content->sort;
                         }
                     ?>
                     <div class="card-body">
@@ -75,10 +76,6 @@
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
-                                            <label for="title_1_{{ $language->lang_code }}">Başlık 1 ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" value="{{ $title_1[$language->lang_code] }}" required>
-                                        </div>
-                                        <div class="form-group">
                                             <label for="description_{{ $language->lang_code }}">Açıklama ({{ strtoupper($language->lang_code) }})</label>
                                             <textarea class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" required>{{ $description[$language->lang_code] }}</textarea>
                                         </div>
@@ -91,8 +88,21 @@
                                             @endif
                                         </div>
                                         <div class="form-group">
+                                            <label for="icon_image_{{ $language->lang_code }}">İkon Resim ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="file" class="form-control" id="icon_image_{{ $language->lang_code }}" name="icon_image_{{ $language->lang_code }}">
+                                            @if($icon_image[$language->lang_code])
+                                                <img src="{{ $languages[$key]->domain .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'.$icon_image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
+                                                <input type="hidden" class="form-control" id="old_icon_image_{{ $language->lang_code }}" name="old_icon_image_{{ $language->lang_code }}" value="{{ $icon_image[$language->lang_code] }}" readonly>
+                                            @endif
+                                        </div>
+                                        <div class="form-group">
                                             <label for="alt_{{ $language->lang_code }}">Alt Metin ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" value="{{ $alt[$language->lang_code] }}" required>
+                                        </div>
+                                        <!-- sort -->
+                                        <div class="form-group">
+                                            <label for="sort_{{ $language->lang_code }}">Sıralama ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="number" class="form-control" id="sort_{{ $language->lang_code }}" name="sort_{{ $language->lang_code }}" value="{{ $sort[$language->lang_code] }}" required>
                                         </div>
                                     </div>
                                 </div>
