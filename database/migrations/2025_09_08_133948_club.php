@@ -16,12 +16,17 @@ return new class extends Migration
             $table->integer('club_id')->nullable(false);
             $table->string('lang', 10)->nullable(false);
             $table->string('title', 255)->nullable(false);
+            $table->string('seo_url', 255)->nullable(false);
             $table->string('title_1', 255)->nullable(false);
             $table->string('title_2', 255)->nullable(false);
             $table->text('description_1')->nullable(false);
             $table->text('description_2')->nullable(false);
             $table->string('button_text', 20)->nullable(false);
             $table->string('pdf_button_text', 20)->nullable(false);
+            $table->string('pdf_file', 255)->nullable(true);
+            $table->string('seo_title', 255)->nullable(false);
+            $table->string('seo_description', 255)->nullable(false);
+            $table->string('seo_keywords', 255)->nullable(false);
             $table->integer('sort')->nullable(false);
             $table->timestamp('created_at')->useCurrent();
             $table->softDeletes();

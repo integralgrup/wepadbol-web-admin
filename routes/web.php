@@ -184,6 +184,20 @@ Route::post('/admin/footer-info/store', 'App\Http\Controllers\Admin\FooterInfoCo
 Route::get('/admin/footer-info/{id}/edit', 'App\Http\Controllers\Admin\FooterInfoController@edit')->name('admin.footer_info.edit');
 Route::delete('/admin/footer-info/{id}', 'App\Http\Controllers\Admin\FooterInfoController@destroy')->name('admin.footer_info.destroy');
 
+// Club routes
+Route::get('/admin/club', 'App\Http\Controllers\Admin\ClubController@index')->name('admin.club.index');
+Route::get('/admin/club/create', 'App\Http\Controllers\Admin\ClubController@create')->name('admin.club.create');
+Route::post('/admin/club/store', 'App\Http\Controllers\Admin\ClubController@store')->name('admin.club.store');
+Route::get('/admin/club/{id}/edit', 'App\Http\Controllers\Admin\ClubController@edit')->name('admin.club.edit');
+Route::delete('/admin/club/{id}', 'App\Http\Controllers\Admin\ClubController@destroy')->name('admin.club.destroy');
+
+// Club Slider 1 routes
+Route::get('/admin/club/{id}/slider1', 'App\Http\Controllers\Admin\ClubController@slider1Index')->name('admin.club.slider1.index');
+Route::get('/admin/club/{id}/slider1/create', 'App\Http\Controllers\Admin\ClubController@slider1Create')->name('admin.club.slider1.create');
+Route::post('/admin/club/{id}/slider1/store', 'App\Http\Controllers\Admin\ClubController@slider1Store')->name('admin.club.slider1.store');
+Route::get('/admin/club/{id}/slider1/{sliderId}/edit', 'App\Http\Controllers\Admin\ClubController@slider1Edit')->name('admin.club.slider1.edit');
+Route::delete('/admin/club/{id}/slider1/{sliderId}', 'App\Http\Controllers\Admin\ClubController@slider1Destroy')->name('admin.club.slider1.destroy');
+
 }); // End of Auth middleware group
 //Project Front End routes
 //Home route

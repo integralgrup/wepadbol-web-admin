@@ -56,6 +56,12 @@
                     </a>
                   </li>
                   <li class="nav-item">
+                    <a href="{{ route('admin.club.index') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Kulüpler</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
                     <a href="{{ route('admin.slider.index') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Slider</p>

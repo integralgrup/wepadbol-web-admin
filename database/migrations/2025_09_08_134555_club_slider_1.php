@@ -13,6 +13,7 @@ return new class extends Migration
     {
         Schema::create('club_slider_1', function (Blueprint $table) {
             $table->id(); // Auto-increment primary key
+            $table->integer('slider_id')->nullable(false);
             $table->integer('club_id')->nullable(false);
             $table->string('lang', 10)->nullable(false);
             $table->string('title')->nullable(false);
@@ -20,6 +21,7 @@ return new class extends Migration
             $table->string('image')->nullable(false);
             $table->string('alt')->nullable(false);
             $table->string('video')->nullable(false);
+            $table->integer('sort')->nullable(false);
             $table->timestamp('created_at')->useCurrent();
             $table->softDeletes();
         });
