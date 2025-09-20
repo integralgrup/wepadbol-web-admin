@@ -58,68 +58,87 @@
                                 @foreach($languages as $language)
                                 <?php $required = $language->lang_code == 'en' ? 'required' : ''; ?>
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
-                                    <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
-                                        <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
-                                        <div class="mb-3">
-                                            <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" {{ $required }}>
-                                        </div>
-                                        
-                                        <div class="mb-3">
-                                            <label for="alt_{{ $language->lang_code }}" class="form-label">Alt Metin ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" {{ $required }}>
-                                        </div>
-                                        <!-- image -->
-                                        <div class="mb-3">
-                                            <label for="image_{{ $language->lang_code }}" class="form-label">Görsel ({{ $language->lang_code }})</label>
-                                            <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}" accept="image/*" {{ $required }}>
-                                        </div>
-                                        <div class="mb-3">
-                                            <label for="description_{{ $language->lang_code }}" class="form-label">Açıklama ({{ $language->lang_code }})</label>
-                                            <textarea class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" {{ $required }}></textarea>
-                                       </div>
-                                       <div class="mb-3">
-                                            <label for="features_description_{{ $language->lang_code }}" class="form-label">Features Açıklaması ({{ $language->lang_code }})</label>
-                                            <textarea class="form-control" id="features_description_{{ $language->lang_code }}" name="features_description_{{ $language->lang_code }}" rows="3" {{ $required }}></textarea>
-                                       </div>
-                                       <!-- feature image -->
-                                        <div class="mb-3">
-                                            <label for="features_image_{{ $language->lang_code }}" class="form-label">Features Görsel ({{ $language->lang_code }})</label>
-                                            <input type="file" class="form-control" id="features_image_{{ $language->lang_code }}" name="features_image_{{ $language->lang_code }}" accept="image/*" {{ $required }}>
-                                        </div>
-                                       <div class="mb-3">
-                                            <label for="technical_info_{{ $language->lang_code }}" class="form-label">Teknik Bilgiler ({{ $language->lang_code }})</label>
-                                            <textarea class="form-control" id="technical_info_{{ $language->lang_code }}" name="technical_info_{{ $language->lang_code }}" rows="3" {{ $required }}></textarea>
-                                        </div>
-                                        <div></div>
-                                        <!-- pdf file -->
-                                        <div class="mb-3">
-                                            <label for="pdf_file_{{ $language->lang_code }}" class="form-label">PDF Dosyası ({{ $language->lang_code }})</label>
-                                            <input type="file" class="form-control" id="pdf_file_{{ $language->lang_code }}" name="pdf_file_{{ $language->lang_code }}" accept=".pdf" {{ $required }}>
+                                    <div class="card-body" >
+                                        <div class="grids-4">
+                                            <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
+                                            <div class="mb-3">
+                                                <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ $language->lang_code }})</label>
+                                                <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" {{ $required }}>
+                                            </div>
+                                            <!-- image -->
+                                            <div class="mb-3">
+                                                <label for="slider_image_{{ $language->lang_code }}" class="form-label">Slider Görsel ({{ $language->lang_code }})</label>
+                                                <input type="file" class="form-control" id="slider_image_{{ $language->lang_code }}" name="slider_image_{{ $language->lang_code }}" accept="image/*" {{ $required }}>
+                                            </div>
+                                            
+                                            <!-- image -->
+                                            <div class="mb-3">
+                                                <label for="image_{{ $language->lang_code }}" class="form-label">Görsel ({{ $language->lang_code }})</label>
+                                                <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}" accept="image/*" {{ $required }}>
+                                            </div>
+                                            <div class="mb-3">
+                                                <label for="alt_{{ $language->lang_code }}" class="form-label">Alt Metin ({{ $language->lang_code }})</label>
+                                                <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" {{ $required }}>
+                                            </div>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="seo_url_{{ $language->lang_code }}" class="form-label">SEO Url ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="seo_url_{{ $language->lang_code }}" name="seo_url_{{ $language->lang_code }}" {{ $required }}>
+                                            <label for="category_id" class="form-label">Kategori ({{ $language->lang_code }})</label>
+                                            <select class="form-select" id="category_id" name="category_id" {{ $required }}>
+                                                <option value="">Kategori Seçiniz</option>
+                                                @foreach($categories as $category)
+                                                    <option value="{{ $category->category_id }}">{{ $category->title }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
-                                        <!-- seo_title -->
-                                        <div class="mb-3">
-                                            <label for="seo_title_{{ $language->lang_code }}" class="form-label">SEO Başlığı ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}" {{ $required }}>
+                                        <div>
+                                            <div class="mb-3">
+                                                <label for="description_{{ $language->lang_code }}" class="form-label">Açıklama ({{ $language->lang_code }})</label>
+                                                <textarea class="form-control summernote" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" {{ $required }}></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                    <label for="features_description_{{ $language->lang_code }}" class="form-label">Features Açıklaması ({{ $language->lang_code }})</label>
+                                                    <textarea class="form-control summernote" id="features_description_{{ $language->lang_code }}" name="features_description_{{ $language->lang_code }}" rows="3" {{ $required }}></textarea>
+                                            </div>
+                                            <div class="mb-3">
+                                                    <label for="technical_info_{{ $language->lang_code }}" class="form-label">Teknik Bilgiler ({{ $language->lang_code }})</label>
+                                                    <textarea class="form-control summernote" id="technical_info_{{ $language->lang_code }}" name="technical_info_{{ $language->lang_code }}" rows="3" {{ $required }}></textarea>
+                                                </div>
                                         </div>
-                                        <!-- seo_description -->
-                                        <div class="mb-3">
-                                            <label for="seo_description_{{ $language->lang_code }}" class="form-label">SEO Açıklaması ({{ $language->lang_code }})</label>
-                                            <textarea class="form-control" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" rows="3" {{ $required }}></textarea>
-                                        </div>
-                                        <!-- seo_keywords -->
-                                        <div class="mb-3">
-                                            <label for="seo_keywords_{{ $language->lang_code }}" class="form-label">SEO Anahtar Kelimeleri ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="seo_keywords_{{ $language->lang_code }}" name="seo_keywords_{{ $language->lang_code }}" {{ $required }}>
-                                        </div>
-                                        <!-- sıralama -->
-                                        <div class="mb-3">
-                                            <label for="sort_{{ $language->lang_code }}" class="form-label">Sıralama ({{ $language->lang_code }})</label>
-                                            <input type="number" class="form-control" id="sort_{{ $language->lang_code }}" name="sort_{{ $language->lang_code }}" value="{{ $sort[$language->lang_code] ?? 0 }}">
+                                        <div class="grids-3">
+                                            <!-- feature image -->
+                                                <div class="mb-3">
+                                                    <label for="features_image_{{ $language->lang_code }}" class="form-label">Features Görsel ({{ $language->lang_code }})</label>
+                                                    <input type="file" class="form-control" id="features_image_{{ $language->lang_code }}" name="features_image_{{ $language->lang_code }}" accept="image/*" {{ $required }}>
+                                                </div>
+                                                <!-- pdf file -->
+                                                <div class="mb-3">
+                                                    <label for="pdf_file_{{ $language->lang_code }}" class="form-label">PDF Dosyası ({{ $language->lang_code }})</label>
+                                                    <input type="file" class="form-control" id="pdf_file_{{ $language->lang_code }}" name="pdf_file_{{ $language->lang_code }}" accept=".pdf" {{ $required }}>
+                                                </div>
+                                                <div class="mb-3">
+                                                    <label for="seo_url_{{ $language->lang_code }}" class="form-label">SEO Url ({{ $language->lang_code }})</label>
+                                                    <input type="text" class="form-control" id="seo_url_{{ $language->lang_code }}" name="seo_url_{{ $language->lang_code }}" {{ $required }}>
+                                                </div>
+                                                <!-- seo_title -->
+                                                <div class="mb-3">
+                                                    <label for="seo_title_{{ $language->lang_code }}" class="form-label">SEO Başlığı ({{ $language->lang_code }})</label>
+                                                    <input type="text" class="form-control" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}" {{ $required }}>
+                                                </div>
+                                                <!-- seo_description -->
+                                                <div class="mb-3">
+                                                    <label for="seo_description_{{ $language->lang_code }}" class="form-label">SEO Açıklaması ({{ $language->lang_code }})</label>
+                                                    <textarea class="form-control" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" rows="3" {{ $required }}></textarea>
+                                                </div>
+                                                <!-- seo_keywords -->
+                                                <div class="mb-3">
+                                                    <label for="seo_keywords_{{ $language->lang_code }}" class="form-label">SEO Anahtar Kelimeleri ({{ $language->lang_code }})</label>
+                                                    <input type="text" class="form-control" id="seo_keywords_{{ $language->lang_code }}" name="seo_keywords_{{ $language->lang_code }}" {{ $required }}>
+                                                </div>
+                                                <!-- sıralama -->
+                                                <div class="mb-3">
+                                                    <label for="sort_{{ $language->lang_code }}" class="form-label">Sıralama ({{ $language->lang_code }})</label>
+                                                    <input type="number" class="form-control" id="sort_{{ $language->lang_code }}" name="sort_{{ $language->lang_code }}" value="{{ $sort[$language->lang_code] ?? 0 }}">
+                                                </div>
                                         </div>
                                     </div>
                                 </div>

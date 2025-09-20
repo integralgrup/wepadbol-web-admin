@@ -22,6 +22,8 @@ class Club extends Model
         'club_id',
         'lang',
         'title',
+        'image',
+        'alt',
         'seo_url',
         'title_1',
         'title_2',

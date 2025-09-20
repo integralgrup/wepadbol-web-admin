@@ -9,6 +9,8 @@ use App\Models\ProductImage;
 use App\Models\ProductGallery;
 use App\Models\ProductFaq;
 use App\Models\ProductType;
+use App\Models\ProductCategory;
+use App\Models\ProductFeature;
 
 
 class Product extends Model
@@ -19,11 +21,13 @@ class Product extends Model
 
     protected $fillable = [
         'product_id',
+        'category_id',
         'lang',
         'title',
         'seo_url',
         'description',
         'technical_info',
+        'slider_image',
         'image',
         'features_image',
         'features_description',
@@ -64,6 +68,15 @@ class Product extends Model
         return $this->hasMany(ProductType::class, 'product_id', 'product_id')->orderBy('sort');
     }
 
+    public function category()
+    {
+        return $this->hasOne(ProductCategory::class, 'category_id', 'category_id')->orderBy('sort');
+    }
+
+    public function features()
+    {
+        return $this->hasMany(ProductFeature::class, 'product_id', 'product_id')->orderBy('sort');
+    }
 
 
 }

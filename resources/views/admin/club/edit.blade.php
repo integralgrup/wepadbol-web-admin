@@ -55,6 +55,8 @@
                             $club_id[$club->lang] = $club->club_id;
                             $seo_url[$club->lang] = $club->seo_url;
                             $title[$club->lang] = $club->title;
+                            $alt[$club->lang] = $club->alt;
+                            $image[$club->lang] = $club->image;
                             $title_1[$club->lang] = $club->title_1;
                             $title_2[$club->lang] = $club->title_2;
                             $button_text[$club->lang] = $club->button_text;
@@ -82,7 +84,22 @@
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" value="{{ $title[$language->lang_code] ?? '' }}" required>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="title_1_{{ $language->lang_code }}" class="form-label">Başlık ({{ $language->lang_code }})</label>
+                                            <label for="image_{{ $language->lang_code }}" class="form-label">Resim ({{ $language->lang_code }})</label>
+                                            <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}">
+                                            @if(isset($image[$language->lang_code]) && $image[$language->lang_code])
+                                                <img src="{{ $language->domain .'/'.  getFolder(['uploads_folder','club_images_folder'], $language->lang_code) . '/' . $image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] ?? '' }}" style="width: 100px; margin-top: 10px;">
+                                                <input type="hidden" class="form-control" id="old_image_{{ $language->lang_code }}" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}" readonly>
+                                            @endif
+                                        </div>
+
+                                        <!-- alt text -->
+                                        <div class="mb-3">
+                                            <label for="alt_{{ $language->lang_code }}" class="form-label">Alt Text ({{ $language->lang_code }})</label>
+                                            <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" value="{{ $alt[$language->lang_code] ?? '' }}" required>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <label for="title_1_{{ $language->lang_code }}" class="form-label">Başlık 2 ({{ $language->lang_code }})</label>
                                             <input type="text" class="form-control" id="title_1_{{ $language->lang_code }}" name="title_1_{{ $language->lang_code }}" value="{{ $title_1[$language->lang_code] ?? '' }}" required>
                                         </div>
                                         <div class="mb-3">
@@ -94,11 +111,11 @@
                                             <input type="text" class="form-control" id="seo_url_{{ $language->lang_code }}" name="seo_url_{{ $language->lang_code }}" value="{{ $seo_url[$language->lang_code] ?? '' }}" required>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="button_text_{{ $language->lang_code }}" class="form-label">Başlık 1 ({{ $language->lang_code }})</label>
+                                            <label for="button_text_{{ $language->lang_code }}" class="form-label">Buton Text ({{ $language->lang_code }})</label>
                                             <input type="text" class="form-control" id="button_text_{{ $language->lang_code }}" name="button_text_{{ $language->lang_code }}" value="{{ $button_text[$language->lang_code] ?? '' }}" required>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="pdf_button_text_{{ $language->lang_code }}" class="form-label">Başlık 2 ({{ $language->lang_code }})</label>
+                                            <label for="pdf_button_text_{{ $language->lang_code }}" class="form-label">PDF Buton Text ({{ $language->lang_code }})</label>
                                             <input type="text" class="form-control" id="pdf_button_text_{{ $language->lang_code }}" name="pdf_button_text_{{ $language->lang_code }}" value="{{ $pdf_button_text[$language->lang_code] ?? '' }}" required>
                                         </div>
                                         <!-- pdf file --> 

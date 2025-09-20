@@ -79,7 +79,7 @@ $faqId = request()->route('faqId');
                                             <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" required value="{{ $title[$language->lang_code] ?? '' }}">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="description_{{ $language->lang_code }}" class="form-label">Alt Metin ({{ $language->lang_code }})</label>
+                                            <label for="description_{{ $language->lang_code }}" class="form-label">Açıklama ({{ $language->lang_code }})</label>
                                             <input type="text" class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" value="{{ $description[$language->lang_code] ?? '' }}">
                                         </div>
                                         <!-- sıralama -->

@@ -67,11 +67,12 @@
                                                 <option value="">Seçiniz</option>
                                                 <option value="about" {{ $menu->page_type == 'about' ? 'selected' : '' }}>Kurumsal</option>
                                                 <option value="contact" {{ $menu->page_type == 'contact' ? 'selected' : '' }}>İletişim</option>
-                                                <option value="sector" {{ $menu->page_type == 'sector' ? 'selected' : '' }}>Sektörler</option>
+                                                <option value="product" {{ $menu->page_type == 'product' ? 'selected' : '' }}>Ürün</option>
+                                                <option value="product_category" {{ $menu->page_type == 'product_category' ? 'selected' : '' }}>Ürün Kategorisi</option>
                                                 <option value="brand" {{ $menu->page_type == 'brand' ? 'selected' : '' }}>Markalar</option>
                                                 <option value="blog" {{ $menu->page_type == 'blog' ? 'selected' : '' }}>Blog</option>
-                                                <option value="career" {{ $menu->page_type == 'career' ? 'selected' : '' }}>Kariyer</option>
-                                                <option value="catalog" {{ $menu->page_type == 'catalog' ? 'selected' : '' }}>Katalog</option>
+                                                <option value="club" {{ $menu->page_type == 'club' ? 'selected' : '' }}>Kulüp</option>
+                                                <option value="project" {{ $menu->page_type == 'project' ? 'selected' : '' }}>Proje</option>
                                                 <option value="contact" {{ $menu->page_type == 'contact' ? 'selected' : '' }}>İletişim</option>
                                                 <option value="page" {{ $menu->page_type == 'page' ? 'selected' : '' }}>Özel Sayfa</option>
                                             </select>

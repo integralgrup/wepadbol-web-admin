@@ -56,9 +56,21 @@
                     </a>
                   </li>
                   <li class="nav-item">
+                    <a href="{{ route('admin.product.category.index') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Ürün Kategorileri</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
                     <a href="{{ route('admin.club.index') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Kulüpler</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('admin.project.index') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Projeler</p>
                     </a>
                   </li>
                   <li class="nav-item">
@@ -92,6 +104,18 @@
                     </a>
                   </li>
                   <li class="nav-item">
+                    <a href="{{ route('admin.country.index') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Ülke Yönetimi</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('admin.continent.index') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Kıta Yönetimi</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
                     <a href="{{ route('admin.static_text.index') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Sabit Kelime Yönetimi</p>
@@ -119,6 +143,12 @@
                     <a href="{{ route('admin.about.edit') }}" class="nav-link">
                       <i class="nav-icon bi bi-circle"></i>
                       <p>Hakkımızda</p>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a href="{{ route('admin.about.slider') }}" class="nav-link">
+                      <i class="nav-icon bi bi-circle"></i>
+                      <p>Slider</p>
                     </a>
                   </li>
                   <li class="nav-item">

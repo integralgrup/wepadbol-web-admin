@@ -58,7 +58,7 @@
                                 @foreach($languages as $language)
                                 <?php $required = $language->lang_code == 'en' ? 'required' : ''; ?>
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
-                                    <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                                    <div class="card-body grids-3">
                                         <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
 
                                         <div class="mb-3">
@@ -77,7 +77,7 @@
                                             <input type="file" class="form-control" id="thumbnail_{{ $language->lang_code }}" name="thumbnail_{{ $language->lang_code }}">
                                         </div>
                                         <div class="mb-3">
-                                            <label for="image_{{ $language->lang_code }}" class="form-label">Görsel ({{ strtoupper($language->lang_code) }})</label>
+                                            <label for="image_{{ $language->lang_code }}" class="form-label">Görsel veya Video ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}">
                                         </div>
                                         <div class="mb-3">

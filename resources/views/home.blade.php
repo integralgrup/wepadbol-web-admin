@@ -1,3 +1,6 @@
+@php
+    use Illuminate\Support\Str;
+@endphp
 @extends('layouts.main')
 
 @section('content')
@@ -8,77 +11,38 @@
     <section class="hero-section relative h-[100dvh] flex items-center justify-center sm:h-auto">
         <div class="hero-carousel swiper size-full">
             <div class="swiper-wrapper">
-                <div class="swiper-slide group/slide">
-                    <div class="slide relative h-full w-full overflow-hidden isolate">
-                        <div class="background absolute left-0 top-0 size-full before:absolute before:left-0 before:top-0 before:w-full before:h-full before:z-2 before:pointer-events-none before:[background:_linear-gradient(180deg,_rgba(0,_0,_0,_0.25)_0%,_rgba(0,_0,_0,_0.10)_100%);]">
-                            <img src="../assets/image/jpg/image-5.jpg" alt="" class="size-full object-cover object-center" data-swiper-parallax-scale="1.5" data-swiper-parallax-x="25%">
-                        </div>
-                        <div class="wrapper size-full max-w-[1740px] mx-auto flex flex-col justify-end relative z-2 wrapper px-[30px] pt-[180px] 2xl:pt-[150px] xl:pt-[120px] lg:pt-[90px] sm:pt-[150px] pb-[90px] xl:pb-[80px] lg:pb-[70px]">
-                            <h3 class="title max-w-[730px] text-[60px] 2xl:text-[50px] lg:text-[40px] md:text-[32px] md:leading-normal sm:text-[26px] xs:text-[22px] leading-[70px] text-white tracking-[-1.8px] font-bold opacity-0 translate-y-[30px] duration-350 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:translate-y-0 group-[&.swiper-slide-active]/slide:delay-[1200ms] sm:max-w-[500px]">
-                                THE POWER OF THE GAME THAT BRINGS PASSION TO THE FIELD
-                            </h3>
-                            <div class="scroll-and-expo-field flex gap-[50px] mt-[50px]">
-                                <div class="scroll-field group/scroll cursor-pointer scrollable relative overflow-hidden w-[5px] h-[95px] opacity-0 translate-y-[30px] duration-350 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:translate-y-0 group-[&.swiper-slide-active]/slide:delay-[1300ms]" data-scrollable="#about-section">
-                                    <svg width="5" height="96" viewBox="0 0 5 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="5" height="96" rx="2.5" fill="white" fill-opacity="0.2" />
-                                        <rect class="animate-scroll" width="5" height="41" rx="2.5" fill="#75BF00" />
-                                    </svg>
+                @foreach($sliders as $slider)
+                    <div class="swiper-slide group/slide">
+                        <div class="slide relative h-full w-full overflow-hidden isolate">
+                            <div class="background absolute left-0 top-0 size-full before:absolute before:left-0 before:top-0 before:w-full before:h-full before:z-2 before:pointer-events-none before:[background:_linear-gradient(180deg,_rgba(0,_0,_0,_0.25)_0%,_rgba(0,_0,_0,_0.10)_100%);]">
+                                <!-- if file is an image display the image, else if file is a video display the video -->
+                                @if(Str::endsWith($slider->image, ['mp4','avi','mov']))
+                                    <video class="size-full object-cover object-center" autoplay="" loop="" muted="" playsinline="" data-swiper-parallax-scale="1.5" data-swiper-parallax-x="25%">
+                                        <source src="{{ asset( getFolder(['uploads_folder','images_folder']) . '/' . $slider->image) }}" type="video/mp4">
+                                    </video>
+                                @else
+                                    <img src="{{ asset( getFolder(['uploads_folder','images_folder']) . '/' . $slider->image) }}" alt="{{ $slider->alt }}" class="size-full object-cover object-center" data-swiper-parallax-scale="1.5" data-swiper-parallax-x="25%">
+                                @endif
+                            </div>
+                            <div class="wrapper size-full max-w-[1740px] mx-auto flex flex-col justify-end relative z-2 wrapper px-[30px] pt-[180px] 2xl:pt-[150px] xl:pt-[120px] lg:pt-[90px] sm:pt-[150px] pb-[90px] xl:pb-[80px] lg:pb-[70px]">
+                                <h3 class="title max-w-[730px] text-[60px] 2xl:text-[50px] lg:text-[40px] md:text-[32px] md:leading-normal sm:text-[26px] xs:text-[22px] leading-[70px] text-white tracking-[-1.8px] font-bold opacity-0 translate-y-[30px] duration-350 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:translate-y-0 group-[&.swiper-slide-active]/slide:delay-[1200ms] sm:max-w-[500px]">
+                                    {{ $slider->title }}
+                                </h3>
+                                <div class="scroll-and-expo-field flex gap-[50px] mt-[50px]">
+                                    <div class="scroll-field group/scroll cursor-pointer scrollable relative overflow-hidden w-[5px] h-[95px] opacity-0 translate-y-[30px] duration-350 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:translate-y-0 group-[&.swiper-slide-active]/slide:delay-[1300ms]" data-scrollable="#about-section">
+                                        <svg width="5" height="96" viewBox="0 0 5 96" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <rect width="5" height="96" rx="2.5" fill="white" fill-opacity="0.2" />
+                                            <rect class="animate-scroll" width="5" height="41" rx="2.5" fill="#75BF00" />
+                                        </svg>
+                                    </div>
+                                    <p class="expo text-[32px] 2xl:text-[30px] xl:text-[26px] lg:text-[24px] sm:text-[14px] max-w-[510px] text-white/80 leading-[48px] opacity-0 translate-y-[30px] duration-350 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:translate-y-0 group-[&.swiper-slide-active]/slide:delay-[1600ms] md:max-w-[250px] md:leading-normal">
+                                        {{ $slider->description }}
+                                    </p>
                                 </div>
-                                <p class="expo text-[32px] 2xl:text-[30px] xl:text-[26px] lg:text-[24px] sm:text-[14px] max-w-[510px] text-white/80 leading-[48px] opacity-0 translate-y-[30px] duration-350 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:translate-y-0 group-[&.swiper-slide-active]/slide:delay-[1600ms] md:max-w-[250px] md:leading-normal">
-                                    Discover the Power of the Game That Brings Passion to the Field!
-                                </p>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="swiper-slide group/slide">
-                    <div class="slide relative h-full w-full overflow-hidden isolate">
-                        <div class="background absolute left-0 top-0 size-full before:absolute before:left-0 before:top-0 before:w-full before:h-full before:z-2 before:pointer-events-none before:[background:_linear-gradient(180deg,_rgba(0,_0,_0,_0.25)_0%,_rgba(0,_0,_0,_0.10)_100%);]">
-                            <video class="size-full object-cover object-center" autoplay="" loop="" muted="" playsinline="" data-swiper-parallax-scale="1.5" data-swiper-parallax-x="25%">
-                                <source src="../assets/video/example.mp4" type="video/mp4">
-                            </video>
-                        </div>
-                        <div class="wrapper size-full max-w-[1740px] mx-auto flex flex-col justify-end relative z-2 wrapper px-[30px] pt-[180px] 2xl:pt-[150px] xl:pt-[120px] lg:pt-[90px] sm:pt-[150px] pb-[90px] xl:pb-[80px] lg:pb-[70px]">
-                            <h3 class="title max-w-[730px] text-[60px] 2xl:text-[50px] lg:text-[40px] md:text-[32px] md:leading-normal sm:text-[26px] xs:text-[22px] leading-[70px] text-white tracking-[-1.8px] font-bold opacity-0 translate-y-[30px] duration-350 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:translate-y-0 group-[&.swiper-slide-active]/slide:delay-[1200ms] sm:max-w-[500px]">
-                                THE POWER OF THE GAME THAT BRINGS PASSION TO THE FIELD
-                            </h3>
-                            <div class="scroll-and-expo-field flex gap-[50px] mt-[50px]">
-                                <div class="scroll-field group/scroll cursor-pointer scrollable relative overflow-hidden w-[5px] h-[95px] opacity-0 translate-y-[30px] duration-350 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:translate-y-0 group-[&.swiper-slide-active]/slide:delay-[1300ms]" data-scrollable="#about-section">
-                                    <svg width="5" height="96" viewBox="0 0 5 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="5" height="96" rx="2.5" fill="white" fill-opacity="0.2" />
-                                        <rect class="animate-scroll" width="5" height="41" rx="2.5" fill="#75BF00" />
-                                    </svg>
-                                </div>
-                                <p class="expo text-[32px] 2xl:text-[30px] xl:text-[26px] lg:text-[24px] sm:text-[14px] max-w-[510px] text-white/80 leading-[48px] opacity-0 translate-y-[30px] duration-350 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:translate-y-0 group-[&.swiper-slide-active]/slide:delay-[1600ms] md:max-w-[250px] md:leading-normal">
-                                    Discover the Power of the Game That Brings Passion to the Field!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="swiper-slide group/slide">
-                    <div class="slide relative h-full w-full overflow-hidden isolate">
-                        <div class="background absolute left-0 top-0 size-full before:absolute before:left-0 before:top-0 before:w-full before:h-full before:z-2 before:pointer-events-none before:[background:_linear-gradient(180deg,_rgba(0,_0,_0,_0.25)_0%,_rgba(0,_0,_0,_0.10)_100%);]">
-                            <img src="../assets/image/jpg/image-6.jpg" alt="" class="size-full object-cover object-center" data-swiper-parallax-scale="1.5" data-swiper-parallax-x="25%">
-                        </div>
-                        <div class="wrapper size-full max-w-[1740px] mx-auto flex flex-col justify-end relative z-2 wrapper px-[30px] pt-[180px] 2xl:pt-[150px] xl:pt-[120px] lg:pt-[90px] sm:pt-[150px] pb-[90px] xl:pb-[80px] lg:pb-[70px]">
-                            <h3 class="title max-w-[730px] text-[60px] 2xl:text-[50px] lg:text-[40px] md:text-[32px] md:leading-normal sm:text-[26px] xs:text-[22px] leading-[70px] text-white tracking-[-1.8px] font-bold opacity-0 translate-y-[30px] duration-350 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:translate-y-0 group-[&.swiper-slide-active]/slide:delay-[1200ms] sm:max-w-[500px]">
-                                THE POWER OF THE GAME THAT BRINGS PASSION TO THE FIELD
-                            </h3>
-                            <div class="scroll-and-expo-field flex gap-[50px] mt-[50px]">
-                                <div class="scroll-field group/scroll cursor-pointer scrollable relative overflow-hidden w-[5px] h-[95px] opacity-0 translate-y-[30px] duration-350 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:translate-y-0 group-[&.swiper-slide-active]/slide:delay-[1300ms]" data-scrollable="#about-section">
-                                    <svg width="5" height="96" viewBox="0 0 5 96" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <rect width="5" height="96" rx="2.5" fill="white" fill-opacity="0.2" />
-                                        <rect class="animate-scroll" width="5" height="41" rx="2.5" fill="#75BF00" />
-                                    </svg>
-                                </div>
-                                <p class="expo text-[32px] 2xl:text-[30px] xl:text-[26px] lg:text-[24px] sm:text-[14px] max-w-[510px] text-white/80 leading-[48px] opacity-0 translate-y-[30px] duration-350 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:translate-y-0 group-[&.swiper-slide-active]/slide:delay-[1600ms] md:max-w-[250px] md:leading-normal">
-                                    Discover the Power of the Game That Brings Passion to the Field!
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                @endforeach
             </div>
             <div class="carousel-controller absolute left-[50%] translate-x-[-50%] top-[100%] translate-y-[-100%] pb-[90px] pr-[90px] max-w-[1740px] flex justify-end items-end z-2 w-full mx-auto pointer-events-none md:pr-[30px] sm:p-[15px] xsm:justify-center">
                 <div class="wrapper pointer-events-auto">
@@ -93,8 +57,7 @@
                         </div>
                         <div class="carousel-pagination grid grid-cols-2 min-md:gap-y-[30px] min-md:[&>*:nth-child(3)]:top-[-90px] md:gap-[15px] xl:gap-[30px] sm:grid-cols-3">
                             <div class="sm:hidden"></div>
-                            <?php $list = ['image-5.jpg', 'image-6.jpg', 'image-4.jpg'];
-                            foreach ($list as $key => $item) : ?>
+                            @foreach ($sliders as $key => $item)
                                 <div class="fx-hover-repulse carousel-item relative group/p <?= $key == 0 ? 'is-active' : '' ?>">
                                     <div class="inner">
                                         <div class="item relative overflow-hidden cursor-pointer size-[160px] bg-white/10 p-[10px] backdrop-blur-[20px] rounded-full flex justify-center items-center lg:size-[80px]">
@@ -103,12 +66,12 @@
                                                 <path class="fill-none stroke-green [stroke-dasharray:1030] [stroke-dashoffset:1030] group-[&.is-active]/p:animate-circleAnim [animation-duration:7s] [&.is-change]:[animation-duration:7s]" d="M55.3171 154.582L55.2732 154.566L54.0788 154.165C45.1187 151.161 36.8218 146.458 29.6424 140.313L25.2841 136.263C19.6634 131.039 14.915 124.95 11.2191 118.226C8.04699 112.455 5.68272 106.275 4.19264 99.8601L2.84977 94.0791C1.62062 88.7876 1 83.373 1 77.9407C1 69.0504 2.66206 60.2385 5.90054 51.959L6.00519 51.6914L5.07389 51.3272L6.00519 51.6914C7.91961 46.797 10.3581 42.1242 13.2779 37.7544L15.693 34.1401C17.7409 31.0754 20.0416 28.1872 22.571 25.506C25.2813 22.6329 28.2437 20.0085 31.4226 17.6643L32.907 16.5696C36.2974 14.0695 39.8771 11.8367 43.6138 9.89165C47.4327 7.90375 51.4036 6.22254 55.489 4.8639L58.2369 3.95004L59.5422 3.61032C66.2012 1.87718 73.0541 1 79.935 1C97.0905 1 114.175 6.82173 127.788 17.2426C141.406 27.6681 151.968 43.0499 156.406 59.574C160.845 76.1005 159.519 93.9533 152.951 109.772C146.374 125.614 135.339 139.578 120.526 148.119L110.587 153.089L105.398 155.211C101.635 156.751 97.7003 157.834 93.6789 158.437C91.1801 158.812 88.6567 159 86.1299 159H80.9341H73.4929C67.2987 158.345 61.2186 156.872 55.4115 154.618L55.3171 154.582Z" stroke="#75BF00" stroke-width="2" stroke-miterlimit="1" />
                                             </svg>
                                             <div class="image size-[130px] flex justify-center items-center rounded-full overflow-hidden lg:size-[60px]">
-                                                <img src="../assets/image/jpg/<?= $item ?>" alt="" class="size-full object-cover object-center duration-350 group-hover/p:scale-105">
+                                                <img src="{{ asset( getFolder(['uploads_folder','images_folder']) . '/' . $item->thumbnail) }}" alt="{{ $item->alt }}" class="size-full object-cover object-center duration-350 group-hover/p:scale-105">
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            <?php endforeach; ?>
+                            @endforeach
                         </div>
                     </div>
                 </div>
@@ -130,21 +93,21 @@
                 <?php $list = ['image-7.jpg', 'image-6.jpg', 'image-5.jpg', 'image-4.jpg']; ?>
                 <div class="two-image-carousel swiper w-full min-sm:overflow-visible srb" dir="rtl">
                     <div class="swiper-wrapper">
-                        <?php foreach ($list as $key => $item) : ?>
+                        @foreach($about_sliders as $key => $item)
                             <div class="swiper-slide group/slide min-sm:[&.swiper-slide-next]:-z-10 min-sm:[&.swiper-slide-active]:z-20">
                                 <div class="image-field relative size-full aspect-[75/79] min-sm:opacity-0 overflow-hidden rounded-[20px] duration-350 min-sm:group-[&.swiper-slide-next]/slide:blur-[10px] min-sm:group-[&.swiper-slide-next]/slide:left-[680px] min-sm:group-[&.swiper-slide-next]/slide:scale-90 min-sm:group-[&.swiper-slide-next]/slide:opacity-100 min-sm:group-[&.swiper-slide-active]/slide:scale-100 min-sm:group-[&.swiper-slide-active]/slide:opacity-100 lg:group-[&.swiper-slide-next]/slide:left-0 xl:group-[&.swiper-slide-next]/slide:left-[400px] sm:aspect-square xsm:aspect-video">
-                                    <img src="../assets/image/jpg/<?= $item ?>" alt="" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
+                                    <img src="{{ asset( getFolder( ['uploads_folder', 'images_folder'] ) .'/'. $item->image ) }}" alt="{{ $item->alt }}" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
                                     <div class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full"></div>
                                 </div>
                             </div>
-                        <?php endforeach; ?>
+                        @endforeach
                     </div>
                     <div class="about-pagination !w-full !flex !justify-end !z-2 !relative !left-[50px] !bottom-[50px] [&_.swiper-pagination-bullet-active]:!opacity-100 [&_.swiper-pagination-bullet]:duration-450 [&_.swiper-pagination-bullet]:!size-[12px] [&_.swiper-pagination-bullet]:!rounded-none [&_.swiper-pagination-bullet]:opacity-30 [&_.swiper-pagination-bullet]:!bg-primary-400/0 [&_.swiper-pagination-bullet]:border [&_.swiper-pagination-bullet]:!border-solid [&_.swiper-pagination-bullet]:!border-white [&_.swiper-pagination-bullet-active]:!outline-[5px]"></div>
                 </div>
                 <div class="homepage-about-content group/content relative z-5 srt flex justify-center flex-col h-full bg-white">
                     <div class="text-editor max-w-full mb-[60px] gap-[40px] editor-p:text-[#52555C] editor-h2:uppercase editor-h2:relative editor-h2:text-blue editor-h2:before:absolute editor-h2:before:top-[-30px] editor-h2:before:left-0 editor-h2:before:w-[20px] editor-h2:before:h-0 editor-h2:before:bg-green editor-h2:before:-rotate-180 editor-h2:before:duration-350 group-[&.is-active]/container:editor-h2:before:h-[20px] sm:gap-[15px] sm:mb-[15px] sm:editor-h2:text-[22px] sm:editor-h2:before:hidden md:editor-h2:leading-normal">
-                        <h2>A Brand New Experience That Keeps the Passion of Sports Alive</h2>
-                        <p>Innovative sports and entertainment platform that brings together sports enthusiasts and those who love competition. Founded in 2015, our company aims to offer an original gaming experience that brings together the excitement of football and the strategy.</p>
+                        <h2>{{ $about->title_1 }}</h2>
+                        <p>{{ $about->description }}</p>
                     </div>
                     <a href="about.php" class="button fx fx-text-hover-with-child group/button relative bg-green flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[5.5] sm:h-[50px] md:h-[60px]">
                         <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px]">About Us</small>
@@ -162,11 +125,10 @@
     <section class="referance-section py-[120px] 2xl:py-[50px] lg:py-[45px] md:py-[30px]" <?= $moduleId ?>>
     <div class="max-w-[1800px] container">
         <div class="wrapper">
-            <?php $list = ['image-1.png', 'image-2.png', 'image-4.png', 'image-5.png', 'image-3.png',]; ?>
             <div class="grid grid-cols-5 justify-between srb-all">
-                <?php foreach ($list as $key => $item) : ?>
+                <?php foreach ($about_certificates as $key => $item) : ?>
                     <div class="item w-full h-[50px] opacity-50 flex justify-center items-center duration-350 hover:opacity-100">
-                        <img src="../assets/image/png/<?= $item ?>" alt="" class="size-full object-contain object-center">
+                        <img src="{{ asset( getFolder(['uploads_folder', 'images_folder']) .'/'. $item->image ) }}" alt="" class="size-full object-contain object-center">
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -188,22 +150,17 @@
                     <div class="title-field srb relative min-sm:w-fit min-sm:mb-[90px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-full before:mt-[45px] before:size-[26px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[26px] md:before:hidden">
                         <h1 class="title text-[64px] text-blue leading-[80px] min-sm:[writing-mode:_vertical-rl;] min-sm:rotate-180 xl:text-[50px] md:[&>_br]:hidden sm:text-center sm:leading-normal xsm:text-[30px]"><strong>PADEL</strong> CLUBS</h1>
                     </div>
-                    <?php $list  = [
-                        ['image' => 'image-8.jpg', 'title' => 'ESSENTIAL',],
-                        ['image' => 'image-9.jpg', 'title' => 'IMPACT',],
-                        ['image' => 'image-10.jpg', 'title' => 'EXTREME',],
-                    ]; ?>
                     <div class="cards-field flex items-center srt-all sm:flex-col xsm:mt-[30px]">
-                        <?php foreach ($list as $key => $item) : ?>
+                        <?php foreach ($clubs as $key => $item) : ?>
                             <div class="card-item group/item relative p-[20px] md:p-[10px] sm:w-full">
                                 <a href="projects.php" class="relative z-2 flex items-end justify-end size-full overflow-hidden">
                                     <div class="background absolute left-0 top-0 size-full overflow-hidden rounded-[14px] before:absolute before:left-0 before:top-0 before:w-full before:h-full before:translate-y-0 before:[background:_linear-gradient(180deg,_rgba(3,_36,_107,_0.00)_59.55%,_#03246B_100%);] before:z-2 before:duration-1000 group-hover/item:before:translate-y-full after:absolute after:left-0 after:top-0 after:w-full after:h-full after:[background:_linear-gradient(180deg,_rgba(3,_36,_107,_0.00)_35.63%,_#03246B_100%);] after:opacity-0 after:duration-1000 group-hover/item:after:opacity-100 sm:before:opacity-100 sm:after:opacity-100">
-                                        <img src="../assets/image/jpg/<?= $item['image'] ?>" alt="" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
+                                        <img src="{{asset(getFolder(['uploads_folder','club_images_folder']) .'/'. $item['image'])}}" alt="" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
                                     </div>
                                     <div class="content pb-[60px] pr-[75px] pl-[155px] w-full h-[800px] flex flex-col justify-end relative z-3 duration-500 xl:p-[30px] xl:h-[600px] sm:h-[250px]" dir="rtl">
-                                        <h3 class="title text-[32px] text-white leading-[40px] xl:text-[26px]">PADBOL CLUP <strong><?= $item['title'] ?></strong></h3>
+                                        <h3 class="title text-[32px] text-white leading-[40px] xl:text-[26px]">{!! $item['title'] !!}</h3>
                                         <div class="expo-and-button flex flex-col gap-[60px] mt-[20px] min-sm:h-0 min-sm:opacity-0 duration-500">
-                                            <p class="text text-[18px] text-white leading-[28px] md:text-[16px] sm:hidden">Innovative sports and entertainment platform that brings together sports enthusiasts and those who love competition.</p>
+                                            <p class="text text-[18px] text-white leading-[28px] md:text-[16px] sm:hidden">{{ $item['description_1'] }}</p>
                                             <div class="button group/button relative fx fx-text-hover-with-child bg-green flex justify-center items-center gap-[15px] py-[30px] w-full max-w-[175px] overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-white before:rounded-full before:duration-350 min-sm:hover:before:scale-[6.2] sm:p-0 sm:!h-[50px]" dir="ltr">
                                                 <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px] duration-350 min-sm:group-hover/button:text-blue">Read More</small>
                                                 <i class="icon relative z-2 icon-chevron-right text-white text-[10px] h-[10px] flex items-center leading-normal duration-350 min-sm:group-hover/button:rotate-90 min-sm:group-hover/button:text-blue"></i>
@@ -240,10 +197,10 @@
                     <div class="product-image-field flex flex-col gap-[85px] md:hidden xl:gap-[30px]">
                         <div class="product-image-carosuel swiper size-full overflow-hidden rounded-[14px] flex flex-col gap-[85px]">
                             <div class="swiper-wrapper [&>*:swiper-slide-next_.swiper-slide_.item]">
-                                <?php foreach ($list as $key => $item) : ?>
+                                <?php foreach ($products as $key => $item) : ?>
                                     <div class="swiper-slide">
                                         <div class="image relative size-full aspect-[52/47] overflow-hidden">
-                                            <img src="../assets/image/jpg/<?= $item ?>" alt="" class="size-full object-cover object-center" data-swiper-parallax-x="50%">
+                                            <img src="{{ getFolder(['uploads_folder', 'product_images_folder'], $item->lang_code) . '/' . $item->slider_image }}" alt="{{$item->alt}}" class="size-full object-cover object-center" data-swiper-parallax-x="50%">
                                             <div class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full"></div>
                                         </div>
                                     </div>
@@ -290,20 +247,18 @@
                         </div>
                         <div class="product-carousel swiper w-full h-fit overflow-visible ml-[-200px] xsm:overflow-hidden xl:ml-0">
                             <div class="swiper-wrapper">
-                                <?php for ($d = 0; $d < 10; $d++) : ?>
+                                <?php foreach ($products as $item) : ?>
                                     <div class="swiper-slide group/slide duration-350">
                                         <div class="item group/item translate-z-0 min-md:opacity-0 relative bg-gradient-to-b from-green to-blue md:!p-[2px] rounded-[14px] overflow-hidden min-md:group-[&.swiper-slide-active]/slide:p-[2px] min-md:[box-shadow:_0px_25px_75px_0px_rgba(3,_36,_107,_0.15);] duration-350 min-md:group-[&.swiper-slide-next]/slide:opacity-100 min-md:group-[&.swiper-slide-active]/slide:opacity-100 min-md:group-[&.swiper-slide-next+.swiper-slide]/slide:!opacity-100 md:shadow-lg">
                                             <div class="content bg-white size-full pb-[60px] rounded-[12px]">
                                                 <a href="" class="flex flex-col items-center duration-350">
                                                     <div class="product-detail-carousel swiper size-full overflow-hidden">
                                                         <div class="swiper-wrapper">
-                                                            <?php for ($i = 0; $i < 3; $i++) : ?>
-                                                                <div class="swiper-slide duration-350 [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto">
-                                                                    <div class="image size-full aspect-[23/18] md:aspect-video">
-                                                                        <img src="../assets/image/png/image-6.png" alt="" class="size-full object-contain object-center">
-                                                                    </div>
+                                                            <div class="swiper-slide duration-350 [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto">
+                                                                <div class="image size-full aspect-[23/18] md:aspect-video">
+                                                                    <img src="{{ getFolder(['uploads_folder', 'product_images_folder'], $item->lang_code) . '/' . $item->image }}" alt="" class="size-full object-contain object-center">
                                                                 </div>
-                                                            <?php endfor; ?>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="pag-and-button-field w-full grid grid-cols-3 items-center gap-[65px]">
@@ -318,14 +273,14 @@
                                                         </div>
                                                     </div>
                                                     <div class="content flex flex-col items-center pointer-events-auto">
-                                                        <a href="" class="text text-[#52555C] text-[18px] leading-[28px] opacity-65">We Origins</a>
-                                                        <h4 class="title text-blue text-[24px] font-bold leading-[36px] opacity-90 xl:text-[20px]">Origin Discover Padel Court</h4>
+                                                        <a href="" class="text text-[#52555C] text-[18px] leading-[28px] opacity-65">{{ $item->category->title }}</a>
+                                                        <h4 class="title text-blue text-[24px] font-bold leading-[36px] opacity-90 xl:text-[20px]">{{ $item->title }}</h4>
                                                     </div>
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
-                                <?php endfor; ?>
+                                <?php endforeach; ?>
                                 <div class="swiper-slide"></div>
                             </div>
                         </div>
@@ -343,23 +298,13 @@
                     <div class="title-field relative">
                         <h2 class="title text-blue text-[48px] leading-[64px] before:absolute before:left-[-60px] before:top-[30px] before:size-[26px] before:h-0 before:bg-green before:duration-350 sm:before:hidden md:before:top-[50%] md:before:translate-y-[-50%] group-[&.is-active]/container:before:h-[26px] xl:text-[50px] md:[&>_br]:hidden xsm:text-[30px]"><strong>WEPADBOL</strong> <br> PROJECTS</h2>
                     </div>
-                    <?php $list = [
-                        ['title' => 'All Country', 'continent' => 'all',],
-                        ['title' => 'Africa', 'continent' => 'africa',],
-                        ['title' => 'Europe', 'continent' => 'europe',],
-                        ['title' => 'North America', 'continent' => 'north-america',],
-                        ['title' => 'South America', 'continent' => 'south-america',],
-                        ['title' => 'Asia', 'continent' => 'asia',],
-                        ['title' => 'Australia', 'continent' => 'australia',]
-                    ];
-                    ?>
                     <div class="map-filter-wrapper sm:w-full sm:overflow-x-auto">
                         <div class="map-filter-field p-[15px] w-auto h-full border-[4px] border-solid border-blue/6 bg-white/20 backdrop-blur-[5px] flex items-center rounded-[8px] duration-350 hover:border-blue/10 before:absolute before:left-0 before:top-0 before:h-full before:bg-gradient-to-l before:from-green before:z-2 before:w-[50%] before:duration-350 before:hidden before:to-white/0 hover:before:opacity-0 sm:before:flex sm:gap-[15px] sm:overflow-x-auto sm:justify-normal sm:w-max sm:relative">
                             <div class="image aspect-square max-w-[30px] w-full overflow-hidden translate-z-0 hidden sm:block">
                                 <img src="../assets/image/static/hand.png" class="size-full object-cover object-center" alt="">
                             </div>
-                            <?php foreach ($list as $key => $item) : ?>
-                                <div class="map-item group/item <?= $key == 0 ? 'is-active' : '' ?> relative overflow-hidden cursor-pointer py-[15px] px-[25px] flex justify-center items-center bg-transparent rounded-[8px] duration-350 before:absolute before:left-[50%] before:top-[50%] before:translate-x-[-50%] before:translate-y-[-50%] before:w-[50%] before:h-[50px] before:rounded-full before:duration-350 before:bg-green before:scale-0 [&.is-active]:before:scale-[2.2] lg:h-[50px] lg:px-[12px]" data-continent="<?= $item['continent'] ?>">
+                            <?php foreach ($continents as $key => $item) : ?>
+                                <div class="map-item group/item <?= $key == 0 ? 'is-active' : '' ?> relative overflow-hidden cursor-pointer py-[15px] px-[25px] flex justify-center items-center bg-transparent rounded-[8px] duration-350 before:absolute before:left-[50%] before:top-[50%] before:translate-x-[-50%] before:translate-y-[-50%] before:w-[50%] before:h-[50px] before:rounded-full before:duration-350 before:bg-green before:scale-0 [&.is-active]:before:scale-[2.2] lg:h-[50px] lg:px-[12px]" data-continent="<?= $item['class'] ?>">
                                     <small class="text relative z-2 text-[18px] text-blue/50 font-semibold leading-[28px] duration-350 group-[&.is-active]/item:text-white group-hover:text-blue/80"> <?= $item['title'] ?></small>
                                 </div>
                             <?php endforeach; ?>
@@ -546,32 +491,18 @@
                             <path class="map-path world-path fill-[#D5DBDF] stroke-[#ffffff] duration-350 hover:fill-green [&.is-active]:fill-green " data-id="ZM" data-region="ZM" data-key="" data-title="Zambia" d="M567.105,489.207L568.429,490.466L569.142,492.868L568.664,493.636L568.101,495.938L568.639,498.299L567.757,499.292L566.906,501.951L568.38,502.695L559.872,505.065L560.138,507.12L558.014,507.516L556.417,508.67L556.076,509.676L555.073,509.904L552.634,512.299L551.082,514.192L550.135,514.26L549.224,513.922L546.09,513.602L545.586,513.383L545.565,513.141L544.458,512.482L542.641,512.314L540.345,512.978L538.515,511.155L536.623,508.778L536.752,499.62L542.591,499.656L542.352,498.67L542.77,497.602L542.277,496.266L542.596,494.887L542.299,494.006L543.267,494.077L543.427,494.96L544.741,494.891L546.521,495.153L547.458,496.444L549.704,496.841L551.418,495.943L552.047,497.435L554.196,497.833L555.229,499.049L556.38,500.622L558.526,500.646L558.292,497.566L557.522,498.084L555.562,496.976L554.805,496.469L555.152,493.618L555.65,490.267L555.022,489.021L555.821,487.222L556.573,486.885L560.339,486.41L561.443,486.696L562.615,487.413L563.732,487.885L565.514,488.359z"></path>
                             <path class="map-path world-path fill-[#D5DBDF] stroke-[#ffffff] duration-350 hover:fill-green [&.is-active]:fill-green " data-id="ZW" data-region="ZW" data-key="" data-title="Zimbabwe" d="M562.709,526.998L561.219,526.697L560.274,527.059L558.917,526.548L557.776,526.516L555.989,525.158L553.821,524.698L552.996,522.803L552.989,521.752L551.788,521.432L548.615,518.177L547.733,516.471L547.169,515.946L546.09,513.602L549.224,513.922L550.135,514.26L551.082,514.192L552.634,512.299L555.073,509.904L556.076,509.676L556.417,508.67L558.014,507.516L560.138,507.12L560.319,508.2L562.658,508.142L563.957,508.754L564.562,509.472L565.896,509.683L567.353,510.617L567.359,514.312L566.813,516.347L566.692,518.55L567.143,519.426L566.826,521.172L566.402,521.443L565.663,523.593z"></path>
                         </svg>
-                        <?php $list = [
-                            ['continent' => 'africa', 'top' => '59', 'left' => '54',],
-                            ['continent' => 'africa', 'top' => '17', 'left' => '21',],
-                            ['continent' => 'africa', 'top' => '12', 'left' => '23',],
-                            ['continent' => 'europe', 'top' => '76', 'left' => '54',],
-                            ['continent' => 'europe', 'top' => '49', 'left' => '72',],
-                            ['continent' => 'europe', 'top' => '36', 'left' => '55',],
-                            ['continent' => 'north-america', 'top' => '45', 'left' => '55',],
-                            ['continent' => 'north-america', 'top' => '25', 'left' => '64',],
-                            ['continent' => 'north-america', 'top' => '28', 'left' => '24',],
-                            ['continent' => 'south-america', 'top' => '35', 'left' => '32',],
-                            ['continent' => 'south-america', 'top' => '49', 'left' => '25',],
-                            ['continent' => 'south-america', 'top' => '64', 'left' => '53',],
-                            ['continent' => 'asia', 'top' => '55', 'left' => '70',],
-                            ['continent' => 'asia', 'top' => '47', 'left' => '54',],
-                            ['continent' => 'asia', 'top' => '48', 'left' => '69',],
-                            ['continent' => 'australia', 'top' => '34', 'left' => '65',],
-                            ['continent' => 'australia', 'top' => '45', 'left' => '65',],
-                            ['continent' => 'australia', 'top' => '55', 'left' => '60',],
-                        ]; ?>
+
+                        
+
+
+
+
                         <div class="map-dot-wrapper absolute left-[50%] translate-x-[-50%] top-0 size-full xsm:h-[275px] xs:w-[130%] pointer-events-none">
-                            <?php foreach ($list as $key => $item) : ?>
-                                <div class="dot-field is-active absolute pointer-events-auto group/dot opacity-0 scale-0 invisible duration-350 [&.is-active]:scale-100 [&.is-active]:opacity-100 [&.is-active]:visible" style="left: <?= $item['left'] ?>%; top: <?= $item['top'] ?>%;" data-continent="<?= $item['continent'] ?>">
+                            <?php foreach ($countries as $key => $item) : ?>
+                                <div class="dot-field is-active absolute pointer-events-auto group/dot opacity-0 scale-0 invisible duration-350 [&.is-active]:scale-100 [&.is-active]:opacity-100 [&.is-active]:visible" style="left: <?= $item['left'] ?>%; top: <?= $item['top'] ?>%;" data-continent="<?= $item['continent_class'] ?>">
                                     <div class="icon icon-marker text-[25px] h-[25px] text-blue leading-normal flex duration-350 pointer-events-none group-hover/dot:text-white sm:text-[20px] sm:h-[20px]"></div>
                                     <div class="dot-visible-content absolute rounded-[10px] px-[5px] py-[0] left-[calc(100%)] -translate-y-1/2 top-1/2 sm:hidden opacity-0 invisible duration-450 translate-x-10 group-hover/dot:opacity-100 group-hover/dot:visible group-hover/dot:translate-x-0 group-[&.active]/dot:opacity-100 group-[&.active]/dot:visible group-[&.active]/dot:translate-x-0">
-                                        <p class="text text-[16px] text-white leading-tight whitespace-nowrap text-center">Örnek Ülke <?= $key ?></p>
+                                        <p style="background: #dddddd;" class="text text-[16px] leading-tight whitespace-nowrap text-center">{{ $item['title'] }}</p>
                                     </div>
                                 </div>
                             <?php endforeach; ?>
@@ -605,11 +536,11 @@
                 <?php $list = ['image-2.jpg', 'image-7.jpg', 'image-5.jpg', 'image-4.jpg', 'image-1.jpg']; ?>
                 <div class="blog-general-carousel swiper size-full min-md:overflow-visible md:order-3" dir="rtl">
                     <div class="swiper-wrapper">
-                        <?php foreach ($list as $key => $item) : ?>
+                        <?php foreach ($blog as $key => $item) : ?>
                             <div class="swiper-slide group/slide min-md:!pointer-events-none duration-350 [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto">
-                                <a href="blog-detail.php" class="blog-item flex relative min-md:opacity-0 min-md:pointer-events-none min-md:scale-75 duration-350 min-md:group-[&.swiper-slide-active]/slide:scale-100 min-md:group-[&.swiper-slide-active]/slide:pointer-events-auto min-md:group-[&.swiper-slide-active]/slide:opacity-100 min-md:group-[&.swiper-slide-next]/slide:blur-[5px] group-[&.swiper-slide-next]/slide:pointer-events-auto group-[&.swiper-slide-next]/slide:opacity-100 md:h-full md:flex-col md:gap-[15px]" dir="ltr">
+                                <a href="javascript:;" class="blog-item flex relative min-md:opacity-0 min-md:pointer-events-none min-md:scale-75 duration-350 min-md:group-[&.swiper-slide-active]/slide:scale-100 min-md:group-[&.swiper-slide-active]/slide:pointer-events-auto min-md:group-[&.swiper-slide-active]/slide:opacity-100 min-md:group-[&.swiper-slide-next]/slide:blur-[5px] group-[&.swiper-slide-next]/slide:pointer-events-auto group-[&.swiper-slide-next]/slide:opacity-100 md:h-full md:flex-col md:gap-[15px]" dir="ltr">
                                     <div class="blog-image aspect-[13/10] size-full rounded-[14px] relative overflow-hidden xsm:aspect-video sm:aspect-square md:aspect-video">
-                                        <img src="../assets/image/jpg/<?= $item ?>" alt="" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
+                                        <img src="{{ asset( getFolder(['uploads_folder', 'blog_images_folder'], $item['lang']) . '/'. $item['image']) }}" alt="" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
                                         <div class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full"></div>
                                     </div>
                                     <div class="blog-content size-auto bg-gradient-to-b from-green to-blue p-[2px] rounded-[14px] absolute top-[50px] right-[-420px] max-w-[500px] !pointer-events-none min-md:scale-50 min-md:opacity-0 min-md:invisible z-10 duration-350 group-[&.swiper-slide-active]/slide:scale-100 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:visible group-[&.swiper-slide-active]/slide:pointer-events-auto [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto md:left-0 md:top-0 md:translate-y-0 md:max-w-full md:relative lg:left-[320px]">
@@ -623,10 +554,10 @@
                                             </div>
                                             <div class="blog-date flex justify-center items-center gap-[10px] p-[10px] bg-green/5 rounded-[8px] mb-[15px] w-fit">
                                                 <i class="icon icon-calendar text-[16px] h-[16px] text-green flex leading-normal"></i>
-                                                <small class="date text-green text-[18px] font-medium leading-[28px] w-max">11 Ekim 2023</small>
+                                                <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d M Y', strtotime($item['created_at'])) }}</small>
                                             </div>
-                                            <div class="blog-title text-blue text-[24px] font-bold leading-[36px] opacity-90 line-clamp-2 sm:text-[20px]">Most Suitable Artificial Grass for Padel Court Construction</div>
-                                            <div class="blog-expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mt-[20px] max-w-[390px] line-clamp-2 md:max-w-full">PadBol is an innovative sports and entertainment platform that brings... </div>
+                                            <div class="blog-title text-blue text-[24px] font-bold leading-[36px] opacity-90 line-clamp-2 sm:text-[20px]">{{ $item['title'] }}</div>
+                                            <div class="blog-expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mt-[20px] max-w-[390px] line-clamp-2 md:max-w-full">{{ mb_substr($item['description'], 0, 100) }}... </div>
                                         </div>
                                     </div>
                                 </a>

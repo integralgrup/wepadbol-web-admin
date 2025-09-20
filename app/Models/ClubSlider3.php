@@ -32,7 +32,7 @@ class ClubSlider3 extends Model
     // Define relationship with Club model
     public function club()
     {
-        return $this->belongsTo(Club::class, 'club_id', 'id');
+        return $this->belongsTo(Club::class, 'club_id', 'club_id');
     }
 
 }

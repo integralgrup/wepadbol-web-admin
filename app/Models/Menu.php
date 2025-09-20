@@ -49,4 +49,15 @@ class Menu extends Model
     {
         return $this->isActive == 1;
     }
+
+    public function children()
+    {
+        return $this->hasMany(Menu::class, 'parent_menu_id', 'menu_id')
+            ->with('children'); // recursive eager loading
+    }
+
+    public function parent()
+    {
+        return $this->belongsTo(Menu::class, 'parent_menu_id', 'menu_id');
+    }
 }

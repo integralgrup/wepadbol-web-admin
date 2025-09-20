@@ -20,6 +20,7 @@ class Brand extends Model
         'url',
         'description',
         'image',
+        'slider_image',
         'alt',
         'seo_title',
         'seo_description',

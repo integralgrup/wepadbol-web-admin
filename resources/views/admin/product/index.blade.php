@@ -65,23 +65,26 @@
                                         <td>
                                             <img src="{{ $languages[0]->domain .'/'. getFolder(['uploads_folder', 'product_images_folder'], $item->lang) . '/' . $item->image }}" alt="{{ $item->alt }}" class="img-thumbnail" width="100">
                                         </td>
-                                        <td>
+                                        <td style="display: flex; gap: 5px; flex-wrap: wrap;">
+                                            <a href="{{ route('admin.product.edit', $item->product_id) }}" class="btn btn-success btn-sm">
+                                                <i class="bi bi-pencil"></i> Düzenle
+                                            </a>
                                             <a href="{{ route('admin.product.images.index', $item->product_id) }}" class="btn btn-info btn-sm">
                                                 <i class="bi bi-images"></i> Görseller
                                             </a>
                                             <a href="{{ route('admin.product.gallery.index', $item->product_id) }}" class="btn btn-warning btn-sm">
                                                 <i class="bi bi-images"></i> Galeri
                                             </a>
-
+                                            <a href="{{ route('admin.product.features.index', $item->product_id) }}" class="btn btn-secondary btn-sm">
+                                                <i class="bi bi-camera-video"></i> Features
+                                            </a>
                                             <a href="{{ route('admin.product.faq.index', $item->product_id) }}" class="btn btn-info btn-sm">
                                                 SSS
                                             </a>
                                             <a href="{{ route('admin.product.type.index', $item->product_id) }}" class="btn btn-info btn-sm">
                                                 Çim Tipleri
                                             </a>
-                                            <a href="{{ route('admin.product.edit', $item->product_id) }}" class="btn btn-success btn-sm">
-                                                <i class="bi bi-pencil"></i> Düzenle
-                                            </a>
+                                            
                                             <form action="{{ route('admin.product.destroy', $item->product_id) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')

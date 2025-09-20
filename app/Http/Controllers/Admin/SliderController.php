@@ -49,7 +49,7 @@ class SliderController extends Controller
                         'title_' . $language->lang_code => 'required|max:100',
                         'description_' . $language->lang_code => 'nullable|max:255',
                         'thumbnail_' . $language->lang_code => 'nullable|image|max:2048',
-                        'image_' . $language->lang_code => 'nullable|image|max:2048', // Assuming image is optional
+                        'image_' . $language->lang_code => 'nullable|mimes:jpeg,png,jpg,gif,svg,webp,mp4,avi,mov|max:10000',
                         'alt_' . $language->lang_code => 'required|max:255',
                     ]);
                 }
@@ -62,6 +62,7 @@ class SliderController extends Controller
                 }
 
                 if ($request->hasFile('thumbnail_en') || $request->hasFile('thumbnail_' . $language->lang_code)) {
+
                     $tmpImgPath = createTmpFile($request, 'thumbnail_en', $languages[0]);
                     $thumbnailName = moveFile($request,$language,'thumbnail_' . $language->lang_code, 'thumbnail_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
                     //dd($thumbnailName);

@@ -107,9 +107,14 @@ if(!function_exists('createTmpFile')) {
     function createTmpFile($request, $inputName, $language)
     {
         if($request->hasFile($inputName)){
+            
             //save image to temp folder
             $image = $request->file($inputName);
-            $imageName = $language->lang_code . '-' . time() . '-' . uniqid() . '.' . $image->getClientOriginalExtension();
+
+            $extension = in_array($image->getClientOriginalExtension(), ['jpg', 'jpeg', 'png', 'gif', 'webp']) ? 'webp' : $image->getClientOriginalExtension();
+
+
+            $imageName = $language->lang_code . '-' . time() . '-' . uniqid() . '.' . $extension;
             $tmpPath = $language->path.'/'.$language->uploads_folder.'/'.$language->images_folder . '/temp/';
 
             if (!file_exists($tmpPath)) {

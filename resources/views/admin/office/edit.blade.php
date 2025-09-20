@@ -56,6 +56,9 @@
                             $url[$office->lang] = $office->url;
                             $title[$office->lang] = $office->title;
                             $description[$office->lang] = $office->description;
+                            $address[$office->lang] = $office->address;
+                            $phone[$office->lang] = $office->phone;
+                            $email[$office->lang] = $office->email;
                             $lat[$office->lang] = $office->lat;
                             $long[$office->lang] = $office->long;
                         }
@@ -77,6 +80,18 @@
                                         <div class="form-group">
                                             <label for="description_{{ $language->lang_code }}">Açıklama ({{ strtoupper($language->lang_code) }})</label>
                                             <textarea class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" required>{{ $description[$language->lang_code] }}</textarea>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="address_{{ $language->lang_code }}">Adres ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" class="form-control" id="address_{{ $language->lang_code }}" name="address_{{ $language->lang_code }}" value="{{ $address[$language->lang_code] }}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="phone_{{ $language->lang_code }}">Telefon ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" class="form-control" id="phone_{{ $language->lang_code }}" name="phone_{{ $language->lang_code }}" value="{{ $phone[$language->lang_code] }}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email_{{ $language->lang_code }}">E-posta ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="email" class="form-control" id="email_{{ $language->lang_code }}" name="email_{{ $language->lang_code }}" value="{{ $email[$language->lang_code] }}" required>
                                         </div>
                                         <div class="form-group">
                                             <label for="lat_{{ $language->lang_code }}">Enlem ({{ strtoupper($language->lang_code) }})</label>

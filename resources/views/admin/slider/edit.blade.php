@@ -90,10 +90,18 @@
                                             @endif
                                         </div>
                                         <div class="form-group">
-                                            <label for="image_{{ $language->lang_code }}">Resim ({{ strtoupper($language->lang_code) }})</label>
+                                            <label for="image_{{ $language->lang_code }}">Görsel veya Video ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="file" name="image_{{ $language->lang_code }}" class="form-control" id="image_{{ $language->lang_code }}">
                                             @if(isset($image[$language->lang_code]))
-                                                <img src="{{ $language->domain .'/'. getFolder(['uploads_folder','images_folder'], $language->lang_code). '/' . $image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 100px; margin-top: 10px;">
+                                            <!-- if file is image show image else show video -->
+                                                @if(in_array(pathinfo($image[$language->lang_code], PATHINFO_EXTENSION), ['jpg', 'jpeg', 'png', 'gif', 'webp']))
+                                                    <img src="{{ $language->domain .'/'. getFolder(['uploads_folder','images_folder'], $language->lang_code). '/' . $image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 100px; margin-top: 10px;">
+                                                @else
+                                                    <video width="200" controls>
+                                                        <source src="{{ $language->domain .'/'. getFolder(['uploads_folder','images_folder'], $language->lang_code). '/' . $image[$language->lang_code] }}" type="video/mp4">
+                                                        Your browser does not support the video tag.
+                                                    </video>
+                                                @endif
                                                 <input type="hidden" class="form-control" id="old_image_{{ $language->lang_code }}" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}" readonly>
                                             @endif
                                         </div>

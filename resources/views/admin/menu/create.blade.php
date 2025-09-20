@@ -74,11 +74,12 @@
                                                 <option value="">Seçiniz</option>
                                                 <option value="about">Kurumsal</option>
                                                 <option value="contact">İletişim</option>
-                                                <option value="sector">Sektörler</option>
+                                                <option value="product">Ürün</option>
+                                                <option value="product_category">Ürün Kategorisi</option>
                                                 <option value="brand">Markalar</option>
                                                 <option value="blog">Blog</option>
-                                                <option value="career">Kariyer</option>
-                                                <option value="catalog">Katalog</option>
+                                                <option value="club">Kulüp</option>
+                                                <option value="project">Proje</option>
                                                 <option value="contact">İletişim</option>
                                                 <option value="page">Özel Sayfa</option>
                                             </select>

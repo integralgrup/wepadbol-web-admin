@@ -1,5 +1,4 @@
 
-<?php $menuItems = App\Models\Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => 'header'])->get();?>
 <?php $nameofProject = 'Wepadbol';?>
 
 <!DOCTYPE html>
@@ -21,7 +20,7 @@
 
 <header class="group/header header-field peer h-[90px] z-100 mt-[55px] border border-solid border-blue border-opacity-0 bg-white/0 fixed w-full left-0 top-0 duration-500 will-change-[height,transform] [&.is-fixed]:!top-0 [&.is-fixed]:mt-0 [&.is-fixed]:shadow-2xl [&.is-fixed]:!translate-y-0 [&.is-fixed]:bg-white [&.is-fixed]:backdrop-blur-[30px] sm:[&.is-fixed]:bg-blue [&.is-fixed]:shadow-header [&.is-hidden.is-fixed]:!-translate-y-full [&.is-hidden.is-fixed]:mt-0 [&.is-hidden.is-fixed]:shadow-none [&.no-scroll]:absolute [&.no-scroll]:!transform-none [&.no-scroll]:!shadow-none md:mt-0 [&.header-hidden]:!-translate-y-full lg:[&.is-fixed]:opacity-0 lg:[&.is-fixed]:invisible lg:[&.is-fixed]:pointer-events-none sm:relative sm:bg-blue lg:h-[80px]">
     <div class="wrapper max-w-[1740px] mx-auto size-full px-[30px] flex items-center justify-between sm:h-auto">
-        <a href="index.php" class="logo-wrapper relative block w-full max-w-[320px] lg:max-w-full  lg:w-fit xl:max-w-[260px]">
+        <a href="{{ route('home') }}" class="logo-wrapper relative block w-full max-w-[320px] lg:max-w-full  lg:w-fit xl:max-w-[260px]">
             <svg class="duration-350 group-[&.is-fixed]/header:mx-auto group-[&.is-fixed]/header:h-[88px] group-[&.is-fixed]/header:w-[250px] sm:w-[250px] sm:mx-auto xl:w-[230px]" width="319" height="70" viewBox="0 0 319 70" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M309.732 43.2524V52.5456H318.181V43.2524H309.732Z" fill="#75BF00" />
                 <path d="M33.5152 15.4754L40.2869 39.1124L42.567 30.7059L47.4852 15.4705H58.9642L45.9161 52.7655H35.7217L29.4453 34.2282L23.2424 52.7655H12.9746L0 15.4754H11.479L16.3972 30.7108L18.6773 39.1173L25.449 15.4803H33.5054L33.5152 15.4754Z" fill="#75BF00" />
@@ -49,6 +48,45 @@
             </svg>
         </a>
         <div class="menu-wrapper h-full flex items-center gap-[50px] py-[30px] px-[50px] border border-solid border-white/20 bg-white/4 backdrop-blur-[10px] rounded-[8px] duration-350 group-[&.is-fixed]/header:backdrop-blur-0 group-[&.is-fixed]/header:bg-white/0 group-[&.is-fixed]/header:border-white/0 lg:hidden xl:p-[15px] xl:gap-[15px]">
+            <?php 
+            $menu = App\Models\Menu::with('children')
+            ->where('parent_menu_id', 0) // only root menus
+            ->get();
+            ?>
+            <?php 
+            $menuList = [];
+            $i = 1;
+            foreach ($menu as $item) :
+                $menuItem = [
+                    'title' => $item->title,
+                    'url' => env('HTTP_DOMAIN') .'/'. $item->seo_url,
+                ];
+                if ($item->children->isNotEmpty()) {
+                    $menuItem['submenu'] = 'submenu-' . $i++;
+                    $menuItem['mega'] = $item->children->map(function($child) {
+                        $subChild = [
+                            'title' => $child->title,
+                            'url' => env('HTTP_DOMAIN') .'/'. $child->seo_url,
+                        ];
+                        if( $child->children->isNotEmpty() ) {
+                            $subChild['sub-menu'] = $child->children->map(function($subChild) {
+                                return [
+                                    'title' => $subChild->title,
+                                    'url' => env('HTTP_DOMAIN') .'/'. $subChild->seo_url,
+                                ];
+                            })->toArray();
+                        }else{
+                            $subChild['sub-menu'] = [];
+                        }
+                        return $subChild;
+                    })->toArray();
+                }
+                $menuList[] = $menuItem;
+            endforeach;
+
+            //dd($menuList);
+            ?>
+            
             <?php $list = [
                 [
                     'title' => 'Wepadbol',
@@ -132,7 +170,7 @@
                 ],
             ]; ?>
             <ul class="menu h-full flex items-center gap-[50px] 2xl:gap-[30px] xl:gap-[20px]">
-                <?php foreach ($list as $key => $item) : ?>
+                <?php foreach ($menuList as $key => $item) : ?>
                     <li class="page-item group/menu">
                         <a href="<?= $item['url'] ?>" class="group/a peer w-full flex justify-center items-center gap-[10px] bg-transparent rounded-[8px] p-[15px] duration-350 group-hover/menu:bg-[#D9D9D9]/25 group-[&.is-active]/menu:!bg-green">
                             <div class="page text-white opacity-85 text-[20px] leading-[28px] group-[&.is-fixed]/header:text-blue group-[&.blue]/header:text-blue group-[&.blue]/header:group-[&.is-active]/menu:text-white group-[&.blue]/header:opacity-100 group-[&.is-fixed]/header:group-[&.is-active]/menu:text-white group-[&.is-fixed]/header:opacity-100"><?= $item['title'] ?></div>
@@ -194,7 +232,7 @@
                                                 <!-- EN AZ 6 ADET OLACAK FOREACH YAPILMALI -->
                                                 <?php foreach ($item['mega'] as $key => $item) : ?>
                                                     <div class="swiper-slide group/slide -z-2 [&.swiper-slide-active]:z-10">
-                                                        <a href="padel-clubs.php" class="title text-[#98A2B7] text-[32px] font-normal leading-[48px] relative cursor-pointer before:absolute before:left-[-30px] before:top-[50%] before:translate-y-[-50%] before:w-[12px] before:h-[12px] before:bg-[#98A2B7] before:duration-350 duration-350  group-hover/slide:before:bg-green group-hover/slide:text-green"><?= $item['title'] ?></a>
+                                                        <a href="<?= $item['url'] ?>" class="title text-[#98A2B7] text-[32px] font-normal leading-[48px] relative cursor-pointer before:absolute before:left-[-30px] before:top-[50%] before:translate-y-[-50%] before:w-[12px] before:h-[12px] before:bg-[#98A2B7] before:duration-350 duration-350  group-hover/slide:before:bg-green group-hover/slide:text-green"><?= $item['title'] ?></a>
                                                     </div>
                                                 <?php endforeach; ?>
                                             </div>

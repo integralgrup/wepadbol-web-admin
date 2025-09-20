@@ -9,6 +9,8 @@ use App\Models\ProductGallery;
 use App\Models\ProductImage;
 use App\Models\ProductFaq;
 use App\Models\ProductType;
+use App\Models\ProductCategory;
+use App\Models\ProductFeature;
 use App\Models\Language; // Assuming you have a Language model to fetch languages
 use Illuminate\Support\Facades\DB; // For database operations
 
@@ -31,7 +33,8 @@ class ProductController extends Controller
     // Show form to create a new product
     public function create()
     {
-        return view('admin.product.create');
+        $categories = ProductCategory::where('lang', app()->getLocale())->get();
+        return view('admin.product.create', compact('categories'));
     }
 
     // Store new product in database
@@ -51,11 +54,13 @@ class ProductController extends Controller
                     
                     $request->validate([
                         'lang_'.$language->lang_code => 'required|string|max:10',
+                        'category_id' => 'required|integer',
                         'title_'.$language->lang_code => 'required|string|max:100',
                         'seo_url_'.$language->lang_code => 'required|string|max:255',
                         'description_'.$language->lang_code => 'required|string',
                         'technical_info_'.$language->lang_code => 'required|string',
                         'image_'.$language->lang_code => 'nullable|image',
+                        'slider_image_'.$language->lang_code => 'nullable|image',
                         'alt_'.$language->lang_code => 'required|string|max:255',
                         'feature_image_'.$language->lang_code => 'nullable|image',
                         'feature_description_'.$language->lang_code => 'nullable|string',
@@ -72,6 +77,14 @@ class ProductController extends Controller
                     //dd($imageName);
                 }else{
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
+                }
+
+                if ($request->hasFile('slider_image_en') || $request->hasFile('slider_image_' . $language->lang_code)) {
+                    $tmpSliderImgPath = createTmpFile($request, 'slider_image_en', $this->languages[0]);
+                    $sliderImageName = moveFile($request,$language,'slider_image_' . $language->lang_code, 'slider_image_en', 'alt_' . $language->lang_code, 'alt_en', $language->product_images_folder, $tmpSliderImgPath);
+                    //dd($sliderImageName);
+                }else{
+                    $sliderImageName = $request->input('old_slider_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
                 if ($request->hasFile('features_image_en') || $request->hasFile('features_image_' . $language->lang_code)) {
@@ -92,12 +105,14 @@ class ProductController extends Controller
 
                 $data = [
                     'product_id' => $product_id,
+                    'category_id' => $request->input('category_id'),
                     'lang' => $language->lang_code,
                     'title' => $request->input('title_'.$language->lang_code) ?? $request->input('title_en'),
                     'seo_url' => $request->input('seo_url_'.$language->lang_code) ?? $request->input('seo_url_en'),
                     'description' => $request->input('description_'.$language->lang_code) ?? $request->input('description_en'),
                     'technical_info' => $request->input('technical_info_'.$language->lang_code) ?? $request->input('technical_info_en'),
                     'image' => $imageName,
+                    'slider_image' => $sliderImageName,
                     'features_image' => $featuresImageName,
                     'features_description' => $request->input('features_description_'.$language->lang_code) ?? $request->input('features_description_en'),
                     'pdf_file' => $pdfFileName,
@@ -113,7 +128,22 @@ class ProductController extends Controller
                     $data
                 );
 
-                
+                //unlink temporary image
+                if (isset($tmpImgPath) && file_exists($tmpImgPath)) {
+                    unlink($tmpImgPath);
+                }
+                if (isset($pdfTmpPath) && file_exists($pdfTmpPath)) {
+                    unlink($pdfTmpPath);
+                }
+                if (isset($sliderTmpPath) && file_exists($sliderTmpPath)) {
+                    unlink($sliderTmpPath);
+                }
+                if (isset($featuresTmpPath) && file_exists($featuresTmpPath)) {
+                    unlink($featuresTmpPath);
+                }
+                if (isset($tmpSliderImgPath) && file_exists($tmpSliderImgPath)) {
+                    unlink($tmpSliderImgPath);
+                }
             }
 
             return redirect()->route('admin.product.index')->with('success', 'Ürün başarıyla kaydedildi!');
@@ -129,8 +159,8 @@ class ProductController extends Controller
     {
         $languages = Language::all();
         $products = Product::where('product_id', $id)->get();
-        
-        return view('admin.product.edit', compact('products', 'languages'));
+        $categories = ProductCategory::where('lang', app()->getLocale())->get();
+        return view('admin.product.edit', compact('products', 'languages', 'categories'));
     }
 
    
@@ -517,6 +547,155 @@ class ProductController extends Controller
         } catch (\Throwable $th) {
             return redirect()->route('admin.product.type.index', $id)->with('error', 'An error occurred while deleting the product type.');
         }
+    }
+
+    // Product Category methods will go here
+    public function categoryIndex()
+    {   
+        $categories = ProductCategory::where('lang', app()->getLocale())->get();
+        return view('admin.product.category.index', compact('categories'));
+    }
+
+    public function categoryCreate()
+    {
+        $categories = ProductCategory::where('lang', app()->getLocale())->get();
+        return view('admin.product.category.create', compact('categories'));
+    }
+    public function categoryStore(Request $request)
+    {
+        if ($request->has('category_id')) {
+                $category_id = $request->category_id; // Use the provided category_id
+            }else{
+                $category_id = ProductCategory::max('category_id') + 1; // Increment the maximum category_id by 1
+                if (!$category_id) {
+                    $category_id = 1; // If no category items exist, start with 1
+                }
+
+            }
+        try {
+            foreach($this->languages as $language){
+                if($language->lang_code == 'en'){
+                    $data = [
+                        'parent_category_id' => $request->input('parent_category_id'),
+                        'category_id' => $category_id,
+                        'lang' => $language->lang_code,
+                        'sort' => $request->input('sort_' . $language->lang_code) ?? $request->input('sort_en') ?? 0,
+                        'title' => $request->input('title_' . $language->lang_code),
+                        'seo_url' => $request->input('seo_url_' . $language->lang_code),
+                        'seo_title' => $request->input('seo_title_' . $language->lang_code),
+                        'seo_description' => $request->input('seo_description_' . $language->lang_code),
+                        'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code),
+                    ];
+                    ProductCategory::updateOrCreate(
+                        ['category_id' => $category_id, 'lang' => $language->lang_code],
+                        $data
+                    );
+                }
+
+            }   
+            return redirect()->route('admin.product.category.index')->with('success', 'Kategori başarıyla kaydedildi!');
+        } catch (\Throwable $th) {
+            throw $th;
+            return redirect()->route('admin.product.category.index')->with('error', 'Kategori kaydedilirken bir hata oluştu!');
+        }
+    }
+
+    public function categoryEdit($id)
+    {
+        $category_items = ProductCategory::where('category_id', $id)->get();
+        $categories = ProductCategory::where('lang', app()->getLocale())->get();
+        return view('admin.product.category.edit', compact('category_items', 'categories'));
+    }
+
+    public function categoryDestroy($id)
+    {
+        try {
+            $categories = ProductCategory::where('category_id', $id)->get();
+            foreach ($categories as $category) {
+                // Delete the image file from storage if needed
+                // Storage::delete('path/to/image/' . $category->image);
+                $category->delete();
+            }
+            return redirect()->route('admin.product.category.index')->with('success', 'Kategori başarıyla silindi!');
+        } catch (\Throwable $th) {
+            return redirect()->route('admin.product.category.index')->with('error', 'Kategori silinirken bir hata oluştu!');
+        }
+    }
+
+    // Product Feature methods will go here
+    public function featuresIndex($product_id)
+    {
+        $features = ProductFeature::where('product_id', $product_id)->get();
+        return view('admin.product.feature.index', compact('features', 'product_id'));
+    }
+
+    public function featuresCreate($product_id)
+    {
+        $languages = Language::all();
+        return view('admin.product.feature.create', compact('languages', 'product_id'));
+    }
+
+    public function featuresStore(Request $request, $product_id)
+    {
+        if ($request->has('feature_id')) {
+            $feature_id = $request->feature_id; // Use the provided feature_id
+        }else{
+            $feature_id = ProductFeature::max('feature_id') + 1; // Increment the maximum feature_id by 1
+            if (!$feature_id) {
+                $feature_id = 1; // If no feature items exist, start with 1
+            }
+        }
+
+        try {
+
+            $languages = Language::all();
+            
+            //validation
+            foreach ($languages as $language) {
+                if($language->lang_code == 'en'){
+                    $request->validate([
+                        'title_' . $language->lang_code => 'required|max:100',
+                        'description_' . $language->lang_code => 'required|max:500',
+                        'left_' . $language->lang_code => 'required|integer',
+                        'top_' . $language->lang_code => 'required|integer',
+                        'sort_' . $language->lang_code => 'required|integer',
+                    ]);
+                }
+                
+
+                ProductFeature::updateOrCreate(
+                    ['feature_id' => $feature_id, 'lang' => $request->input('lang_' . $language->lang_code)],
+                    [
+                        'product_id' => $product_id,
+                        'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                        'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
+                        'left' => $request->input('left_' . $language->lang_code) ?? 0,
+                        'top' => $request->input('top_' . $language->lang_code) ?? 0,
+                        'sort' => $request->input('sort_' . $language->lang_code) ?? 0,
+                    ]
+                );
+            }
+
+            return redirect()->route('admin.product.features.index', $product_id)->with('success', 'Özellik başarıyla kaydedildi.');
+        } catch (\Exception $e) {
+            //dd($e);
+            return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
+        }
+    }
+
+    public function featuresEdit($product_id, $id)
+    {
+        $features = ProductFeature::where('product_id', $product_id)->where('feature_id', $id)->get();
+        $languages = Language::all();
+        return view('admin.product.feature.edit', compact('features', 'languages', 'product_id'));
+    }
+
+    public function featuresDestroy($product_id, $id)
+    {
+        $feature = ProductFeature::findOrFail($id);
+        $feature->delete();
+
+        return redirect()->route('admin.product.features.index', $product_id)->with('success', 'Özellik başarıyla silindi!');
     }
 
 }

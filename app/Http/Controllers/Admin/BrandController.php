@@ -53,6 +53,7 @@ class BrandController extends Controller
                         'url_' . $language->lang_code => 'required|max:255',
                         'description_' . $language->lang_code => 'required',
                         'image_' . $language->lang_code => 'nullable|max:2048|mimes:webp,svg,jpg,jpeg,png',
+                        'slider_image_' . $language->lang_code => 'nullable|max:2048|mimes:webp,svg,jpg,jpeg,png',
                         'alt_' . $language->lang_code => 'required|max:255',
                         'seo_title_' . $language->lang_code => 'nullable|max:255',
                         'seo_description_' . $language->lang_code => 'nullable|max:255',
@@ -68,6 +69,15 @@ class BrandController extends Controller
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
+                // save slider_image if it exists
+                if ($request->hasFile('slider_image_en') || $request->hasFile('slider_image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'slider_image_en', $languages[0]);
+                    $sliderImageName = moveFile($request,$language,'slider_image_' . $language->lang_code, 'slider_image_en', 'alt_' . $language->lang_code, 'alt_en', $language->brand_images_folder, $tmpImgPath);
+                    //dd($sliderImageName);
+                }else{
+                    $sliderImageName = $request->input('old_slider_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
+                }
+
                 Brand::updateOrCreate(
                     ['brand_id' => $brand_id, 'lang' => $language->lang_code],
                     [
@@ -75,6 +85,7 @@ class BrandController extends Controller
                         'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en'),
                         'description' => $request->input('description_' . $language->lang_code) ?? $request->input('description_en'),
                         'image' => $imageName,
+                        'slider_image' => $sliderImageName,
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
                         'seo_title' => $request->input('seo_title_' . $language->lang_code) ?? $request->input('seo_title_en'),
                         'seo_description' => $request->input('seo_description_' . $language->lang_code) ?? $request->input('seo_description_en'),

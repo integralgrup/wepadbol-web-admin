@@ -57,6 +57,7 @@
                             $title[$brand->lang] = $brand->title;
                             $description[$brand->lang] = $brand->description;
                             $image[$brand->lang] = $brand->image;
+                            $slider_image[$brand->lang] = $brand->slider_image;
                             $alt[$brand->lang] = $brand->alt;
                             $seo_title[$brand->lang] = $brand->seo_title;
                             $seo_description[$brand->lang] = $brand->seo_description;
@@ -87,6 +88,14 @@
                                             @if($image[$language->lang_code])
                                                 <img src="{{ $language->domain.'/'. getFolder(['uploads_folder','brand_images_folder'], $language->lang_code) . '/' . $image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
                                                 <input type="hidden" class="form-control" id="old_image_{{ $language->lang_code }}" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}" readonly>
+                                            @endif
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="slider_image_{{ $language->lang_code }}">Slider Görsel ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="file" class="form-control" id="slider_image_{{ $language->lang_code }}" name="slider_image_{{ $language->lang_code }}">
+                                            @if($slider_image[$language->lang_code])
+                                                <img src="{{ $language->domain.'/'. getFolder(['uploads_folder','brand_images_folder'], $language->lang_code) . '/' . $slider_image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
+                                                <input type="hidden" class="form-control" id="old_slider_image_{{ $language->lang_code }}" name="old_slider_image_{{ $language->lang_code }}" value="{{ $slider_image[$language->lang_code] }}" readonly>
                                             @endif
                                         </div>
                                         <div class="form-group">

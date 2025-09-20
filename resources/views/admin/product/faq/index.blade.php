@@ -70,10 +70,10 @@ $imageId = request()->route('imageId');
                                             {{ $item->title }}
                                         </td>
                                         <td>
-                                            <a href="{{ route('admin.product.faq.edit', [$id, $item->id]) }}" class="btn btn-warning btn-sm">
+                                            <a href="{{ route('admin.product.faq.edit', [$id, $item->question_id]) }}" class="btn btn-warning btn-sm">
                                                 <i class="bi bi-pencil"></i> Düzenle
                                             </a>
-                                            <form action="{{ route('admin.product.faq.destroy', [$id, $item->id]) }}" method="POST" style="display:inline;">
+                                            <form action="{{ route('admin.product.faq.destroy', [$id, $item->question_id]) }}" method="POST" style="display:inline;">
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bu içeriği silmek istediğinize emin misiniz?')">

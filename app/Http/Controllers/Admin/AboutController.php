@@ -416,7 +416,7 @@ class AboutController extends Controller
                         'image' => $imageName ?? '',
                         'pdf' => $pdfName ?? '',
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
-                        'sort' => $request->input('sort_' . $language->lang_code) ?? $request->input('sort_en'),
+                        'sort' => $request->input('sort_' . $language->lang_code) ?? $request->input('sort_en') ?? 0,
                     ]
                 );
             } // <-- Add this closing brace for the foreach loop
@@ -424,7 +424,7 @@ class AboutController extends Controller
             if (isset($tmpImgPath)) {
                 @unlink($tmpImgPath);
             }
-            return redirect()->route('admin.about.certificates')->with('success', 'Üyelik içeriği başarıyla kaydedildi.');
+            return redirect()->route('admin.about.certificates')->with('success', 'Sertifika içeriği başarıyla kaydedildi.');
         } catch (\Exception $e) {
             //throw $e;
             return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
@@ -442,10 +442,98 @@ class AboutController extends Controller
     {
         try {
             DB::table('about_certificates')->where('content_id', $id)->delete();
-            return redirect()->route('admin.about.certificates')->with('success', 'Üyelik içeriği başarıyla silindi.');
+            return redirect()->route('admin.about.certificates')->with('success', 'Sertifika içeriği başarıyla silindi.');
         } catch (\Exception $e) {
             return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
         }
+    }
+
+    public function sliderIndex(Request $request)
+    {
+        $sliders =  DB::table('about_slider')
+            ->where('lang', $request->input('lang', 'en')) // Filter by language if provided
+            ->get();
+        $languages = Language::all();
+        return view('admin.about.slider.index', compact('sliders', 'languages'));
+    }
+
+    public function sliderCreate()
+    {
+        $languages = Language::all();
+        return view('admin.about.slider.create', compact('languages'));
+    }
+    
+
+    public function sliderStore(Request $request)
+    {
+        if ($request->has('slider_id')) {
+            $slider_id = $request->slider_id; // Use the provided slider_id
+        }else{
+            $slider_id = DB::table('about_slider')->max('slider_id') + 1; // Increment the maximum slider_id by 1
+            if (!$slider_id) {
+                $slider_id = 1; // If no slider items exist, start with 1
+            }
+        }
+
+        try {
+
+            $languages = Language::all(); // Fetch all languages for the dropdown
+
+            foreach ($languages as $language) {
+                // Validate the request data
+                if ($language->lang_code === 'en') {
+                    $request->validate([
+                        'image_' . $language->lang_code => 'nullable|image|max:2048',
+                        'alt_' . $language->lang_code => 'required|string|max:255',
+                ]);
+            }
+
+                if ($request->hasFile('image_' . $language->lang_code) || $request->hasFile('image_en')) {
+                    $tmpImgPath = createTmpFile($request, 'image_' . $language->lang_code, $languages[0]);
+                    $imageName = moveFile($request, $language, 'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
+
+                } else {
+                    $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
+                }
+
+                // Create or update the "how we do" content for the specific language
+                DB::table('about_slider')->updateOrInsert(
+                    [
+                        'lang' => $language->lang_code,
+                        'slider_id' => $slider_id, // Use the slider_id for grouping
+                    ],
+                    [
+                        'image' => $imageName ?? '',
+                        'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                        'sort' => $request->input('sort_' . $language->lang_code) ?? $request->input('sort_en'),
+                    ]
+                );
+            } // <-- Add this closing brace for the foreach loop
+            // unlink tmp image
+            if (isset($tmpImgPath)) {
+                @unlink($tmpImgPath);
+            }
+            return redirect()->route('admin.about.slider')->with('success', 'Slider içeriği başarıyla kaydedildi.');
+        } catch (\Exception $e) {
+            //throw $e;
+            return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $e->getMessage()]);
+        }
+    }
+
+    public function sliderEdit($id)
+    {
+        $sliders = DB::table('about_slider')->where('slider_id', $id)->get();
+        return view('admin.about.slider.edit', compact('sliders'));
+    }
+
+    public function sliderDestroy($id)
+    {
+        $slider = DB::table('about_slider')->where('slider_id', $id)->first();
+        if (!$slider) {
+            return redirect()->route('admin.about.slider')->withErrors(['error' => 'Slider bulunamadı.']);
+        }
+        DB::table('about_slider')->where('slider_id', $id)->delete();
+        return redirect()->route('admin.about.slider')->with('success', 'Slider başarıyla silindi.');
     }
 
     

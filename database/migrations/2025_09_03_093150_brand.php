@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('title', 100);
             $table->text('description');
             $table->string('image', 255);
+            $table->string('slider_image', 255);
             $table->string('alt', 255);
             $table->string('url', 255)->nullable();
             $table->string('seo_title', 255)->nullable();

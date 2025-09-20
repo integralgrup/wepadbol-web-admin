@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('club_id')->nullable(false);
             $table->string('lang', 10)->nullable(false);
             $table->string('title')->nullable(false);
+            $table->text('description')->nullable(false);
             $table->string('icon')->nullable(false);
             $table->string('image')->nullable(false);
             $table->string('alt')->nullable(false);

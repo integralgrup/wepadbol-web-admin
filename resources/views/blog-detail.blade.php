@@ -2,34 +2,118 @@
 
 @section('content')
     <?php 
-        $pageTitle = 'Haber Detay'; 
+        $pageTitle = $blog->title; 
         $breadcrumbImage = "corporate-breadcrumb.jpg";
         $breadcrumbVideo = "breadcrumb-video.mp4";
         $pageLink = "page-corporate.php";
         $imageOrVideo = "image";
     ?> 
 
-<main class="main-field header-space">
-    <section class="breadcrumb relative w-full h-[320px] xl:h-[270px] md:h-[240px] sm:min-h-[220px] sm:h-auto mb-[50px] sm:flex sm:items-center">
-        <div class="image-video relative sm:absolute sm:z-[-1] pointer-events-none w-full h-full overflow-hidden">
-            <img src="../assets/image/general/career-breadcrumb.jpg" alt="Haber Detay" width="1785" height="400" class="w-full h-full object-cover">
-            <div class="overlay absolute top-0 left-0 w-full h-full z-2 [background:linear-gradient(220deg,_#FBFAF6_36.32%,_rgba(251,250,246,0.08)_93.49%)] shadow-[0px_4px_250px_0px_rgba(0,0,0,0.01)]"></div>
-            <div class="overlay absolute top-0 left-0 w-full h-full z-3 [background:linear-gradient(180deg,_#083355_7.01%,_rgba(8,51,85,0.88)_48.57%,_#083355_92.89%),_linear-gradient(188deg,_#FBFAF6_18.53%,_#FBFAF6_34.55%,_rgba(251,250,246,0.68)_42.95%,_rgba(251,250,246,0.00)_68.26%)]"></div>
-        </div>
-        <div class="absolute left-0 top-0 w-full h-full z-4 sm:relative">
-            <div class="container h-full max-w-[1650px] flex items-end sm:items-center sm:justify-center sm:text-center pb-[80px] 2xl:pb-[50px] xl:pb-[30px] sm:pt-[30px]">
-                <div class="[&_a]:text-[18px] [&_a]:leading-[32px] [&_a]:font-light [&_a]:text-white [&_a]:lg:text-[16px] [&_li]:flex [&_li]:items-center before:[&_li_+_li]:block before:[&_li_+_li]:content-['/'] before:[&_li_+_li]:px-[5px] before:[&_li_+_li]:text-white before:[&_li_+_li]:font-light before:[&_li_+_li]:text-[18px] before:[&_li_+_li]:lg:text-[16px] before:[&_li_+_li]:leading-[32px]">
-                    <div class="w-2/3 md:w-full">
-                        <div class="flex flex-col gap-[10px] ">
-                            <h1 class="reveal text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-bold text-white"><?=$blog->title?></h1>
-                            <ul class="flex items-center sm:justify-center md:flex-wrap min-md:whitespace-pre sm:hidden">
-                                <li class="reveal">
-                                    <a href="<?=env('HTTP_DOMAIN')?>"><?=getStaticText(10)?></a>
-                                </li>
-                                <li class="reveal">
-                                    <a href="<?=env('HTTP_DOMAIN').'/'.getUrl('blog_url')?>">Haberler</a>
-                                </li>
-                            </ul>
+<main class="main-field header-space blue-menu sm:!mt-[-10px]">
+
+    <!-- CONTENT -->
+    <section class="blog-detail-section overflow-hidden pt-[40px] pb-[250px] 2xl:pt-[80px] xl:pt-[60px] lg:pb-[120px] lg:pt-[45px] md:py-[30px]">
+        <div class="container relative max-w-[1740px] group/container animContainer">
+            <div class="wrapper">
+                <div class="grid relative grid-cols-[minmax(0,5.5fr)_minmax(0,6.5fr)] mt-[70px] gap-[120px] xl:gap-[60px] md:grid-cols-1 md:gap-[30px] md:mt-0">
+                    <div class="rectangle absolute left-0 top-[70px] size-[70px] z-5 sm:hidden">
+                        <img src="../assets/svg/rectangle.svg" alt="" class="size-full object-contain object-center rotate-anim">
+                    </div>
+                    <div class="triangle absolute right-0 top-0 size-[130px] z-5 sm:hidden md:size-[100px]">
+                        <img src="../assets/svg/triangle.svg" alt="" class="size-full object-contain object-center rotate-anim">
+                    </div>
+
+                    <?php
+                    $page = 'Blog';
+                    $moduleClass = 'relative sticky-module h-fit mt-[90px] xl:mt-0';
+                    ?>
+
+                    <div class="image-wrapper relative <?= $moduleClass ?>">
+                        <div class="three-carousel swiper w-full min-sm:overflow-visible srb" dir="rtl">
+                            <div class="swiper-wrapper pointer-events-none">
+                                <div class="swiper-slide group/slide duration-350 min-md:z-10 min-md:pointer-events-none min-md:left-[-20px] min-md:[&.swiper-slide-next]:pointer-events-auto min-md:[&.swiper-slide-next]:-z-5 min-md:[&.swiper-slide-next+.swiper-slide]:-z-10 min-md:[&.swiper-slide-next+.swiper-slide]:pointer-events-auto lg:left-0 2xl:left-[50px]">
+                                    <div class="image-field relative size-full aspect-[37/28] overflow-hidden rounded-[20px] translate-x-0 duration-350 translate-z-0 min-md:blur-[5px] min-md:opacity-0 min-md:group-[&.swiper-slide-active]/slide:!opacity-100 min-md:group-[&.swiper-slide-active]/slide:blur-0 min-md:group-[&.swiper-slide-next]/slide:scale-[0.8] min-md:group-[&.swiper-slide-next]/slide:!opacity-100 min-md:group-[&.swiper-slide-next]/slide:!translate-x-[620px] min-md:group-[&.swiper-slide-next+.swiper-slide]/slide:translate-x-[1250px] min-md:group-[&.swiper-slide-next+.swiper-slide]/slide:scale-[0.6] min-md:group-[&.swiper-slide-next+.swiper-slide]/slide:!opacity-100 md:aspect-video md:left-0 lg:group-[&.swiper-slide-next]/slide:!translate-x-0 lg:group-[&.swiper-slide-next+.swiper-slide]/slide:translate-x-0 lg:left-[-20px] xl:group-[&.swiper-slide-next]/slide:!translate-x-[500px] xl:group-[&.swiper-slide-next+.swiper-slide]/slide:translate-x-[1000px] 2xl:group-[&.swiper-slide-next]/slide:!translate-x-[590px] 2xl:group-[&.swiper-slide-next+.swiper-slide]/slide:translate-x-[1190px]">
+                                        <img src="{{asset( getFolder(['uploads_folder', 'blog_images_folder'], $blog->lang) .'/'. $blog->image )}}" alt="" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
+                                        <div class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full"></div>
+                                    </div>
+                                </div>
+                                <?php foreach ($blogSlider as $key => $item) : ?>
+                                    <div class="swiper-slide group/slide duration-350 min-md:z-10 min-md:pointer-events-none min-md:left-[-20px] min-md:[&.swiper-slide-next]:pointer-events-auto min-md:[&.swiper-slide-next]:-z-5 min-md:[&.swiper-slide-next+.swiper-slide]:-z-10 min-md:[&.swiper-slide-next+.swiper-slide]:pointer-events-auto lg:left-0 2xl:left-[50px]">
+                                        <div class="image-field relative size-full aspect-[37/28] overflow-hidden rounded-[20px] translate-x-0 duration-350 translate-z-0 min-md:blur-[5px] min-md:opacity-0 min-md:group-[&.swiper-slide-active]/slide:!opacity-100 min-md:group-[&.swiper-slide-active]/slide:blur-0 min-md:group-[&.swiper-slide-next]/slide:scale-[0.8] min-md:group-[&.swiper-slide-next]/slide:!opacity-100 min-md:group-[&.swiper-slide-next]/slide:!translate-x-[620px] min-md:group-[&.swiper-slide-next+.swiper-slide]/slide:translate-x-[1250px] min-md:group-[&.swiper-slide-next+.swiper-slide]/slide:scale-[0.6] min-md:group-[&.swiper-slide-next+.swiper-slide]/slide:!opacity-100 md:aspect-video md:left-0 lg:group-[&.swiper-slide-next]/slide:!translate-x-0 lg:group-[&.swiper-slide-next+.swiper-slide]/slide:translate-x-0 lg:left-[-20px] xl:group-[&.swiper-slide-next]/slide:!translate-x-[500px] xl:group-[&.swiper-slide-next+.swiper-slide]/slide:translate-x-[1000px] 2xl:group-[&.swiper-slide-next]/slide:!translate-x-[590px] 2xl:group-[&.swiper-slide-next+.swiper-slide]/slide:translate-x-[1190px]">
+                                            <img src="{{asset( getFolder(['uploads_folder', 'blog_images_folder'], $item->lang) .'/'. $item->media_file )}}" alt="" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
+                                            <div class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full"></div>
+                                        </div>
+                                    </div>
+                                <?php endforeach; ?>
+                            </div>
+                            <div class="left-shape absolute left-[-120px] top-[-70px] overflow-hidden rounded-r-[14px] 2xl:left-[-30px] xl:left-[-30px] lg:top-[-50px] md:hidden xl:h-[740px]">
+                                <div class="image h-[770px] max-w-[695px] w-full md:h-[680px] xl:h-full">
+                                    <img src="../assets/image/jpg/image-22.jpg" alt="" class="size-full object-cover object-center">
+                                </div>
+                                <div class="page-information-field flex items-center justify-between w-full absolute left-0 bottom-0 pb-[60px] px-[90px] xl:pt-0 xl:px-[30px]" dir="ltr">
+                                    <div class="page-navigation flex items-center gap-[5px]">
+                                        <a href="index.php" class="text text-[18px] text-white/80 leading-[28px]">Home</a>
+                                        <div class="text text-[18px] text-white/80 leading-[28px]">/</div>
+                                        <a href="blogs.php" class="text text-[18px] text-white/80 leading-[28px]"><?= $page ?></a>
+                                    </div>
+                                    <div class="vote-field flex items-center gap-[20px]" x-data="{ count: parseInt(localStorage.getItem('likeCount')) || 0, clicked: localStorage.getItem('likeClicked') === 'true' || false }">
+                                        <button class="hearth-field cursor-pointer" x-on:click="if(!clicked) { count++; clicked = true; localStorage.setItem('likeCount', count); localStorage.setItem('likeClicked', true) }" :disabled="clicked">
+                                            <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                <rect x="1" y="1" width="38" height="38" rx="7" stroke="#F2F3F5" stroke-opacity="0.25" stroke-width="2" />
+                                                <g clip-path="url(#clip0_283_6108)">
+                                                    <path d="M23.75 12.9375C22.8818 12.9375 22.0858 13.2126 21.3842 13.7552C20.7115 14.2755 20.2637 14.9381 20 15.4199C19.7363 14.938 19.2885 14.2755 18.6158 13.7552C17.9142 13.2126 17.1182 12.9375 16.25 12.9375C13.8271 12.9375 12 14.9193 12 17.5473C12 20.3865 14.2795 22.329 17.7303 25.2697C18.3163 25.7692 18.9805 26.3352 19.6709 26.9389C19.7619 27.0186 19.8787 27.0625 20 27.0625C20.1213 27.0625 20.2381 27.0186 20.3291 26.939C21.0196 26.3352 21.6838 25.7691 22.2701 25.2694C25.7205 22.329 28 20.3865 28 17.5473C28 14.9193 26.1729 12.9375 23.75 12.9375Z" fill="#75BF00" />
+                                                </g>
+                                                <defs>
+                                                    <clipPath id="clip0_283_6108">
+                                                        <rect width="16" height="16" fill="white" transform="translate(12 12)" />
+                                                    </clipPath>
+                                                </defs>
+                                            </svg>
+                                        </button>
+                                        <div class="text text-[14px] text-white/75 leading-[28px]"><span class="font-bold text-white all-vote" x-text="count">0</span> Beğenme</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-navigation srb flex items-center gap-[30px] absolute right-[-20px] bottom-[-100px] z-20 xl:relative xl:left-0 xl:top-0 xl:justify-center xl:mt-[30px] xl:right-[-40px] 2xl:right-[-40px] 2xl:bottom-[-115px]" dir="ltr">
+                            <div class="three-carousel-prev size-[40px] leading-normal cursor-pointer min-sm:[&.swiper-button-disabled_.icon]:text-blue/70 min-sm:[&.swiper-button-disabled_.icon]:scale-x-100 sm:size-[30px]">
+                                <i class="icon icon-arrow-left text-[40px] size-[40px] flex text-green scale-x-[1.2] duration-350 sm:text-[25px] sm:size-[25px]"></i>
+                            </div>
+                            <div class="three-carousel-next size-[40px] leading-normal cursor-pointer min-sm:[&.swiper-button-disabled_.icon]:text-blue/70 min-sm:[&.swiper-button-disabled_.icon]:scale-x-100 sm:size-[30px]">
+                                <i class="icon icon-arrow-right text-[40px] size-[40px] flex text-green scale-x-[1.2] duration-350 sm:text-[25px] sm:size-[25px]"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="blog-content-wrapper bg-white z-2 min-xl:mt-[30px] before:absolute before:right-0 before:top-[-5px] before:size-full before:max-w-[760px] before:bg-white md:before:hidden lg:before:max-w-[600px] xl:before:max-w-[580px]">
+                        <div class="heading-wrapper translate-z-0 srt-all flex items-center gap-[60px] mb-[30px] sm:mb-[15px]">
+                            <div class="blog-date flex justify-center items-center gap-[10px] p-[10px] bg-green/5 rounded-[8px] w-fit">
+                                <i class="icon icon-calendar text-[16px] h-[16px] text-green flex leading-normal"></i>
+                                <small class="date text-green text-[18px] font-medium leading-[28px] w-max">11 Ekim 2023</small>
+                            </div>
+                            <div class="blog-stars">
+                                <svg width="115" height="21" viewBox="0 0 115 21" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M10.4545 0L12.8017 7.22391L20.3974 7.22391L14.2524 11.6885L16.5996 18.9124L10.4545 14.4478L4.30952 18.9124L6.65671 11.6885L0.511682 7.22391L8.10735 7.22391L10.4545 0Z" fill="#FFCD18" />
+                                    <path d="M33.9775 0L36.3247 7.22391L43.9204 7.22391L37.7753 11.6885L40.1225 18.9124L33.9775 14.4478L27.8325 18.9124L30.1797 11.6885L24.0346 7.22391L31.6303 7.22391L33.9775 0Z" fill="#FFCD18" />
+                                    <path d="M57.5 0L59.8471 7.22391L67.4428 7.22391L61.2978 11.6885L63.645 18.9124L57.5 14.4478L51.3549 18.9124L53.7021 11.6885L47.5571 7.22391L55.1528 7.22391L57.5 0Z" fill="#FFCD18" />
+                                    <path d="M81.0229 0L83.3701 7.22391L90.9658 7.22391L84.8207 11.6885L87.1679 18.9124L81.0229 14.4478L74.8779 18.9124L77.2251 11.6885L71.08 7.22391L78.6757 7.22391L81.0229 0Z" fill="#FFCD18" />
+                                    <path d="M104.545 0L106.893 7.22391L114.488 7.22391L108.343 11.6885L110.69 18.9124L104.545 14.4478L98.4003 18.9124L100.748 11.6885L94.6025 7.22391L102.198 7.22391L104.545 0Z" fill="#D9D9D9" />
+                                </svg>
+                            </div>
+                        </div>
+                        <h2 class="title srt text-blue text-[48px] font-bold leading-[64px] opacity-90 uppercase mb-[50px] xl:text-[40px] lg:text-[30px] lg:leading-normal lg:mb-[15px]">{{ $blog->title }}</h2>
+                        <div class="content-field translate-z-0 srt-all flex gap-[80px] sm:flex-col sm:gap-[30px] 2xl:justify-between">
+                            <div id="#printPage" class="text-editor gap-[40px] max-w-[600px] 2xl:max-w-full editor-p:opacity-65 editor-p:text-[#52555C] md:gap-[20px]">
+                                {!! $blog->description !!}
+                            </div>
+                            <?php $list = ['facebook2', 'whatsapp', 'linkedin2', 'x',]; ?>
+                            <div class="blog-social-media flex min-sm:flex-col items-center gap-[30px] h-fit md:gap-[15px]">
+                                <?php foreach ($list as $key => $item) : ?>
+                                    <a href="" class="icon icon-<?= $item ?> text-[25px] h-[25px] text-[#B0B0B0] leading-normal flex duration-350 hover:text-green"></a>
+                                <?php endforeach; ?>
+                                <a href="javascript:;" class="icon icon-copy-link copy-link text-[25px] h-[25px] text-[#B0B0B0] leading-normal flex duration-350 hover:text-green"></a>
+                                <a href="javascript:;" class="icon icon-print printer-button text-[25px] h-[25px] text-[#B0B0B0] leading-normal flex duration-350 hover:text-green"></a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -37,247 +121,72 @@
         </div>
     </section>
 
-    <div class="container max-w-[1650px] mb-[60px] md:mb-[50px]">
-        <div class="flex flex-wrap w-full news-detail">
-            <div class="w-1/3 md:w-full">
-                <div class="w-full flex md:flex-col gap-[50px] 2xl:gap-[30px]">
-                    <div class="social md:order-2 h-max sticky top-[130px] pb-[30px] md:pb-0">
-                        <ul class="flex flex-col md:flex-row md:justify-center items-center gap-[28px] [&_i]:hover:[&_a]:text-primary-400 [&_i]:hover:[&_p]:text-primary-400">
-                            <?php $social = [
-                                [
-                                    'link' => 'https://wa.me',
-                                    'icon' => 'whatsapp'
-                                ],
-                                [
-                                    'link' => 'https://facebook.com',
-                                    'icon' => 'facebook'
-                                ],
-                                [
-                                    'link' => 'https://twitter.com',
-                                    'icon' => 'twitter'
-                                ],
-                                [
-                                    'link' => 'https://linkedin.com',
-                                    'icon' => 'linkedin'
-                                ],
-                            ];
-                            foreach ($social as $key => $item) { ?>
-                                <li class="reveal relative">
-                                    <a href="<?= $item['link'] ?>" class="group flex items-center text-[27px] text-[#B0B0B0]">
-                                        <i class="icon-<?= $item['icon'] ?> transition-all duration-300"></i>
-                                        <div class="tooltip md:hidden absolute opacity-0 group-hover:opacity-100 translate-x-0 2xl:group-hover:translate-x-[50px] group-hover:-translate-x-[60px] px-[10px] py-[20px] flex bg-primary-400 transition-all duration-300">
-                                            <div class="icon-triangle-down absolute 2xl:left-[-12px] right-[-12px] translate-x-1/2 top-1/2 -translate-y-1/2 2xl:-translate-x-1/2 text-primary-400 2xl:rotate-90 -rotate-90 w-[26px]"></div>
-                                            <span class="text-[16px] leading-none font-medium text-white 2xl:[writing-mode:vertical-rl] [writing-mode:vertical-lr]">Paylaş</span>
+    <!-- BLOG SECTION -->
+    <section class="blog-section relative overflow-hidden pt-[100px] pb-[220px] 2xl:py-[50px] lg:py-[45px] md:py-[30px]">
+    <div class="max-w-[1920px] container group/container animContainer">
+        <div class="rectangle absolute left-[130px] top-0 size-[70px]">
+            <img src="../assets/svg/rectangle.svg" alt="" class="size-full object-contain object-center rotate-anim">
+        </div>
+        <div class="triangle absolute right-[400px] top-[-4px] size-[130px] md:size-[100px] sm:right-0">
+            <img src="../assets/svg/triangle.svg" alt="" class="size-full object-contain object-center rotate-anim">
+        </div>
+        <div class="wrapper">
+            <div class="grid grid-cols-[minmax(0,7fr)_minmax(0,5fr)] justify-center relative md:grid-cols-1 md:gap-[15px] lg:gap-[30px]">
+                <?php $list = ['image-2.jpg', 'image-7.jpg', 'image-5.jpg', 'image-4.jpg', 'image-1.jpg']; ?>
+                <div class="blog-general-carousel swiper size-full min-md:overflow-visible md:order-3" dir="rtl">
+                    <div class="swiper-wrapper">
+                        <?php foreach ($blogs as $key => $item) : ?>
+                            <div class="swiper-slide group/slide min-md:!pointer-events-none duration-350 [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto">
+                                <a href="blog-detail.php" class="blog-item flex relative min-md:opacity-0 min-md:pointer-events-none min-md:scale-75 duration-350 min-md:group-[&.swiper-slide-active]/slide:scale-100 min-md:group-[&.swiper-slide-active]/slide:pointer-events-auto min-md:group-[&.swiper-slide-active]/slide:opacity-100 min-md:group-[&.swiper-slide-next]/slide:blur-[5px] group-[&.swiper-slide-next]/slide:pointer-events-auto group-[&.swiper-slide-next]/slide:opacity-100 md:h-full md:flex-col md:gap-[15px]" dir="ltr">
+                                    <div class="blog-image aspect-[13/10] size-full rounded-[14px] relative overflow-hidden xsm:aspect-video sm:aspect-square md:aspect-video">
+                                        <img src="{{asset( getFolder(['uploads_folder', 'blog_images_folder'], $item->lang) .'/'. $item->image )}}" alt="" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
+                                        <div class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full"></div>
+                                    </div>
+                                    <div class="blog-content size-auto bg-gradient-to-b from-green to-blue p-[2px] rounded-[14px] absolute top-[50px] right-[-420px] max-w-[500px] !pointer-events-none min-md:scale-50 min-md:opacity-0 min-md:invisible z-10 duration-350 group-[&.swiper-slide-active]/slide:scale-100 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:visible group-[&.swiper-slide-active]/slide:pointer-events-auto [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto md:left-0 md:top-0 md:translate-y-0 md:max-w-full md:relative lg:left-[320px]">
+                                        <div class="content bg-white size-auto [box-shadow:_0px_25px_75px_0px_rgba(3,_36,_107,_0.15);] pt-[34px] pr-[34px] pb-[50px] pl-[55px] rounded-[12px] md:p-[30px]">
+                                            <div class="fx-hover-repulse group/button pointer-events-auto w-fit ml-auto">
+                                                <div class="inner">
+                                                    <button class="button item relative overflow-hidden translate-z-0 size-[66px] p-[20px] rounded-full bg-green flex items-center justify-end before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:scale-0 before:rounded-full before:bg-blue before:duration-350 before:size-[33px] group-hover/button:before:scale-[2] lg:before:size-[20px] lg:size-[33px] lg:p-[10px] xl:before:size-[25px] xl:size-[44px] xl:p-[15px]">
+                                                        <i class="icon item icon-arrow-top relative z-2 text-[10px] size-[24px] text-white leading-normal flex justify-center items-center duration-350 group-hover/button:rotate-45 xl:size-[12px] xl:text-[8px]"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="blog-date flex justify-center items-center gap-[10px] p-[10px] bg-green/5 rounded-[8px] mb-[15px] w-fit">
+                                                <i class="icon icon-calendar text-[16px] h-[16px] text-green flex leading-normal"></i>
+                                                <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d M Y', strtotime($item->created_at)) }}</small>
+                                            </div>
+                                            <div class="blog-title text-blue text-[24px] font-bold leading-[36px] opacity-90 line-clamp-2 sm:text-[20px]">{{ $item->title }}</div>
+                                            <div class="blog-expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mt-[20px] max-w-[390px] line-clamp-2 md:max-w-full">{{ mb_substr($item->description, 0, 100) }}...</div>
                                         </div>
-                                    </a>
-                                </li>
-                            <?php } ?>
-                            <li class="reveal relative">
-                                <div class="group flex items-center text-[27px] text-[#B0B0B0] cursor-pointer" id="copy-link">
-                                    <i class="icon-link transition-all duration-300"></i>
-                                    <div class="tooltip md:hidden absolute opacity-0 group-hover:opacity-100 translate-x-0 2xl:group-hover:translate-x-[50px] group-hover:-translate-x-[60px] px-[10px] py-[20px] flex bg-primary-400 transition-all duration-300 group-[&.copied]:bg-secondary-main ">
-                                        <div class="icon-triangle-down absolute 2xl:left-[-12px] right-[-12px] translate-x-1/2 top-1/2 -translate-y-1/2 2xl:-translate-x-1/2 text-primary-400 2xl:rotate-90 -rotate-90 w-[26px] transition-all duration-300 group-[&.copied]:text-secondary-main"></div>
-                                        <span id="span" class="text-[16px] leading-none font-medium text-white 2xl:[writing-mode:vertical-rl] [writing-mode:vertical-lr]">Kopyala</span>
-                                        <span id="copy-text" class="hidden opacity-0 invisible h-0 w-0 overflow-hidden 2xl:[writing-mode:vertical-rl] [writing-mode:vertical-lr]">Kopyala</span>
-                                        <span id="copied-text" class="hidden opacity-0 invisible h-0 w-0 overflow-hidden 2xl:[writing-mode:vertical-rl] [writing-mode:vertical-lr]">Kopyalandı</span>
                                     </div>
-                                </div>
-                            </li>
-
-                            <li class="reveal relative">
-                                <div class="group flex items-center text-[27px] text-[#B0B0B0] cursor-pointer" id="print">
-                                    <i class="icon-printer transition-all duration-300"></i>
-                                    <div class="tooltip md:hidden absolute opacity-0 group-hover:opacity-100 translate-x-0 2xl:group-hover:translate-x-[50px] group-hover:-translate-x-[60px] px-[10px] py-[20px] flex bg-primary-400 transition-all duration-300">
-                                        <div class="icon-triangle-down absolute 2xl:left-[-12px] right-[-12px] translate-x-1/2 top-1/2 -translate-y-1/2 2xl:-translate-x-1/2 text-primary-400 2xl:rotate-90 -rotate-90 w-[26px] transition-all duration-300 group-[&.copied]:text-secondary-main"></div>
-                                        <span class="text-[16px] leading-none font-medium text-white 2xl:[writing-mode:vertical-rl] [writing-mode:vertical-lr]">Yazdır</span>
-                                    </div>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="editor-area md:order-1 ">
-                        <div class="title text-editor" id="news-title">
-                            <h2><?=$blog->title?></h2>
-                        </div>
-                        <div class="flex items-center gap-[30px] mb-[20px]">
-                            <div class="flex items-center gap-[6px] transition-all duration-450 opacity-50">
-                                <i>
-                                    <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                        <path d="M2.70393 1.99397H3.22613V1.46533C3.22613 1.16329 3.47086 0.918457 3.77276 0.918457C4.07467 0.918457 4.31939 1.16329 4.31939 1.46533V1.99397H9.68259V1.46533C9.68259 1.16329 9.92731 0.918457 10.2292 0.918457C10.5311 0.918457 10.7759 1.16329 10.7759 1.46533V1.99397H11.298C12.7884 1.99397 14.001 3.20705 14.001 4.6981V12.2143C14.001 13.7054 12.7884 14.9185 11.298 14.9185H2.70391C1.21352 14.9185 0.000976562 13.7054 0.000976562 12.2143V4.6981C0.000976562 3.20705 1.21352 1.99397 2.70393 1.99397ZM11.298 3.08772H10.7759V4.15412C10.7759 4.45616 10.5311 4.701 10.2292 4.701C9.92731 4.701 9.68259 4.45616 9.68259 4.15412V3.08772H4.31937V4.15412C4.31937 4.45616 4.07464 4.701 3.77273 4.701C3.47083 4.701 3.2261 4.45616 3.2261 4.15412V3.08772H2.70391C1.81634 3.08772 1.09424 3.81014 1.09424 4.6981V5.22053H12.9077V4.6981C12.9077 3.81014 12.1856 3.08772 11.298 3.08772ZM2.70393 13.8247H11.298C12.1856 13.8247 12.9077 13.1023 12.9077 12.2143V6.31428H1.09424V12.2143C1.09424 13.1023 1.81634 13.8247 2.70393 13.8247ZM9.14506 8.46533C9.14506 8.76737 9.38978 9.01221 9.69169 9.01221H10.7667C11.0686 9.01221 11.3134 8.76737 11.3134 8.46533C11.3134 8.16329 11.0686 7.91846 10.7667 7.91846H9.69169C9.38981 7.91846 9.14506 8.16329 9.14506 8.46533ZM2.68857 8.46533C2.68857 8.76737 2.9333 9.01221 3.2352 9.01221H4.31024C4.61214 9.01221 4.85687 8.76737 4.85687 8.46533C4.85687 8.16329 4.61214 7.91846 4.31024 7.91846H3.2352C2.93333 7.91846 2.68857 8.16329 2.68857 8.46533ZM5.91993 8.46533C5.91993 8.76737 6.16466 9.01221 6.46656 9.01221H7.5416C7.8435 9.01221 8.08823 8.76737 8.08823 8.46533C8.08823 8.16329 7.8435 7.91846 7.5416 7.91846H6.46656C6.16469 7.91846 5.91993 8.16329 5.91993 8.46533ZM9.14506 11.6919C9.14506 11.9939 9.38978 12.2388 9.69169 12.2388H10.7667C11.0686 12.2388 11.3134 11.9939 11.3134 11.6919C11.3134 11.3899 11.0686 11.145 10.7667 11.145H9.69169C9.38981 11.145 9.14506 11.3899 9.14506 11.6919ZM2.68857 11.6919C2.68857 11.9939 2.9333 12.2388 3.2352 12.2388H4.31024C4.61214 12.2388 4.85687 11.9939 4.85687 11.6919C4.85687 11.3899 4.61214 11.145 4.31024 11.145H3.2352C2.93333 11.145 2.68857 11.3899 2.68857 11.6919ZM5.91993 11.6919C5.91993 11.9939 6.16466 12.2388 6.46656 12.2388H7.5416C7.8435 12.2388 8.08823 11.9939 8.08823 11.6919C8.08823 11.3899 7.8435 11.145 7.5416 11.145H6.46656C6.16469 11.145 5.91993 11.3899 5.91993 11.6919Z" fill="#333333"/>
-                                    </svg>
-                                </i>
-                                <time class="text-[16px] font-medium leading-none tracking-[-0.16px] text-dark/50"><?= date('d'.'.'.'m'.'.'.'Y', strtotime($blog['created_at'])) ?></time>
-                            </div>
-                            <div class="stars right flex gap-[10px] reveal" data-selected-rate="">
-                                <a class="rating-star cursor-pointer text-[24px] flex justify-center items-center icon-star duration-450 text-[#008826]/20 [&.to-rate]:text-[#008826] [&.to-hover]:text-[#008826] [&.rated]:text-[#008826] [&.no-to-rated]:text-[#d0e8f0]" data-id="1">
-                                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="">
-                                        <path d="M8.02447 0.463524C8.17415 0.00286853 8.82585 0.00287008 8.97553 0.463525L10.5206 5.21885C10.5876 5.42486 10.7795 5.56434 10.9962 5.56434H15.9962C16.4806 5.56434 16.6819 6.18415 16.2901 6.46885L12.245 9.4078C12.0697 9.53512 11.9964 9.7608 12.0633 9.96681L13.6084 14.7221C13.7581 15.1828 13.2309 15.5659 12.839 15.2812L8.79389 12.3422C8.61865 12.2149 8.38135 12.2149 8.20611 12.3422L4.16099 15.2812C3.76913 15.5659 3.24189 15.1828 3.39157 14.7221L4.93667 9.96681C5.0036 9.7608 4.93027 9.53512 4.75503 9.4078L0.709911 6.46885C0.318054 6.18415 0.519443 5.56434 1.0038 5.56434H6.00385C6.22046 5.56434 6.41244 5.42486 6.47937 5.21885L8.02447 0.463524Z"/>
-                                    </svg>
-                                </a>
-                                <a class="rating-star cursor-pointer text-[24px] flex justify-center items-center icon-star duration-450 text-[#008826]/20 [&.to-rate]:text-[#008826] [&.to-hover]:text-[#008826] [&.rated]:text-[#008826] [&.no-to-rated]:text-[#d0e8f0]" data-id="2">
-                                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="">
-                                        <path d="M8.02447 0.463524C8.17415 0.00286853 8.82585 0.00287008 8.97553 0.463525L10.5206 5.21885C10.5876 5.42486 10.7795 5.56434 10.9962 5.56434H15.9962C16.4806 5.56434 16.6819 6.18415 16.2901 6.46885L12.245 9.4078C12.0697 9.53512 11.9964 9.7608 12.0633 9.96681L13.6084 14.7221C13.7581 15.1828 13.2309 15.5659 12.839 15.2812L8.79389 12.3422C8.61865 12.2149 8.38135 12.2149 8.20611 12.3422L4.16099 15.2812C3.76913 15.5659 3.24189 15.1828 3.39157 14.7221L4.93667 9.96681C5.0036 9.7608 4.93027 9.53512 4.75503 9.4078L0.709911 6.46885C0.318054 6.18415 0.519443 5.56434 1.0038 5.56434H6.00385C6.22046 5.56434 6.41244 5.42486 6.47937 5.21885L8.02447 0.463524Z"/>
-                                    </svg>
-                                </a>
-                                <a class="rating-star cursor-pointer text-[24px] flex justify-center items-center icon-star duration-450 text-[#008826]/20 [&.to-rate]:text-[#008826] [&.to-hover]:text-[#008826] [&.rated]:text-[#008826] [&.no-to-rated]:text-[#d0e8f0]" data-id="3">
-                                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="">
-                                        <path d="M8.02447 0.463524C8.17415 0.00286853 8.82585 0.00287008 8.97553 0.463525L10.5206 5.21885C10.5876 5.42486 10.7795 5.56434 10.9962 5.56434H15.9962C16.4806 5.56434 16.6819 6.18415 16.2901 6.46885L12.245 9.4078C12.0697 9.53512 11.9964 9.7608 12.0633 9.96681L13.6084 14.7221C13.7581 15.1828 13.2309 15.5659 12.839 15.2812L8.79389 12.3422C8.61865 12.2149 8.38135 12.2149 8.20611 12.3422L4.16099 15.2812C3.76913 15.5659 3.24189 15.1828 3.39157 14.7221L4.93667 9.96681C5.0036 9.7608 4.93027 9.53512 4.75503 9.4078L0.709911 6.46885C0.318054 6.18415 0.519443 5.56434 1.0038 5.56434H6.00385C6.22046 5.56434 6.41244 5.42486 6.47937 5.21885L8.02447 0.463524Z"/>
-                                    </svg>
-                                </a>
-                                <a class="rating-star cursor-pointer text-[24px] flex justify-center items-center icon-star duration-450 text-[#008826]/20 [&.to-rate]:text-[#008826] [&.to-hover]:text-[#008826] [&.rated]:text-[#008826] [&.no-to-rated]:text-[#d0e8f0]" data-id="4">
-                                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="">
-                                        <path d="M8.02447 0.463524C8.17415 0.00286853 8.82585 0.00287008 8.97553 0.463525L10.5206 5.21885C10.5876 5.42486 10.7795 5.56434 10.9962 5.56434H15.9962C16.4806 5.56434 16.6819 6.18415 16.2901 6.46885L12.245 9.4078C12.0697 9.53512 11.9964 9.7608 12.0633 9.96681L13.6084 14.7221C13.7581 15.1828 13.2309 15.5659 12.839 15.2812L8.79389 12.3422C8.61865 12.2149 8.38135 12.2149 8.20611 12.3422L4.16099 15.2812C3.76913 15.5659 3.24189 15.1828 3.39157 14.7221L4.93667 9.96681C5.0036 9.7608 4.93027 9.53512 4.75503 9.4078L0.709911 6.46885C0.318054 6.18415 0.519443 5.56434 1.0038 5.56434H6.00385C6.22046 5.56434 6.41244 5.42486 6.47937 5.21885L8.02447 0.463524Z"/>
-                                    </svg>
-                                </a>
-                                <a class="rating-star cursor-pointer text-[24px] flex justify-center items-center icon-star duration-450 text-[#008826]/20 [&.to-rate]:text-[#008826] [&.to-hover]:text-[#008826] [&.rated]:text-[#008826] [&.no-to-rated]:text-[#d0e8f0]" data-id="5">
-                                    <svg width="17" height="16" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg" class="">
-                                        <path d="M8.02447 0.463524C8.17415 0.00286853 8.82585 0.00287008 8.97553 0.463525L10.5206 5.21885C10.5876 5.42486 10.7795 5.56434 10.9962 5.56434H15.9962C16.4806 5.56434 16.6819 6.18415 16.2901 6.46885L12.245 9.4078C12.0697 9.53512 11.9964 9.7608 12.0633 9.96681L13.6084 14.7221C13.7581 15.1828 13.2309 15.5659 12.839 15.2812L8.79389 12.3422C8.61865 12.2149 8.38135 12.2149 8.20611 12.3422L4.16099 15.2812C3.76913 15.5659 3.24189 15.1828 3.39157 14.7221L4.93667 9.96681C5.0036 9.7608 4.93027 9.53512 4.75503 9.4078L0.709911 6.46885C0.318054 6.18415 0.519443 5.56434 1.0038 5.56434H6.00385C6.22046 5.56434 6.41244 5.42486 6.47937 5.21885L8.02447 0.463524Z"/>
-                                    </svg>
                                 </a>
                             </div>
-                        </div>
-                        <div class="content text-editor">
-                            <?=$blog->description?>
-                        </div>
+                        <?php endforeach; ?>
                     </div>
                 </div>
-            </div>
-            <div class="w-2/3 md:w-full pl-[85px] 2xl:pl-[55px] xl:pl-[30px] sm:pl-0 md:mt-[30px] relative after:absolute after:w-full after:h-[300px] after:bottom-0 after:left-[60px] after:z-[11] after:pointer-events-none after:bg-[linear-gradient(0deg,_#FBFAF6_20%,_rgba(251,250,246,0.00)_100%)] after:md:hidden" id="news-detail-slider-area">
-                <div class="sticky top-[130px] pb-[90px] sm:pb-[20px] z-10 mt-[-270px] 2xl:mt-[-250px] xl:mt-[-210px] lg:mt-[-200px] md:mt-0">
-                    <div class="bg-primary-main absolute -z-[1] bottom-0 translate-y-[-70px] sm:translate-y-[-10px] translate-x-[60px] 2xl:translate-x-[30px] right-0 w-[426px] sm:w-[250px] aspect-square"></div>
-                    <div class="news-detail-slider overflow-hidden reveal">
-                        <div class="swiper-wrapper">
-                            <?php foreach($blogSlider as $slide): ?>
-                                <div class="swiper-slide">
-                                    <div class="image-wrapper relative w-full h-[650px] xl:h-[580px] lg:h-[530px] sm:h-[320px] 2xl:pl-[30px] xl:pl-[60px] md:pl-0">
-                                        <img src="<?= env('HTTP_DOMAIN') .'/'. getFolder(['uploads_folder','blog_images_folder'], $slide->lang) .'/'.  $slide->media_file ?>" alt="Blog" width="657" height="406" class="w-full h-full object-cover">
-                                    </div>
-                                </div>
-                            <?php endforeach; ?>
+                <div class="blog-title-wrapper flex items-center justify-end gap-[60px] relative z-2 w-fit min-md:ml-[530px] md:mx-auto md:order-1 md:flex-col md:justify-center md:w-full md:gap-[15px] lg:ml-[290px] xl:relative xl:ml-[370px] xl:gap-[30px] 2xl:ml-[430px]">
+                    <div class="title-field srr relative min-md:w-fit min-md:mb-[90px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-full before:mt-[45px] before:size-[26px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[26px] md:before:hidden">
+                        <h1 class="title text-[64px] text-blue leading-[80px] whitespace-nowrap min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 xsm:text-[30px] sm:leading-normal md:[&>_br]:hidden xl:text-[50px]"><strong>WEPADBOL</strong> NEWS</h1>
+                    </div>
+                    <a href="blogs.php" class="button srr group/button relative border border-solid border-blue/6 bg-transparent flex flex-col justify-center items-center gap-[15px] px-[34px] py-[20px] min-md:h-auto min-md:min-h-[150px] w-auto overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-green before:rounded-full before:translate-z-0 before:duration-350 min-md:hover:before:scale-[5.5] sm:h-[50px] md:flex-row lg:p-[30px] xl:p-[35px]">
+                        <i class="icon relative z-2 translate-z-0 icon-chevron-right text-green text-[10px] h-[10px] flex items-center leading-normal min-md:-rotate-90 duration-350 min-md:group-hover/button:text-white min-md:group-hover/button:rotate-90 md:order-2"></i>
+                        <small class="text relative z-2 translate-z-0 text-blue text-[16px] font-medium leading-[19px] min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 duration-350 min-md:group-hover/button:text-white md:order-1">All News</small>
+                    </a>
+                </div>
+                <div class="blog-controller srb absolute right-[600px] bottom-[50px] z-2 flex items-center gap-[125px] max-w-[100px] mx-auto md:relative md:left-0 md:top-0 md:!translate-x-0 md:order-2 xl:max-w-full xl:right-0 xl:left-[50%] xl:translate-x-[-20%] xl:bottom-0 xl:justify-center xl:items-center">
+                    <div class="carousel-navigation flex min-md:flex-col items-center md:gap-[15px]">
+                        <div class="blog-prev cursor-pointer size-[40px] leading-normal min-md:ml-[-90px] min-md:[&.swiper-button-disabled_.icon]:text-white/70 min-md:[&.swiper-button-disabled_.icon]:scale-x-100">
+                            <i class="icon icon-arrow-left text-[40px] size-[40px] flex text-green scale-x-[1.2] duration-350"></i>
                         </div>
-                        <div class="nav-buttons pl-[30px] pt-[15px] flex items-center justify-end gap-[30px] md:gap-[20px]">
-                            <div class="news-detail-prev cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.news-detail-disabled]:opacity-65 relative z-4 [&.news-detail-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                                <i class="icon-angle-left text-[12px] leading-none text-white"></i>
-                                <span class="text-[16px] leading-[32px] text-white"><?=getStaticText(2)?></span>
-                            </div>
-
-                            <div class="separator w-[1px] h-[22px] bg-white/20 relative z-4"></div>
-
-                            <div class="news-detail-next cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.news-detail-disabled]:opacity-65 relative z-4 [&.news-detail-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                                <span class="text-[16px] leading-[32px] text-white"><?=getStaticText(3)?></span>
-                                <i class="icon-angle-right text-[12px] leading-none text-white "></i>
-                            </div>
+                        <div class="blog-next cursor-pointer size-[40px] leading-normal min-md:[&.swiper-button-disabled_.icon]:text-white/70 min-md:[&.swiper-button-disabled_.icon]:scale-x-100">
+                            <i class="icon icon-arrow-right text-[40px] size-[40px] flex text-green scale-x-[1.2] duration-350"></i>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div class="container max-w-[1650px]">
-        <div class="flex flex-col gap-[40px]">
-            <div class="flex items-center xsm:flex-col xsm:items-start justify-between gap-[30px] relative">
-                <h4 class="reveal text-[46px] xl:text-[32px] lg:text-[24px] leading-[60px] xl:leading-[50px] lg:leading-[40px] md:leading-[36px] tracking-[-0.46px] font-light text-secondary-main" id="other-new-title">
-                    Wepadbol’dan <br>
-                    <span class="font-bold">Haberler & Blog</span>
-                </h4>
-                <div class="reveal nav-buttons flex items-center justify-end gap-[30px] xsm:absolute xsm:w-full xsm:p-[10px] xsm:left-0 xsm:justify-center xsm:bg-white/20 xsm:backdrop-blur-[20px] xsm:z-5">
-                    <div class="other-prev group cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.other-disabled]:opacity-65 [&.other-disabled]:text-paragraph [&.other-disabled]:xsm:text-white relative [&.other-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-primary-main after:xsm:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                        <i class="icon-angle-left text-[12px] leading-none text-primary-main xsm:text-white transition-all duration-300 group-[&.other-disabled]:text-paragraph group-[&.other-disabled]:xsm:text-white"></i>
-                        <span class="text-[16px] leading-[32px] text-primary-main xsm:text-white transition-all duration-300 group-[&.other-disabled]:text-paragraph group-[&.other-disabled]:xsm:text-white"><?=getStaticText(2)?></span>
-                    </div>
-
-                    <div class="separator w-[1px] h-[22px] bg-paragraph/20 xsm:bg-white/20"></div>
-
-                    <div class="other-next group cursor-pointer flex items-center gap-[9px] transition-all duration-300 [&.other-disabled]:opacity-65 [&.other-disabled]:text-paragraph [&.other-disabled]:xsm:text-white relative [&.other-disabled]:after:hidden after:absolute after:bottom-0 after:right-0 after:w-0 after:h-[1px] after:bg-primary-main after:xsm:bg-white after:transition-all after:duration-300 hover:after:right-auto hover:after:left-0 hover:after:w-full">
-                        <span class="text-[16px] leading-[32px] text-primary-main xsm:text-white transition-all duration-300 group-[&.other-disabled]:text-paragraph group-[&.other-disabled]:xsm:text-white"><?=getStaticText(3)?></span>
-                        <i class="icon-angle-right text-[12px] leading-none text-primary-main xsm:text-white transition-all duration-300 group-[&.other-disabled]:text-paragraph group-[&.other-disabled]:xsm:text-white"></i>
-                    </div>
-                </div>
-            </div>
-            <div class="other-news-slider reveal overflow-hidden mb-[130px] xl:mb-[100px] lg:mb-[70px] md:mb-[50px]">
-                <div class="swiper-wrapper">
-                    <?php foreach ($blogs as $item): ?>
-
-                        <div class="swiper-slide">
-                            <div class="item w-full bg-[#F0EEE7] grid grid-cols-2 md:grid-cols-1 transition-all duration-500 group/item hover:min-md:bg-secondary-main">
-                                <a href="<?= $item['seo_url'] ?>" class="block img w-full min-h-[405px] lg:min-h-[350px] xs:min-h-[300px]">
-                                    <img src="<?= env('HTTP_DOMAIN').'/'.getFolder(['uploads_folder', 'blog_images_folder'], app()->getLocale()).'/'.$item['image'] ?>" alt="Blog Görsel" width="405" height="405" class="w-full h-full object-cover">
-                                </a>
-                                <div class="p-[45px] xl:p-[35px] lg:p-[15px] lg:py-[25px] w-full flex flex-col justify-between gap-[20px]">
-                                    <div class="flex items-center gap-[6px] transition-all duration-450 opacity-50 group-hover/item:opacity-100 mb-[20px]">
-                                        <i>
-                                            <svg width="14" height="15" viewBox="0 0 14 15" fill="none" xmlns="http://www.w3.org/2000/svg" class="[&_path]:transition-all [&_path]:duration-450 group-hover/item:[&_path]:fill-white">
-                                                <path d="M2.70393 1.99397H3.22613V1.46533C3.22613 1.16329 3.47086 0.918457 3.77276 0.918457C4.07467 0.918457 4.31939 1.16329 4.31939 1.46533V1.99397H9.68259V1.46533C9.68259 1.16329 9.92731 0.918457 10.2292 0.918457C10.5311 0.918457 10.7759 1.16329 10.7759 1.46533V1.99397H11.298C12.7884 1.99397 14.001 3.20705 14.001 4.6981V12.2143C14.001 13.7054 12.7884 14.9185 11.298 14.9185H2.70391C1.21352 14.9185 0.000976562 13.7054 0.000976562 12.2143V4.6981C0.000976562 3.20705 1.21352 1.99397 2.70393 1.99397ZM11.298 3.08772H10.7759V4.15412C10.7759 4.45616 10.5311 4.701 10.2292 4.701C9.92731 4.701 9.68259 4.45616 9.68259 4.15412V3.08772H4.31937V4.15412C4.31937 4.45616 4.07464 4.701 3.77273 4.701C3.47083 4.701 3.2261 4.45616 3.2261 4.15412V3.08772H2.70391C1.81634 3.08772 1.09424 3.81014 1.09424 4.6981V5.22053H12.9077V4.6981C12.9077 3.81014 12.1856 3.08772 11.298 3.08772ZM2.70393 13.8247H11.298C12.1856 13.8247 12.9077 13.1023 12.9077 12.2143V6.31428H1.09424V12.2143C1.09424 13.1023 1.81634 13.8247 2.70393 13.8247ZM9.14506 8.46533C9.14506 8.76737 9.38978 9.01221 9.69169 9.01221H10.7667C11.0686 9.01221 11.3134 8.76737 11.3134 8.46533C11.3134 8.16329 11.0686 7.91846 10.7667 7.91846H9.69169C9.38981 7.91846 9.14506 8.16329 9.14506 8.46533ZM2.68857 8.46533C2.68857 8.76737 2.9333 9.01221 3.2352 9.01221H4.31024C4.61214 9.01221 4.85687 8.76737 4.85687 8.46533C4.85687 8.16329 4.61214 7.91846 4.31024 7.91846H3.2352C2.93333 7.91846 2.68857 8.16329 2.68857 8.46533ZM5.91993 8.46533C5.91993 8.76737 6.16466 9.01221 6.46656 9.01221H7.5416C7.8435 9.01221 8.08823 8.76737 8.08823 8.46533C8.08823 8.16329 7.8435 7.91846 7.5416 7.91846H6.46656C6.16469 7.91846 5.91993 8.16329 5.91993 8.46533ZM9.14506 11.6919C9.14506 11.9939 9.38978 12.2388 9.69169 12.2388H10.7667C11.0686 12.2388 11.3134 11.9939 11.3134 11.6919C11.3134 11.3899 11.0686 11.145 10.7667 11.145H9.69169C9.38981 11.145 9.14506 11.3899 9.14506 11.6919ZM2.68857 11.6919C2.68857 11.9939 2.9333 12.2388 3.2352 12.2388H4.31024C4.61214 12.2388 4.85687 11.9939 4.85687 11.6919C4.85687 11.3899 4.61214 11.145 4.31024 11.145H3.2352C2.93333 11.145 2.68857 11.3899 2.68857 11.6919ZM5.91993 11.6919C5.91993 11.9939 6.16466 12.2388 6.46656 12.2388H7.5416C7.8435 12.2388 8.08823 11.9939 8.08823 11.6919C8.08823 11.3899 7.8435 11.145 7.5416 11.145H6.46656C6.16469 11.145 5.91993 11.3899 5.91993 11.6919Z" fill="#333333"/>
-                                            </svg>
-                                        </i>
-                                        <time class="text-[16px] font-medium leading-none tracking-[-0.16px] text-dark/50 group-hover/item:text-white transition-all duration-450"><?= date('d'.'.'.'m'.'.'.'Y', strtotime($item['created_at'])) ?></time>
-                                    </div>
-                                    <div class="flex flex-col">
-                                        <a href="<?= env('HTTP_DOMAIN').'/'.getUrl('blog_url').'/'. $item['seo_url'] ?>" class="block text-[24px] xl:text-[20px] xl:leading-[28px] leading-[35px] font-semibold text-secondary-main mb-[20px] line-clamp-2 transition-all duration-300 group-hover/item:min-md:text-white"><?= $item['title'] ?></a>
-                                        <p class="text-[17px] lg:text-[16px] leading-[28px] font-light text-paragraph line-clamp-3 transition-all duration-300 group-hover/item:min-md:text-white"><?= mb_substr($item['description'], 0, 100) ?>...</p>
-                                    </div>
-                                    <a href="<?= $item['seo_url'] ?>" class="flex items-center justify-center relative w-max sm:w-full overflow-hidden main-button group w-full">
-                                        <div class="w-full left px-[66px] lg:px-[35px] group-hover:px-[30px] py-[20px] flex items-center justify-center z-2 bg-transparent border border-solid border-paragraph/16 group-hover/item:min-md:border-white/16 group-hover:min-md:border-primary-main transition-all duration-300 group-hover:min-md:bg-primary-main sm:w-full">
-                                            <span class="text-[16px] leading-none font-medium text-paragraph transition-all duration-300 tracking-[-0.16px] group-hover/item:min-md:text-white group-hover:min-md:text-white"><?=getStaticText(5)?></span>
-                                        </div>
-                                        <div class="right flex items-center justify-center z-2 bg-[#9D8D5D] py-[22px] border border-solid border-transparent transition-all duration-300 opacity-0 w-0 group-hover:min-md:w-[56px] group-hover:min-md:px-[24px] group-hover:min-md:border-[#9D8D5D] group-hover:min-md:opacity-100 h-[58px]">
-                                            <i class="icon-angle-right text-[12px] leading-none text-white"></i>
-                                        </div>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-
-                    <?php endforeach; ?>
-                </div>
-            </div>
-        </div>
-    </div>
+</section>
 </main>
-
-<script>
-    let ratingStar = document.querySelectorAll('.rating-star');
-    let dataSelectedRate
-    ratingStar.forEach((item, index) => {
-        item.addEventListener('click', () => {
-            ratingStar.forEach((item, index) => {
-                item.classList.remove('to-rate');
-                item.classList.remove('rated');
-                item.classList.add('no-to-rated');
-            });
-            for (let i = 0; i <= index; i++) {
-                ratingStar[i].classList.remove('no-to-rated');
-                ratingStar[i].classList.add('rated');
-            }
-            item.classList.add('to-rate');
-
-            dataSelectedRate = item.dataset.id;
-            item.parentElement.dataset.selectedRate = dataSelectedRate;
-            // item.parentElement.querySelector('.rating-text span').innerText = dataSelectedRate;
-        });
-
-        item.addEventListener('mouseover', () => {
-            ratingStar.forEach((item, index) => {
-                item.classList.remove('to-hover');
-            });
-            for (let i = 0; i <= index; i++) {
-                ratingStar[i].classList.add('to-hover');
-            }
-
-            dataSelectedRate = item.dataset.id;
-            // item.parentElement.querySelector('.rating-text span').innerText = dataSelectedRate;
-        });
-
-        item.addEventListener('mouseout', () => {
-            ratingStar.forEach((item, index) => {
-                item.classList.remove('to-hover');
-            });
-
-            dataSelectedRate = item.dataset.id;
-            // item.parentElement.querySelector('.rating-text span').innerText = dataSelectedRate;
-        });
-    });
-</script>
 
 @endsection
