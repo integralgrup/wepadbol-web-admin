@@ -84,13 +84,13 @@
                                         </div>
                                         <!-- seo_title -->
                                         <div class="mb-3">
-                                            <label for="lat_{{ $language->lang_code }}" class="form-label">Enlem ({{ $language->lang_code }})</label>
+                                            <label for="lat_{{ $language->lang_code }}" class="form-label">Harita URL ({{ $language->lang_code }})</label>
                                             <input type="text" class="form-control" id="lat_{{ $language->lang_code }}" name="lat_{{ $language->lang_code }}">
                                         </div>
                                         <!-- seo_description -->
-                                        <div class="mb-3">
+                                        <div class="mb-3" style="display:none">
                                             <label for="long_{{ $language->lang_code }}" class="form-label">Boylam ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="long_{{ $language->lang_code }}" name="long_{{ $language->lang_code }}">
+                                            <input type="text" class="form-control" id="long_{{ $language->lang_code }}" name="long_{{ $language->lang_code }}" value="-">
                                         </div>
                                     </div>
                                 </div>

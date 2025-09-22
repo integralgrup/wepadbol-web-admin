@@ -97,9 +97,9 @@
                                             <label for="lat_{{ $language->lang_code }}">Enlem ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="lat_{{ $language->lang_code }}" name="lat_{{ $language->lang_code }}" value="{{ $lat[$language->lang_code] }}" required>
                                         </div>
-                                        <div class="form-group">
+                                        <div class="form-group" style="display:none">
                                             <label for="long_{{ $language->lang_code }}">Boylam ({{ strtoupper($language->lang_code) }})</label>
-                                            <input type="text" class="form-control" id="long_{{ $language->lang_code }}" name="long_{{ $language->lang_code }}" value="{{ $long[$language->lang_code] }}" required>
+                                            <input type="text" class="form-control" id="long_{{ $language->lang_code }}" name="long_{{ $language->lang_code }}" value="-">
                                         </div>
                                     </div>
                                 </div>

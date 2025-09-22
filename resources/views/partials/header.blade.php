@@ -49,7 +49,7 @@
         </a>
         <div class="menu-wrapper h-full flex items-center gap-[50px] py-[30px] px-[50px] border border-solid border-white/20 bg-white/4 backdrop-blur-[10px] rounded-[8px] duration-350 group-[&.is-fixed]/header:backdrop-blur-0 group-[&.is-fixed]/header:bg-white/0 group-[&.is-fixed]/header:border-white/0 lg:hidden xl:p-[15px] xl:gap-[15px]">
             <?php 
-            $menu = App\Models\Menu::with('children')
+            $menu = App\Models\Menu::where(['lang' => app()->getLocale(), 'menu_type' => 'header'])->with('children')
             ->where('parent_menu_id', 0) // only root menus
             ->get();
             ?>
@@ -87,88 +87,7 @@
             //dd($menuList);
             ?>
             
-            <?php $list = [
-                [
-                    'title' => 'Wepadbol',
-                    'url' => 'about.php',
-                ],
-                [
-                    'title' => 'Padbol Courts',
-                    'url' => 'javascript:;',
-                    'submenu' => 'submenu-1',
-                    'mega' => [
-                        [
-                            'title' => 'We Origins',
-                            'url' => 'javascript:;',
-                            'sub-menu' => [
-                                [
-                                    'title' => 'Origin Padbol',
-                                    'url' => 'products.php',
-                                ],
-                                [
-                                    'title' => 'Origin Roofed Padbol',
-                                    'url' => 'products.php',
-                                ],
-                            ],
-                        ],
-                        [
-                            'title' => 'We Panoramic',
-                            'url' => 'javascript:;',
-                            'sub-menu' => [
-                                [
-                                    'title' => 'Origin Padbol',
-                                    'url' => 'projects.php',
-                                ],
-                                [
-                                    'title' => 'Origin Roofed Padbol',
-                                    'url' => 'projects.php',
-                                ],
-                            ],
-                        ],
-                        [
-                            'title' => 'Accessories',
-                            'url' => 'javascript:;',
-                            'sub-menu' => [
-                                [
-                                    'title' => 'Origin Padbol',
-                                    'url' => 'products.php',
-                                    'left' => 'left-[30px]'
-                                ],
-                                [
-                                    'title' => 'Origin Roofed Padbol',
-                                    'url' => 'products.php',
-                                    'left' => 'left-[60px]'
-                                ],
-                            ],
-                        ],
-                    ]
-                ],
-                [
-                    'title' => 'Padbol Clubs',
-                    'url' => 'javascript:;',
-                    'submenu' => 'submenu-2',
-                    'mega' => [
-                        ['title' => 'PADBOL CLUP ESSENTIAL',],
-                        ['title' => 'PADBOL CLUP IMPACT',],
-                        ['title' => 'PADBOL CLUP EXTREME',],
-                        ['title' => 'PADBOL CLUP ESSENTIAL',],
-                        ['title' => 'PADBOL CLUP IMPACT',],
-                        ['title' => 'PADBOL CLUP EXTREME',],
-                    ],
-                ],
-                [
-                    'title' => 'We Projects',
-                    'url' => 'projects.php',
-                ],
-                [
-                    'title' => 'News',
-                    'url' => 'blogs.php',
-                ],
-                [
-                    'title' => 'Contact',
-                    'url' => 'contact.php',
-                ],
-            ]; ?>
+           
             <ul class="menu h-full flex items-center gap-[50px] 2xl:gap-[30px] xl:gap-[20px]">
                 <?php foreach ($menuList as $key => $item) : ?>
                     <li class="page-item group/menu">

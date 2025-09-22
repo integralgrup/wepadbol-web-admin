@@ -32,23 +32,40 @@
 
         </a>
         <div class="information-wrapper flex flex-col p-[50px] bg-blue rounded-[14px] md:p-[30px]">
-            <?php $list = ['facebook', 'x', 'linkedin', 'youtube', 'instagram']; ?>
+            
+            <?php $footerInfo = \App\Models\FooterInfo::where('lang' , app()->getLocale())->first(); ?>
+            <?php $offices = \App\Models\Office::where('lang' , app()->getLocale())->get(); ?>
+            <?php 
+                $footer_menu = App\Models\Menu::where(['lang' => app()->getLocale(), 'menu_type' => 'footer'])->with('children')
+                ->where('parent_menu_id', 0) // only root menus
+                ->get();
+            ?>
             <div class="social-media flex items-center gap-[30px] md:gap-[15px]">
-                <?php foreach ($list as $key => $item) : ?>
-                    <a href="" class="block relative social-item size-full md:size-[50px]">
-                        <i class="icon icon-<?= $item ?> text-[18px] w-[18px] h-[27px] text-white leading-normal flex items-center absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%]"></i>
+
+                    <a target="_blank"  href="<?= $footerInfo->facebook_url?>" class="block relative social-item size-full md:size-[50px]">
+                        <i class="icon icon-facebook text-[18px] w-[18px] h-[27px] text-white leading-normal flex items-center absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%]"></i>
                     </a>
-                <?php endforeach; ?>
+                    <a target="_blank"  href="<?= $footerInfo->x_url?>" class="block relative social-item size-full md:size-[50px]">
+                        <i class="icon icon-x text-[22px] w-[22px] h-[18px] text-white leading-normal flex items-center absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%]"></i>
+                    </a>
+                    <a target="_blank"  href="<?= $footerInfo->linkedin_url?>" class="block relative social-item size-full md:size-[50px]">
+                        <i class="icon icon-linkedin text-[18px] w-[18px] h-[18px] text-white leading-normal flex items-center absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%]"></i>
+                    </a>
+                    <a target="_blank"  href="<?= $footerInfo->youtube_url?>" class="block relative social-item size-full md:size-[50px]">
+                        <i class="icon icon-youtube text-[22px] w-[22px] h-[16px] text-white leading-normal flex items-center absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%]"></i>
+                    </a>
+                    <a target="_blank"  href="<?= $footerInfo->instagram_url?>" class="block relative social-item size-full md:size-[50px]">
+                        <i class="icon icon-instagram text-[22px] w-[22px] h-[22px] text-white leading-normal flex items-center absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%]"></i>
+                    </a>
             </div>
             <div class="line w-full h-[1px] bg-white opacity-20 mt-[50px] mb-[40px] md:my-[30px]"></div>
-            <?php $list = ['Head Office', 'London, UK', 'Doha, Qatar', 'Moscow, Russia', 'New York, USA']; ?>
             <div class="information-field flex flex-col gap-[20px]">
                 <ul>
-                    <?php foreach ($list as $key => $item) : ?>
+                    <?php foreach ($offices as $key => $item) : ?>
                         <li class="group/li <?= $key == 0 ? 'is-active' : '' ?> flex flex-col gap-[20px]">
-                            <div class="title  text-white text-[24px] font-normal leading-[36px] opacity-50 cursor-pointer duration-350 group-hover/li:opacity-100 group-[&.is-active]/li:font-bold group-[&.is-active]/li:opacity-100"><?= $item ?></div>
-                            <a href="" class="expo-field flex flex-col gap-[20px] w-full max-w-[270px] invisible pointer-events-none opacity-0 h-0 mb-0 duration-350 group-[&.is-active]/li:mb-[30px] group-[&.is-active]/li:visible group-[&.is-active]/li:opacity-100 group-[&.is-active]/li:pointer-events-auto">
-                                <p class="address text-[16px] text-white leading-[19px] opacity-75">Metro 34 Plaza No:23/100, İOSB Bedrettin Dalan Bulvarı Başakşehir, İstanbul / Türkiye</p>
+                            <div class="title  text-white text-[24px] font-normal leading-[36px] opacity-50 cursor-pointer duration-350 group-hover/li:opacity-100 group-[&.is-active]/li:font-bold group-[&.is-active]/li:opacity-100"><?= $item->title ?></div>
+                            <a target="_blank" href="<?= $item->lat ?>" class="expo-field flex flex-col gap-[20px] w-full max-w-[270px] invisible pointer-events-none opacity-0 h-0 mb-0 duration-350 group-[&.is-active]/li:mb-[30px] group-[&.is-active]/li:visible group-[&.is-active]/li:opacity-100 group-[&.is-active]/li:pointer-events-auto">
+                                <p class="address text-[16px] text-white leading-[19px] opacity-75"><?= $item->address ?></p>
                                 <div class="flex items-center gap-[15px]">
                                     <span class="text text-[14px] text-white font-medium leading-normal">Get Directions</span>
                                     <i class="icon icon-map text-[18px] h-[18px] text-green leading-normal flex"></i>
@@ -65,7 +82,7 @@
                         <i class="icon icon-phone text-[30px] h-[30px] text-white/35 duration-450 group-hover/item:text-green"></i>
                         <div class="flex flex-col">
                             <h5 class="text text-white text-[20px] font-bold leading-[30px]">Phone</h5>
-                            <span class="text text-white text-[18px] font-normal leading-[28px] opacity-75">+90 212 678 13 13</span>
+                            <span class="text text-white text-[18px] font-normal leading-[28px] opacity-75"><?= $footerInfo->phone ?></span>
                         </div>
                     </a>
                 </div>
@@ -74,7 +91,7 @@
                         <i class="icon icon-mail text-[30px] h-[30px] text-white/35 duration-450 group-hover/item:text-green"></i>
                         <div class="flex flex-col">
                             <h5 class="text text-white text-[20px] font-bold leading-[30px]">E-MAİL</h5>
-                            <span class="text text-white text-[18px] font-normal leading-[28px] opacity-75">info@wepadbol.com.tr</span>
+                            <span class="text text-white text-[18px] font-normal leading-[28px] opacity-75"><?= $footerInfo->email ?></span>
                         </div>
                     </a>
                 </div>
@@ -84,80 +101,19 @@
             <div class="background absolute left-0 top-0 size-full mix-blend-screen overflow-hidden z-2">
                 <img src="../assets/image/jpg/image-11.jpg" alt="" class="w-full h-full object-cover object-center">
             </div>
-            <?php $list = [
-                [
-                    'page-title' => 'SERVICES',
-                    'titles' => [
-                        ['title' => 'Football Pitch',],
-                        ['title' => 'Soccer Pitch',],
-                        ['title' => 'Multipurpose Fields',],
-                        ['title' => 'Tennis Courts',],
-                        ['title' => 'Padel',],
-                        ['title' => 'Football Pitch',],
-                    ],
-                ],
-                [
-                    'page-title' => 'USING AREAS',
-                    'titles' => [
-                        ['title' => 'Design',],
-                        ['title' => 'Installation',],
-                        ['title' => 'Maintenance',],
-                        ['title' => 'Turnkey Projects',],
-                        ['title' => 'Renovations',],
-                    ],
-                ],
-                [
-                    'page-title' => 'SPORT GRASS',
-                    'titles' => [
-                        ['title' => 'Football Grass',],
-                        ['title' => 'Hybrid Grass',],
-                        ['title' => 'Multipurpose Grass',],
-                        ['title' => 'Padel Turf',],
-                        ['title' => 'Tennis Grass',],
-                    ],
-                ],
-                [
-                    'page-title' => 'COMPANY',
-                    'titles' => [
-                        ['title' => 'Who We Are',],
-                        ['title' => 'What We Are Doing ?',],
-                        ['title' => 'Certificates',],
-                        ['title' => 'Privacy Policy',],
-                        ['title' => 'GPDR',],
-                    ],
-                ],
-                [
-                    'page-title' => 'PROJECTS',
-                    'titles' => [
-                        ['title' => 'Kıbrıs Padel Cort',],
-                        ['title' => 'Rwanda Nizami Saha',],
-                        ['title' => 'Kongo Goma',],
-                        ['title' => 'Kongo Bunya',],
-                    ],
-                ],
-                [
-                    'page-title' => 'LANDSPACE GRASS',
-                    'titles' => [
-                        ['title' => 'Garden Grass',],
-                        ['title' => 'Playground Grass',],
-                        ['title' => 'Decorative Grass',],
-                    ],
-                ],
-
-            ]; ?>
             <div class="grid grid-cols-3 relative z-3 gap-y-[100px] w-full">
-                <?php foreach ($list as $key => $item) : ?>
-                    <div class="page-field flex justify-center flex-col h-fit overflow-hidden">
-                        <h4 class="text text-white text-[24px] font-bold leading-[36px] mb-[25px]"><?= $item['page-title'] ?></h4>
-                        <ul class="flex flex-col gap-[15px]">
-                            <?php foreach ($item['titles'] as $key => $title) : ?>
-                                <li class="group/li fx fx-text-hover-with-child overflow-hidden relative">
-                                    <a href="" class="text fx-child text-white text-[16px] leading-normal tracking-[0.16px] opacity-75 duration-350 group-hover/li:opacity-100"> <?= $title['title'] ?></a>
-                                </li>
-                            <?php endforeach; ?>
-                        </ul>
-                    </div>
-                <?php endforeach; ?>
+                 <?php foreach ($footer_menu as $menu) : ?>
+                <div class="page-field flex justify-center flex-col h-fit overflow-hidden px-[15px] py-[50px] md:py-[30px]">
+                    <h4 class="text text-white text-[24px] font-bold leading-[36px] mb-[25px]"><?= $menu->title ?></h4>
+                    <ul class="flex flex-col gap-[15px]">
+                        <?php foreach ($menu->children as $child) : ?>
+                            <li class="group/li fx fx-text-hover-with-child overflow-hidden relative">
+                                <a href="<?= $child->seo_url ?>" class="text fx-child text-white text-[16px] leading-normal tracking-[0.16px] opacity-75 duration-350 group-hover/li:opacity-100"> <?= $child->title ?></a>
+                            </li>
+                        <?php endforeach; ?>
+                    </ul>
+                </div>
+            <?php endforeach; ?>
             </div>
         </div>
     </div>
