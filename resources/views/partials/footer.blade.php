@@ -1,7 +1,6 @@
 <?php
     $footerInfo = App\Models\FooterInfo::where('lang', app()->getLocale())->first();
 ?>
-<span>test</span>
 <footer class="footer-field w-full relative max-w-[1740px] mx-auto px-[30px]">
     <div class="content-wrapper grid grid-cols-[minmax(0,78px)_minmax(0,480px)_minmax(0,1100px)] md:grid-cols-1 md:gap-[30px] lg:grid-cols-[minmax(0,120px)_minmax(0,350px)_minmax(0,1000px)] xl:grid-cols-[minmax(0,160px)_minmax(0,480px)_minmax(0,910px)]">
         <a href="index.php" class="logo-wrapper flex items-center justify-center min-sm:mr-[60px] md:w-fit md:mx-auto md:rotate-90 md:h-[80px]">
