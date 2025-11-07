@@ -325,6 +325,17 @@
     <script src="{{ asset('admin-template') }}/summernote/summernote-bs5.min.js"></script>
     <!--end::Required Plugin(AdminLTE)--><!--begin::OverlayScrollbars Configure-->
 
+    <script src="https://www.integralspor.com/web-manager/ckeditor/ckeditor.js"></script>
+
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function(){
+        document.querySelectorAll('.editor').forEach(function(el){
+          CKEDITOR.replace(el);
+        });
+      });
+    </script>
+
     <script>
       $(document).ready(function() {
           $('.summernote').summernote({
