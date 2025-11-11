@@ -273,6 +273,13 @@ Route::post('/admin/continent/store', 'App\Http\Controllers\Admin\CountryControl
 Route::get('/admin/continent/{id}/edit', 'App\Http\Controllers\Admin\CountryController@continentEdit')->name('admin.continent.edit');
 Route::delete('/admin/continent/{id}', 'App\Http\Controllers\Admin\CountryController@continentDestroy')->name('admin.continent.destroy');
 
+// Seo Settings routes SeoController
+Route::get('/admin/seo', 'App\Http\Controllers\Admin\SeoController@index')->name('admin.seo.index');
+Route::get('/admin/seo/create', 'App\Http\Controllers\Admin\SeoController@create')->name('admin.seo.create');
+Route::post('/admin/seo/store', 'App\Http\Controllers\Admin\SeoController@store')->name('admin.seo.store');
+Route::get('/admin/seo/{id}/edit', 'App\Http\Controllers\Admin\SeoController@edit')->name('admin.seo.edit');
+Route::delete('/admin/seo/{id}', 'App\Http\Controllers\Admin\SeoController@destroy')->name('admin.seo.destroy');
+
 Route::post('/admin/update-order', 'App\Http\Controllers\Admin\FooterInfoController@updateSortOrder')->name('admin.update_order');
 
 
