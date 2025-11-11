@@ -85,13 +85,13 @@
                                         <!-- seo_title -->
                                         <div class="mb-3">
                                             <label for="seo_title_{{ $language->lang_code }}" class="form-label">SEO Başlık ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}">
+                                            <input type="text" class="form-control seo_title" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}">
                                         </div> 
 
                                         <!-- seo_description -->
                                         <div class="mb-3">
                                             <label for="seo_description_{{ $language->lang_code }}" class="form-label">SEO Açıklama ({{ $language->lang_code }})</label>
-                                            <textarea class="form-control" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" rows="3"></textarea>
+                                            <textarea class="form-control seo_description" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" rows="3"></textarea>
                                         </div>
 
                                         <!-- seo_keywords -->

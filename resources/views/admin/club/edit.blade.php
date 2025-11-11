@@ -138,12 +138,12 @@
                                         <!-- seo_title -->
                                         <div class="mb-3">
                                             <label for="seo_title_{{ $language->lang_code }}" class="form-label">SEO Başlığı ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}" value="{{ $seo_title[$language->lang_code] ?? '' }}" required>
+                                            <input type="text" class="form-control seo_title" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}" value="{{ $seo_title[$language->lang_code] ?? '' }}" required>
                                         </div>
                                         <!-- seo_description -->
                                         <div class="mb-3">
                                             <label for="seo_description_{{ $language->lang_code }}" class="form-label">SEO Açıklaması ({{ $language->lang_code }})</label>
-                                            <textarea class="form-control" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" rows="3" required>{{ $seo_description[$language->lang_code] ?? '' }}</textarea>
+                                            <textarea class="form-control seo_description" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" rows="3" required>{{ $seo_description[$language->lang_code] ?? '' }}</textarea>
                                         </div>
                                         <!-- seo_keywords -->
                                         <div class="mb-3">

@@ -400,6 +400,49 @@
       }
     });
   </script>
+  <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        const fields = [
+          { selector: ".seo_title", limit: 100 },
+          { selector: ".seo_description", limit: 200 }
+        ];
+
+        fields.forEach(field => {
+          const input = document.querySelector(field.selector);
+          if (!input) return;
+
+          // Create and style <small> counter
+          const counter = document.createElement("small");
+          counter.style.display = "block";
+          counter.style.fontSize = "0.85em";
+          counter.style.color = "red";
+          counter.style.fontWeight = "bold";
+
+          // Function to update remaining characters
+          const updateCounter = () => {
+            const remaining = field.limit - input.value.length;
+            // total character limit
+            const total = field.limit;
+            const typed = input.value.length;
+            counter.textContent = `${typed} karakter yazıldı / Maksimum ${total} karakter.`;
+            counter.style.color = "red";
+            counter.style.fontWeight = "bold";
+          };
+
+          // Prevent typing beyond the limit
+          input.addEventListener("input", () => {
+            if (input.value.length > field.limit) {
+              input.value = input.value.slice(0, field.limit);
+            }
+            updateCounter();
+          });
+
+          // Insert counter and initialize
+          input.insertAdjacentElement("afterend", counter);
+          updateCounter(); // ✅ count existing text on page load
+        });
+      });
+      </script>
     <!-- apexcharts -->
     <script
       src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"

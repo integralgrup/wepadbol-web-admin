@@ -99,13 +99,13 @@ $categoryId = request()->route('categoryId');
                                         <!-- seo_title -->
                                         <div class="mb-3">
                                             <label for="seo_title_{{ $language->lang_code }}" class="form-label">SEO Başlık ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}" value="{{ $category_items[$key]->seo_title ?? '' }}">
+                                            <input type="text" class="form-control seo_title" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}" value="{{ $category_items[$key]->seo_title ?? '' }}">
                                         </div>
 
                                         <!-- seo_description -->
                                         <div class="mb-3">
                                             <label for="seo_description_{{ $language->lang_code }}" class="form-label">SEO Açıklama ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" value="{{ $category_items[$key]->seo_description ?? '' }}">
+                                            <input type="text" class="form-control seo_description" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" value="{{ $category_items[$key]->seo_description ?? '' }}">
                                         </div>
 
                                         <!-- seo_keywords -->
