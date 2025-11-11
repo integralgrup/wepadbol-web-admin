@@ -43,7 +43,7 @@
                                             <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d M Y', strtotime($item->created_at)) }}</small>
                                         </div>
                                         <a href="{{ env('HTTP_DOMAIN') . '/' . getUrl('blog_url') .'/'. $item->seo_url }}" class="title flex text-blue text-[48px] font-bold leading-[64px] opacity-90 mb-[40px] uppercase xl:text-[40px] lg:text-2xl lg:mb-[15px]" data-swiper-parallax-x="50%">{{ $item->title }}</a>
-                                        <p class="expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mb-[40px] lg:mb-[15px] lg:text-base md:[&>_br]:hidden" data-swiper-parallax-x="50%">{{ mb_substr($item->description, 0, 100) }}...</p>
+                                        <p class="expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mb-[40px] lg:mb-[15px] lg:text-base md:[&>_br]:hidden" data-swiper-parallax-x="50%">{!! mb_substr($item->description, 0, 100) !!}...</p>
                                         <div class="button-controller-field mb-[60px] lg:mb-[30px] xsm:mb-0" data-swiper-parallax-x="50%">
                                             <a href="{{ env('HTTP_DOMAIN') . '/' . getUrl('blog_url') .'/'. $item->seo_url }}" class="button group/button fx fx-text-hover-with-child relative bg-green flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[6] md:h-[60px] sm:h-[50px] sm:px-[15px]">
                                                 <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px]">Read More</small>
@@ -132,7 +132,7 @@
                                                 <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d M Y', strtotime($item->created_at)) }}</small>
                                             </div>
                                             <div class="blog-title text-blue text-[24px] font-bold leading-[36px] opacity-90 line-clamp-2 sm:text-[17px] sm:leading-normal">{{ $item->title }}</div>
-                                            <div class="blog-expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mt-[20px] max-w-[390px] line-clamp-2 lg:max-w-full sm:text-[16px]">{{ mb_substr($item->description, 0, 100) }}...</div>
+                                            <div class="blog-expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mt-[20px] max-w-[390px] line-clamp-2 lg:max-w-full sm:text-[16px]">{!! mb_substr($item->description, 0, 100) !!}...</div>
                                         </div>
                                     </div>
                                 </a>
