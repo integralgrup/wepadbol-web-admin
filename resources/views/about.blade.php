@@ -283,7 +283,7 @@ $breadcrumbImage = $about->image;
                         </div>
                         <div class="overlay absolute left-0 top-0 size-full bg-blue opacity-0 duration-350 group-hover/item:opacity-100"></div>
                         <div class="image absolute left-0 top-0 size-full mix-blend-plus-lighter rounded-full opacity-0 duration-350 group-hover/item:opacity-100 group-hover/item:rounded-none">
-                            <img src="{{ asset(getFolder( ['uploads_folder', 'images_folder'], $about->lang ) . '/' . $about->vision_image) }}" alt="{{ $about->vision_title }}" class="size-full object-cover object-center">
+                            <img src="../assets/image/jpg/image-36.jpg" alt="{{ $about->vision_title }}" class="size-full object-cover object-center">
                         </div>
                         <div class="text-editor max-w-full px-[115px] py-[120px] relative editor-h2:text-blue editor-h2:pl-[50px] editor-h2:relative editor-h2:before:absolute editor-h2:before:left-0 editor-h2:before:top-[50%] editor-h2:before:translate-y-[-50%] editor-h2:before:bg-green editor-h2:before:size-[24px] editor-h2:duration-350 editor-p:text-[#52555C] group-hover/item:editor-h2:text-white group-hover/item:editor-p:text-white/55 xl:p-[80px] md:p-[40px]">
                             <h2>{{ $about->vision_title }}</h2>
@@ -296,7 +296,7 @@ $breadcrumbImage = $about->image;
                         </div>
                         <div class="overlay absolute left-0 top-0 size-full bg-blue opacity-0 duration-350 group-hover/item:opacity-100"></div>
                         <div class="image absolute left-0 top-0 size-full mix-blend-plus-lighter rounded-full opacity-0 duration-350 group-hover/item:opacity-100 group-hover/item:rounded-none">
-                            <img src="{{ asset(getFolder( ['uploads_folder', 'images_folder'], $about->lang ) . '/' . $about->mission_image) }}" alt="{{ $about->mission_title }}" class="size-full object-cover object-center">
+                            <img src="../assets/image/jpg/image-36.jpg" alt="{{ $about->mission_title }}" class="size-full object-cover object-center">
                         </div>
                         <div class="text-editor max-w-full px-[115px] py-[120px] relative editor-h2:text-blue editor-h2:pl-[50px] editor-h2:relative editor-h2:before:absolute editor-h2:before:left-0 editor-h2:before:top-[50%] editor-h2:before:translate-y-[-50%] editor-h2:before:bg-green editor-h2:before:size-[24px] editor-h2:duration-350 editor-p:text-[#52555C] group-hover/item:editor-h2:text-white group-hover/item:editor-p:text-white/55 xl:p-[80px] md:p-[40px]">
                             <h2>{{ $about->mission_title }}</h2>

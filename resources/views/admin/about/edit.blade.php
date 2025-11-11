@@ -99,7 +99,7 @@
                                             <label for="mission_text_{{ $about->lang }}" class="form-label">Misyon Açıklaması ({{ $about->lang }})</label>
                                             <textarea class="form-control" id="mission_text_{{ $about->lang }}" name="mission_text_{{ $about->lang }}" rows="3" required>{{ $about->mission_text }}</textarea>
                                         </div>
-                                        <div class="mb-3">
+                                        <div class="mb-3" style="display:none">
                                             <label for="mission_image_{{ $about->lang }}" class="form-label">Misyon Görseli ({{ $about->lang }})</label>
                                             <input type="file" class="form-control" id="mission_image_{{ $about->lang }}" name="mission_image_{{ $about->lang }}" accept="image/*">     
                                             @if($about->mission_image)
@@ -115,7 +115,7 @@
                                             <label for="vision_text_{{ $about->lang }}" class="form-label">Vizyon Açıklaması ({{ $about->lang }})</label>
                                             <textarea class="form-control" id="vision_text_{{ $about->lang }}" name="vision_text_{{ $about->lang }}" rows="3" required>{{ $about->vision_text }}</textarea>
                                         </div>
-                                        <div class="mb-3">
+                                        <div class="mb-3" style="display:none">
                                             <label for="vision_image_{{ $about->lang }}" class="form-label">Vizyon Görseli ({{ $about->lang }})</label>
                                             <input type="file" class="form-control" id="vision_image_{{ $about->lang }}" name="vision_image_{{ $about->lang }}" accept="image/*">
                                             @if($about->vision_image)
