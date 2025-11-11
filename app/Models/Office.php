@@ -22,6 +22,7 @@ class Office extends Model
         'email',
         'lat',
         'long',
+        'map_url',
         'sort',
     ];
 

@@ -52,23 +52,24 @@ class OfficeController extends Controller
                 $data = $request->validate([
                     'title_' . $language->lang_code => 'required|string|max:100',
                     'description_' . $language->lang_code => 'required|string',
-                    'address_' . $language->lang_code => 'required|string|max:255',
                     'phone_' . $language->lang_code => 'required|string|max:50',
                     'email_' . $language->lang_code => 'required|string|email|max:100',
                     'lat_' . $language->lang_code => 'required|string|max:50',
                     'long_' . $language->lang_code => 'required|string|max:50',
+                    'map_url_' . $language->lang_code => 'nullable|string|max:255',
                 ]);
 
                 Office::updateOrCreate(
                     ['office_id' => $office_id, 'lang' => $language->lang_code],
                     [
-                        'title' => $data['title_' . $language->lang_code],
-                        'description' => $data['description_' . $language->lang_code],
-                        'address' => $data['address_' . $language->lang_code],
-                        'phone' => $data['phone_' . $language->lang_code],
-                        'email' => $data['email_' . $language->lang_code],
-                        'lat' => $data['lat_' . $language->lang_code],
-                        'long' => $data['long_' . $language->lang_code],
+                        'title' => $data['title_' . $language->lang_code] ?? $data['title_en'],
+                        'description' => $data['description_' . $language->lang_code] ?? $data['description_en'],
+                        'address' => $data['description_' . $language->lang_code] ?? $data['description_en'],
+                        'phone' => $data['phone_' . $language->lang_code] ?? $data['phone_en'],
+                        'email' => $data['email_' . $language->lang_code] ?? $data['email_en'],
+                        'lat' => $data['lat_' . $language->lang_code] ?? $data['lat_en'],
+                        'long' => $data['long_' . $language->lang_code] ?? $data['long_en'],
+                        'map_url' => $data['map_url_' . $language->lang_code] ?? $data['map_url_en'],
                     ]
                 );
             }
