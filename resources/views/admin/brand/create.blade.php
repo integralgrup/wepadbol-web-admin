@@ -66,7 +66,7 @@
                                                 <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" {{ $required }}>
                                             </div>
                                             <div class="mb-3">
-                                                <label for="url_{{ $language->lang_code }}" class="form-label">Alt Başlık({{ $language->lang_code }})</label>
+                                                <label for="url_{{ $language->lang_code }}" class="form-label">Buton URL({{ $language->lang_code }})</label>
                                                 <input type="text" class="form-control" id="url_{{ $language->lang_code }}" name="url_{{ $language->lang_code }}" {{ $required }}>
                                             </div>
                                             <div class="mb-3">
@@ -88,19 +88,19 @@
                                                 <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" {{ $required }}>
                                             </div>
                                             <!-- seo_title -->
-                                            <div class="mb-3">
+                                            <div class="mb-3" style="display:none;">
                                                 <label for="seo_title_{{ $language->lang_code }}" class="form-label">SEO Başlığı ({{ $language->lang_code }})</label>
-                                                <input type="text" class="form-control seo_title" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}" {{ $required }}>
+                                                <input type="text" class="form-control seo_title" id="seo_title_{{ $language->lang_code }}" name="seo_title_{{ $language->lang_code }}" value="-">
                                             </div>
                                             <!-- seo_description -->
-                                            <div class="mb-3">
+                                            <div class="mb-3" style="display:none;">
                                                 <label for="seo_description_{{ $language->lang_code }}" class="form-label">SEO Açıklaması ({{ $language->lang_code }})</label>
-                                                <textarea class="form-control seo_description" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" rows="3" {{ $required }}></textarea>
+                                                <textarea class="form-control seo_description" id="seo_description_{{ $language->lang_code }}" name="seo_description_{{ $language->lang_code }}" rows="3" >-</textarea>
                                             </div>
                                             <!-- seo_keywords -->
-                                            <div class="mb-3">
+                                            <div class="mb-3" style="display:none;">
                                                 <label for="seo_keywords_{{ $language->lang_code }}" class="form-label">SEO Anahtar Kelimeleri ({{ $language->lang_code }})</label>
-                                                <input type="text" class="form-control" id="seo_keywords_{{ $language->lang_code }}" name="seo_keywords_{{ $language->lang_code }}" {{ $required }}>
+                                                <input type="text" class="form-control" id="seo_keywords_{{ $language->lang_code }}" name="seo_keywords_{{ $language->lang_code }}" value="-">
                                             </div>
                                         </div>
                                     </div>
