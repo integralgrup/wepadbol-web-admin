@@ -552,7 +552,8 @@ class ProductController extends Controller
     // Product Category methods will go here
     public function categoryIndex()
     {   
-        $categories = ProductCategory::where('lang', app()->getLocale())->get();
+        $categories = ProductCategory::where(['parent_category_id' => null, 'lang' => app()->getLocale()])->with('children')->orderBy('sort', 'asc')->get();
+        //dd($categories);
         return view('admin.product.category.index', compact('categories'));
     }
 

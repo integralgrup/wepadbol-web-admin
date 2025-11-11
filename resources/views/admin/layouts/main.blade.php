@@ -76,6 +76,11 @@
         gap: 20px;
       }
     </style>
+    <style>
+  .child-row td {
+    background-color: #f1f1f1 !important;
+  }
+</style>
   </head>
   <!--end::Head-->
   <!--begin::Body-->

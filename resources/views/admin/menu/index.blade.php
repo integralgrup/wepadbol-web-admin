@@ -1,10 +1,6 @@
 @extends('admin.layouts.main')
 @section('title', 'Menü Yönetimi')
-<style>
-  .child-row td {
-    background-color: #f1f1f1 !important;
-  }
-</style>
+
 @section('content')
    <!--begin::App Content Header-->
         <div class="app-content-header">
@@ -49,7 +45,7 @@
                     <table class="table">
                       <thead>
                         <tr>
-                          <th></th>
+                          <th></th> 
                           <th>Başlık</th>
                           <th>Menü Tipi</th>
                           <th  style="width: 300px">İşlem</th>

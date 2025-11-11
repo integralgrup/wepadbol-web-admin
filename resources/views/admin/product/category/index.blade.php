@@ -53,19 +53,21 @@ $imageId = request()->route('imageId');
                             </a>
                         </div>
                     </div>
-                    <div class="card-body">
-                        <table class="table table-bordered">
+                    <div class="card-body table-responsive">
+                        <table class="table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th></th>
                                     <th>Başlık</th>
                                     <th style="width: 350px;">İşlemler</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="connectedSortable" table_name="product_category" column_name="category_id">
                                 @foreach($categories as $key => $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                    <tr  data-id="{{$item->category_id}}">
+                                        <td>
+                                            <i class="bi bi-list"></i>
+                                        </td>
                                         <td>
                                             {{ $item->title }}
                                         </td>
@@ -77,11 +79,30 @@ $imageId = request()->route('imageId');
                                                 @csrf
                                                 @method('DELETE')
                                                 <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bu içeriği silmek istediğinize emin misiniz?')">
-                                                    <i class="bi bi-trash"></i> Sil
+                                                    <i class="bi bi-trash"></i>
                                                 </button>
                                             </form>
                                         </td>
                                     </tr>
+                                    @if($item->children)
+                                        @foreach($item->children as $child)
+                                            <tr  data-id="{{$child->category_id}}" class="child-row">
+                                              <td>
+                                                <i class="bi bi-list"></i>
+                                              </td>
+                                              <td> <!-- bullet icon--> 
+                                                &nbsp; &nbsp; - {{ $child->title }}</td>
+                                              <td>
+                                                <a href="{{ route('admin.product.category.edit', $child->category_id) }}" class="btn btn-warning btn-sm"><i class="bi bi-pencil"></i>  Düzenle</a>
+                                                <form action="{{ route('admin.product.category.destroy', $child->category_id) }}" method="POST" style="display:inline;">
+                                                  @csrf
+                                                  @method('DELETE')
+                                                  <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bu içeriği silmek istediğinize emin misiniz?')"><i class="bi bi-trash"></i></button>
+                                                </form>
+                                              </td>
+                                            </tr>
+                                        @endforeach
+                                    @endif
                                 @endforeach
                             </tbody>
                         </table>

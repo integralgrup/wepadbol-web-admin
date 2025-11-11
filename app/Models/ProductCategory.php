@@ -38,4 +38,9 @@ class ProductCategory extends Model
         return $this->belongsTo(Product::class, 'category_id', 'category_id');
     }
 
+    public function children()
+    {
+        return $this->hasMany(ProductCategory::class, 'parent_category_id', 'category_id')->orderBy('sort', 'asc');
+    }
+
 }
