@@ -73,7 +73,7 @@
                                         <!-- title_1 -->
                                         <div class="mb-3">
                                             <label for="description_{{ $about->lang }}" class="form-label">Açıklama ({{ $about->lang }})</label>
-                                            <input type="text" class="form-control" id="description_{{ $about->lang }}" name="description_{{ $about->lang }}" value="{{ $about->description }}" required>
+                                            <textarea class="form-control" id="description_{{ $about->lang }}" name="description_{{ $about->lang }}" rows="3" required>{{ $about->description }}</textarea>
                                         </div>
                                         <div class="mb-3">
                                             <div>

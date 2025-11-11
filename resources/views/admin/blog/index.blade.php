@@ -48,19 +48,19 @@
                         </div>
                     </div>
                     <div class="card-body">
-                        <table class="table table-bordered">
+                        <table class="table table-striped dataTable" id="sortable-table">
                             <thead>
                                 <tr>
-                                    <th>#</th>
+                                    <th></th>
                                     <th>Başlık</th>
                                     <th>Görsel</th>
                                     <th style="width: 350px;">İşlemler</th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody class="connectedSortable" table_name="blog" column_name="blog_id">
                                 @foreach($blogs as $item)
-                                    <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                   <tr  data-id="{{$item->blog_id}}">
+                                        <td><i class="bi bi-list"></i></td>
                                         <td>{{ $item->title }}</td>
                                         <td>
                                             <img src="{{ asset( getFolder(['uploads_folder','blog_images_folder']) . '/' . $item->image) }}" alt="{{ $item->alt }}" class="img-thumbnail" width="100">

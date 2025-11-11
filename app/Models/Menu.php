@@ -53,7 +53,7 @@ class Menu extends Model
     public function children()
     {
         return $this->hasMany(Menu::class, 'parent_menu_id', 'menu_id')
-            ->with('children'); // recursive eager loading
+            ->with('children')->orderBy('sort'); // recursive eager loading
     }
 
     public function parent()

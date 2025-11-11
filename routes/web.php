@@ -273,6 +273,9 @@ Route::post('/admin/continent/store', 'App\Http\Controllers\Admin\CountryControl
 Route::get('/admin/continent/{id}/edit', 'App\Http\Controllers\Admin\CountryController@continentEdit')->name('admin.continent.edit');
 Route::delete('/admin/continent/{id}', 'App\Http\Controllers\Admin\CountryController@continentDestroy')->name('admin.continent.destroy');
 
+Route::post('/admin/update-order', 'App\Http\Controllers\Admin\FooterInfoController@updateSortOrder')->name('admin.update_order');
+
+
 }); // End of Auth middleware group
 //Project Front End routes
 //Home route
