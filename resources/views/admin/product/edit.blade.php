@@ -118,15 +118,15 @@
                                              <!-- description -->
                                             <div class="mb-3">
                                                 <label for="description_{{ $language->lang_code }}" class="form-label">Açıklama ({{ $language->lang_code }})</label>
-                                                <textarea class="form-control summernote" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" required>{{ $description[$language->lang_code] ?? '' }}</textarea>
+                                                <textarea class="form-control editor" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" rows="3" required>{{ $description[$language->lang_code] ?? '' }}</textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="features_description_{{ $language->lang_code }}" class="form-label">Features Açıklaması ({{ $language->lang_code }})</label>
-                                                <textarea class="form-control summernote" id="features_description_{{ $language->lang_code }}" name="features_description_{{ $language->lang_code }}" rows="3" required>{{ $features_description[$language->lang_code] ?? '' }}</textarea>
+                                                <textarea class="form-control editor" id="features_description_{{ $language->lang_code }}" name="features_description_{{ $language->lang_code }}" rows="3" required>{{ $features_description[$language->lang_code] ?? '' }}</textarea>
                                             </div>
                                             <div class="mb-3">
                                                 <label for="technical_info_{{ $language->lang_code }}" class="form-label">Teknik Bilgiler ({{ $language->lang_code }})</label>
-                                                <textarea class="form-control summernote" id="technical_info_{{ $language->lang_code }}" name="technical_info_{{ $language->lang_code }}" rows="3" required>{{ $technical_info[$language->lang_code] ?? '' }}</textarea>
+                                                <textarea class="form-control editor" id="technical_info_{{ $language->lang_code }}" name="technical_info_{{ $language->lang_code }}" rows="3" required>{{ $technical_info[$language->lang_code] ?? '' }}</textarea>
                                             </div>
                                         </div>
 
