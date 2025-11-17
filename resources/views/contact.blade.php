@@ -32,15 +32,15 @@
                                             <i class="icon icon-chevron-down-3 text-[16px] h-[16px] leading-normal text-white flex duration-350 group-[&.is-active]/li:rotate-180"></i>
                                         </div>
                                         <div class="expo-field flex flex-col gap-[20px] w-full max-w-[270px] invisible pointer-events-none translate-z-0 opacity-0 h-0 mb-0 duration-350 group-[&.is-active]/li:mb-[30px] group-[&.is-active]/li:visible group-[&.is-active]/li:opacity-100 group-[&.is-active]/li:pointer-events-auto">
-                                            <a href="" class="item group/item flex items-center gap-[20px]">
+                                            <a href="tel:{{$item['phone']}}" class="item group/item flex items-center gap-[20px]">
                                                 <i class="icon icon-phone text-[18px] h-[18px] text-green"></i>
                                                 <p class="text text-[16px] text-white leading-[19px] opacity-75 duration-350 group-hover/item:opacity-100">{{$item['phone']}}</p>
                                             </a>
-                                            <a href="" class="item group/item flex items-center gap-[20px]">
+                                            <a href="mailto:{{$item['email']}}" class="item group/item flex items-center gap-[20px]">
                                                 <i class="icon icon-mail text-[18px] h-[18px] text-green"></i>
                                                 <p class="text text-[16px] text-white leading-[19px] opacity-75 duration-350 group-hover/item:opacity-100">{{$item['email']}}</p>
                                             </a>
-                                            <a href="" class="item group/item flex items-center gap-[20px]">
+                                            <a href="<?= $item['map_url'] ?>" class="item group/item flex items-center gap-[20px]">
                                                 <i class="icon icon-map text-[18px] h-[18px] text-green"></i>
                                                 <p class="text text-[16px] text-white leading-[19px] opacity-75 duration-350 group-hover/item:opacity-100">{{$item['address']}}</p>
                                             </a>
@@ -53,7 +53,7 @@
                     <div class="button-map-wrapper max-w-[1040px] mx-auto absolute bottom-[80px] right-[160px] w-full h-[60px] flex justify-between items-center 2xl:max-w-[700px] xl:max-w-[600px] lg:max-w-[400px] lg:flex-col lg:gap-[30px] lg:bottom-[15px] lg:h-auto md:right-[60px] sm:relative sm:left-0 sm:right-0 sm:top-0 sm:bottom-0 sm:order-1">
                         <div class="buttons-field flex items-center gap-[40px] xs:gap-[15px]">
                             <!-- VARSAYILAN MAP URL -->
-                            <a href="https://maps.app.goo.gl/91aFgFR6ZiQJrCcc8" class="button fx fx-text-hover-with-child direction-button group/button relative bg-white border-[4px] border-solid border-blue border-opacity-6 flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] duration-350 before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[45px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[4.8] min-sm:hover:border-transparent md:h-[60px] sm:h-[50px] sm:px-[15px] lg:w-full">
+                            <a href="<?= $offices[0]['map_url'] ?>" class="button fx fx-text-hover-with-child direction-button group/button relative bg-white border-[4px] border-solid border-blue border-opacity-6 flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] duration-350 before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[45px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[4.8] min-sm:hover:border-transparent md:h-[60px] sm:h-[50px] sm:px-[15px] lg:w-full">
                                 <small class="text fx-child relative z-2 text-blue text-[16px] font-bold leading-[19px] lg:whitespace-nowrap duration-350 min-sm:group-hover/button:text-white">Get Direction</small>
                                 <i class="icon relative z-2 icon-map text-green text-[20px] h-[20px] flex items-center leading-normal duration-350"></i>
                             </a>
