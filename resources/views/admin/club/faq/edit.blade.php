@@ -68,25 +68,29 @@ $faqId = request()->route('faqId');
                             <div class="tab-content" id="myTabContent">
                                 @foreach($languages as $language)
                                 <div class="tab-pane fade {{ $loop->first ? 'show active' : '' }}" id="tab-{{ $language->id }}" role="tabpanel" aria-labelledby="tab-{{ $language->id }}-tab">
-                                    <div class="card-body" style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap: 20px;">
+                                    <div class="card-body" >
                                         <input type="hidden" name="lang_{{ $language->lang_code }}" value="{{ $language->lang_code }}">
                                         <input type="hidden" name="club_id" value="{{ $id }}">
                                         <input type="hidden" name="question_id" value="{{ $faqId }}">
 
+                                        <div class="grids-3 mb-3">
+                                            <div class="mb-3">
+                                                <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ $language->lang_code }})</label>
+                                                <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" required value="{{ $title[$language->lang_code] ?? '' }}">
+                                            </div>
+                                            <!-- sıralama -->
+                                            <div class="mb-3">
+                                                <label for="sort_{{ $language->lang_code }}" class="form-label">Sıralama ({{ $language->lang_code }})</label>
+                                                <input type="number" class="form-control" id="sort_{{ $language->lang_code }}" name="sort_{{ $language->lang_code }}" value="{{ $sort[$language->lang_code] ?? 0 }}">
+                                            </div>
+                                        </div>
+
 
                                         <div class="mb-3">
-                                            <label for="title_{{ $language->lang_code }}" class="form-label">Başlık ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="title_{{ $language->lang_code }}" name="title_{{ $language->lang_code }}" required value="{{ $title[$language->lang_code] ?? '' }}">
+                                            <label for="description_{{ $language->lang_code }}" class="form-label">Açıklama ({{ $language->lang_code }})</label>
+                                            <input type="text" class="form-control editor" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" value="{{ $description[$language->lang_code] ?? '' }}">
                                         </div>
-                                        <div class="mb-3">
-                                            <label for="description_{{ $language->lang_code }}" class="form-label">Alt Metin ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" value="{{ $description[$language->lang_code] ?? '' }}">
-                                        </div>
-                                        <!-- sıralama -->
-                                        <div class="mb-3">
-                                            <label for="sort_{{ $language->lang_code }}" class="form-label">Sıralama ({{ $language->lang_code }})</label>
-                                            <input type="number" class="form-control" id="sort_{{ $language->lang_code }}" name="sort_{{ $language->lang_code }}" value="{{ $sort[$language->lang_code] ?? 0 }}">
-                                        </div>
+                                        
                                     </div>
                                 </div>
                                 @endforeach
