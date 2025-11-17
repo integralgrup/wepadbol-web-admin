@@ -80,7 +80,7 @@
 
                                         <div class="mb-3">
                                             <label for="description_{{ $language->lang_code }}" class="form-label">Açıklama ({{ $language->lang_code }})</label>
-                                            <input type="text" class="form-control editor" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" {{ $required }}>
+                                            <textarea class="form-control editor" id="description_{{ $language->lang_code }}" name="description_{{ $language->lang_code }}" {{ $required }}></textarea>
                                         </div>
                                         
                                     </div>
