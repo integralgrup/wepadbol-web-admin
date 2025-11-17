@@ -136,7 +136,7 @@
         <!-- Önbellek tutmasın diye ekledim '?id<?= rand(); ?>' yazısını silersin -->
         <script src="{{asset('assets/js/script.js?id='.rand())}}"></script>
 
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxycU6lO2UWtUA4BZDIfXrSVyYVqQ0wRM&callback=initMap&libraries=marker&v=beta" defer=""></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAgSzMvUYR_Yw8eLUT3YTbQ5yQnARsCq8I&callback=initMap&libraries=marker&v=beta" defer=""></script>
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
