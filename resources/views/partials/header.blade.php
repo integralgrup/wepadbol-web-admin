@@ -13,7 +13,7 @@
     <meta name="description" content="{{ $seo->seo_description }}">
     <?php $pageTitle = $seo->seo_title;?>
     @endif
-    <title><?php if (!empty($pageTitle)) echo $pageTitle . ' - '; ?><?= $nameofProject; ?></title>
+    <title><?php echo !empty($pageTitle) ? $pageTitle : $nameofProject ?></title>
     <link rel="shortcut icon" href="../assets/image/trademark/favicon.png" type="image/x-icon">
     <!-- Önbellek tutmasın diye ekledim; '?id<?= rand(); ?>' yazısını silersin -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css?id=' . rand()) }}">
