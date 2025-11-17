@@ -74,6 +74,7 @@
                                             <select name="page_{{ $language->lang_code }}" id="page_{{ $language->lang_code }}" class="form-select" required>
                                                 <option value="home" {{ $page[$language->lang_code] == 'home' ? 'selected' : '' }}>Anasayfa</option>
                                                 <option value="about" {{ $page[$language->lang_code] == 'about' ? 'selected' : '' }}>Hakkımızda</option>
+                                                <option value="product_category" {{ $page[$language->lang_code] == 'product_category' ? 'selected' : '' }}>Ürün Kategorisi</option>
                                                 <option value="projects" {{ $page[$language->lang_code] == 'projects' ? 'selected' : '' }}>Projeler</option>
                                                 <option value="news" {{ $page[$language->lang_code] == 'news' ? 'selected' : '' }}>Haberler</option>
                                                 <option value="contact" {{ $page[$language->lang_code] == 'contact' ? 'selected' : '' }}>İletişim</option>

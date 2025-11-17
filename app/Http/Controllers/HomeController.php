@@ -27,6 +27,7 @@ use App\Models\Country;
 use App\Models\Continent;
 use App\Models\Project;
 use App\Models\ProjectGallery;
+use App\Models\SeoSettings;
 use Illuminate\Support\Facades\DB;
 
 
@@ -65,7 +66,9 @@ class HomeController extends Controller
         //dd($blog);
         $continents = Continent::where('lang', app()->getLocale())->with('countries')->get()->toArray();
 
-        return view('home', compact('sliders', 'languages', 'about', 'about_sliders', 'about_certificates', 'products', 'clubs', 'countries', 'continents', 'blog'));
+        $seo = SeoSettings::where('page', 'home')->where('lang', app()->getLocale())->first();
+
+        return view('home', compact('sliders', 'languages', 'about', 'about_sliders', 'about_certificates', 'products', 'clubs', 'countries', 'continents', 'blog', 'seo'));
     }
 
     public function route($slug, $slug2 = null)
@@ -80,10 +83,11 @@ class HomeController extends Controller
             $what_we_do =  DB::table('about_what_we_do')->where('lang', app()->getLocale())->get()->toArray();
             $certificates = DB::table('about_certificates')->where('lang', app()->getLocale())->get()->toArray();
             $brands = Brand::where('lang', app()->getLocale())->get();
+            $seo = SeoSettings::where('page', 'about')->where('lang', app()->getLocale())->first();
             //debug($certificates);
             
             //dd($politics);
-            return view('about', compact('about', 'how_we_do', 'what_we_do', 'certificates', 'about_slider', 'brands'));
+            return view('about', compact('about', 'how_we_do', 'what_we_do', 'certificates', 'about_slider', 'brands', 'seo'));
         }
 
         if($menu->page_type == 'product_category') {
@@ -92,12 +96,15 @@ class HomeController extends Controller
                 $category = ProductCategory::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->first();
                 $products = Product::where(['lang' => app()->getLocale(), 'category_id' => $category->category_id])->with(['images', 'category'])->get();
                 //dd($products);
-                return view('product_category', compact('category', 'products', 'menu'));
+                $seo = SeoSettings::where('page', 'product_category')->where('lang', app()->getLocale())->first();
+                return view('product_category', compact('category', 'products', 'menu', 'seo'));
 
             } else {
                 $product = Product::where(['seo_url' => $slug2, 'lang' => app()->getLocale()])->with(['category', 'gallery', 'faqs', 'types', 'images', 'features'])->firstOrFail();
+                
+                $seo = $product;
                 //dd($product);
-                return view('product', compact('product'));
+                return view('product', compact('product', 'seo'));
             }
         }
 
@@ -105,8 +112,9 @@ class HomeController extends Controller
 
         if($menu->page_type == 'club') {
             $club = Club::where(['lang' => app()->getLocale(), 'seo_url' => $slug])->with(['sliders1', 'sliders2', 'sliders3', 'features', 'faqs'])->firstOrFail();
+            $seo = $club;
             //dd($club);
-            return view('club', compact('club'));
+            return view('club', compact('club', 'seo'));
 
         }
 
@@ -116,8 +124,9 @@ class HomeController extends Controller
                 
                 //$projects = Project::where(['lang' => app()->getLocale()])->with(['gallery'])->get();
                 $projects = Project::where(['lang' => app()->getLocale()])->with(['gallery', 'country', 'country.continent'])->get();
+                $seo = SeoSettings::where('page', 'projects')->where('lang', app()->getLocale())->first();
                 //dd($projects);
-                return view('projects', compact('projects'));
+                return view('projects', compact('projects', 'seo'));
 
             }else{
                 $slug = $slug2;
@@ -128,6 +137,7 @@ class HomeController extends Controller
                 // Get products for "Used Products" section, limit 3, product_ids should be in array from $project->used_products string(1,3,5)
                 // where product_id in (1,3,5) and lang = app()->getLocale()
                 // Also get product category data
+                $seo = $project;
 
                 $used_product_ids = array_map('trim', explode(',', $project->used_products));
                 //dd($used_product_ids);
@@ -138,7 +148,7 @@ class HomeController extends Controller
                     }])
                     ->limit(5)->get();
                 //dd($products);
-                return view('project', compact('project', 'products'));
+                return view('project', compact('project', 'products', 'seo'));
             }
 
         }
@@ -149,25 +159,29 @@ class HomeController extends Controller
                 $blogs = Blog::where(['lang' => app()->getLocale()])->limit(5)->get();
                 //dd($blogs);
                 $blog = Blog::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->firstOrFail();
+                $seo = $blog;
                 $blogSlider = BlogSlider::where(['lang' => app()->getLocale(), 'blog_id' => $blog->blog_id])->get();
                 //dd($blogSlider);
-                return view('blog-detail', compact('blog', 'blogs', 'blogSlider'));
+                return view('blog-detail', compact('blog', 'blogs', 'blogSlider', 'seo'));
             }else{
+                $seo = SeoSettings::where('page', 'news')->where('lang', app()->getLocale())->first();
                 $blogs = Blog::where(['lang' => app()->getLocale()])->limit(5)->get();
                 //dd($blogs);
-                return view('blog', compact('blogs'));
+                return view('blog', compact('blogs', 'seo'));
             }
         }
 
         if($menu->page_type == 'contact') {
             $offices = Office::where(['lang' => app()->getLocale()])->get();
-            return view('contact', compact('offices'));
+            $seo = SeoSettings::where('page', 'contact')->where('lang', app()->getLocale())->first();
+            return view('contact', compact('offices', 'seo'));
         }
 
         if($menu->page_type == 'page') {
             $page = Page::where(['lang' => app()->getLocale(), 'seo_url' => $slug])->first();
+            $seo = $page;
             //dd($page);
-            return view('page', compact('page'));
+            return view('page', compact('page', 'seo'));
         }
 
         //return view('page', compact('page'));
