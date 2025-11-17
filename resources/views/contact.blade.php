@@ -26,7 +26,7 @@
                             </div>
                             <ul class="flex flex-col gap-[30px] p-[50px]">
                                 <?php foreach ($offices as $key => $item) : ?>
-                                    <li class="item group/li <?= $key == 0 ? 'is-active' : '' ?> flex flex-col scrollable gap-[20px]" data-map="" data-lat="<?= $item['lat'] ?>" data-lng="<?= $item['long'] ?>" data-scrollable="#map">
+                                    <li class="item group/li <?= $key == 0 ? 'is-active' : '' ?> flex flex-col scrollable gap-[20px]" data-map="<?= $item['map_url'] ?>" data-lat="<?= $item['lat'] ?>" data-lng="<?= $item['long'] ?>" data-scrollable="#map">
                                         <div class="title flex justify-between items-center cursor-pointer translate-z-0 before:absolute before:bottom-[-25px] before:left-0 before:w-full before:h-[1px] before:bg-white/10 before:max-w-[370px] before:duration-350 group-[&.is-active]/li:before:bottom-[-180px] sm:before:max-w-full">
                                             <p class="text-white text-[32px] font-normal leading-[36px] opacity-75 duration-350 group-hover/li:opacity-100 group-[&.is-active]/li:opacity-100"><?= $item['title'] ?></p>
                                             <i class="icon icon-chevron-down-3 text-[16px] h-[16px] leading-normal text-white flex duration-350 group-[&.is-active]/li:rotate-180"></i>

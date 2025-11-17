@@ -64,7 +64,7 @@
                     <?php foreach ($offices as $key => $item) : ?>
                         <li class="group/li <?= $key == 0 ? 'is-active' : '' ?> flex flex-col gap-[20px]">
                             <div class="title  text-white text-[24px] font-normal leading-[36px] opacity-50 cursor-pointer duration-350 group-hover/li:opacity-100 group-[&.is-active]/li:font-bold group-[&.is-active]/li:opacity-100"><?= $item->title ?></div>
-                            <a target="_blank" href="<?= $item->lat ?>" class="expo-field flex flex-col gap-[20px] w-full max-w-[270px] invisible pointer-events-none opacity-0 h-0 mb-0 duration-350 group-[&.is-active]/li:mb-[30px] group-[&.is-active]/li:visible group-[&.is-active]/li:opacity-100 group-[&.is-active]/li:pointer-events-auto">
+                            <a target="_blank" href="<?= $item->map_url ?>" class="expo-field flex flex-col gap-[20px] w-full max-w-[270px] invisible pointer-events-none opacity-0 h-0 mb-0 duration-350 group-[&.is-active]/li:mb-[30px] group-[&.is-active]/li:visible group-[&.is-active]/li:opacity-100 group-[&.is-active]/li:pointer-events-auto">
                                 <p class="address text-[16px] text-white leading-[19px] opacity-75"><?= $item->address ?></p>
                                 <div class="flex items-center gap-[15px]">
                                     <span class="text text-[14px] text-white font-medium leading-normal">Get Directions</span>
