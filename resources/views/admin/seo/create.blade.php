@@ -67,8 +67,10 @@
                                             <select class="form-select" id="page_{{ $language->lang_code }}" name="page_{{ $language->lang_code }}" {{ $required }}>
                                                 <option value="home">Anasayfa</option>
                                                 <option value="about">Hakkımızda</option>
+                                                <option value="product_category">Ürün Kategorisi</option>
                                                 <option value="projects">Projeler</option>
                                                 <option value="news">Haberler</option>
+                                                <option value="contact">İletişim</option>
                                                 
                                                 <option value="contact">İletişim</option>
                                             </select>
