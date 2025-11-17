@@ -48,7 +48,7 @@ $imageId = request()->route('imageId');
                     <div class="card-header">
                         <div class="d-flex justify-content-between align-items-center">
                             <h5 class="card-title mb-0">Ürün SSS Listesi</h5>
-                            <a href="{{ route('admin.product.faq.create', $product->id) }}" class="btn btn-primary">
+                            <a href="{{ route('admin.product.faq.create', $product->product_id) }}" class="btn btn-primary">
                                 <i class="bi bi-plus"></i> Ekle
                             </a>
                         </div>
