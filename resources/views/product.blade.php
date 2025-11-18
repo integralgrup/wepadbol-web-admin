@@ -71,7 +71,7 @@ $breadcrumbTitle = $product->title;
                             <div class="text text-[18px] text-[#52555C]/65 leading-[28px]">/</div>
                         </div>
                         <h2 class="title text-blue text-[48px] font-bold leading-[64px] opacity-90 mb-[50px] xl:text-[40px] lg:text-2xl lg:mb-[15px]">{{ $product->title }}</h2>
-                        <p class="expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mb-[60px] lg:mb-[15px] lg:text-base md:[&>_br]:hidden">{{ $product->description }}</p>
+                        <p class="expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mb-[60px] lg:mb-[15px] lg:text-base md:[&>_br]:hidden">{!! $product->description !!}</p>
                         <div class="buttons-field flex items-center gap-[40px] mb-[60px] lg:mb-[30px] xs:flex-col xs:gap-[15px]">
                             <a href="#contact-form" data-fancybox class="button group/button relative fx fx-text-hover-with-child bg-green flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[5.5] md:h-[60px] sm:h-[50px] sm:px-[15px] sm:w-full">
                                 <small class="text relative z-2 fx-child text-white text-[16px] font-medium leading-[19px]">Get Offer</small>
@@ -127,7 +127,7 @@ $breadcrumbTitle = $product->title;
                         <div class="swiper-slide" data-slide="general-features">
                             <div class="general-features-section h-full flex  flex-col justify-center items-center max-w-[1065px] mx-auto xl:max-w-[1100px]">
                                 <div class="text-editor max-w-full text-center editor-p:text-white">
-                                    <p>{{ $product->features_description }}</p>
+                                    <p>{!! $product->features_description !!}</p>
                                 </div>
                                 <div class="background-image relative rounded-[8px] overflow-hidden mt-[40px] max-w-[1000px] mx-auto">
                                     <div class="image size-full aspect-[20/11]">
@@ -199,7 +199,7 @@ $breadcrumbTitle = $product->title;
                                                 <h4 class="title text-white text-[20px] font-medium leading-[30px]"><?= $key + 1 ?>. <?= $item->title ?></h4>
                                                 <i class="icon icon-chevron-down2 text-[16px] h-[16px] text-green leading-normal flex duration-350 group-[&.is-active]/faq:-rotate-180"></i>
                                             </div>
-                                            <p class="faq-text text-white text-[18px] font-normal leading-[28px] opacity-0 invisible h-0 duration-350 group-[&.is-active]/faq:visible group-[&.is-active]/faq:opacity-100"><?= $item->description ?></p>
+                                            <p class="faq-text text-white text-[18px] font-normal leading-[28px] opacity-0 invisible h-0 duration-350 group-[&.is-active]/faq:visible group-[&.is-active]/faq:opacity-100">{!! $item->description !!}</p>
                                         </div>
                                     <?php endforeach; ?>
                                 </div>
