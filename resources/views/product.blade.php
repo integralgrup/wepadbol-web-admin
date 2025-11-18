@@ -199,7 +199,7 @@ $breadcrumbTitle = $product->title;
                                                 <h4 class="title text-white text-[20px] font-medium leading-[30px]"><?= $key + 1 ?>. <?= $item->title ?></h4>
                                                 <i class="icon icon-chevron-down2 text-[16px] h-[16px] text-green leading-normal flex duration-350 group-[&.is-active]/faq:-rotate-180"></i>
                                             </div>
-                                            <p class="faq-text text-white text-[18px] font-normal leading-[28px] opacity-0 invisible h-0 duration-350 group-[&.is-active]/faq:visible group-[&.is-active]/faq:opacity-100">{!! $item->description !!}</p>
+                                            <p class="faq-text text-white text-[18px] font-normal leading-[28px] opacity-0 invisible h-0 duration-350 group-[&.is-active]/faq:visible group-[&.is-active]/faq:opacity-100">{!! strip_tags($item->description) !!}</p>
                                         </div>
                                     <?php endforeach; ?>
                                 </div>
