@@ -84,6 +84,11 @@
                                                 <option value="0">Seçiniz</option>
                                                 @foreach($parentMenus as $parentMenu)
                                                     <option value="{{ $parentMenu->menu_id }}" {{ $parentMenu->menu_id == $menu->parent_menu_id ? 'selected' : '' }}>{{ $parentMenu->title }}</option>
+                                                    @if($parentMenu->children)
+                                                        @foreach($parentMenu->children as $childMenu)
+                                                            <option value="{{ $childMenu->menu_id }}" {{ $childMenu->menu_id == $menu->parent_menu_id ? 'selected' : '' }}>-- {{ $childMenu->title }}</option>
+                                                        @endforeach
+                                                    @endif
                                                 @endforeach
                                             </select>
                                         </div>

@@ -45,8 +45,10 @@ class MenuController extends Controller
      */
     public function create(Request $request)
     {
-        $type = $request->route('type'); // Get the type from the route parameter
-        $parentMenus = Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => $type])->get(); // Fetch all parent menus for the dropdown
+        $type = $request->get('type');
+        //dd($request->get('type'));
+        $parentMenus = Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => $type])->with('children')->get(); // Fetch all parent menus for the dropdown
+        //dd( $parentMenus);
         $languages = Language::all(); // Fetch all languages for the dropdown
         
         return view('admin.menu.create', compact('languages', 'parentMenus', 'type'));
@@ -148,10 +150,10 @@ class MenuController extends Controller
         $menu_items = Menu::where('menu_id', $id)->get(); // Fetch all menu items with the same menu_id
         $type = $menu_items[0]->menu_type;
 
-
-
-        $parentMenus = Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => $type])->get(); // Fetch all parent menus for the dropdown
         
+
+        $parentMenus = Menu::where(['lang' => app()->getLocale(), 'parent_menu_id' => 0, 'menu_type' => $type])->with('children')->get(); // Fetch all parent menus for the dropdown
+        //dd($parentMenus);
         //dd($menu_items); // Debugging line to check the menu data
         $languages = Language::all(); // Fetch all languages for the dropdown
         return view('admin.menu.edit', compact('menu_items', 'languages', 'parentMenus'));

@@ -37,7 +37,7 @@
                         <?php $type = $type ?? 'header'; 
                           $url = $type == 'header' ? 'admin.menu' : 'admin.menu.footer';
                         ?>
-                        <a style="display:inline-block;" href="{{ route($url . '.create', $type) }}" class="btn btn-sm btn-primary">Menü Ekle</a>
+                        <a style="display:inline-block;" href="{{ route($url . '.create', '?type=' . $type) }}" class="btn btn-sm btn-primary">Menü Ekle</a>
                     </div>
                   </div>
                   <!-- /.card-header -->
@@ -90,7 +90,30 @@
                                     </form>
                                   </td>
                                 </tr>
+                                @if($child->children)
+                                    @foreach($child->children as $subChild)
+                                        <tr  data-id="{{$subChild->menu_id}}" class="subchild-row">
+                                          <td>
+                                            <i class="bi bi-list"></i>
+                                          </td>
+                                          <td> <!-- bullet icon--> 
+                                            &nbsp; &nbsp; &nbsp; &nbsp; -- {{ $subChild->title }}</td>
+                                          <td>
+                                            {{ $subChild->menu_type }}
+                                          </td>
+                                          <td>
+                                            <a href="{{ route('admin.menu.edit', $subChild->menu_id) }}" class="btn btn-primary btn-sm">Düzenle</a>
+                                            <form action="{{ route('admin.menu.destroy', $subChild->menu_id) }}" method="POST" style="display:inline;">
+                                              @csrf
+                                              @method('DELETE')
+                                              <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Bu içeriği silmek istediğinize emin misiniz?')">Sil</button>
+                                            </form>
+                                          </td>
+                                        </tr>
+                                    @endforeach
+                                @endif
                             @endforeach
+
                         @endif
                         @endforeach
                       </tbody>
