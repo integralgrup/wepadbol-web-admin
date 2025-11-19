@@ -74,6 +74,19 @@ class HomeController extends Controller
     public function route($slug, $slug2 = null)
     {
         $menu = Menu::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->firstOrFail();
+
+        if($slug == 'copy-db') {
+
+            $lang_array = ['es', 'tr', 'fr', 'ru', 'ae']; // Add more languages as needed
+
+            if(in_array($slug2, $lang_array)) {
+                $lang = $slug2;
+            } else {
+                return "Invalid or missing language code. Please provide a valid language code (e.g., /copy-db/es).";
+            }
+
+            //return $this->copyDB($lang);
+        }
         
         // If the menu item has a page_type of 'about', fetch the about data
         if($menu->page_type == 'about') {
@@ -185,5 +198,64 @@ class HomeController extends Controller
         }
 
         //return view('page', compact('page'));
+    }
+
+    public function copyDB($lang)
+    {
+        $sourceLang = 'en';
+        $targetLang = $lang;
+
+        $tables = [
+            'about',
+            'about_certificates',
+            'about_home',
+            'about_how_we_do',
+            'about_slider',
+            'about_what_we_do',
+            'blog',
+            'blog_slider',
+            'brand',
+            'club',
+            'club_faq',
+            'club_features',
+            'club_slider_1',
+            'club_slider_2',
+            'club_slider_3',
+            'continent',
+            'country',
+            'footer_info',
+            'main_slider',
+            'menu',
+            'office',
+            'page',
+            'product',
+            'product_category',
+            'product_faq',
+            'product_feature',
+            'product_gallery',
+            'product_image',
+            'product_type',
+            'project',
+            'project_gallery',
+            'seo_settings',
+            'static_text',
+            'static_image',
+        ];
+
+        //Fetch all records from source language
+        //Change the lang column to target language
+        //Insert into the same table
+        foreach ($tables as $table) {
+            $records = DB::table($table)->where('lang', $sourceLang)->get();
+            foreach ($records as $record) {
+                $newRecord = (array) $record; // Convert stdClass to array
+                $newRecord['lang'] = $targetLang;
+                // Remove primary key to avoid duplicate key error
+                unset($newRecord[array_key_first($newRecord)]);
+                DB::table($table)->insert($newRecord);
+            }
+        }
+
+        return "Database copy from {$sourceLang} to {$targetLang} completed.";
     }
 }
