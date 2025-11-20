@@ -85,7 +85,7 @@ class HomeController extends Controller
                 return "Invalid or missing language code. Please provide a valid language code (e.g., /copy-db/es).";
             }
 
-            //return $this->copyDB($lang);
+            return $this->copyDB($lang);
         }
         
         // If the menu item has a page_type of 'about', fetch the about data
