@@ -274,7 +274,7 @@
         </div>
 
         <!-- Önbellek tutmasın diye ekledim '?id<?= rand(); ?>' yazısını silersin -->
-        <script src="../assets/js/script.js?id<?= rand(); ?>"></script>
+        <script src="../assets/js/script.js"></script>
 
     </body>
 

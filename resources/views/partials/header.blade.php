@@ -19,8 +19,8 @@
     <title><?php echo !empty($pageTitle) ? $pageTitle : $nameofProject ?></title>
     <link rel="shortcut icon" href="../assets/image/trademark/favicon.png" type="image/x-icon">
     <!-- Önbellek tutmasın diye ekledim; '?id<?= rand(); ?>' yazısını silersin -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css?id=' . rand()) }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css?id=' . rand()) }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css') }}">
 </head>
 
 <body class="antialiased font-sans">
