@@ -97,7 +97,6 @@
                 </div>
             </div>
         </div>
-        {{dd($footer_menu)}}
         <div class="page-wrapper flex items-center justify-center bg-blue relative ml-[20px] rounded-[14px] px-[110px] sm:hidden  md:p-[30px] md:ml-0 xl:px-[60px]">
             <div class="background absolute left-0 top-0 size-full mix-blend-screen overflow-hidden z-2">
                 <img src="../assets/image/jpg/image-11.jpg" alt="" class="w-full h-full object-cover object-center">
