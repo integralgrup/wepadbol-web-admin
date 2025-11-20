@@ -108,7 +108,7 @@
                     <ul class="flex flex-col gap-[15px]">
                         <?php foreach ($menu->children as $child) : ?>
                             <li class="group/li fx fx-text-hover-with-child overflow-hidden relative">
-                                <a href="<?= $child->seo_url ?>" class="text fx-child text-white text-[16px] leading-normal tracking-[0.16px] opacity-75 duration-350 group-hover/li:opacity-100"> <?= $child->title ?></a>
+                                <a href="<?= env('HTTP_DOMAIN') . '/' . $child->seo_url ?>" class="text fx-child text-white text-[16px] leading-normal tracking-[0.16px] opacity-75 duration-350 group-hover/li:opacity-100"> <?= $child->title ?></a>
                             </li>
                         <?php endforeach; ?>
                     </ul>
