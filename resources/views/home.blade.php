@@ -18,10 +18,10 @@
                                 <!-- if file is an image display the image, else if file is a video display the video -->
                                 @if(Str::endsWith($slider->image, ['mp4','avi','mov']))
                                     <video class="size-full object-cover object-center" autoplay="" loop="" muted="" playsinline="" data-swiper-parallax-scale="1.5" data-swiper-parallax-x="25%">
-                                        <source src="{{ asset( getFolder(['uploads_folder','images_folder']) . '/' . $slider->image) }}" type="video/mp4">
+                                        <source src="{{ asset( getFolder(['uploads_folder','images_folder'], $slider->lang) . '/' . $slider->image) }}" type="video/mp4">
                                     </video>
                                 @else
-                                    <img src="{{ asset( getFolder(['uploads_folder','images_folder']) . '/' . $slider->image) }}" alt="{{ $slider->alt }}" class="size-full object-cover object-center" data-swiper-parallax-scale="1.5" data-swiper-parallax-x="25%">
+                                    <img src="{{ asset( getFolder(['uploads_folder','images_folder'], $slider->lang) . '/' . $slider->image) }}" alt="{{ $slider->alt }}" class="size-full object-cover object-center" data-swiper-parallax-scale="1.5" data-swiper-parallax-x="25%">
                                 @endif
                             </div>
                             <div class="wrapper size-full max-w-[1740px] mx-auto flex flex-col justify-end relative z-2 wrapper px-[30px] pt-[180px] 2xl:pt-[150px] xl:pt-[120px] lg:pt-[90px] sm:pt-[150px] pb-[90px] xl:pb-[80px] lg:pb-[70px]">
@@ -66,7 +66,7 @@
                                                 <path class="fill-none stroke-green [stroke-dasharray:1030] [stroke-dashoffset:1030] group-[&.is-active]/p:animate-circleAnim [animation-duration:7s] [&.is-change]:[animation-duration:7s]" d="M55.3171 154.582L55.2732 154.566L54.0788 154.165C45.1187 151.161 36.8218 146.458 29.6424 140.313L25.2841 136.263C19.6634 131.039 14.915 124.95 11.2191 118.226C8.04699 112.455 5.68272 106.275 4.19264 99.8601L2.84977 94.0791C1.62062 88.7876 1 83.373 1 77.9407C1 69.0504 2.66206 60.2385 5.90054 51.959L6.00519 51.6914L5.07389 51.3272L6.00519 51.6914C7.91961 46.797 10.3581 42.1242 13.2779 37.7544L15.693 34.1401C17.7409 31.0754 20.0416 28.1872 22.571 25.506C25.2813 22.6329 28.2437 20.0085 31.4226 17.6643L32.907 16.5696C36.2974 14.0695 39.8771 11.8367 43.6138 9.89165C47.4327 7.90375 51.4036 6.22254 55.489 4.8639L58.2369 3.95004L59.5422 3.61032C66.2012 1.87718 73.0541 1 79.935 1C97.0905 1 114.175 6.82173 127.788 17.2426C141.406 27.6681 151.968 43.0499 156.406 59.574C160.845 76.1005 159.519 93.9533 152.951 109.772C146.374 125.614 135.339 139.578 120.526 148.119L110.587 153.089L105.398 155.211C101.635 156.751 97.7003 157.834 93.6789 158.437C91.1801 158.812 88.6567 159 86.1299 159H80.9341H73.4929C67.2987 158.345 61.2186 156.872 55.4115 154.618L55.3171 154.582Z" stroke="#75BF00" stroke-width="2" stroke-miterlimit="1" />
                                             </svg>
                                             <div class="image size-[130px] flex justify-center items-center rounded-full overflow-hidden lg:size-[60px]">
-                                                <img src="{{ asset( getFolder(['uploads_folder','images_folder']) . '/' . $item->thumbnail) }}" alt="{{ $item->alt }}" class="size-full object-cover object-center duration-350 group-hover/p:scale-105">
+                                                <img src="{{ asset( getFolder(['uploads_folder','images_folder'], $item->lang) . '/' . $item->thumbnail) }}" alt="{{ $item->alt }}" class="size-full object-cover object-center duration-350 group-hover/p:scale-105">
                                             </div>
                                         </div>
                                     </div>
@@ -128,7 +128,7 @@
             <div class="grid grid-cols-5 justify-between srb-all">
                 <?php foreach ($about_certificates as $key => $item) : ?>
                     <div class="item w-full h-[50px] opacity-50 flex justify-center items-center duration-350 hover:opacity-100">
-                        <img src="{{ asset( getFolder(['uploads_folder', 'images_folder']) .'/'. $item->image ) }}" alt="" class="size-full object-contain object-center">
+                        <img src="{{ asset( getFolder(['uploads_folder', 'images_folder'], $item->lang) .'/'. $item->image ) }}" alt="" class="size-full object-contain object-center">
                     </div>
                 <?php endforeach; ?>
             </div>
@@ -155,7 +155,7 @@
                             <div class="card-item group/item relative p-[20px] md:p-[10px] sm:w-full">
                                 <a href="projects.php" class="relative z-2 flex items-end justify-end size-full overflow-hidden">
                                     <div class="background absolute left-0 top-0 size-full overflow-hidden rounded-[14px] before:absolute before:left-0 before:top-0 before:w-full before:h-full before:translate-y-0 before:[background:_linear-gradient(180deg,_rgba(3,_36,_107,_0.00)_59.55%,_#03246B_100%);] before:z-2 before:duration-1000 group-hover/item:before:translate-y-full after:absolute after:left-0 after:top-0 after:w-full after:h-full after:[background:_linear-gradient(180deg,_rgba(3,_36,_107,_0.00)_35.63%,_#03246B_100%);] after:opacity-0 after:duration-1000 group-hover/item:after:opacity-100 sm:before:opacity-100 sm:after:opacity-100">
-                                        <img src="{{asset(getFolder(['uploads_folder','club_images_folder']) .'/'. $item['image'])}}" alt="" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
+                                        <img src="{{asset(getFolder(['uploads_folder','club_images_folder'], $item['lang']) .'/'. $item['image'])}}" alt="" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
                                     </div>
                                     <div class="content pb-[60px] pr-[75px] pl-[155px] w-full h-[800px] flex flex-col justify-end relative z-3 duration-500 xl:p-[30px] xl:h-[600px] sm:h-[250px]" dir="rtl">
                                         <h3 class="title text-[32px] text-white leading-[40px] xl:text-[26px]">{!! $item['title'] !!}</h3>
@@ -200,7 +200,7 @@
                                 <?php foreach ($products as $key => $item) : ?>
                                     <div class="swiper-slide">
                                         <div class="image relative size-full aspect-[52/47] overflow-hidden">
-                                            <img src="{{ getFolder(['uploads_folder', 'product_images_folder'], $item->lang_code) . '/' . $item->slider_image }}" alt="{{$item->alt}}" class="size-full object-cover object-center" data-swiper-parallax-x="50%">
+                                            <img src="{{ getFolder(['uploads_folder', 'product_images_folder'], $item->lang) . '/' . $item->slider_image }}" alt="{{$item->alt}}" class="size-full object-cover object-center" data-swiper-parallax-x="50%">
                                             <div class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full"></div>
                                         </div>
                                     </div>
@@ -256,7 +256,7 @@
                                                         <div class="swiper-wrapper">
                                                             <div class="swiper-slide duration-350 [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto">
                                                                 <div class="image size-full aspect-[23/18] md:aspect-video">
-                                                                    <img src="{{ getFolder(['uploads_folder', 'product_images_folder'], $item->lang_code) . '/' . $item->image }}" alt="" class="size-full object-contain object-center">
+                                                                    <img src="{{ getFolder(['uploads_folder', 'product_images_folder'], $item->lang) . '/' . $item->image }}" alt="" class="size-full object-contain object-center">
                                                                 </div>
                                                             </div>
                                                         </div>
