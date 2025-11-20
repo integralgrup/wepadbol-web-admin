@@ -73,7 +73,7 @@ class HomeController extends Controller
 
     public function route($slug, $slug2 = null)
     {
-        $menu = Menu::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->firstOrFail();
+        
 
         if($slug == 'copy-db') {
 
@@ -87,6 +87,8 @@ class HomeController extends Controller
 
             return $this->copyDB($lang);
         }
+
+        $menu = Menu::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->firstOrFail();
         
         // If the menu item has a page_type of 'about', fetch the about data
         if($menu->page_type == 'about') {
