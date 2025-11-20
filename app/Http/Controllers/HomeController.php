@@ -208,7 +208,7 @@ class HomeController extends Controller
         $targetLang = $lang;
 
         $tables = [
-            'about',
+            /*'about',
             'about_certificates',
             'about_home',
             'about_how_we_do',
@@ -230,7 +230,7 @@ class HomeController extends Controller
             'menu',
             'office',
             'page',
-            'product',
+            'product',*/
             'product_category',
             'product_faq',
             'product_feature',
