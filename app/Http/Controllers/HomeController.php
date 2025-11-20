@@ -230,7 +230,7 @@ class HomeController extends Controller
             'menu',
             'office',
             'page',
-            'product',*/
+            'product',
             'product_category',
             'product_faq',
             'product_feature',
@@ -241,7 +241,7 @@ class HomeController extends Controller
             'project_gallery',
             'seo_settings',
             'static_text',
-            'static_image',
+            'static_image',*/
         ];
 
         //Fetch all records from source language
