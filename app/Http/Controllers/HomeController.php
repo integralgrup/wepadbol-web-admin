@@ -123,6 +123,16 @@ class HomeController extends Controller
             }
         }
 
+        if($menu->page_type == 'product') {
+            
+                $product = Product::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->with(['category', 'gallery', 'faqs', 'types', 'images', 'features'])->firstOrFail();
+                
+                $seo = $product;
+                //dd($product);
+                return view('product', compact('product', 'seo'));
+            
+        }
+
         
 
         if($menu->page_type == 'club') {
