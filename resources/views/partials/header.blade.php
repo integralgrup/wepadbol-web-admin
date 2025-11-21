@@ -66,20 +66,20 @@
             foreach ($menu as $item) :
                 $menuItem = [
                     'title' => $item->title,
-                    'url' => env('HTTP_DOMAIN') .'/'. $item->seo_url,
+                    'url' =>  $item->seo_url == 'javascript:;' ? 'javascript:;' : env('HTTP_DOMAIN') .'/'. $item->seo_url,
                 ];
                 if ($item->children->isNotEmpty()) {
                     $menuItem['submenu'] = 'submenu-' . $i++;
                     $menuItem['mega'] = $item->children->map(function($child) {
                         $subChild = [
                             'title' => $child->title,
-                            'url' => env('HTTP_DOMAIN') .'/'. $child->seo_url,
+                            'url' => $child->seo_url == 'javascript:;' ? 'javascript:;' : env('HTTP_DOMAIN') .'/'. $child->seo_url,
                         ];
                         if( $child->children->isNotEmpty() ) {
                             $subChild['sub-menu'] = $child->children->map(function($subChild) {
                                 return [
                                     'title' => $subChild->title,
-                                    'url' => env('HTTP_DOMAIN') .'/'. $subChild->seo_url,
+                                    'url' => $subChild->seo_url == 'javascript:;' ? 'javascript:;' : env('HTTP_DOMAIN') .'/'. $subChild->seo_url,
                                 ];
                             })->toArray();
                         }else{
@@ -279,111 +279,8 @@
 
 <div class="mobile-menu-field group/menu w-full h-auto invisible pointer-events-none opacity-0 overflow-y-scroll max-h-[630px] fixed left-0 top-[100px] z-90 duration-350 [&.menu-active]:pointer-events-auto [&.menu-active]:visible [&.menu-active]:opacity-100 xs:max-h-[590px] md:max-h-[800px]">
     <div class="wrapper">
-        <?php $list = [
-            [
-                'title' => 'Homepage',
-                'url' => 'index.php',
-            ],
-            [
-                'title' => 'About',
-                'url' => 'about.php',
-            ],
-            [
-                'title' => 'Products',
-                'url' => 'javascript:;',
-                'mega' => [
-                    [
-                        'title' => 'Padbol Courts',
-                        'url' => 'javascript:;',
-                        'sub-menu' => [
-                            [
-                                'title' => 'Orıgın Padbol',
-                                'url' => 'products.php',
-                            ],
-                            [
-                                'title' => 'Roofed Padbol',
-                                'url' => 'product-detail.php',
-                            ],
-                        ],
-                    ],
-                    [
-                        'title' => 'Padbol Clubs',
-                        'url' => 'javascript:;',
-                        'sub-menu' => [
-                            [
-                                'title' => 'Orıgın Padbol',
-                                'url' => 'padel-clubs.php',
-                            ],
-                            [
-                                'title' => 'Roofed Padbol',
-                                'url' => 'padel-clubs.php',
-                            ],
-                        ],
-                    ],
-                ],
-            ],
-            [
-                'title' => 'Projects',
-                'url' => 'javascript:;',
-                'mega' => [
-                    [
-                        'title' => 'We Orıgıns',
-                        'url' => 'javascript:;',
-                        'sub-menu' => [
-                            [
-                                'title' => 'Orıgın Padbol',
-                                'url' => 'projects.php',
-                            ],
-                            [
-                                'title' => 'Orıgın Roofed Padbol',
-                                'url' => 'project-detail.php',
-                            ],
-                        ],
-                    ],
-                    [
-                        'title' => 'We Panoramic',
-                        'url' => 'javascript:;',
-                        'sub-menu' => [
-                            [
-                                'title' => 'Orıgın Padbol',
-                                'url' => 'products.php',
-                            ],
-                            [
-                                'title' => 'Orıgın Roofed Padbol',
-                                'url' => 'padel-clubs.php',
-                            ],
-                        ],
-                    ],
-                    [
-                        'title' => 'Accessories',
-                        'url' => 'javascript:;',
-                        'sub-menu' => [
-                            [
-                                'title' => 'Orıgın Padbol',
-                                'url' => 'projects.php',
-                                'left' => 'left-[30px]'
-                            ],
-                            [
-                                'title' => 'Orıgın Roofed Padbol',
-                                'url' => 'padel-clubs.php',
-                                'left' => 'left-[60px]'
-                            ],
-                        ],
-                    ],
-                ]
-            ],
-            [
-                'title' => 'Blogs',
-                'url' => 'blogs.php',
-            ],
-            [
-                'title' => 'Contact',
-                'url' => 'contact.php',
-            ],
-        ]; ?>
-
-        <ul class="flex flex-col py-[30px] -z-2">
-            <?php foreach ($list as $key => $item) : ?>
+         <ul class="flex flex-col py-[30px] -z-2">
+            <?php foreach ($menuList as $key => $item) : ?>
                 <li class="page group/item -translate-x-[15px] opacity-0 duration-350 [&.is-active]:pointer-events-none [&.is-active]:z-10 group-[&.menu-active]/menu:translate-x-0 group-[&.menu-active]/menu:opacity-100" style="transition-delay: calc(<?= $key ?>*0.3s)">
                     <a href="<?= $item['url'] ?>" class="page text-[45px] text-white font-bold leading-normal uppercase px-[30px] 2xs:text-[30px]"><?= $item['title'] ?></a>
                     <?php if (isset($item['mega'])) : ?>
