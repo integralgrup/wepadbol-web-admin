@@ -307,12 +307,53 @@
                     <?php endif; ?>
                 </li>
             <?php endforeach; ?>
-            <?php $list = ['EN', 'AZ', 'AR', 'RU']; ?>
+            
             <li class="language-field flex gap-[15px] mt-[30px] -translate-x-[15px] opacity-0 px-[30px] duration-350 group-[&.menu-active]/menu:translate-x-0 group-[&.menu-active]/menu:opacity-100 2xs:mt-[15px]" style="transition-delay: calc(<?= $key ?>*0.4s)">
-                <?php foreach ($list as $key => $item) : ?>
-                    <a href="" class="language text-[20px] text-green font-normal leading-normal ease-manidar uppercase -translate-x-[15px] opacity-0 duration-350 group-[&.menu-active]/menu:translate-x-0 group-[&.menu-active]/menu:opacity-100"><?= $item ?></a>
-                <?php endforeach; ?>
+                <?php foreach ($languagesArray as $language) { ?>
+                <?php 
+                    if(isset($segments[3]) && isset($segments[4])):
+                        $segments[3] = urldecode($segments[3]);
+                        $segments[4] = urldecode($segments[4]);
+                        $langParam0 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[3]])->first();
+                        if(isset($blog)):
+                            $langParam1 = App\Models\Blog::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
+                        elseif(isset($careerJob)):
+                            $langParam1 = App\Models\CareerJob::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
+                        else:
+                            $langParam1 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
+                        endif;
+                        $langParam0_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam0->menu_id])->first();
+                        if(isset($blog)):
+                            $langParam1_new = App\Models\Blog::where(['lang' => $language->lang_code, 'blog_id' => $langParam1->blog_id])->first();
+                        elseif(isset($careerJob)):
+                            $langParam1_new = App\Models\CareerJob::where(['lang' => $language->lang_code, 'job_id' => $langParam1->job_id])->first();
+                        else:
+                            $langParam1_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam1->menu_id])->first();
+                        endif;
+                        //dd($langParam0, $langParam1);
+                        if($langParam0 && $langParam1):
+                            $url = $language->domain . '/' . $langParam0_new->seo_url . '/' . $langParam1_new->seo_url;
+                        endif;
+                    endif;
+                    if(isset($segments[3]) && !isset($segments[4])):
+                        //set $segment[3] as utf8 string
+                        $segments[3] = urldecode($segments[3]);
+                        $langParam0 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[3]])->first();
+
+                        $langParam0_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam0->menu_id])->first();
+                        //dd($langParam0, $langParam1);
+                        if($langParam0 && $langParam0_new):
+                            $url = $language->domain . '/' . $langParam0_new->seo_url;
+                        endif;
+                    endif;
+                    if(!isset($segments[3]) && !isset($segments[4])):
+                        $url = $language->domain . '/';
+                    endif;
+                ?>
+                    <a href="{{$url}}" class="language text-[20px] text-green font-normal leading-normal ease-manidar uppercase -translate-x-[15px] opacity-0 duration-350 group-[&.menu-active]/menu:translate-x-0 group-[&.menu-active]/menu:opacity-100"><?= strtoupper($language->lang_code) ?></a>
+                <?php }; ?>
             </li>
+            
             <?php $list = [
                 [
                     'title' => 'Contact Emaıl',

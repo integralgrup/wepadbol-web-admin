@@ -233,7 +233,6 @@ class HomeController extends Controller
             'club_slider_1',
             'club_slider_2',
             'club_slider_3',
-            'continent',
             'country',
             'footer_info',
             'main_slider',
