@@ -48,27 +48,27 @@ class Club extends Model
     // Define relationship with ClubSlider1 model
     public function sliders1()
     {
-        return $this->hasMany(ClubSlider1::class, 'club_id', 'club_id');
+        return $this->hasMany(ClubSlider1::class, 'club_id', 'club_id')->where('lang', app()->getLocale());
     }
     // Define relationship with ClubSlider2 model
     public function sliders2()
     {
-        return $this->hasMany(ClubSlider2::class, 'club_id', 'club_id');
+        return $this->hasMany(ClubSlider2::class, 'club_id', 'club_id')->where('lang', app()->getLocale());
     }
     // Define relationship with ClubSlider3 model
     public function sliders3()
     {
-        return $this->hasMany(ClubSlider3::class, 'club_id', 'club_id');
+        return $this->hasMany(ClubSlider3::class, 'club_id', 'club_id')->where('lang', app()->getLocale());
     }
     // Define relationship with ClubFeatures model
     public function features()
     {
-        return $this->hasMany(ClubFeatures::class, 'club_id', 'club_id');
+        return $this->hasMany(ClubFeatures::class, 'club_id', 'club_id')->where('lang', app()->getLocale());
     }
     // Define relationship with ClubFaq model
     public function faqs()
     {
-        return $this->hasMany(ClubFaq::class, 'club_id', 'club_id');
+        return $this->hasMany(ClubFaq::class, 'club_id', 'club_id')->where('lang', app()->getLocale());
     }
 
 }
