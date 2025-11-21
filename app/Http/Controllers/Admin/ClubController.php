@@ -151,7 +151,7 @@ class ClubController extends Controller
     // ClubSlider1 methods
     public function slider1Index($club_id)
     {
-        $sliders = ClubSlider1::where('club_id', $club_id)->orderBy('sort')->get();
+        $sliders = ClubSlider1::where('club_id', $club_id)->where('lang', 'en')->orderBy('sort')->get();
         
 
         return view('admin.club.slider1.index', compact('sliders', 'club_id'));
@@ -277,7 +277,7 @@ class ClubController extends Controller
     // Similar methods for ClubSlider2, ClubSlider3, ClubFeatures, and ClubFaq can be implemented here
     public function slider2Index($club_id)
     {
-        $sliders = ClubSlider2::where('club_id', $club_id)->get();
+        $sliders = ClubSlider2::where('club_id', $club_id)->where('lang', 'en')->get();
         return view('admin.club.slider2.index', compact('sliders', 'club_id'));
     }
 
@@ -363,7 +363,7 @@ class ClubController extends Controller
 
     public function slider3Index($club_id)
     {
-        $sliders = ClubSlider3::where('club_id', $club_id)->get();
+        $sliders = ClubSlider3::where('club_id', $club_id)->where('lang', 'en')->get();
         return view('admin.club.slider3.index', compact('sliders', 'club_id'));
     }
 
@@ -450,7 +450,7 @@ class ClubController extends Controller
     // Club Features methods would go here
     public function featuresIndex($club_id)
     {
-        $features = ClubFeatures::where('club_id', $club_id)->get();
+        $features = ClubFeatures::where('club_id', $club_id)->where('lang', 'en')->get();
         return view('admin.club.features.index', compact('features', 'club_id'));
     }
 
@@ -557,7 +557,7 @@ class ClubController extends Controller
     // Club FAQ methods would go here
     public function faqIndex($club_id)
     {
-        $faqs = ClubFaq::where('club_id', $club_id)->get();
+        $faqs = ClubFaq::where('club_id', $club_id)->where('lang', 'en')->get();
         return view('admin.club.faq.index', compact('faqs', 'club_id'));
 
     }
