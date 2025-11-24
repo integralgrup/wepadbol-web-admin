@@ -278,13 +278,15 @@ class ProductController extends Controller
     public function galleryIndex($id)
     {
         $product = Product::where('product_id', $id)->where('lang', app()->getLocale())->firstOrFail();
+        //dd($product);
         $gallery = ProductGallery::where(['product_id' => $id, 'lang' => app()->getLocale()])->get();
         return view('admin.product.gallery.index', compact('product', 'gallery'));
     }
 
     public function galleryCreate($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::where('product_id', $id)->where('lang', app()->getLocale())->firstOrFail();
+        //dd($product);
         return view('admin.product.gallery.create', compact('product'));
     }
 
