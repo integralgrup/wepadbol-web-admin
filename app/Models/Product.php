@@ -49,28 +49,28 @@ class Product extends Model
     // Define relationship with ProductImage model
     public function images()
     {
-        return $this->hasMany(ProductImage::class, 'product_id', 'product_id')->orderBy('sort');
+        return $this->hasMany(ProductImage::class, 'product_id', 'product_id')->orderBy('sort')->where('lang', app()->getLocale());
     }
 
     // You can add other relationships or methods as needed
     public function gallery()
     {
-        return $this->hasMany(ProductGallery::class, 'product_id', 'product_id')->orderBy('sort');
+        return $this->hasMany(ProductGallery::class, 'product_id', 'product_id')->orderBy('sort')->where('lang', app()->getLocale());
     }
 
     public function faqs()
     {
-        return $this->hasMany(ProductFaq::class, 'product_id', 'product_id')->orderBy('sort');
+        return $this->hasMany(ProductFaq::class, 'product_id', 'product_id')->orderBy('sort')->where('lang', app()->getLocale());
     }
 
     public function types()
     {
-        return $this->hasMany(ProductType::class, 'product_id', 'product_id')->orderBy('sort');
+        return $this->hasMany(ProductType::class, 'product_id', 'product_id')->orderBy('sort')->where('lang', app()->getLocale());
     }
 
     public function category()
     {
-        return $this->hasOne(ProductCategory::class, 'category_id', 'category_id')->orderBy('sort');
+        return $this->hasOne(ProductCategory::class, 'category_id', 'category_id')->orderBy('sort')->where('lang', app()->getLocale());
     }
 
     public function features()

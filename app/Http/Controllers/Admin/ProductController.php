@@ -278,7 +278,7 @@ class ProductController extends Controller
     public function galleryIndex($id)
     {
         $product = Product::where('product_id', $id)->where('lang', app()->getLocale())->firstOrFail();
-        $gallery = ProductGallery::where('product_id', $id)->get();
+        $gallery = ProductGallery::where(['product_id' => $id, 'lang' => app()->getLocale()])->get();
         return view('admin.product.gallery.index', compact('product', 'gallery'));
     }
 
@@ -360,13 +360,14 @@ class ProductController extends Controller
     public function galleryDestroy($id, $galleryId)
     {
         try {
-            $gallery = ProductGallery::findOrFail($galleryId);
+            $gallery = ProductGallery::where('product_id', $id)->where('image_id', $galleryId)->get();
             // Delete the image file from storage if needed
             // Storage::delete('path/to/image/' . $gallery->image);
-            $gallery->delete();
-            return redirect()->route('admin.product.galleries.index', $id)->with('success', 'Gallery image deleted successfully!');
+            foreach($gallery as $item){ $item->delete(); }
+            //$gallery->delete();
+            return redirect()->route('admin.product.gallery.index', $id)->with('success', 'Galeri görseli silindi!');
         } catch (\Throwable $th) {
-            return redirect()->route('admin.product.galleries.index', $id)->with('error', 'An error occurred while deleting the gallery image.');
+            return redirect()->route('admin.product.gallery.index', $id)->with('error', 'An error occurred while deleting the gallery image.');
         }
     }
 
