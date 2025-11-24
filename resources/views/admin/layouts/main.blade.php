@@ -406,11 +406,18 @@
     });
   </script>
   <script>
-      document.addEventListener("DOMContentLoaded", function() {
-        const fields = [
-          { selector: ".seo_title", limit: 100 },
-          { selector: ".seo_description", limit: 200 }
-        ];
+
+      function countChars() {
+        const languages = ['en', 'tr', 'es', 'fr', 'ru', 'ae'];
+        const fields = [];
+        languages.forEach(function (lang) {
+           fields.push(
+              { selector: "#seo_title_" + lang, limit: 100 },
+              { selector: "#seo_description_" + lang, limit: 200 }
+           )
+            
+        })
+        
 
         fields.forEach(field => {
           const input = document.querySelector(field.selector);
@@ -446,8 +453,16 @@
           input.insertAdjacentElement("afterend", counter);
           updateCounter(); // ✅ count existing text on page load
         });
+      }
+
+
+      document.addEventListener("DOMContentLoaded", function() {
+        countChars();
       });
-      </script>
+      
+
+    
+  </script>
     <!-- apexcharts -->
     <script
       src="https://cdn.jsdelivr.net/npm/apexcharts@3.37.1/dist/apexcharts.min.js"
