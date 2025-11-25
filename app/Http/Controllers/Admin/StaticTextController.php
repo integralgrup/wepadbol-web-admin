@@ -19,8 +19,14 @@ class StaticTextController extends Controller
 
     public function index()
     {
-        // Code to list all static texts
-        $staticTexts = StaticText::where('lang', app()->getLocale())->get();
+       // Code to list all static texts
+        $staticTexts = StaticText::all();
+        //dd($staticTexts);
+        foreach($staticTexts as $text) {
+            $textsById[$text->text_id][$text->lang] = $text;
+        }
+        $staticTexts = $textsById ?? [];
+        //dd($staticTexts);
         return view('admin.static_text.index', compact('staticTexts'));
     }
 
@@ -34,6 +40,10 @@ class StaticTextController extends Controller
     public function store(Request $request)
     {
         // Code to store static text
+        //dd($request->all());
+        if($request->has('update')) {
+            return $this->update($request);
+        }
         try {
         if($request->has('text_id')) {
             $textId = $request->text_id; // Use the provided text_id
@@ -46,15 +56,15 @@ class StaticTextController extends Controller
 
         foreach($this->languages as $language) {
             $request->validate([
-                'title_' . $language->lang_code => 'required|max:255',
-                'page_name_' . $language->lang_code => 'required|max:255',
+                'title_' . $language->lang_code => 'nullable|max:5000',
+                'page_name_' . $language->lang_code => 'nullable|max:255',
             ]);
 
             StaticText::updateOrCreate(
                 ['text_id' => $textId, 'lang' => $language->lang_code],
                 [
-                    'title' => $request->input('title_' . $language->lang_code),
-                    'page_name' => $request->input('page_name_' . $language->lang_code),
+                    'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                    'page_name' => $request->input('page_name_' . $language->lang_code) ?? $request->input('page_name_en'),
                 ]
             );
         }
@@ -64,6 +74,27 @@ class StaticTextController extends Controller
        } catch (\Throwable $th) {
         throw $th;
        }
+    }
+
+    public function update(Request $request)
+    {
+        // Code to update static text
+        $textId = $request->input('text_id');
+
+        foreach($this->languages as $language) {
+            $request->validate([
+                'static_text.' . $language->lang_code => 'nullable|max:5000',
+            ]);
+
+            StaticText::updateOrCreate(
+                ['text_id' => $textId, 'lang' => $language->lang_code],
+                [
+                    'title' => $request->input('static_text.' . $language->lang_code) ?? $request->input('static_text.en'),
+                ]
+            );
+        }
+
+        return redirect()->back()->with('success', 'Statik text başarıyla güncellendi.');
     }
 
     public function edit($id)

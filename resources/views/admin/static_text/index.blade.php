@@ -38,32 +38,56 @@
                     
                   </div>
                   <!-- /.card-header -->
-                  <div class="card-body p-0">
-                    <table class="table table-striped">
+                  <div class="card-body">
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <ul>
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    @if (session('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif  
+                    <table class="table table-striped dataTable">
                       <thead>
                         <tr>
-                          <th style="width: 30px">#</th>
-                          <th>Başlık</th>
-                          <th>Sayfa Adı</th>
-                          <th  style="width: 300px">İşlem</th>
+                          <th>
+                            <div style="display: flex; gap: 10px;align-items: center; justify-content: space-around;">
+                              @foreach($languages as $lang)
+                              <div>
+                                {{ strtoupper($lang->lang_code) }}
+                              </div>
+                              @endforeach
+                            </div>
+                          </th>
+                          <th>İşlem</th>
                         </tr>
                       </thead>
-                      <tbody>
+                      <tbody class="">
                         @foreach($staticTexts as $staticText)
-                        <tr class="align-middle">
-                          <td>{{ $staticText->id }}</td>
-                          <td>{{ strip_tags($staticText->title) }}</td>
-                          <td>{{ strip_tags($staticText->page_name) }}</td>
+                        <tr>
                           <td>
-                            <!-- Katalog Dosyaları -->
-                            <a href="{{ route('admin.static_text.edit', $staticText->text_id) }}" class="btn btn-primary btn-sm">Düzenle</a>
-                            <form action="{{ route('admin.static_text.destroy', $staticText->text_id) }}" method="POST" style="display:inline;">
+                            <form id="static-text-form-{{ $staticText['tr']->text_id }}" action="{{ route('admin.static_text.store', $staticText['tr']->text_id) }}" method="POST">
                               @csrf
-                              @method('DELETE')
-                              <button type="submit" class="btn btn-danger btn-sm">Sil</button>
+                              <div style="display: flex; gap: 10px;">
+                                @foreach($staticText as $lang => $text)
+                                <input class="form-control" type="text" name="static_text[{{ $lang }}]" value="{{ $text->title }}">
+                                @endforeach
+                                <input type="hidden" name="text_id" value="{{ $staticText['tr']->text_id }}">
+                                <input type="hidden" name="update" value="1">
+                              </div>
                             </form>
                           </td>
+                          <td>
+                            <a href="javascript:void(0)" onclick="document.getElementById('static-text-form-{{ $staticText['tr']->text_id }}').submit();" class="btn btn-sm btn-info">Kaydet</a>
+                          </td>
                         </tr>
+                        
                         @endforeach
                       </tbody>
                     </table>
