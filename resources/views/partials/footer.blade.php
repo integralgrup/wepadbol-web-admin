@@ -67,7 +67,7 @@
                             <a target="_blank" href="<?= $item->map_url ?>" class="expo-field flex flex-col gap-[20px] w-full max-w-[270px] invisible pointer-events-none opacity-0 h-0 mb-0 duration-350 group-[&.is-active]/li:mb-[30px] group-[&.is-active]/li:visible group-[&.is-active]/li:opacity-100 group-[&.is-active]/li:pointer-events-auto">
                                 <p class="address text-[16px] text-white leading-[19px] opacity-75"><?= $item->address ?></p>
                                 <div class="flex items-center gap-[15px]">
-                                    <span class="text text-[14px] text-white font-medium leading-normal">Get Directions</span>
+                                    <span class="text text-[14px] text-white font-medium leading-normal">{{getStaticText(7)}}</span>
                                     <i class="icon icon-map text-[18px] h-[18px] text-green leading-normal flex"></i>
                                 </div>
                             </a>
@@ -81,7 +81,7 @@
                     <a href="" class="flex items-center gap-[25px]">
                         <i class="icon icon-phone text-[30px] h-[30px] text-white/35 duration-450 group-hover/item:text-green"></i>
                         <div class="flex flex-col">
-                            <h5 class="text text-white text-[20px] font-bold leading-[30px]">Phone</h5>
+                            <h5 class="text text-white text-[20px] font-bold leading-[30px]">{{getStaticText(8)}}</h5>
                             <span class="text text-white text-[18px] font-normal leading-[28px] opacity-75"><?= $footerInfo->phone ?></span>
                         </div>
                     </a>
@@ -90,7 +90,7 @@
                     <a href="" class="flex items-center gap-[25px]">
                         <i class="icon icon-mail text-[30px] h-[30px] text-white/35 duration-450 group-hover/item:text-green"></i>
                         <div class="flex flex-col">
-                            <h5 class="text text-white text-[20px] font-bold leading-[30px]">E-MAİL</h5>
+                            <h5 class="text text-white text-[20px] font-bold leading-[30px]">{{getStaticText(9)}}</h5>
                             <span class="text text-white text-[18px] font-normal leading-[28px] opacity-75"><?= $footerInfo->email ?></span>
                         </div>
                     </a>
@@ -121,10 +121,10 @@
         <div class="container max-w-[1440px]">
             <div class="wrapper relative flex items-center sm:flex-col justify-between gap-[15px]">
                 <div class="copyright-field md:text-center">
-                    <span class="text text-[16px] text-[#52555C]">Wepadbol is a Brand of <a href="#popup-gdpr" class="font-bold duration-450 hover:text-green" data-fancybox>Integral Group</a></span>
+                    <span class="text text-[16px] text-[#52555C]">{!!getStaticText(10)!!}</span>
                 </div>
                 <div class="copyright-field md:text-center">
-                    <span class="text text-[16px] text-[#52555C]"> © 2023 <a href="#popup-gdpr" class="duration-450 hover:text-green" data-fancybox>wepadbol.com </a> | All rights reserved</span>
+                    <span class="text text-[16px] text-[#52555C]"> © {{date('Y')}} <!-- get domain without https:// --> {{parse_url(env('HTTP_DOMAIN'), PHP_URL_HOST)}} | {{getStaticText(11)}}</span>
                 </div>
                 <div class="right-field">
                     <a href="https://webintek.com.tr" title="Web Tasarım" target="_blank" class="group flex justify-center max-w-[105px] w-full h-[40px] items-center gap-[9px]">

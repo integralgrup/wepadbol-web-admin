@@ -148,7 +148,7 @@
                         <img src="../assets/svg/rectangle.svg" alt="" class="size-full object-contain object-center rotate-anim">
                     </div>
                     <div class="title-field srb relative min-sm:w-fit min-sm:mb-[90px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-full before:mt-[45px] before:size-[26px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[26px] md:before:hidden">
-                        <h1 class="title text-[64px] text-blue leading-[80px] min-sm:[writing-mode:_vertical-rl;] min-sm:rotate-180 xl:text-[50px] md:[&>_br]:hidden sm:text-center sm:leading-normal xsm:text-[30px]"><strong>PADEL</strong> CLUBS</h1>
+                        <h1 class="title text-[64px] text-blue leading-[80px] min-sm:[writing-mode:_vertical-rl;] min-sm:rotate-180 xl:text-[50px] md:[&>_br]:hidden sm:text-center sm:leading-normal xsm:text-[30px]">{!! getStaticText(1) !!}</h1>
                     </div>
                     <div class="cards-field flex items-center srt-all sm:flex-col xsm:mt-[30px]">
                         <?php foreach ($clubs as $key => $item) : ?>
@@ -234,8 +234,8 @@
                             <img src="../assets/svg/triangle.svg" alt="" class="size-full object-contain object-center rotate-anim">
                         </div>
                         <div class="title-field flex flex-col gap-[20px] ml-[120px] md:justify-center md:items-center xl:ml-0 xl:gap-0">
-                            <h5 class="mini-title text-[#52555C] text-[24px] italic leading-[60px] opacity-75 xsm:text-[20px]">A Brand New Experience</h5>
-                            <h2 class="title relative ml-[50px] text-blue text-[64px] font-bold leading-[80px] before:absolute before:left-[-50px] before:top-[50%] before:translate-y-[-50%] before:size-[26px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[26px] xsm:text-[30px] sm:ml-0 sm:text-[40px] sm:before:hidden sm:leading-normal md:[&>_br]:hidden xl:text-[50px]"><strong><?= $productTitle ?></strong> PRODUCTS</h2>
+                            <h5 class="mini-title text-[#52555C] text-[24px] italic leading-[60px] opacity-75 xsm:text-[20px]">{{ getStaticText(2) }}</h5>
+                            <h2 class="title relative ml-[50px] text-blue text-[64px] font-bold leading-[80px] before:absolute before:left-[-50px] before:top-[50%] before:translate-y-[-50%] before:size-[26px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[26px] xsm:text-[30px] sm:ml-0 sm:text-[40px] sm:before:hidden sm:leading-normal md:[&>_br]:hidden xl:text-[50px]">{!! getStaticText(3) !!}</h2>
                         </div>
                         <div class="carousel-navigation items-center justify-center hidden gap-[40px] md:flex">
                             <div class="product-prev cursor-pointer size-[40px] leading-normal [&.swiper-button-disabled_.icon]:text-[#52555C]/35 [&.swiper-button-disabled_.icon]:scale-x-100">
@@ -296,7 +296,7 @@
             <div class="wrapper">
                 <div class="heading-wrapper flex items-center justify-between md:flex-col md:items-center md:justify-center md:gap-[30px]">
                     <div class="title-field relative">
-                        <h2 class="title text-blue text-[48px] leading-[64px] before:absolute before:left-[-60px] before:top-[30px] before:size-[26px] before:h-0 before:bg-green before:duration-350 sm:before:hidden md:before:top-[50%] md:before:translate-y-[-50%] group-[&.is-active]/container:before:h-[26px] xl:text-[50px] md:[&>_br]:hidden xsm:text-[30px]"><strong>WEPADBOL</strong> <br> PROJECTS</h2>
+                        <h2 class="title text-blue text-[48px] leading-[64px] before:absolute before:left-[-60px] before:top-[30px] before:size-[26px] before:h-0 before:bg-green before:duration-350 sm:before:hidden md:before:top-[50%] md:before:translate-y-[-50%] group-[&.is-active]/container:before:h-[26px] xl:text-[50px] md:[&>_br]:hidden xsm:text-[30px]">{!! getStaticText(4) !!}</h2>
                     </div>
                     <div class="map-filter-wrapper sm:w-full sm:overflow-x-auto">
                         <div class="map-filter-field p-[15px] w-auto h-full border-[4px] border-solid border-blue/6 bg-white/20 backdrop-blur-[5px] flex items-center rounded-[8px] duration-350 hover:border-blue/10 before:absolute before:left-0 before:top-0 before:h-full before:bg-gradient-to-l before:from-green before:z-2 before:w-[50%] before:duration-350 before:hidden before:to-white/0 hover:before:opacity-0 sm:before:flex sm:gap-[15px] sm:overflow-x-auto sm:justify-normal sm:w-max sm:relative">
@@ -567,11 +567,11 @@
                 </div>
                 <div class="blog-title-wrapper flex items-center justify-end gap-[60px] relative z-2 w-fit min-md:ml-[530px] md:mx-auto md:order-1 md:flex-col md:justify-center md:w-full md:gap-[15px] lg:ml-[290px] xl:relative xl:ml-[370px] xl:gap-[30px] 2xl:ml-[430px]">
                     <div class="title-field srr relative min-md:w-fit min-md:mb-[90px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-full before:mt-[45px] before:size-[26px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[26px] md:before:hidden">
-                        <h1 class="title text-[64px] text-blue leading-[80px] whitespace-nowrap min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 xsm:text-[30px] sm:leading-normal md:[&>_br]:hidden xl:text-[50px]"><strong>WEPADBOL</strong> NEWS</h1>
+                        <h1 class="title text-[64px] text-blue leading-[80px] whitespace-nowrap min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 xsm:text-[30px] sm:leading-normal md:[&>_br]:hidden xl:text-[50px]">{!! getStaticText(5) !!}</h1>
                     </div>
                     <a href="{{ env('HTTP_URL') . '/' . getUrl('blog_url') }}" class="button srr group/button relative border border-solid border-blue/6 bg-transparent flex flex-col justify-center items-center gap-[15px] px-[34px] py-[20px] min-md:h-auto min-md:min-h-[150px] w-auto overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-green before:rounded-full before:translate-z-0 before:duration-350 min-md:hover:before:scale-[5.5] sm:h-[50px] md:flex-row lg:p-[30px] xl:p-[35px]">
                         <i class="icon relative z-2 translate-z-0 icon-chevron-right text-green text-[10px] h-[10px] flex items-center leading-normal min-md:-rotate-90 duration-350 min-md:group-hover/button:text-white min-md:group-hover/button:rotate-90 md:order-2"></i>
-                        <small class="text relative z-2 translate-z-0 text-blue text-[16px] font-medium leading-[19px] min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 duration-350 min-md:group-hover/button:text-white md:order-1">All News</small>
+                        <small class="text relative z-2 translate-z-0 text-blue text-[16px] font-medium leading-[19px] min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 duration-350 min-md:group-hover/button:text-white md:order-1">{{getStaticText(6)}}</small>
                     </a>
                 </div>
                 <div class="blog-controller srb absolute right-[600px] bottom-[50px] z-2 flex items-center gap-[125px] max-w-[100px] mx-auto md:relative md:left-0 md:top-0 md:!translate-x-0 md:order-2 xl:max-w-full xl:right-0 xl:left-[50%] xl:translate-x-[-20%] xl:bottom-0 xl:justify-center xl:items-center">

@@ -202,63 +202,63 @@
             <div class="language-field group/lang relative">
                 <div class="flex items-center gap-[10px]">
                     <i class="icon icon-earth text-green text-[26px] h-[26px] leading-normal flex duration-350 group-[&.is-fixed]/header:text-blue"></i>
-                    <div class="language text-white opacity-85 text-[20px] leading-[28px] group-[&.is-fixed]/header:opacity-100 group-[&.is-fixed]/header:text-blue group-[&.blue]/header:text-blue">Tr</div>
+                    <div class="language text-white opacity-85 text-[20px] leading-[28px] group-[&.is-fixed]/header:opacity-100 group-[&.is-fixed]/header:text-blue group-[&.blue]/header:text-blue">{{ strtoupper(app()->getLocale()) }} </div>
                     <i class="icon icon-chevron-down2 text-white opacity-50 text-[9px] h-[9px] leading-normal flex duration-350 group-[&.is-fixed]/header:text-blue group-[&.blue]/header:text-blue group-[&.blue]/header:group-hover/lang:text-green group-hover/lang:opacity-100 group-hover/lang:rotate-180"></i>
                 </div>
                 <ul class="options bg-green group-[&.is-fixed]/header:bg-black/75 p-[20px] sm:p-[15px] grid grid-cols-2 gap-[10px] sm:gap-[5px] absolute top-full left-[50%] translate-x-[-50%] mt-[30px] w-max rounded-[20px] backdrop-blur-xl before:absolute before:left-0 before:top-[-50px] before:w-full before:h-[50px] before:bg-transparent after:absolute after:left-0 after:top-0 after:size-full after:pointer-events-none after:border-[1px] after:border-white after:border-solid after:bg-transparent after:rounded-[20px] after:[mask-image:linear-gradient(0deg,transparent,black)] after:opacity-40 duration-350 opacity-0 pointer-events-none invisible translate-y-[15px] group-hover/lang:opacity-100 group-hover/lang:pointer-events-auto group-hover/lang:visible group-hover/lang:translate-y-0 group-hover/lang:delay-250">
                     <?php $languagesArray = App\Models\Language::all(); 
-                                    // get URL segments
-                                    $segments = explode('/', url()->current());
-                                    //$lang = ['tr', 'en', 'ar', 'ru', 'es', 'fr'];
-                                        foreach ($languagesArray as $language) { ?>
-                                            <?php 
-                                                if(isset($segments[3]) && isset($segments[4])):
-                                                    $segments[3] = urldecode($segments[3]);
-                                                    $segments[4] = urldecode($segments[4]);
-                                                    $langParam0 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[3]])->first();
-                                                    if(isset($blog)):
-                                                        $langParam1 = App\Models\Blog::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
-                                                    elseif(isset($careerJob)):
-                                                        $langParam1 = App\Models\CareerJob::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
-                                                    else:
-                                                        $langParam1 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
-                                                    endif;
-                                                    $langParam0_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam0->menu_id])->first();
-                                                    if(isset($blog)):
-                                                        $langParam1_new = App\Models\Blog::where(['lang' => $language->lang_code, 'blog_id' => $langParam1->blog_id])->first();
-                                                    elseif(isset($careerJob)):
-                                                        $langParam1_new = App\Models\CareerJob::where(['lang' => $language->lang_code, 'job_id' => $langParam1->job_id])->first();
-                                                    else:
-                                                        $langParam1_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam1->menu_id])->first();
-                                                    endif;
-                                                    //dd($langParam0, $langParam1);
-                                                    if($langParam0 && $langParam1):
-                                                        $url = $language->domain . '/' . $langParam0_new->seo_url . '/' . $langParam1_new->seo_url;
-                                                    endif;
-                                                endif;
-                                                if(isset($segments[3]) && !isset($segments[4])):
-                                                    //set $segment[3] as utf8 string
-                                                    $segments[3] = urldecode($segments[3]);
-                                                    $langParam0 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[3]])->first();
+                    // get URL segments
+                    $segments = explode('/', url()->current());
+                    //$lang = ['tr', 'en', 'ar', 'ru', 'es', 'fr'];
+                        foreach ($languagesArray as $language) { ?>
+                            <?php 
+                                if(isset($segments[3]) && isset($segments[4])):
+                                    $segments[3] = urldecode($segments[3]);
+                                    $segments[4] = urldecode($segments[4]);
+                                    $langParam0 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[3]])->first();
+                                    if(isset($blog)):
+                                        $langParam1 = App\Models\Blog::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
+                                    elseif(isset($careerJob)):
+                                        $langParam1 = App\Models\CareerJob::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
+                                    else:
+                                        $langParam1 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
+                                    endif;
+                                    $langParam0_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam0->menu_id])->first();
+                                    if(isset($blog)):
+                                        $langParam1_new = App\Models\Blog::where(['lang' => $language->lang_code, 'blog_id' => $langParam1->blog_id])->first();
+                                    elseif(isset($careerJob)):
+                                        $langParam1_new = App\Models\CareerJob::where(['lang' => $language->lang_code, 'job_id' => $langParam1->job_id])->first();
+                                    else:
+                                        $langParam1_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam1->menu_id])->first();
+                                    endif;
+                                    //dd($langParam0, $langParam1);
+                                    if($langParam0 && $langParam1):
+                                        $url = $language->domain . '/' . $langParam0_new->seo_url . '/' . $langParam1_new->seo_url;
+                                    endif;
+                                endif;
+                                if(isset($segments[3]) && !isset($segments[4])):
+                                    //set $segment[3] as utf8 string
+                                    $segments[3] = urldecode($segments[3]);
+                                    $langParam0 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[3]])->first();
 
-                                                    $langParam0_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam0->menu_id])->first();
-                                                    //dd($langParam0, $langParam1);
-                                                    if($langParam0 && $langParam0_new):
-                                                        $url = $language->domain . '/' . $langParam0_new->seo_url;
-                                                    endif;
-                                                endif;
-                                                if(!isset($segments[3]) && !isset($segments[4])):
-                                                    $url = $language->domain . '/';
-                                                endif;
-                                            ?>
-                                            <li class="option group/option">
-                                                <a href="<?=$url?>" class="flex items-center gap-[10px] rounded-[12px] bg-black/10 px-[12.5px] py-[10px] sm:px-[10px] sm:py-[7.5px] relative">
-                                                    <div class="image w-[20px] aspect-square shrink-0"><img class="size-full object-cover
-                                                    object-center" src="{{ $language->domain  .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'. $language->flag_image}}" alt="" loading="lazy"></div>
-                                                    <div class="text text-white/70 duration-350 group-hover/option:text-white sm:text-[14px]">{{strtoupper($language->lang_code)}}</div>
-                                                </a>
-                                            </li>
-                                    <?php } ?>
+                                    $langParam0_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam0->menu_id])->first();
+                                    //dd($langParam0, $langParam1);
+                                    if($langParam0 && $langParam0_new):
+                                        $url = $language->domain . '/' . $langParam0_new->seo_url;
+                                    endif;
+                                endif;
+                                if(!isset($segments[3]) && !isset($segments[4])):
+                                    $url = $language->domain . '/';
+                                endif;
+                            ?>
+                            <li class="option group/option">
+                                <a href="<?=$url?>" class="flex items-center gap-[10px] rounded-[12px] bg-black/10 px-[12.5px] py-[10px] sm:px-[10px] sm:py-[7.5px] relative">
+                                    <div class="image w-[20px] aspect-square shrink-0"><img class="size-full object-cover
+                                    object-center" src="{{ $language->domain  .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'. $language->flag_image}}" alt="" loading="lazy"></div>
+                                    <div class="text text-white/70 duration-350 group-hover/option:text-white sm:text-[14px]">{{strtoupper($language->lang_code)}}</div>
+                                </a>
+                            </li>
+                    <?php } ?>
                 </ul>
             </div>
          
