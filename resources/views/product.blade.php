@@ -327,8 +327,8 @@ $breadcrumbTitle = $product->title;
                             <img src="../assets/svg/triangle.svg" alt="" class="size-full object-contain object-center rotate-anim">
                         </div>
                         <div class="title-field flex flex-col gap-[20px] ml-[120px] md:justify-center md:items-center xl:ml-0 xl:gap-0">
-                            <h5 class="mini-title text-[#52555C] text-[24px] italic leading-[60px] opacity-75 xsm:text-[20px]">A Brand New Experience</h5>
-                            <h2 class="title relative ml-[50px] text-blue text-[64px] font-bold leading-[80px] before:absolute before:left-[-50px] before:top-[50%] before:translate-y-[-50%] before:size-[26px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[26px] xsm:text-[30px] sm:ml-0 sm:text-[40px] sm:before:hidden sm:leading-normal md:[&>_br]:hidden xl:text-[50px]"><strong><?= $productTitle ?></strong> PRODUCTS</h2>
+                            <h5 class="mini-title text-[#52555C] text-[24px] italic leading-[60px] opacity-75 xsm:text-[20px]">{{ getStaticText(2) }}</h5>
+                            <h2 class="title relative ml-[50px] text-blue text-[64px] font-bold leading-[80px] before:absolute before:left-[-50px] before:top-[50%] before:translate-y-[-50%] before:size-[26px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[26px] xsm:text-[30px] sm:ml-0 sm:text-[40px] sm:before:hidden sm:leading-normal md:[&>_br]:hidden xl:text-[50px]">{!! getStaticText(3) !!}</h2>
                         </div>
                         <div class="carousel-navigation items-center justify-center hidden gap-[40px] md:flex">
                             <div class="product-prev cursor-pointer size-[40px] leading-normal [&.swiper-button-disabled_.icon]:text-[#52555C]/35 [&.swiper-button-disabled_.icon]:scale-x-100">
