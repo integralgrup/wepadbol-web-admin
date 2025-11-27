@@ -78,7 +78,7 @@ $categoryId = request()->route('categoryId');
                                         <!-- parent_category selectbox-->
                                         <div class="mb-3">
                                             <label for="parent_category_id" class="form-label">Üst Kategori ({{ $language->lang_code }})</label>
-                                            <select class="form-select" id="parent_category_id" name="parent_category_id">
+                                            <select class="form-select" id="parent_category_id" name="parent_category_id_{{ $language->lang_code }}">
                                                 <option value="">Seçiniz</option>
                                                 @foreach($categories as $parentCategory)
                                                     <option value="{{ $parentCategory->category_id }}" {{ (isset($category_items) && $category_items[$key]->parent_category_id == $parentCategory->category_id) ? 'selected' : '' }}>{{ $parentCategory->title }}</option>

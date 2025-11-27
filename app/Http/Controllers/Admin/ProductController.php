@@ -567,6 +567,7 @@ class ProductController extends Controller
     }
     public function categoryStore(Request $request)
     {
+        //dd($request->all());
         if ($request->has('category_id')) {
                 $category_id = $request->category_id; // Use the provided category_id
             }else{
@@ -578,24 +579,23 @@ class ProductController extends Controller
             }
         try {
             foreach($this->languages as $language){
-                if($language->lang_code == 'en'){
-                    $data = [
-                        'parent_category_id' => $request->input('parent_category_id'),
-                        'category_id' => $category_id,
-                        'lang' => $language->lang_code,
-                        'sort' => $request->input('sort_' . $language->lang_code) ?? $request->input('sort_en') ?? 0,
-                        'title' => $request->input('title_' . $language->lang_code),
-                        'seo_url' => $request->input('seo_url_' . $language->lang_code),
-                        'seo_title' => $request->input('seo_title_' . $language->lang_code),
-                        'seo_description' => $request->input('seo_description_' . $language->lang_code),
-                        'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code),
-                    ];
-                    ProductCategory::updateOrCreate(
-                        ['category_id' => $category_id, 'lang' => $language->lang_code],
-                        $data
-                    );
-                }
-
+                
+                $data = [
+                    'parent_category_id' => $request->input('parent_category_id_' . $language->lang_code) ?? $request->input('parent_category_id_en') ?? 0,
+                    'category_id' => $category_id,
+                    'lang' => $language->lang_code,
+                    'sort' => $request->input('sort_' . $language->lang_code) ?? $request->input('sort_en') ?? 0,
+                    'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
+                    'seo_url' => $request->input('seo_url_' . $language->lang_code) ?? $request->input('seo_url_en'),
+                    'seo_title' => $request->input('seo_title_' . $language->lang_code) ?? $request->input('seo_title_en'),
+                    'seo_description' => $request->input('seo_description_' . $language->lang_code) ?? $request->input('seo_description_en'),
+                    'seo_keywords' => $request->input('seo_keywords_' . $language->lang_code) ?? $request->input('seo_keywords_en'),
+                ];
+                ProductCategory::updateOrCreate(
+                    ['category_id' => $category_id, 'lang' => $language->lang_code],
+                    $data
+                );
+                
             }   
             return redirect()->route('admin.product.category.index')->with('success', 'Kategori başarıyla kaydedildi!');
         } catch (\Throwable $th) {
