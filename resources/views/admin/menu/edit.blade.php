@@ -98,7 +98,7 @@
                                             <input type="text" class="form-control" id="title_{{$menu->lang}}" name="title_{{$menu->lang}}" value="{{ $menu->title }}" required>
                                         </div>
                                         <!-- Image -->
-                                        <div class="mb-3">
+                                        <div class="mb-3" <?=$menu->menu_type == 'footer' ? 'style="display: none;"' : ''?>>
                                             <label for="image_{{$menu->lang}}" class="form-label">Resim ({{ $menu->lang }})</label>
                                             <input type="file" class="form-control" id="image_{{$menu->lang}}" name="image_{{$menu->lang}}" accept="image/*">
                                             @if($menu->{'image'})
@@ -113,9 +113,9 @@
                                         </div>
                                         
                                         <!-- Alt Text -->
-                                        <div class="mb-3">
+                                        <div class="mb-3" <?=$menu->menu_type == 'footer' ? 'style="display: none;"' : ''?>>
                                             <label for="alt_{{$menu->lang}}" class="form-label">Alt Text ({{ $menu->lang }})<span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="alt_{{$menu->lang}}" name="alt_{{$menu->lang}}" value="{{ $menu->{'alt'} }}" required>
+                                            <input type="text" class="form-control" id="alt_{{$menu->lang}}" name="alt_{{$menu->lang}}" value="{{ $menu->{'alt'} }}" >
                                         </div>
                                         <!-- Menu Type -->
                                         <div class="mb-3">

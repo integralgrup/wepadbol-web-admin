@@ -85,8 +85,6 @@ class MenuController extends Controller
                             'parent_menu_id_' . $language->lang_code => 'nullable|integer',
                             'title_' . $language->lang_code => 'required|max:255',
                             'seo_url_' . $language->lang_code => 'required|max:255',
-                            'image_' . $language->lang_code => 'nullable|image|mimes:jpeg,png,jpg,gif,svg,webp|max:2048',
-                            'alt_' . $language->lang_code => 'nullable|max:255',
                             'menu_type_' . $language->lang_code => 'required|in:header,footer,sidebar', // Assuming these are the valid types
                             'page_type_' . $language->lang_code => 'required|max:255',
                             'url_block_' . $language->lang_code => 'nullable|boolean',
@@ -100,7 +98,7 @@ class MenuController extends Controller
                         $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'title_' . $language->lang_code, 'title_en', $language->images_folder, $tmpImgPath);
                         //dd($imageName);
                     }else{
-                        $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
+                        $imageName = $request->input('old_image_' . $language->lang_code, null) ?? null; // Use old image if no new image is uploaded
                     }
 
                     // Update or create the menu item for the specific language
@@ -114,7 +112,7 @@ class MenuController extends Controller
                             'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
                             'seo_url' => $request->input('seo_url_' . $language->lang_code) ?? $request->input('seo_url_en'),
                             'image' => $imageName, // save relative path
-                            'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                            'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en') ?? null,
                             'menu_type' => $request->input('menu_type_' . $language->lang_code) ?? $request->input('menu_type_en'),
                             'page_type' => $request->input('page_type_' . $language->lang_code) ?? $request->input('page_type_en'),
                             'url_block' => $request->has('url_block_' . $language->lang_code) ?? $request->input('url_block_en'),

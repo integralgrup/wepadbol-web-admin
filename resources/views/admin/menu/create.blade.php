@@ -106,9 +106,9 @@
                                         </div>
 
                                         <!-- Image -->
-                                        <div class="mb-3">
+                                        <div class="mb-3" <?=$type=='footer' ? 'style="display:none"' : ''?> >
                                             <label for="image_{{$language->lang_code}}" class="form-label">Resim ({{ $language->lang_code }})<span class="text-danger">*</span></label>
-                                            <input type="file" name="image_{{$language->lang_code}}" id="image_{{$language->lang_code}}" class="form-control" accept="image/*" {{ $required }}>
+                                            <input type="file" name="image_{{$language->lang_code}}" id="image_{{$language->lang_code}}" class="form-control" accept="image/*" >
                                         </div>
 
                                         <!-- SEO URL -->
@@ -120,9 +120,9 @@
                                         
 
                                         <!-- Alt Text -->
-                                        <div class="mb-3">
+                                        <div class="mb-3"  <?=$type=='footer' ? 'style="display:none"' : ''?>  >
                                             <label for="alt_{{$language->lang_code}}" class="form-label">Alt Text ({{ $language->lang_code }})<span class="text-danger">*</span></label>
-                                            <input type="text" name="alt_{{$language->lang_code}}" id="alt_{{$language->lang_code}}" class="form-control" maxlength="255" {{ $required }}>
+                                            <input type="text" name="alt_{{$language->lang_code}}" id="alt_{{$language->lang_code}}" class="form-control" maxlength="255" >
                                         </div>
 
                                         <!-- Menu Type -->
