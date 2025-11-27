@@ -28,11 +28,28 @@ use App\Models\Continent;
 use App\Models\Project;
 use App\Models\ProjectGallery;
 use App\Models\SeoSettings;
+use App\Models\StaticImage;
 use Illuminate\Support\Facades\DB;
 
 
 class HomeController extends Controller
 {
+
+     // construct function
+    public function __construct()
+    {
+        $static_images = StaticImage::where('lang', app()->getLocale())->get();
+
+        foreach($static_images as $image) {
+            $imagesByTitle[$image->title] = $image;
+        }
+
+
+        view()->share('static_images', $imagesByTitle);
+
+        //dd($imagesByTitle);
+    }
+
     public function index()
     {
         //dd($_SERVER['DOCUMENT_ROOT']);

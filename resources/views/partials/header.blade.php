@@ -17,7 +17,7 @@
     <?php $pageTitle = $seo->seo_title;?>
     @endif
     <title><?php echo !empty($pageTitle) ? $pageTitle : $nameofProject ?></title>
-    <link rel="shortcut icon" href="../assets/image/trademark/favicon.png" type="image/x-icon">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset( getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) . '/' . $static_images['favicon']->image )  }}">
     <!-- Önbellek tutmasın diye ekledim; '?id<?= rand(); ?>' yazısını silersin -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css') }}">
