@@ -40,7 +40,7 @@ class ProductCategory extends Model
 
     public function children()
     {
-        return $this->hasMany(ProductCategory::class, 'parent_category_id', 'category_id')->orderBy('sort', 'asc');
+        return $this->hasMany(ProductCategory::class, 'parent_category_id', 'category_id')->where('lang', app()->getLocale())->orderBy('sort', 'asc');
     }
 
 }
