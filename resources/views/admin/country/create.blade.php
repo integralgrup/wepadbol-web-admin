@@ -74,7 +74,7 @@
                                             <select class="form-select" id="continent_id_{{ $language->lang_code }}" name="continent_id_{{ $language->lang_code }}" {{ $required }}>
                                                 <option value="">Seçiniz</option>
                                                 @foreach($continents as $continent)
-                                                    <option value="{{ $continent->id }}">{{ $continent->title }}</option>
+                                                    <option value="{{ $continent->continent_id }}">{{ $continent->title }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
