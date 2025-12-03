@@ -237,7 +237,7 @@ class HomeController extends Controller
         $targetLang = $lang;
 
         $tables = [
-            /*'about',
+            'about',
             'about_certificates',
             'about_home',
             'about_how_we_do',
@@ -252,7 +252,6 @@ class HomeController extends Controller
             'club_slider_1',
             'club_slider_2',
             'club_slider_3',
-            'country',
             'footer_info',
             'main_slider',
             'menu',
@@ -269,7 +268,7 @@ class HomeController extends Controller
             'project_gallery',
             'seo_settings',
             'static_text',
-            'static_image',*/
+            'static_image',
         ];
 
         //Fetch all records from source language
