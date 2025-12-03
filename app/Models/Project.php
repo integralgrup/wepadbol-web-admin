@@ -48,7 +48,7 @@ class Project extends Model
 
     public function country()
     {
-        return $this->hasOne(Country::class, 'id', 'country_id')->where('lang', app()->getLocale());
+        return $this->hasOne(Country::class, 'country_id', 'country_id')->where('lang', app()->getLocale());
     }
 
 
