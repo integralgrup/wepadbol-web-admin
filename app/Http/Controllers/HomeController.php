@@ -79,13 +79,15 @@ class HomeController extends Controller
                 ];
             })
             ->toArray();
+        $projects = Project::where('lang', app()->getLocale())->with(['gallery', 'country', 'country.continent'])->get();
+        //dd($projects);
         $blog = Blog::where('lang', app()->getLocale())->limit(5)->get()->toArray();
         //dd($blog);
         $continents = Continent::where('lang', app()->getLocale())->with('countries')->get()->toArray();
 
         $seo = SeoSettings::where('page', 'home')->where('lang', app()->getLocale())->first();
 
-        return view('home', compact('sliders', 'languages', 'about', 'about_sliders', 'about_certificates', 'products', 'clubs', 'countries', 'continents', 'blog', 'seo'));
+        return view('home', compact('sliders', 'languages', 'about', 'about_sliders', 'about_certificates', 'products', 'clubs', 'countries', 'continents', 'projects', 'blog', 'seo'));
     }
 
     public function route($slug, $slug2 = null)

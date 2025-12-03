@@ -55,12 +55,13 @@ $imageId = request()->route('imageId');
                             @endforeach
                         </ul>
                     </div>
-                    <?php 
-                        foreach($images as $image){
-                            $image[$image->lang] = $image->image;
-                            $alt[$image->lang] = $image->alt;
-                            $sort[$image->lang] = $image->sort;
+                    <?php //dd($images);
+                        foreach($images as $item){
+                            $image[$item->lang] = $item->image;
+                            $alt[$item->lang] = $item->alt;
+                            $sort[$item->lang] = $item->sort;
                         }
+                        //dd($images);
                     ?>
                     <div class="card-body">
                         <form action="{{ route('admin.product.images.store', $product->product_id) }}" method="POST" enctype="multipart/form-data">
@@ -76,7 +77,7 @@ $imageId = request()->route('imageId');
                                         <div class="mb-3">
                                             <label for="image_{{ $language->lang_code }}" class="form-label">Görsel ({{ $language->lang_code }})</label>
                                             <input type="file" class="form-control" id="image_{{ $language->lang_code }}" name="image_{{ $language->lang_code }}" accept="image/*" value="{{ $image[$language->lang_code] ?? '' }}">
-                                            @if($image[$language->lang_code])
+                                            @if(isset($image[$language->lang_code]))
                                                 <img src="{{ $language->domain .'/'.  getFolder(['uploads_folder','product_images_folder'], $language->lang_code) . '/' . $image[$language->lang_code] }}" alt="{{ $alt[$language->lang_code] }}" style="width: 200px; height: auto; margin-top: 10px;">
                                                 <input type="hidden" class="form-control" id="old_image_{{ $language->lang_code }}" name="old_image_{{ $language->lang_code }}" value="{{ $image[$language->lang_code] }}" readonly>
                                             @endif

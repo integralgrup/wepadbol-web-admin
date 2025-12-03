@@ -56,11 +56,11 @@ $imageId = request()->route('imageId');
                         </ul>
                     </div>
                     <?php 
-                        foreach($gallery as $image){
-                            $image[$image->lang] = $image->image;
-                            $title[$image->lang] = $image->title;
-                            $alt[$image->lang] = $image->alt;
-                            $sort[$image->lang] = $image->sort;
+                        foreach($gallery as $item){
+                            $image[$item->lang] = $item->image;
+                            $title[$item->lang] = $item->title;
+                            $alt[$item->lang] = $item->alt;
+                            $sort[$item->lang] = $item->sort;
                         }
                     ?>
                     <div class="card-body">

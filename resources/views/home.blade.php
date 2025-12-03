@@ -296,16 +296,26 @@
             <div class="wrapper">
                 <div class="heading-wrapper flex items-center justify-between md:flex-col md:items-center md:justify-center md:gap-[30px]">
                     <div class="title-field relative">
-                        <h2 class="title text-blue text-[48px] leading-[64px] before:absolute before:left-[-60px] before:top-[30px] before:size-[26px] before:h-0 before:bg-green before:duration-350 sm:before:hidden md:before:top-[50%] md:before:translate-y-[-50%] group-[&.is-active]/container:before:h-[26px] xl:text-[50px] md:[&>_br]:hidden xsm:text-[30px]">{!! getStaticText(4) !!}</h2>
+                        <h2 class="title text-blue text-[48px] leading-[64px] before:absolute before:left-[-60px] before:top-[30px] before:size-[26px] before:h-0 before:bg-green before:duration-350 sm:before:hidden md:before:top-[50%] md:before:translate-y-[-50%] group-[&.is-active]/container:before:h-[26px] xl:text-[50px] md:[&>_br]:hidden xsm:text-[30px]"><strong>WEPADBOL</strong> <br> PROJECTS</h2>
                     </div>
+                    <?php $list = [
+                        ['title' => 'All Country', 'continent' => 'all',],
+                        ['title' => 'Africa', 'continent' => 'africa',],
+                        ['title' => 'Europe', 'continent' => 'europe',],
+                        ['title' => 'North America', 'continent' => 'north-america',],
+                        ['title' => 'South America', 'continent' => 'south-america',],
+                        ['title' => 'Asia', 'continent' => 'asia',],
+                        ['title' => 'Australia', 'continent' => 'australia',]
+                    ];
+                    ?>
                     <div class="map-filter-wrapper sm:w-full sm:overflow-x-auto">
-                        <div class="map-filter-field p-[15px] w-auto h-full border-[4px] border-solid border-blue/6 bg-white/20 backdrop-blur-[5px] flex items-center rounded-[8px] duration-350 hover:border-blue/10 before:absolute before:left-0 before:top-0 before:h-full before:bg-gradient-to-l before:from-green before:z-2 before:w-[50%] before:duration-350 before:hidden before:to-white/0 hover:before:opacity-0 sm:before:flex sm:gap-[15px] sm:overflow-x-auto sm:justify-normal sm:w-max sm:relative">
+                        <div class="map-filter-field p-[15px] w-auto h-full border-[4px] border-solid border-blue/6 bg-white/20 backdrop-blur-[5px] flex items-center rounded-[8px] duration-350 hover:border-blue/10 before:absolute before:left-0 before:top-0 before:h-full before:bg-gradient-to-l before:from-green before:z-2 before:w-[50%] before:duration-350 before:hidden before:to-white/0 hover:before:opacity-0 sm:gap-[15px] sm:overflow-x-auto sm:justify-normal sm:w-max sm:relative">
                             <div class="image aspect-square max-w-[30px] w-full overflow-hidden translate-z-0 hidden sm:block">
-                                <img src="../assets/image/static/hand.png" class="size-full object-cover object-center" alt="">
+                                <img src="../assets/image/static/hand.png" class="size-full object-contain object-center" alt="">
                             </div>
-                            <?php foreach ($continents as $key => $item) : ?>
-                                <div class="map-item group/item <?= $key == 0 ? 'is-active' : '' ?> relative overflow-hidden cursor-pointer py-[15px] px-[25px] flex justify-center items-center bg-transparent rounded-[8px] duration-350 before:absolute before:left-[50%] before:top-[50%] before:translate-x-[-50%] before:translate-y-[-50%] before:w-[50%] before:h-[50px] before:rounded-full before:duration-350 before:bg-green before:scale-0 [&.is-active]:before:scale-[2.2] lg:h-[50px] lg:px-[12px]" data-continent="<?= $item['class'] ?>">
-                                    <small class="text relative z-2 text-[18px] text-blue/50 font-semibold leading-[28px] duration-350 group-[&.is-active]/item:text-white group-hover:text-blue/80"> <?= $item['title'] ?></small>
+                            <?php foreach ($list as $key => $item) : ?>
+                                <div class="map-item group/item <?= $key == 0 ? 'is-active' : '' ?> relative overflow-hidden cursor-pointer py-[15px] sm:py-[10px] px-[25px] flex justify-center items-center bg-transparent rounded-[8px] duration-350 before:absolute before:left-[50%] before:top-[50%] before:translate-x-[-50%] before:translate-y-[-50%] before:w-[50%] before:h-[50px] before:rounded-full before:duration-350 before:bg-green before:scale-0 [&.is-active]:before:scale-[2.2] lg:h-[50px] lg:px-[12px]" data-continent="<?= $item['continent'] ?>">
+                                    <small class="text relative z-2 text-[18px] sm:text-[16px] text-blue/50 font-semibold leading-[28px] duration-350 group-[&.is-active]/item:text-white group-hover:text-blue/80"> <?= $item['title'] ?></small>
                                 </div>
                             <?php endforeach; ?>
                         </div>
@@ -491,20 +501,31 @@
                             <path class="map-path world-path fill-[#D5DBDF] stroke-[#ffffff] duration-350 hover:fill-green [&.is-active]:fill-green " data-id="ZM" data-region="ZM" data-key="" data-title="Zambia" d="M567.105,489.207L568.429,490.466L569.142,492.868L568.664,493.636L568.101,495.938L568.639,498.299L567.757,499.292L566.906,501.951L568.38,502.695L559.872,505.065L560.138,507.12L558.014,507.516L556.417,508.67L556.076,509.676L555.073,509.904L552.634,512.299L551.082,514.192L550.135,514.26L549.224,513.922L546.09,513.602L545.586,513.383L545.565,513.141L544.458,512.482L542.641,512.314L540.345,512.978L538.515,511.155L536.623,508.778L536.752,499.62L542.591,499.656L542.352,498.67L542.77,497.602L542.277,496.266L542.596,494.887L542.299,494.006L543.267,494.077L543.427,494.96L544.741,494.891L546.521,495.153L547.458,496.444L549.704,496.841L551.418,495.943L552.047,497.435L554.196,497.833L555.229,499.049L556.38,500.622L558.526,500.646L558.292,497.566L557.522,498.084L555.562,496.976L554.805,496.469L555.152,493.618L555.65,490.267L555.022,489.021L555.821,487.222L556.573,486.885L560.339,486.41L561.443,486.696L562.615,487.413L563.732,487.885L565.514,488.359z"></path>
                             <path class="map-path world-path fill-[#D5DBDF] stroke-[#ffffff] duration-350 hover:fill-green [&.is-active]:fill-green " data-id="ZW" data-region="ZW" data-key="" data-title="Zimbabwe" d="M562.709,526.998L561.219,526.697L560.274,527.059L558.917,526.548L557.776,526.516L555.989,525.158L553.821,524.698L552.996,522.803L552.989,521.752L551.788,521.432L548.615,518.177L547.733,516.471L547.169,515.946L546.09,513.602L549.224,513.922L550.135,514.26L551.082,514.192L552.634,512.299L555.073,509.904L556.076,509.676L556.417,508.67L558.014,507.516L560.138,507.12L560.319,508.2L562.658,508.142L563.957,508.754L564.562,509.472L565.896,509.683L567.353,510.617L567.359,514.312L566.813,516.347L566.692,518.55L567.143,519.426L566.826,521.172L566.402,521.443L565.663,523.593z"></path>
                         </svg>
+                        <?php
+                            $list = [];
+                        foreach($projects as $project): 
+                            $continent = strtolower($project->country->continent->title);
+                            $top = $project->country->top;
+                            $left = $project->country->left;
 
+                            $list[] = [
+                                'continent' => $continent,
+                                'top' => $top,
+                                'left' => $left,
+                                'country_title' => $project->country->title,
+                            ];
+                        endforeach;
+
+                        ?>
                         
-
-
-
-
                         <div class="map-dot-wrapper absolute left-[50%] translate-x-[-50%] top-0 size-full xsm:h-[275px] xs:w-[130%] pointer-events-none">
-                            <?php foreach ($countries as $key => $item) : ?>
-                                <div class="dot-field is-active absolute pointer-events-auto group/dot opacity-0 scale-0 invisible duration-350 [&.is-active]:scale-100 [&.is-active]:opacity-100 [&.is-active]:visible" style="left: <?= $item['left'] ?>%; top: <?= $item['top'] ?>%;" data-continent="<?= $item['continent_class'] ?>">
-                                    <div class="icon icon-marker text-[25px] h-[25px] text-blue leading-normal flex duration-350 pointer-events-none group-hover/dot:text-white sm:text-[20px] sm:h-[20px]"></div>
-                                    <div class="dot-visible-content absolute rounded-[10px] px-[5px] py-[0] left-[calc(100%)] -translate-y-1/2 top-1/2 sm:hidden opacity-0 invisible duration-450 translate-x-10 group-hover/dot:opacity-100 group-hover/dot:visible group-hover/dot:translate-x-0 group-[&.active]/dot:opacity-100 group-[&.active]/dot:visible group-[&.active]/dot:translate-x-0">
-                                        <p style="background: #dddddd;" class="text text-[16px] leading-tight whitespace-nowrap text-center">{{ $item['title'] }}</p>
+                            <?php foreach ($list as $key => $item) : ?>
+                                <a href="#popup-project" data-fancybox class="dot-field is-active absolute pointer-events-auto group/dot opacity-0 scale-0 invisible duration-350 [&.is-active]:scale-100 [&.is-active]:opacity-100 [&.is-active]:visible" style="left: <?= $item['left'] ?>%; top: <?= $item['top'] ?>%;" data-continent="<?= $item['continent'] ?>">
+                                    <div class="icon icon-marker text-[25px] h-[25px] text-blue [-webkit-text-stroke:1px_rgba(3,36,107,0)] leading-normal flex duration-350 pointer-events-none group-hover/dot:text-white group-hover/dot:[-webkit-text-stroke:1px_rgba(3,36,107,1)] sm:text-[15px] sm:h-[15px] xs:text-[10px] xs:h-[10px]"></div>
+                                    <div class="dot-visible-content absolute rounded-[10px] px-[10px] py-[5px] left-[calc(100%)] -translate-y-1/2 top-1/2 bg-blue/20 backdrop-blur-lg sm:hidden opacity-0 invisible duration-450 translate-x-10 group-hover/dot:opacity-100 group-hover/dot:visible group-hover/dot:translate-x-0 group-[&.active]/dot:opacity-100 group-[&.active]/dot:visible group-[&.active]/dot:translate-x-0">
+                                        <p class="text text-[16px] text-white leading-tight whitespace-nowrap text-center"><?= $item['country_title'] ?></p>
                                     </div>
-                                </div>
+                                </a>
                             <?php endforeach; ?>
                         </div>
                     </div>
@@ -522,72 +543,115 @@
         </div>
     </section>
 
-    <!-- BLOG SECTION -->
-    <section class="blog-section relative overflow-hidden pt-[100px] pb-[220px] 2xl:py-[50px] lg:py-[45px] md:py-[30px]">
-    <div class="max-w-[1920px] container group/container animContainer">
-        <div class="rectangle absolute left-[130px] top-0 size-[70px]">
-            <img src="../assets/svg/rectangle.svg" alt="" class="size-full object-contain object-center rotate-anim">
-        </div>
-        <div class="triangle absolute right-[400px] top-[-4px] size-[130px] md:size-[100px] sm:right-0">
-            <img src="../assets/svg/triangle.svg" alt="" class="size-full object-contain object-center rotate-anim">
-        </div>
-        <div class="wrapper">
-            <div class="grid grid-cols-[minmax(0,7fr)_minmax(0,5fr)] justify-center relative md:grid-cols-1 md:gap-[15px] lg:gap-[30px]">
-                <?php $list = ['image-2.jpg', 'image-7.jpg', 'image-5.jpg', 'image-4.jpg', 'image-1.jpg']; ?>
-                <div class="blog-general-carousel swiper size-full min-md:overflow-visible md:order-3" dir="rtl">
-                    <div class="swiper-wrapper">
-                        <?php foreach ($blog as $key => $item) : ?>
-                            <div class="swiper-slide group/slide min-md:!pointer-events-none duration-350 [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto">
-                                <a href="javascript:;" class="blog-item flex relative min-md:opacity-0 min-md:pointer-events-none min-md:scale-75 duration-350 min-md:group-[&.swiper-slide-active]/slide:scale-100 min-md:group-[&.swiper-slide-active]/slide:pointer-events-auto min-md:group-[&.swiper-slide-active]/slide:opacity-100 min-md:group-[&.swiper-slide-next]/slide:blur-[5px] group-[&.swiper-slide-next]/slide:pointer-events-auto group-[&.swiper-slide-next]/slide:opacity-100 md:h-full md:flex-col md:gap-[15px]" dir="ltr">
-                                    <div class="blog-image aspect-[13/10] size-full rounded-[14px] relative overflow-hidden xsm:aspect-video sm:aspect-square md:aspect-video">
-                                        <img src="{{ asset( getFolder(['uploads_folder', 'blog_images_folder'], $item['lang']) . '/'. $item['image']) }}" alt="" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
-                                        <div class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full"></div>
-                                    </div>
-                                    <div class="blog-content size-auto bg-gradient-to-b from-green to-blue p-[2px] rounded-[14px] absolute top-[50px] right-[-420px] max-w-[500px] !pointer-events-none min-md:scale-50 min-md:opacity-0 min-md:invisible z-10 duration-350 group-[&.swiper-slide-active]/slide:scale-100 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:visible group-[&.swiper-slide-active]/slide:pointer-events-auto [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto md:left-0 md:top-0 md:translate-y-0 md:max-w-full md:relative lg:left-[320px]">
-                                        <div class="content bg-white size-auto [box-shadow:_0px_25px_75px_0px_rgba(3,_36,_107,_0.15);] pt-[34px] pr-[34px] pb-[50px] pl-[55px] rounded-[12px] md:p-[30px]">
-                                            <div class="fx-hover-repulse group/button pointer-events-auto w-fit ml-auto">
-                                                <div class="inner">
-                                                    <button class="button item relative overflow-hidden translate-z-0 size-[66px] p-[20px] rounded-full bg-green flex items-center justify-end before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:scale-0 before:rounded-full before:bg-blue before:duration-350 before:size-[33px] group-hover/button:before:scale-[2] lg:before:size-[20px] lg:size-[33px] lg:p-[10px] xl:before:size-[25px] xl:size-[44px] xl:p-[15px]">
-                                                        <i class="icon item icon-arrow-top relative z-2 text-[10px] size-[24px] text-white leading-normal flex justify-center items-center duration-350 group-hover/button:rotate-45 xl:size-[12px] xl:text-[8px]"></i>
-                                                    </button>
-                                                </div>
-                                            </div>
-                                            <div class="blog-date flex justify-center items-center gap-[10px] p-[10px] bg-green/5 rounded-[8px] mb-[15px] w-fit">
-                                                <i class="icon icon-calendar text-[16px] h-[16px] text-green flex leading-normal"></i>
-                                                <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d M Y', strtotime($item['created_at'])) }}</small>
-                                            </div>
-                                            <div class="blog-title text-blue text-[24px] font-bold leading-[36px] opacity-90 line-clamp-2 sm:text-[20px]">{{ $item['title'] }}</div>
-                                            <div class="blog-expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mt-[20px] max-w-[390px] line-clamp-2 md:max-w-full">{!! mb_substr($item['description'], 0, 100) !!}... </div>
+    <!-- POPUP | PROJECT -->
+    <section id="popup-project" class="hidden !bg-white !rounded-none !m-0 !p-[60px] md:!p-[30px] sm:!px-[15px] !max-w-[1280px] w-full">
+        <div class="inner w-full" dir="ltr">
+            <div class="popup-project-title-field mb-[50px] 2xl:mb-[40px] xl:mb-[30px] lg:mb-[20px] md:mb-[15px] flex gap-[10px]">
+                <p class="title popup-project-title text-[40px] 2xl:text-[36px] xl:text-[32px] lg:text-[28px] md:text-[24px] sm:text-[20px] leading-tight text-[#1E1E1E] font-semibold">ASIA</p>
+                <p class="count text-[40px] 2xl:text-[36px] xl:text-[32px] lg:text-[28px] md:text-[24px] sm:text-[20px] leading-tight text-primary-500 font-semibold">(<span class="popup-project-count">5</span>)</p>
+            </div>
+            <div class="content-field">
+                <div class="popup-project-wrapper grid grid-cols-2 gap-[30px] md:grid-cols-1 scrollbar scrollbar-w-[5px] scrollbar-track-rounded-[5px] scrollbar-thumb-rounded-[5px] scrollbar-thumb-primary scrollbar-track-primary/10 overflow-x-hidden overflow-y-auto pr-[20px]">
+                    <?php for ($i = 1; $i <= 6; $i++) : ?>
+                        <div class="popup-project-item item relative group/item">
+                            <div class="content bg-white duration-350 min-md:group-hover/item:bg-primary-500">
+                                <div class="image-field aspect-[460/275]">
+                                    <a href="project-detail.php" class="block w-full h-full image overflow-hidden translate-z-0 group/image">
+                                        <img src="../assets/image/jpg/image-3.jpg" class="full-cover min-md:group-hover/image:scale-105 duration-350" alt="">
+                                    </a>
+                                </div>
+                                <div class="text-field">
+                                    <div class="content px-[20px] py-[25px] lg:p-[20px]">
+                                        <div class="location">
+                                            <p class="text text-[15px] sm:text-[14px] leading-tight text-[#454545]/50 duration-350 min-md:group-hover/item:text-white tracking-[0.1rem] min-md:group-hover/item:group-hover/link:text-white/70">Russia</p>
+                                        </div>
+                                        <div class="title mt-[15px]">
+                                            <a href="project-detail.php" class="block w-fit group/link">
+                                                <span class="text text-[20px] lg:text-[18px] md:text-[16px] leading-tight text-[#1E1E1E] duration-350 min-md:group-hover/item:text-white font-semibold min-md:group-hover/item:group-hover/link:text-white/70">RUSSIA Origin Discover Padel Construction</span>
+                                            </a>
+                                        </div>
+                                        <div class="button-field mt-[24px] lg:mt-[20px] md:mt-[15px]">
+                                            <a href="project-detail.php" class="flex items-center gap-[15px] w-fit group/link opacity-65 duration-350 min-md:hover:opacity-100">
+                                                <span class="text text-[16px] sm:text-[14px] leading-tight text-[#1E1E1E] font-medium duration-350 min-md:group-hover/item:text-white tracking-[0.25rem]">VIEW</span>
+                                                <i class="icon icon-arrow-right text-[27px] h-[27px] text-[#1E1E1E] min-md:group-hover/item:text-white group-hover/link:translate-x-[3px] block leading-none duration-350"></i>
+                                            </a>
                                         </div>
                                     </div>
-                                </a>
+                                </div>
                             </div>
-                        <?php endforeach; ?>
-                    </div>
-                </div>
-                <div class="blog-title-wrapper flex items-center justify-end gap-[60px] relative z-2 w-fit min-md:ml-[530px] md:mx-auto md:order-1 md:flex-col md:justify-center md:w-full md:gap-[15px] lg:ml-[290px] xl:relative xl:ml-[370px] xl:gap-[30px] 2xl:ml-[430px]">
-                    <div class="title-field srr relative min-md:w-fit min-md:mb-[90px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-full before:mt-[45px] before:size-[26px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[26px] md:before:hidden">
-                        <h1 class="title text-[64px] text-blue leading-[80px] whitespace-nowrap min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 xsm:text-[30px] sm:leading-normal md:[&>_br]:hidden xl:text-[50px]">{!! getStaticText(5) !!}</h1>
-                    </div>
-                    <a href="{{ env('HTTP_URL') . '/' . getUrl('blog_url') }}" class="button srr group/button relative border border-solid border-blue/6 bg-transparent flex flex-col justify-center items-center gap-[15px] px-[34px] py-[20px] min-md:h-auto min-md:min-h-[150px] w-auto overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-green before:rounded-full before:translate-z-0 before:duration-350 min-md:hover:before:scale-[5.5] sm:h-[50px] md:flex-row lg:p-[30px] xl:p-[35px]">
-                        <i class="icon relative z-2 translate-z-0 icon-chevron-right text-green text-[10px] h-[10px] flex items-center leading-normal min-md:-rotate-90 duration-350 min-md:group-hover/button:text-white min-md:group-hover/button:rotate-90 md:order-2"></i>
-                        <small class="text relative z-2 translate-z-0 text-blue text-[16px] font-medium leading-[19px] min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 duration-350 min-md:group-hover/button:text-white md:order-1">{{getStaticText(6)}}</small>
-                    </a>
-                </div>
-                <div class="blog-controller srb absolute right-[600px] bottom-[50px] z-2 flex items-center gap-[125px] max-w-[100px] mx-auto md:relative md:left-0 md:top-0 md:!translate-x-0 md:order-2 xl:max-w-full xl:right-0 xl:left-[50%] xl:translate-x-[-20%] xl:bottom-0 xl:justify-center xl:items-center">
-                    <div class="carousel-navigation flex min-md:flex-col items-center md:gap-[15px]">
-                        <div class="blog-prev cursor-pointer size-[40px] leading-normal min-md:ml-[-90px] min-md:[&.swiper-button-disabled_.icon]:text-white/70 min-md:[&.swiper-button-disabled_.icon]:scale-x-100">
-                            <i class="icon icon-arrow-left text-[40px] size-[40px] flex text-green scale-x-[1.2] duration-350"></i>
                         </div>
-                        <div class="blog-next cursor-pointer size-[40px] leading-normal min-md:[&.swiper-button-disabled_.icon]:text-white/70 min-md:[&.swiper-button-disabled_.icon]:scale-x-100">
-                            <i class="icon icon-arrow-right text-[40px] size-[40px] flex text-green scale-x-[1.2] duration-350"></i>
+                    <?php endfor; ?>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- BLOG SECTION -->
+    <section class="blog-section relative overflow-hidden pt-[100px] pb-[220px] 2xl:py-[50px] lg:py-[45px] md:py-[30px]">
+        <div class="max-w-[1920px] container group/container animContainer">
+            <div class="rectangle absolute left-[130px] top-0 size-[70px]">
+                <img src="../assets/svg/rectangle.svg" alt="" class="size-full object-contain object-center rotate-anim">
+            </div>
+            <div class="triangle absolute right-[400px] top-[-4px] size-[130px] md:size-[100px] sm:right-0">
+                <img src="../assets/svg/triangle.svg" alt="" class="size-full object-contain object-center rotate-anim">
+            </div>
+            <div class="wrapper">
+                <div class="grid grid-cols-[minmax(0,7fr)_minmax(0,5fr)] justify-center relative md:grid-cols-1 md:gap-[15px] lg:gap-[30px]">
+                    <?php $list = ['image-2.jpg', 'image-7.jpg', 'image-5.jpg', 'image-4.jpg', 'image-1.jpg']; ?>
+                    <div class="blog-general-carousel swiper size-full min-md:overflow-visible md:order-3" dir="rtl">
+                        <div class="swiper-wrapper">
+                            <?php foreach ($blog as $key => $item) : ?>
+                                <div class="swiper-slide group/slide min-md:!pointer-events-none duration-350 [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto">
+                                    <a href="javascript:;" class="blog-item flex relative min-md:opacity-0 min-md:pointer-events-none min-md:scale-75 duration-350 min-md:group-[&.swiper-slide-active]/slide:scale-100 min-md:group-[&.swiper-slide-active]/slide:pointer-events-auto min-md:group-[&.swiper-slide-active]/slide:opacity-100 min-md:group-[&.swiper-slide-next]/slide:blur-[5px] group-[&.swiper-slide-next]/slide:pointer-events-auto group-[&.swiper-slide-next]/slide:opacity-100 md:h-full md:flex-col md:gap-[15px]" dir="ltr">
+                                        <div class="blog-image aspect-[13/10] size-full rounded-[14px] relative overflow-hidden xsm:aspect-video sm:aspect-square md:aspect-video">
+                                            <img src="{{ asset( getFolder(['uploads_folder', 'blog_images_folder'], $item['lang']) . '/'. $item['image']) }}" alt="" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
+                                            <div class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full"></div>
+                                        </div>
+                                        <div class="blog-content size-auto bg-gradient-to-b from-green to-blue p-[2px] rounded-[14px] absolute top-[50px] right-[-420px] max-w-[500px] !pointer-events-none min-md:scale-50 min-md:opacity-0 min-md:invisible z-10 duration-350 group-[&.swiper-slide-active]/slide:scale-100 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:visible group-[&.swiper-slide-active]/slide:pointer-events-auto [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto md:left-0 md:top-0 md:translate-y-0 md:max-w-full md:relative lg:left-[320px]">
+                                            <div class="content bg-white size-auto [box-shadow:_0px_25px_75px_0px_rgba(3,_36,_107,_0.15);] pt-[34px] pr-[34px] pb-[50px] pl-[55px] rounded-[12px] md:p-[30px]">
+                                                <div class="fx-hover-repulse group/button pointer-events-auto w-fit ml-auto">
+                                                    <div class="inner">
+                                                        <button class="button item relative overflow-hidden translate-z-0 size-[66px] p-[20px] rounded-full bg-green flex items-center justify-end before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:scale-0 before:rounded-full before:bg-blue before:duration-350 before:size-[33px] group-hover/button:before:scale-[2] lg:before:size-[20px] lg:size-[33px] lg:p-[10px] xl:before:size-[25px] xl:size-[44px] xl:p-[15px]">
+                                                            <i class="icon item icon-arrow-top relative z-2 text-[10px] size-[24px] text-white leading-normal flex justify-center items-center duration-350 group-hover/button:rotate-45 xl:size-[12px] xl:text-[8px]"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div class="blog-date flex justify-center items-center gap-[10px] p-[10px] bg-green/5 rounded-[8px] mb-[15px] w-fit">
+                                                    <i class="icon icon-calendar text-[16px] h-[16px] text-green flex leading-normal"></i>
+                                                    <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d M Y', strtotime($item['created_at'])) }}</small>
+                                                </div>
+                                                <div class="blog-title text-blue text-[24px] font-bold leading-[36px] opacity-90 line-clamp-2 sm:text-[20px]">{{ $item['title'] }}</div>
+                                                <div class="blog-expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mt-[20px] max-w-[390px] line-clamp-2 md:max-w-full">{!! mb_substr($item['description'], 0, 100) !!}... </div>
+                                            </div>
+                                        </div>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                    <div class="blog-title-wrapper flex items-center justify-end gap-[60px] relative z-2 w-fit min-md:ml-[530px] md:mx-auto md:order-1 md:flex-col md:justify-center md:w-full md:gap-[15px] lg:ml-[290px] xl:relative xl:ml-[370px] xl:gap-[30px] 2xl:ml-[430px]">
+                        <div class="title-field srr relative min-md:w-fit min-md:mb-[90px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-full before:mt-[45px] before:size-[26px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[26px] md:before:hidden">
+                            <h1 class="title text-[64px] text-blue leading-[80px] whitespace-nowrap min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 xsm:text-[30px] sm:leading-normal md:[&>_br]:hidden xl:text-[50px]">{!! getStaticText(5) !!}</h1>
+                        </div>
+                        <a href="{{ env('HTTP_URL') . '/' . getUrl('blog_url') }}" class="button srr group/button relative border border-solid border-blue/6 bg-transparent flex flex-col justify-center items-center gap-[15px] px-[34px] py-[20px] min-md:h-auto min-md:min-h-[150px] w-auto overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-green before:rounded-full before:translate-z-0 before:duration-350 min-md:hover:before:scale-[5.5] sm:h-[50px] md:flex-row lg:p-[30px] xl:p-[35px]">
+                            <i class="icon relative z-2 translate-z-0 icon-chevron-right text-green text-[10px] h-[10px] flex items-center leading-normal min-md:-rotate-90 duration-350 min-md:group-hover/button:text-white min-md:group-hover/button:rotate-90 md:order-2"></i>
+                            <small class="text relative z-2 translate-z-0 text-blue text-[16px] font-medium leading-[19px] min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 duration-350 min-md:group-hover/button:text-white md:order-1">{{getStaticText(6)}}</small>
+                        </a>
+                    </div>
+                    <div class="blog-controller srb absolute right-[600px] bottom-[50px] z-2 flex items-center gap-[125px] max-w-[100px] mx-auto md:relative md:left-0 md:top-0 md:!translate-x-0 md:order-2 xl:max-w-full xl:right-0 xl:left-[50%] xl:translate-x-[-20%] xl:bottom-0 xl:justify-center xl:items-center">
+                        <div class="carousel-navigation flex min-md:flex-col items-center md:gap-[15px]">
+                            <div class="blog-prev cursor-pointer size-[40px] leading-normal min-md:ml-[-90px] min-md:[&.swiper-button-disabled_.icon]:text-white/70 min-md:[&.swiper-button-disabled_.icon]:scale-x-100">
+                                <i class="icon icon-arrow-left text-[40px] size-[40px] flex text-green scale-x-[1.2] duration-350"></i>
+                            </div>
+                            <div class="blog-next cursor-pointer size-[40px] leading-normal min-md:[&.swiper-button-disabled_.icon]:text-white/70 min-md:[&.swiper-button-disabled_.icon]:scale-x-100">
+                                <i class="icon icon-arrow-right text-[40px] size-[40px] flex text-green scale-x-[1.2] duration-350"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
 </main>
 @endsection
