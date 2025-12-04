@@ -96,7 +96,7 @@
                         @foreach($about_sliders as $key => $item)
                             <div class="swiper-slide group/slide min-sm:[&.swiper-slide-next]:-z-10 min-sm:[&.swiper-slide-active]:z-20">
                                 <div class="image-field relative size-full aspect-[75/79] min-sm:opacity-0 overflow-hidden rounded-[20px] duration-350 min-sm:group-[&.swiper-slide-next]/slide:blur-[10px] min-sm:group-[&.swiper-slide-next]/slide:left-[680px] min-sm:group-[&.swiper-slide-next]/slide:scale-90 min-sm:group-[&.swiper-slide-next]/slide:opacity-100 min-sm:group-[&.swiper-slide-active]/slide:scale-100 min-sm:group-[&.swiper-slide-active]/slide:opacity-100 lg:group-[&.swiper-slide-next]/slide:left-0 xl:group-[&.swiper-slide-next]/slide:left-[400px] sm:aspect-square xsm:aspect-video">
-                                    <img src="{{ asset( getFolder( ['uploads_folder', 'images_folder'] ) .'/'. $item->image ) }}" alt="{{ $item->alt }}" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
+                                    <img src="{{ asset( getFolder( ['uploads_folder', 'images_folder'] , $item->lang) .'/'. $item->image ) }}" alt="{{ $item->alt }}" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
                                     <div class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full"></div>
                                 </div>
                             </div>
