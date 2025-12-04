@@ -233,6 +233,7 @@ class HomeController extends Controller
 
     public function copyDB($lang)
     {
+        die('Function disabled for security reasons.');
         $sourceLang = 'en';
         $targetLang = $lang;
 
