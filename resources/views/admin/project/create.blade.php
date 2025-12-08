@@ -115,7 +115,7 @@
                                                 <select class="form-select" id="country_id_{{ $language->lang_code }}" name="country_id_{{ $language->lang_code }}">
                                                     <option value="">Seçiniz</option>
                                                     @foreach($countries as $country)
-                                                        <option value="{{ $country['id'] }}">{{ $country['title'] }}</option>
+                                                        <option value="{{ $country['country_id'] }}">{{ $country['title'] }}</option>
                                                     @endforeach
                                                 </select>
                                             </div>

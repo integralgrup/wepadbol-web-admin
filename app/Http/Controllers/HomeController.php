@@ -80,7 +80,7 @@ class HomeController extends Controller
             })
             ->toArray();
         $projects = Project::where('lang', app()->getLocale())->with(['gallery', 'country', 'country.continent'])->get();
-        //dd($projects);
+        dd($projects);
         $blog = Blog::where('lang', app()->getLocale())->limit(5)->get()->toArray();
         //dd($blog);
         $continents = Continent::where('lang', app()->getLocale())->with('countries')->get()->toArray();
