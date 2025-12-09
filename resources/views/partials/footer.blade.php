@@ -3,7 +3,7 @@
 ?>
 <footer class="footer-field w-full relative max-w-[1740px] mx-auto px-[30px]">
     <div class="content-wrapper grid grid-cols-[minmax(0,78px)_minmax(0,480px)_minmax(0,1100px)] md:grid-cols-1 md:gap-[30px] lg:grid-cols-[minmax(0,120px)_minmax(0,350px)_minmax(0,1000px)] xl:grid-cols-[minmax(0,160px)_minmax(0,480px)_minmax(0,910px)]">
-        <a href="index.php" class="logo-wrapper flex items-center justify-center min-sm:mr-[60px] md:w-fit md:mx-auto md:rotate-90 md:h-[80px]">
+        <a href="{{env('HTTP_DOMAIN')}}" class="logo-wrapper flex items-center justify-center min-sm:mr-[60px] md:w-fit md:mx-auto md:rotate-90 md:h-[80px]">
             <svg class="xs:h-[250px]" width="78" height="354" viewBox="0 0 78 354" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M48.1953 9.39941L58.5505 9.39941L58.5505 -0.000380908L48.1953 -0.000380456L48.1953 9.39941Z" fill="#75BF00" />
                 <path d="M17.2437 316.712L43.5821 309.178L34.2149 306.641L17.2383 301.169L17.2383 288.398L58.7956 302.915L58.7956 314.257L38.1398 321.24L58.7956 328.141L58.7956 339.565L17.2437 354L17.2437 341.229L34.2204 335.757L43.5876 333.22L17.2492 325.686L17.2492 316.723L17.2437 316.712Z" fill="#75BF00" />
