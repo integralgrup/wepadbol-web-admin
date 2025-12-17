@@ -206,8 +206,8 @@ class AboutController extends Controller
                     ]);
                 }
 
-                if ($request->hasFile('image_' . $language->lang_code) || $request->hasFile('image_en')) {
-                    $tmpImgPath = createTmpFile($request, 'image_' . $language->lang_code, $languages[0]);
+                if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
                     $imageName = moveFile($request, $language, 'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
 
                 } else {
@@ -215,7 +215,7 @@ class AboutController extends Controller
                 }
 
                 if ($request->hasFile('icon_image_' . $language->lang_code) || $request->hasFile('icon_image_en')) {
-                    $tmpImgPath = createTmpFile($request, 'icon_image_' . $language->lang_code, $languages[0]);
+                    $tmpImgPath = createTmpFile($request, 'icon_image_en', $languages[0]);
                     $iconImageName = moveFile($request, $language, 'icon_image_' . $language->lang_code, 'icon_image_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
 
                 } else {
