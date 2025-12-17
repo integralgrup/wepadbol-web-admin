@@ -90,14 +90,14 @@ class AboutController extends Controller
                     }
 
                     if ($request->hasFile('mission_image_' . $language->lang_code) || $request->hasFile('mission_image_en')) {
-                        $tmpMissionImagePath = createTmpFile($request, 'mission_image_' . $language->lang_code, $languages[0]);
+                        $tmpMissionImagePath = createTmpFile($request, 'mission_image_en', $languages[0]);
                         $missionImageName = moveFile($request,$language,'mission_image_' . $language->lang_code, 'mission_image_en', 'mission_title_' . $language->lang_code, 'mission_title_en',$language->images_folder, $tmpMissionImagePath);
                     } else {
                         $missionImageName = $request->input('old_mission_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                     }
 
                     if ($request->hasFile('vision_image_' . $language->lang_code) || $request->hasFile('vision_image_en')) {
-                        $tmpVisionImagePath = createTmpFile($request, 'vision_image_' . $language->lang_code, $languages[0]);
+                        $tmpVisionImagePath = createTmpFile($request, 'vision_image_en', $languages[0]);
                         $visionImageName = moveFile($request,$language,'vision_image_' . $language->lang_code, 'vision_image_en', 'vision_title_' . $language->lang_code, 'vision_title_en',$language->images_folder, $tmpVisionImagePath);
 
                     } else {
@@ -301,9 +301,10 @@ class AboutController extends Controller
                     ]);
                 }
 
-                if ($request->hasFile('image_' . $language->lang_code) || $request->hasFile('image_en')) {
-                    $tmpImgPath = createTmpFile($request, 'image_' . $language->lang_code, $languages[0]);
+                if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
                     $imageName = moveFile($request, $language, 'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
+
                 } else {
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
@@ -389,8 +390,10 @@ class AboutController extends Controller
                 ]);
             }
 
-                if ($request->hasFile('image_' . $language->lang_code) || $request->hasFile('image_en')) {
-                    $tmpImgPath = createTmpFile($request, 'image_' . $language->lang_code, $languages[0]);
+                
+
+                if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
                     $imageName = moveFile($request, $language, 'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
 
                 } else {
@@ -398,7 +401,7 @@ class AboutController extends Controller
                 }
 
                 if ($request->hasFile('pdf_' . $language->lang_code) || $request->hasFile('pdf_en')) {
-                    $tmpPdfPath = createTmpFile($request, 'pdf_' . $language->lang_code, $languages[0]);
+                    $tmpPdfPath = createTmpFile($request, 'pdf_en', $languages[0]);
                     $pdfName = moveFile($request, $language, 'pdf_' . $language->lang_code, 'pdf_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpPdfPath);
 
                 } else {
@@ -488,8 +491,9 @@ class AboutController extends Controller
                 ]);
             }
 
-                if ($request->hasFile('image_' . $language->lang_code) || $request->hasFile('image_en')) {
-                    $tmpImgPath = createTmpFile($request, 'image_' . $language->lang_code, $languages[0]);
+
+                if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
+                    $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
                     $imageName = moveFile($request, $language, 'image_' . $language->lang_code, 'image_en', 'alt_' . $language->lang_code, 'alt_en', $language->images_folder, $tmpImgPath);
 
                 } else {
