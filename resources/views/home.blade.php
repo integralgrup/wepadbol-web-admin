@@ -110,7 +110,7 @@
                         <p>{{ $about->description }}</p>
                     </div>
                     <a href="about.php" class="button fx fx-text-hover-with-child group/button relative bg-green flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[5.5] sm:h-[50px] md:h-[60px]">
-                        <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px]">About Us</small>
+                        <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px]">{{getStaticText(12)}}</small>
                         <i class="icon relative z-2 icon-chevron-right text-white text-[10px] h-[10px] flex items-center leading-normal duration-350 min-sm:group-hover/button:rotate-90"></i>
                     </a>
                 </div>
@@ -298,23 +298,13 @@
                     <div class="title-field relative">
                         <h2 class="title text-blue text-[48px] leading-[64px] before:absolute before:left-[-60px] before:top-[30px] before:size-[26px] before:h-0 before:bg-green before:duration-350 sm:before:hidden md:before:top-[50%] md:before:translate-y-[-50%] group-[&.is-active]/container:before:h-[26px] xl:text-[50px] md:[&>_br]:hidden xsm:text-[30px]"><strong>WEPADBOL</strong> <br> PROJECTS</h2>
                     </div>
-                    <?php $list = [
-                        ['title' => 'All Country', 'continent' => 'all',],
-                        ['title' => 'Africa', 'continent' => 'africa',],
-                        ['title' => 'Europe', 'continent' => 'europe',],
-                        ['title' => 'North America', 'continent' => 'north-america',],
-                        ['title' => 'South America', 'continent' => 'south-america',],
-                        ['title' => 'Asia', 'continent' => 'asia',],
-                        ['title' => 'Australia', 'continent' => 'australia',]
-                    ];
-                    ?>
                     <div class="map-filter-wrapper sm:w-full sm:overflow-x-auto">
                         <div class="map-filter-field p-[15px] w-auto h-full border-[4px] border-solid border-blue/6 bg-white/20 backdrop-blur-[5px] flex items-center rounded-[8px] duration-350 hover:border-blue/10 before:absolute before:left-0 before:top-0 before:h-full before:bg-gradient-to-l before:from-green before:z-2 before:w-[50%] before:duration-350 before:hidden before:to-white/0 hover:before:opacity-0 sm:gap-[15px] sm:overflow-x-auto sm:justify-normal sm:w-max sm:relative">
                             <div class="image aspect-square max-w-[30px] w-full overflow-hidden translate-z-0 hidden sm:block">
                                 <img src="../assets/image/static/hand.png" class="size-full object-contain object-center" alt="">
                             </div>
-                            <?php foreach ($list as $key => $item) : ?>
-                                <div class="map-item group/item <?= $key == 0 ? 'is-active' : '' ?> relative overflow-hidden cursor-pointer py-[15px] sm:py-[10px] px-[25px] flex justify-center items-center bg-transparent rounded-[8px] duration-350 before:absolute before:left-[50%] before:top-[50%] before:translate-x-[-50%] before:translate-y-[-50%] before:w-[50%] before:h-[50px] before:rounded-full before:duration-350 before:bg-green before:scale-0 [&.is-active]:before:scale-[2.2] lg:h-[50px] lg:px-[12px]" data-continent="<?= $item['continent'] ?>">
+                            <?php foreach ($continents as $key => $item) : ?>
+                                <div class="map-item group/item <?= $key == 0 ? 'is-active' : '' ?> relative overflow-hidden cursor-pointer py-[15px] sm:py-[10px] px-[25px] flex justify-center items-center bg-transparent rounded-[8px] duration-350 before:absolute before:left-[50%] before:top-[50%] before:translate-x-[-50%] before:translate-y-[-50%] before:w-[50%] before:h-[50px] before:rounded-full before:duration-350 before:bg-green before:scale-0 [&.is-active]:before:scale-[2.2] lg:h-[50px] lg:px-[12px]" data-continent="<?= $item['class'] ?>">
                                     <small class="text relative z-2 text-[18px] sm:text-[16px] text-blue/50 font-semibold leading-[28px] duration-350 group-[&.is-active]/item:text-white group-hover:text-blue/80"> <?= $item['title'] ?></small>
                                 </div>
                             <?php endforeach; ?>
