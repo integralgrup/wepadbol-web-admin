@@ -108,7 +108,7 @@ $breadcrumbImage = 'image-32.jpg';
 
     <!-- FEATRUES SECTION -->
     <?php
-    $moduleTitle = 'FEATURES';
+    $moduleTitle = getStaticText();
     $moduleImage = 'image-14.png';
     $moduleClass = 'pt-[50px] pb-[45px]';
     $slideTitle = 'Living Spaces <?= $i ?>';

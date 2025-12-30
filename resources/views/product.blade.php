@@ -109,11 +109,11 @@ $breadcrumbTitle = $product->title;
             </div>
             <div class="wrapper">
                 <?php $list = [
-                    ['title' => 'General Features', 'id' => 'general-features',],
-                    ['title' => 'Technical Information', 'id' => 'technical-information',],
-                    ['title' => 'Gallery', 'id' => 'gallery',],
-                    ['title' => 'Frequently Asked Questions', 'id' => 'faq',],
-                    ['title' => 'Get Offer', 'id' => 'offer-form',]
+                    ['title' => getStaticText(28), 'id' => 'general-features',],
+                    ['title' => getStaticText(29), 'id' => 'technical-information',],
+                    ['title' => getStaticText(30), 'id' => 'gallery',],
+                    ['title' => getStaticText(31), 'id' => 'faq',],
+                    ['title' => getStaticText(25), 'id' => 'offer-form',]
                 ]; ?>
                 <div class="tab-wrapper mb-[75px] sm:overflow-x-auto md:mb-[50px]">
                     <div class="flex items-center justify-center gap-[50px] lg:gap-[15px] sm:overflow-x-auto sm:justify-normal sm:w-max">
