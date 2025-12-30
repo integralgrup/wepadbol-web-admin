@@ -127,8 +127,8 @@
                     <span class="text text-[16px] text-[#52555C]"> © {{date('Y')}} <!-- get domain without https:// --> {{parse_url(env('HTTP_DOMAIN'), PHP_URL_HOST)}} | {{getStaticText(11)}}</span>
                 </div>
                 <div class="right-field">
-                    <a href="https://integralgroup.com.tr" title="İntegral Group" target="_blank" class="group flex justify-center max-w-[105px] w-full h-[40px] items-center gap-[9px]">
-                        <img src="../assets/image/png/image-9.png" alt="İntegral Group" class="size-full object-contain object-center">
+                    <a href="{{ $static_images['footer_integralgroup_logo']->url }}" title="İntegral Group" target="_blank" class="group flex justify-center max-w-[105px] w-full h-[40px] items-center gap-[9px]">
+                        <img src="{{ asset( getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) . '/' . $static_images['footer_integralgroup_logo']->image )  }}" alt="{{$static_images['footer_integralgroup_logo']->alt}}" class="size-full object-contain object-center">
                     </a>
                 </div>
             </div>

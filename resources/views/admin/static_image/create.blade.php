@@ -75,6 +75,11 @@
                                             <label for="alt_{{ $language->lang_code }}" class="form-label">Alt Metin ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" class="form-control" id="alt_{{ $language->lang_code }}" name="alt_{{ $language->lang_code }}" {{ $required }}>
                                         </div>
+                                        <!-- URL --> 
+                                        <div class="mb-3">
+                                            <label for="url_{{ $language->lang_code }}" class="form-label">URL ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" class="form-control" id="url_{{ $language->lang_code }}" name="url_{{ $language->lang_code }}" >
+                                        </div>
                                     </div>
                                 </div>
                                 @endforeach

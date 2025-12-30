@@ -22,6 +22,7 @@ class StaticImage extends Model
         'title',
         'image',
         'alt',
+        'url'
     ];
 
     // If you want to automatically cast created_at as datetime

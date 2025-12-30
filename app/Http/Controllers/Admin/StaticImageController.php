@@ -74,6 +74,7 @@ class StaticImageController extends Controller
                         'title' => $request->input('title_' . $language->lang_code) ?? $request->input('title_en'),
                         'image' => $imageName,
                         'alt' => $request->input('alt_' . $language->lang_code) ?? $request->input('alt_en'),
+                        'url' => $request->input('url_' . $language->lang_code) ?? $request->input('url_en') ?? null,
                     ]
                 );
 

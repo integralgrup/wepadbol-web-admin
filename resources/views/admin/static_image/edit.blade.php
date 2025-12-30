@@ -56,6 +56,7 @@
                             $title[$item->lang] = $item->title;
                             $image[$item->lang] = $item->image;
                             $alt[$item->lang] = $item->alt;
+                            $url[$item->lang] = $item->url;
 
                         }
                     ?>
@@ -85,6 +86,10 @@
                                         <div class="form-group">
                                             <label for="alt_{{ $language->lang_code }}">Alt Metni ({{ strtoupper($language->lang_code) }})</label>
                                             <input type="text" name="alt_{{ $language->lang_code }}" class="form-control" id="alt_{{ $language->lang_code }}" value="{{ $alt[$language->lang_code] ?? '' }}" required>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="url_{{ $language->lang_code }}">URL ({{ strtoupper($language->lang_code) }})</label>
+                                            <input type="text" name="url_{{ $language->lang_code }}" class="form-control" id="url_{{ $language->lang_code }}" value="{{ $url[$language->lang_code] ?? '' }}">
                                         </div>
                                     </div>
                                 </div>

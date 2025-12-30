@@ -50,7 +50,7 @@ $breadcrumbImage = $about->image;
                         </svg>
                     </div>
                     <p class="expo text-[32px] 2xl:text-[30px] xl:text-[26px] lg:text-[24px] sm:text-[14px] max-w-[510px] text-white/80 leading-[48px] duration-350 md:max-w-[250px] md:leading-normal sm:h-min xsm:order-1">
-                        Discover the Power of the Game That Brings Passion to the Field!
+                        {{getStaticText(13)}}
                     </p>
                 </div>
             </div>
