@@ -75,7 +75,7 @@ class Product extends Model
 
     public function features()
     {
-        return $this->hasMany(ProductFeature::class, 'product_id', 'product_id')->orderBy('sort');
+        return $this->hasMany(ProductFeature::class, 'product_id', 'product_id')->where('lang', app()->getLocale())->orderBy('sort');
     }
 
 
