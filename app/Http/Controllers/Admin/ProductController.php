@@ -629,7 +629,7 @@ class ProductController extends Controller
     // Product Feature methods will go here
     public function featuresIndex($product_id)
     {
-        $features = ProductFeature::where('product_id', $product_id)->get();
+        $features = ProductFeature::where('product_id', $product_id)->where('lang', app()->getLocale())->get();
         return view('admin.product.feature.index', compact('features', 'product_id'));
     }
 
