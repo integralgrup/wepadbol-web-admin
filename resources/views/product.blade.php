@@ -63,9 +63,9 @@ $breadcrumbTitle = $product->title;
                     </div>
                     <div class="product-content-wrapper">
                         <div class="page-navigation flex items-center gap-[5px] mb-[30px] [&>*:last-child]:hidden sm:mb-[15px]">
-                            <a href="index.php" class="text text-[18px] text-[#52555C]/65 leading-[28px]">Home</a>
+                            <a href="index.php" class="text text-[18px] text-[#52555C]/65 leading-[28px]">{{getStaticText(23)}}</a>
                             <div class="text text-[18px] text-[#52555C]/65 leading-[28px]">/</div>
-                            <a href="products.php" class="text text-[18px] text-[#52555C]/65 leading-[28px]">Products</a>
+                            <a href="products.php" class="text text-[18px] text-[#52555C]/65 leading-[28px]">{{getStaticText(24)}}</a>
                             <div class="text text-[18px] text-[#52555C]/65 leading-[28px]">/</div>
                             <a href="" class="text text-[18px] text-[#52555C]/65 leading-[28px]">{{$product->category->title}}</a>
                             <div class="text text-[18px] text-[#52555C]/65 leading-[28px]">/</div>
@@ -74,16 +74,16 @@ $breadcrumbTitle = $product->title;
                         <p class="expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mb-[60px] lg:mb-[15px] lg:text-base md:[&>_br]:hidden">{!! $product->description !!}</p>
                         <div class="buttons-field flex items-center gap-[40px] mb-[60px] lg:mb-[30px] xs:flex-col xs:gap-[15px]">
                             <a href="#contact-form" data-fancybox class="button group/button relative fx fx-text-hover-with-child bg-green flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[5.5] md:h-[60px] sm:h-[50px] sm:px-[15px] sm:w-full">
-                                <small class="text relative z-2 fx-child text-white text-[16px] font-medium leading-[19px]">Get Offer</small>
+                                <small class="text relative z-2 fx-child text-white text-[16px] font-medium leading-[19px]">{{getStaticText(25)}}</small>
                                 <i class="icon relative z-2 icon-chevron-right text-white text-[10px] h-[10px] flex items-center leading-normal duration-350 min-sm:group-hover/button:rotate-90"></i>
                             </a>
                             <a href="{{asset( getFolder(['uploads_folder', 'product_images_folder'], $product->lang) .'/'. $product->pdf_file )}}" data-fancybox class="button group/button relative fx fx-text-hover-with-child bg-white border-[4px] border-solid border-blue border-opacity-6 flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] duration-350 before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[45px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[5.5] min-sm:hover:border-transparent md:h-[60px] sm:h-[50px] sm:px-[15px] sm:w-full">
-                                <small class="text relative z-2 fx-child text-blue text-[16px] font-bold leading-[19px] duration-350 min-sm:group-hover/button:text-white">PDF Document</small>
+                                <small class="text relative z-2 fx-child text-blue text-[16px] font-bold leading-[19px] duration-350 min-sm:group-hover/button:text-white">{{getStaticText(26)}}</small>
                                 <i class="icon relative z-2 icon-pdf text-green text-[20px] h-[20px] flex items-center leading-normal duration-350 min-sm:group-hover/button:rotate-90"></i>
                             </a>
                         </div>
                         <div class="product-customization-field flex flex-col gap-[25px] xsm:flex-col sm:flex-row sm:items-center sm:justify-between">
-                            <div class="product-customization-content text-[#52555C]/50 text-[18px] font-semibold leading-[28px]">Grass Types Used : <span class="product-theme text-green font-semibold">Padel Turf Red</span> </div>
+                            <div class="product-customization-content text-[#52555C]/50 text-[18px] font-semibold leading-[28px]">{{getStaticText(27)}} : <span class="product-theme text-green font-semibold">Padel Turf Red</span> </div>
                             <div class="product-customization-image flex items-center gap-[20px]">
                                 <?php foreach ($product->types as $key => $item) : ?>
                                     <div data-code="<?= $item['title'] ?>" class="customization-item <?= $key == 2 ? 'is-active' : '' ?> size-[85px] rounded-full overflow-hidden border-[2px] border-solid border-transparent p-[7px] flex justify-center items-center cursor-pointer duration-350 hover:border-blue/5 [&.is-active]:border-green sm:size-[70px]">

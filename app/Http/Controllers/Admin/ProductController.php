@@ -460,7 +460,7 @@ class ProductController extends Controller
     public function typeIndex($id)
     {
         $product = Product::where('product_id', $id)->where('lang', app()->getLocale())->firstOrFail();
-        $types = ProductType::where('product_id', $id)->get();
+        $types = ProductType::where('product_id', $id)->where('lang', app()->getLocale())->get();
         return view('admin.product.type.index', compact('product', 'types'));
     }
 

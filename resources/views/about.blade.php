@@ -62,12 +62,12 @@ $breadcrumbImage = $about->image;
         <div class="container relative max-w-[1340px] h-full z-90 sm:px-0">
             <div class="wrapper">
                 <?php $list = [
-                    ['title' => 'Who We Are', 'data-scroll' => '#about-section'],
-                    ['title' => 'Certificates', 'data-scroll' => '#c'],
-                    ['title' => 'How We Do It', 'data-scroll' => '#card-section'],
-                    ['title' => 'What We Are Doıng', 'data-scroll' => '#wwad'],
-                    ['title' => 'Vision &  Mission', 'data-scroll' => '#vm'],
-                    ['title' => 'Our Other Brands', 'data-scroll' => '#oob'],
+                    ['title' => getStaticText(14), 'data-scroll' => '#about-section'],
+                    ['title' => getStaticText(15), 'data-scroll' => '#c'],
+                    ['title' => getStaticText(16), 'data-scroll' => '#card-section'],
+                    ['title' => getStaticText(17), 'data-scroll' => '#wwad'],
+                    ['title' => getStaticText(18), 'data-scroll' => '#vm'],
+                    ['title' => getStaticText(19), 'data-scroll' => '#oob'],
                 ];
                 ?>
                 <div class="page-filter-wrapper sm:hidden">
@@ -143,7 +143,7 @@ $breadcrumbImage = $about->image;
 
     <!-- HOW WE DO IT SECTION -->
     <?php
-    $moduleTitle = 'How We Do It';
+    $moduleTitle = getStaticText(16);
     $moduleImage = 'image-11.png';
     $moduleClass = 'pb-[200px]';
     $slideTitle = 'Section <?= $i ?>';
@@ -219,7 +219,7 @@ $breadcrumbImage = $about->image;
                         <img src="../assets/svg/rectangle.svg" alt="Rectangle" class="size-full object-contain object-center rotate-anim-x">
                     </div>
                     <div class="title-field srb relative min-sm:w-fit min-sm:mb-[90px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-full before:mt-[45px] before:size-[26px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[26px] md:mb-[60px] md:before:hidden xl:my-auto">
-                        <h1 class="title text-[64px] text-blue leading-[80px] uppercase min-sm:[writing-mode:_vertical-rl;] min-sm:rotate-180 xl:text-[50px] md:[&>_br]:hidden sm:text-center sm:leading-normal xsm:text-[30px]"><strong>What</strong> We Are Doıng</h1>
+                        <h1 class="title text-[64px] text-blue leading-[80px] uppercase min-sm:[writing-mode:_vertical-rl;] min-sm:rotate-180 xl:text-[50px] md:[&>_br]:hidden sm:text-center sm:leading-normal xsm:text-[30px]">{!!getStaticText(20)!!}</h1>
                     </div>
                     <div class="image-and-carosuel-field flex items-center gap-[100px] lg:gap-[30px] xsm:flex-col">
                         <!-- IMAGE -->
@@ -347,7 +347,7 @@ $breadcrumbImage = $about->image;
                                             <div class="content w-full max-w-[385px] mt-[60px] opacity-0 scale-0 pointer-events-none duration-350 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:scale-100 group-[&.swiper-slide-active]/slide:pointer-events-auto xl:mt-[30px]">
                                                 <p class="expo text-[18px] text-[#52555C]/65 leading-[28px] xsm:text-center">{{ $item->description }}</p>
                                                 <a href="" class="button group/button fx fx-text-hover-with-child relative mt-[70px] bg-green flex justify-center items-center gap-[15px] px-[25px] py-[20px] w-fit overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[35px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[5.5] sm:h-[50px] sm:px-[15px] sm:w-full  md:h-[60px] xl:mt-[30px]">
-                                                    <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px]">Visit Website</small>
+                                                    <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px]">{{getStaticText(22)}}</small>
                                                     <i class="icon relative z-2 icon-chevron-right text-white text-[10px] h-[10px] flex items-center leading-normal duration-350 min-sm:group-hover/button:rotate-90"></i>
                                                 </a>
                                             </div>
@@ -357,7 +357,7 @@ $breadcrumbImage = $about->image;
                             </div>
                         </div>
                         <div class="title-field srr relative min-md:w-fit min-md:mb-[90px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-full before:mt-[45px] before:size-[26px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[26px] md:before:hidden md:order-1">
-                            <h1 class="title text-[64px] text-blue leading-[80px] whitespace-nowrap min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 xsm:text-[30px] sm:leading-normal md:[&>_br]:hidden xl:text-[50px]"><strong>OTHER</strong> BRANDS</h1>
+                            <h1 class="title text-[64px] text-blue leading-[80px] whitespace-nowrap min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 xsm:text-[30px] sm:leading-normal md:[&>_br]:hidden xl:text-[50px]">{!!getStaticText(21)!!}</h1>
                         </div>
                     </div>
                     <div class="brand-controller srb absolute right-[285px] bottom-[115px] z-5 flex items-center gap-[125px] max-w-[100px] mx-auto md:relative md:left-0 md:top-0 md:!translate-x-0 md:order-2 lg:right-[200px] xl:right-[250px] xl:bottom-[100px]">
