@@ -597,7 +597,7 @@
                             <?php foreach ($blog as $key => $item) : ?>
                                 <div
                                     class="swiper-slide group/slide min-md:!pointer-events-none duration-350 [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto">
-                                    <a href="blog-detail.php"
+                                    <a href="{{ env('HTTP_DOMAIN') . '/' . getUrl('blog_url') . '/' . $item['seo_url'] }}"
                                         class="blog-item flex relative min-md:opacity-0 min-md:pointer-events-none min-md:scale-75 duration-350 min-md:group-[&.swiper-slide-active]/slide:scale-100 min-md:group-[&.swiper-slide-active]/slide:pointer-events-auto min-md:group-[&.swiper-slide-active]/slide:opacity-100 min-md:group-[&.swiper-slide-next]/slide:blur-[5px] group-[&.swiper-slide-next]/slide:pointer-events-auto group-[&.swiper-slide-next]/slide:opacity-100 md:h-full md:flex-col md:gap-[15px]">
                                         <div
                                             class="blog-image aspect-[13/10] size-full rounded-[14px] relative overflow-hidden xsm:aspect-video sm:aspect-square md:aspect-video">
