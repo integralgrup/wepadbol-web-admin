@@ -40,13 +40,13 @@
                                     <div class="swiper-slide overflow-hidden" dir="ltr">
                                         <div class="blog-date flex justify-center items-center gap-[10px] p-[10px] bg-green/5 rounded-[8px] mb-[30px] w-fit" data-swiper-parallax-x="50%">
                                             <i class="icon icon-calendar text-[16px] h-[16px] text-green flex leading-normal"></i>
-                                            <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d M Y', strtotime($item->created_at)) }}</small>
+                                            <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d/m/Y', strtotime($item->created_at)) }}</small>
                                         </div>
                                         <a href="{{ env('HTTP_DOMAIN') . '/' . getUrl('blog_url') .'/'. $item->seo_url }}" class="title flex text-blue text-[48px] font-bold leading-[64px] opacity-90 mb-[40px] uppercase xl:text-[40px] lg:text-2xl lg:mb-[15px]" data-swiper-parallax-x="50%">{{ $item->title }}</a>
                                         <p class="expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mb-[40px] lg:mb-[15px] lg:text-base md:[&>_br]:hidden" data-swiper-parallax-x="50%">{!! mb_substr($item->description, 0, 100) !!}...</p>
                                         <div class="button-controller-field mb-[60px] lg:mb-[30px] xsm:mb-0" data-swiper-parallax-x="50%">
                                             <a href="{{ env('HTTP_DOMAIN') . '/' . getUrl('blog_url') .'/'. $item->seo_url }}" class="button group/button fx fx-text-hover-with-child relative bg-green flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[6] md:h-[60px] sm:h-[50px] sm:px-[15px]">
-                                                <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px]">Read More</small>
+                                                <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px]">{{getStaticText(41)}}</small>
                                                 <i class="icon relative z-2 icon-chevron-right text-white text-[10px] h-[10px] flex items-center leading-normal duration-350 min-sm:group-hover/button:rotate-90"></i>
                                             </a>
                                         </div>
@@ -66,9 +66,9 @@
                 </div>
             </div>
             <div class="page-navigation flex items-center gap-[5px] absolute left-[30px] bottom-[-100px]">
-                <a href="index.php" class="text text-[18px] text-white/80 leading-[28px]">Home</a>
+                <a href="index.php" class="text text-[18px] text-white/80 leading-[28px]">{{getStaticText(23)}}</a>
                 <div class="text text-[18px] text-white/80 leading-[28px]">/</div>
-                <a href="blogs.php" class="text text-[18px] text-white/80 leading-[28px]">News</a>
+                <a href="blogs.php" class="text text-[18px] text-white/80 leading-[28px]">{{getStaticText(37)}}</a>
             </div>
         </div>
     </section>
@@ -78,15 +78,14 @@
             <div class="bg-white p-[30px] flex justify-center items-center gap-[25px] [box-shadow:_0px_10px_40px_0px_rgba(14,_42,_67,_0.15);] rounded-[8px] xs:flex-col">
                 <div class="filter-item group/select relative overflow-hidden bg-green h-[70px] w-full min-w-[255px] max-w-[255px] flex justify-center items-center rounded-[8px] gap-[10px] duration-350 before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[35px] before:scale-0 before:bg-secondary-700 before:rounded-full before:translate-z-0 before:duration-350 min-sm:hover:before:scale-[8] md:h-[60px] sm:max-w-full">
                     <select name="" id="" class="text relative z-2 text-[18px] text-white leading-[30px] w-full h-full pl-[30px]">
-                        <option value="" selected>Blog Categories</option>
-                        <option value="">Football Grass</option>
-                        <option value="">Garden Grass</option>
-                        <option value="">Playground Grass</option>
+                        <option value="" selected>{{getStaticText(38)}}</option>
+                        <option value="">{{getStaticText(39)}}</option>
+                        <option value="">{{getStaticText(40)}}</option>
                     </select>
                     <i class="icon icon-chevron-down2 text-[10px] h-[10px] text-white flex leading-normal absolute right-[30px] top-[50%] translate-y-[-50%] z-2 duration-350 group-hover/select:rotate-180"></i>
                 </div>
                 <div class="search-field w-full relative sm:order-1">
-                    <input type="text" name="" id="" placeholder="Search in blogs..." class="search-bar w-full h-[70px] bg-[#F7F7F7] rounded-[8px] pl-[35px] pr-[60px] md:h-[60px] xsm:pl-[27px]">
+                    <input type="text" name="" id="" placeholder="{{getStaticText(45)}}" class="search-bar w-full h-[70px] bg-[#F7F7F7] rounded-[8px] pl-[35px] pr-[60px] md:h-[60px] xsm:pl-[27px]">
                     <i class="icon icon-search text-[25px] h-[25px] text-black absolute right-[30px] top-[50%] translate-y-[-50%] flex leading-normal cursor-pointer xsm:text-[20px] xsm:h-[20px] xsm:right-[27px]"></i>
                 </div>
             </div>
@@ -98,14 +97,11 @@
             <div class="wrapper">
                 <div class="inner-wrapper relative flex flex-col gap-[65px] mt-[60px] xl:gap-[60px] lg:mt-[40px] lg:gap-[40px] md:mt-[45px]">
                     <div class="second-filter-field relative flex justify-between items-center xs:flex-col">
-                        <div class="total-field srl text text-[18px] text-[#52555C]/50 leading-[28px] xsm:text-[16px]">Total <span class="text-green"> {{ $blogs->count() }} </span> blogs found.</div>
+                        <div class="total-field srl text text-[18px] text-[#52555C]/50 leading-[28px] xsm:text-[16px]">{{getStaticText(42)}} <span class="text-green"> {{ $blogs->count() }} </span></div>
                         <div class="date-filter-field srr group/date relative flex items-center gap-[15px]">
-                            <div class="date-title text-[18px] text-[#52555C] font-medium leading-[28px] opacity-65 duration-350 group-hover/date:opacity-100 xsm:text-[16px]">Short by :</div>
+                            <div class="date-title text-[18px] text-[#52555C] font-medium leading-[28px] opacity-65 duration-350 group-hover/date:opacity-100 xsm:text-[16px]">{{getStaticText(43)}} :</div>
                             <select name="" id="" class="text relative z-2 text-[18px] text-green leading-[30px] pr-[50px] xsm:text-[16px] xs:pr-0">
-                                <option value="" selected>Latest</option>
-                                <option value="">2024</option>
-                                <option value="">2023</option>
-                                <option value="">2022</option>
+                                <option value="" selected>{{getStaticText(44)}}</option>
                             </select>
                             <i class="icon icon-chevron-down2 text-[10px] h-[10px] text-[#52555CA6] flex leading-normal absolute right-[30px] top-[50%] translate-y-[-50%] z-2 duration-350 group-hover/date:rotate-180 group-hover/date:text-green xs:right-[-20px]"></i>
                         </div>
@@ -129,7 +125,7 @@
                                             </div>
                                             <div class="blog-date flex justify-center items-center gap-[10px] p-[10px] bg-green/5 rounded-[8px] mb-[15px] w-fit">
                                                 <i class="icon icon-calendar text-[16px] h-[16px] text-green flex leading-normal"></i>
-                                                <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d M Y', strtotime($item->created_at)) }}</small>
+                                                <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d/m/Y', strtotime($item->created_at)) }}</small>
                                             </div>
                                             <div class="blog-title text-blue text-[24px] font-bold leading-[36px] opacity-90 line-clamp-2 sm:text-[17px] sm:leading-normal">{{ $item->title }}</div>
                                             <div class="blog-expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mt-[20px] max-w-[390px] line-clamp-2 lg:max-w-full sm:text-[16px]">{!! mb_substr($item->description, 0, 100) !!}...</div>
