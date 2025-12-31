@@ -21,6 +21,15 @@
     <!-- Önbellek tutmasın diye ekledim; '?id<?= rand(); ?>' yazısını silersin -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css?id=123') }}">
+    <?php $code = \App\Models\Code::where('lang', app()->getLocale())->first(); ?>
+    <?php $language = App\Models\Language::where('lang_code', app()->getLocale())->first(); 
+        //dd($language);
+    ?>  
+    {!! $code->ga_code !!}
+    {!! $code->yandex_metrica_code !!}
+    {!! $code->facebook_pixel_code !!}
+    {!! $code->microsoft_clarity_code !!}
+    {!! $code->google_tag_manager_head_code !!}
 </head>
 
 <body class="antialiased font-sans">

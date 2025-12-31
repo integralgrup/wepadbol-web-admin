@@ -1,6 +1,7 @@
 <?php
     $footerInfo = App\Models\FooterInfo::where('lang', app()->getLocale())->first();
 ?>
+<?php $code = \App\Models\Code::where('lang', app()->getLocale())->first(); ?>
 <footer class="footer-field w-full relative max-w-[1740px] mx-auto px-[30px]">
     <div class="content-wrapper grid grid-cols-[minmax(0,78px)_minmax(0,480px)_minmax(0,1100px)] md:grid-cols-1 md:gap-[30px] lg:grid-cols-[minmax(0,120px)_minmax(0,350px)_minmax(0,1000px)] xl:grid-cols-[minmax(0,160px)_minmax(0,480px)_minmax(0,910px)]">
         <a href="{{env('HTTP_DOMAIN')}}" class="logo-wrapper flex items-center justify-center min-sm:mr-[60px] md:w-fit md:mx-auto md:rotate-90 md:h-[80px]">
@@ -206,7 +207,8 @@
             <h3 class="title relative text-[48px] text-blue font-medium leading-[64px] ml-[65px] before:absolute before:left-[-65px] before:bottom-[15px] before:size-[20px] before:bg-green md:before:hidden md:ml-0 md:text-[28px]"><strong>CONTACT</strong> FORM</h3>
             <p class="expo texxt-[18px] text-[#5255C] leading-[28px] opacity-65 mt-[30px]">We will be happy to review our entire product range and provide you with a tailor-made offer to find the best solution for your needs.</p>
         </div>
-        <form action="">
+        {!! $code->bitrix_form_code !!}
+        <!--<form action="">
             <div class="form-field grid grid-cols-2 gap-[30px] mt-[40px] md:mt-[15px] md:gap-[15px] xsm:grid-cols-1">
                 <div class="item group/item xsm:col-span-2">
                     <input type="text" placeholder="İsim Soyisim" class="text text-[16px] text-blue placeholder:text-blue placeholder:font-normal font-bold leading-[19px] p-[20px] h-[60px] border border-solid border-blue/15 rounded-[16px] w-full duration-350 group-hover/item:border-green">
@@ -241,7 +243,7 @@
                     </div>
                 </div>
             </div>
-        </form>
+        </form>-->
     </div>
 </section>
 <!-- popup -->
@@ -275,7 +277,8 @@
 
         <!-- Önbellek tutmasın diye ekledim '?id<?= rand(); ?>' yazısını silersin -->
         <script src="../assets/js/script.js"></script>
-
+        
+        {!! $code->bitrix_widget_code !!}
     </body>
 
 </html>

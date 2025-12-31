@@ -26,6 +26,7 @@ use App\Models\CatalogFile;
 use App\Models\Country;
 use App\Models\Continent;
 use App\Models\Project;
+use App\Models\Code;
 use App\Models\ProjectGallery;
 use App\Models\SeoSettings;
 use App\Models\StaticImage;
@@ -220,6 +221,7 @@ class HomeController extends Controller
 
         if($menu->page_type == 'contact') {
             $offices = Office::where(['lang' => app()->getLocale()])->get();
+            $code = Code::where('lang', app()->getLocale())->first();
             $seo = SeoSettings::where('page', 'contact')->where('lang', app()->getLocale())->first();
             return view('contact', compact('offices', 'seo'));
         }
