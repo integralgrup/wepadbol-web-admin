@@ -269,7 +269,7 @@
                               <div class="size-[15px] overflow-hidden rounded-full shrink-0">
                                  <img src="{{ $language->domain  .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'. $language->flag_image}}" alt="" loading="lazy" class="size-full object-cover object-center" />
                               </div>
-                              <div class="text-from-14 text-to-16 font-medium text-white uppercase min-md:transition-colors min-md:duration-300 min-md:group-hover/o:text-black">{{ strtoupper($language->name ) }}</div>
+                              <div class="text-from-14 text-to-16 font-medium text-white uppercase min-md:transition-colors min-md:duration-300 min-md:group-hover/o:text-black">{{ strtoupper($language->lang_code ) }}</div>
                            </a>
                         </li>
                     <?php } ?>
