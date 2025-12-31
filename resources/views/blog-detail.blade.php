@@ -153,7 +153,7 @@
                                             </div>
                                             <div class="blog-date flex justify-center items-center gap-[10px] p-[10px] bg-green/5 rounded-[8px] mb-[15px] w-fit">
                                                 <i class="icon icon-calendar text-[16px] h-[16px] text-green flex leading-normal"></i>
-                                                <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d/m/Y', strtotime($item->created_at)) }}</small>
+                                                <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d/m/Y', strtotime($item->created_at)) }} </small>
                                             </div>
                                             <div class="blog-title text-blue text-[24px] font-bold leading-[36px] opacity-90 line-clamp-2 sm:text-[20px]">{{ $item->title }}</div>
                                             <div class="blog-expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mt-[20px] max-w-[390px] line-clamp-2 md:max-w-full">{{ mb_substr($item->description, 0, 100) }}...</div>
