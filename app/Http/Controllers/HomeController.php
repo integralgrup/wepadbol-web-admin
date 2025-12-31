@@ -169,9 +169,11 @@ class HomeController extends Controller
                 
                 //$projects = Project::where(['lang' => app()->getLocale()])->with(['gallery'])->get();
                 $projects = Project::where(['lang' => app()->getLocale()])->with(['gallery', 'country', 'country.continent'])->get();
-                $seo = SeoSettings::where('page', 'projects')->where('lang', app()->getLocale())->first();
                 //dd($projects);
-                return view('projects', compact('projects', 'seo'));
+                $continents = Continent::where('lang', app()->getLocale())->with('countries')->get()->toArray();
+                $seo = SeoSettings::where('page', 'projects')->where('lang', app()->getLocale())->first();
+                //dd($continents);
+                return view('projects', compact('projects', 'seo', 'continents'));
 
             }else{
                 $slug = $slug2;

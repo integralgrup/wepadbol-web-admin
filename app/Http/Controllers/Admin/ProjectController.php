@@ -107,11 +107,11 @@ class ProjectController extends Controller
                 
             }
 
-            return redirect()->route('admin.project.index')->with('success', 'Ürün başarıyla kaydedildi!');
+            return redirect()->route('admin.project.index')->with('success', 'Proje başarıyla kaydedildi!');
 
         } catch (\Throwable $th) {
             throw $th;
-            return redirect()->route('admin.project.index')->with('error', 'Ürün kaydedilirken bir hata oluştu!');
+            return redirect()->route('admin.project.index')->with('error', 'Proje kaydedilirken bir hata oluştu!');
         }
     }
 
@@ -127,10 +127,15 @@ class ProjectController extends Controller
    
 
     // Delete sector
-    public function destroy(Sector $sector)
+    public function destroy($id)
     {
-        $sector->delete();
-        return redirect()->route('admin.sector.index')->with('success', 'Sector deleted successfully!');
+        $project = Project::where('project_id', $id)->get();
+        
+        foreach ($project as $item) {
+            $item->delete();
+        }
+
+        return redirect()->route('admin.project.index')->with('success', 'Project deleted successfully!');
     }
 
 

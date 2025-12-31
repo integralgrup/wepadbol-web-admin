@@ -8,7 +8,8 @@
 ?>
 
 <main class="main-field">
-    <section class="breadcrumb-field relative overflow-hidden">
+    <!-- BREADCRUMB -->
+     <section class="breadcrumb-field relative overflow-hidden">
     <div class="image-wrapper overflow-hidden absolute left-0 top-0 size-full">
         <div class="content relative h-full">
             <div class="background [background:_linear-gradient(180deg,_rgba(0,_0,_0,_0.50)_0%,_rgba(0,_0,_0,_0.15)_100%);] absolute top-0 left-0 size-full z-2 translate-z-0 overflow-hidden"></div>
@@ -58,14 +59,14 @@
             <div class="wrapper">
                 <div class="heading-wrapper srt relative z-3 flex items-center justify-between max-w-[1460px] w-full mx-auto gap-[45px] bg-white [box-shadow:_0px_10px_40px_0px_rgba(14,_42,_67,_0.15);] p-[25px] mt-[-180px] rounded-[8px] 2xl:mt-[-150px] xl:mt-[-130px] lg:mt-[-110px] md:mt-0 sm:p-[10px] sm:flex-col sm:gap-[10px]">
                     <?php $list = [
-                        ['title' => 'All Country', 'continent' => 'all',],
-                        ['title' => 'Africa', 'continent' => 'africa',],
-                        ['title' => 'Europe', 'continent' => 'europe',],
-                        ['title' => 'North America', 'continent' => 'north-america',],
-                        ['title' => 'South America', 'continent' => 'south-america',],
-                        ['title' => 'Asia', 'continent' => 'asia',],
-                        ['title' => 'Australia', 'continent' => 'australia',]
+                        ['title' => 'All Country', 'continent' => 'all',]
                     ];
+                    foreach($continents as $key => $item) {
+                        $list[] = [
+                            'title' => $item['title'],
+                            'continent' => $item['class'],
+                        ];
+                    }
                     ?>
                     <div class="map-filter-field p-[15px] w-auto h-full flex items-center rounded-[8px] md:p-0 xsm:flex-wrap xsm:justify-center xsm:items-center">
                         <?php foreach ($list as $key => $item) : ?>
@@ -82,8 +83,8 @@
                     </div>
                 </div>
                 <div class="inner-wrapper relative flex flex-col gap-[65px] mt-[60px] xl:gap-[60px] lg:mt-[40px] lg:gap-[40px]">
-                    <div class="second-filter-field relative flex justify-between items-center max-w-[1400px] w-full mx-auto xs:flex-col xs:gap-[15px]">
-                        <div class="total-field srl text text-[18px] text-[#52555C]/50 leading-[28px] xsm:text-[16px]">Total <span class="text-green"> {{ $projects->count() }} </span> project found.</div>
+                    <div class="second-filter-field relative flex justify-between items-center max-w-[1400px] w-full mx-auto xs:flex-col xs:gap-[15px]" dir="ltr">
+                        <div class="total-field srl text text-[18px] text-[#52555C]/50 leading-[28px] xsm:text-[16px]">Total <span class="text-green"> 30 </span> project found.</div>
                         <div class="date-filter-field srr group/date relative flex items-center gap-[15px]">
                             <div class="date-title text-[18px] text-[#52555C] font-medium leading-[28px] opacity-65 duration-350 group-hover/date:opacity-100 xsm:text-[16px]">Short by :</div>
                             <select name="" id="" class="text relative z-2 text-[18px] text-green leading-[30px] pr-[50px] xsm:text-[16px] xs:pr-0">
@@ -276,52 +277,49 @@
                                     <path class="map-path world-path fill-[#D5DBDF] stroke-[#ffffff] duration-350 [&.is-active]:fill-green" data-id="ZM" data-region="ZM" data-key="" data-title="Zambia" d="M567.105,489.207L568.429,490.466L569.142,492.868L568.664,493.636L568.101,495.938L568.639,498.299L567.757,499.292L566.906,501.951L568.38,502.695L559.872,505.065L560.138,507.12L558.014,507.516L556.417,508.67L556.076,509.676L555.073,509.904L552.634,512.299L551.082,514.192L550.135,514.26L549.224,513.922L546.09,513.602L545.586,513.383L545.565,513.141L544.458,512.482L542.641,512.314L540.345,512.978L538.515,511.155L536.623,508.778L536.752,499.62L542.591,499.656L542.352,498.67L542.77,497.602L542.277,496.266L542.596,494.887L542.299,494.006L543.267,494.077L543.427,494.96L544.741,494.891L546.521,495.153L547.458,496.444L549.704,496.841L551.418,495.943L552.047,497.435L554.196,497.833L555.229,499.049L556.38,500.622L558.526,500.646L558.292,497.566L557.522,498.084L555.562,496.976L554.805,496.469L555.152,493.618L555.65,490.267L555.022,489.021L555.821,487.222L556.573,486.885L560.339,486.41L561.443,486.696L562.615,487.413L563.732,487.885L565.514,488.359z"></path>
                                     <path class="map-path world-path fill-[#D5DBDF] stroke-[#ffffff] duration-350 [&.is-active]:fill-green" data-id="ZW" data-region="ZW" data-key="" data-title="Zimbabwe" d="M562.709,526.998L561.219,526.697L560.274,527.059L558.917,526.548L557.776,526.516L555.989,525.158L553.821,524.698L552.996,522.803L552.989,521.752L551.788,521.432L548.615,518.177L547.733,516.471L547.169,515.946L546.09,513.602L549.224,513.922L550.135,514.26L551.082,514.192L552.634,512.299L555.073,509.904L556.076,509.676L556.417,508.67L558.014,507.516L560.138,507.12L560.319,508.2L562.658,508.142L563.957,508.754L564.562,509.472L565.896,509.683L567.353,510.617L567.359,514.312L566.813,516.347L566.692,518.55L567.143,519.426L566.826,521.172L566.402,521.443L565.663,523.593z"></path>
                                 </svg>
-                                <?php $list = [
-                                    ['continent' => 'africa', 'top' => '59', 'left' => '54',],
-                                    ['continent' => 'africa', 'top' => '17', 'left' => '21',],
-                                    ['continent' => 'africa', 'top' => '12', 'left' => '23',],
-                                    ['continent' => 'europe', 'top' => '76', 'left' => '54',],
-                                    ['continent' => 'europe', 'top' => '49', 'left' => '76',],
-                                    ['continent' => 'europe', 'top' => '36', 'left' => '55',],
-                                    ['continent' => 'north-america', 'top' => '45', 'left' => '55',],
-                                    ['continent' => 'north-america', 'top' => '25', 'left' => '64',],
-                                    ['continent' => 'north-america', 'top' => '28', 'left' => '24',],
-                                    ['continent' => 'south-america', 'top' => '35', 'left' => '32',],
-                                    ['continent' => 'south-america', 'top' => '49', 'left' => '25',],
-                                    ['continent' => 'south-america', 'top' => '64', 'left' => '53',],
-                                    ['continent' => 'asia', 'top' => '55', 'left' => '75',],
-                                    ['continent' => 'asia', 'top' => '47', 'left' => '54',],
-                                    ['continent' => 'asia', 'top' => '48', 'left' => '69',],
-                                    ['continent' => 'australia', 'top' => '34', 'left' => '65',],
-                                    ['continent' => 'australia', 'top' => '45', 'left' => '65',],
-                                    ['continent' => 'australia', 'top' => '55', 'left' => '60',],
-                                ]; ?>
+                                <?php 
+                                    $list = [
+                                        
+                                    ]; 
+
+                                    foreach($projects as $project) {
+                                        $list[] = [
+                                            'country_title' => $project->country->title,
+                                            'continent' => $project->country->continent->class,
+                                            'top' => $project->country->top,
+                                            'left' => $project->country->left,
+                                        ];
+                                    }
+                                ?>
                                 <div class="map-dot-wrapper absolute left-[50%] translate-x-[-50%] top-0 size-full xsm:h-[275px] xs:w-[130%] pointer-events-none">
                                     <?php foreach ($list as $key => $item) : ?>
-                                        <div class="dot-field is-active absolute pointer-events-auto group/dot opacity-0 scale-0 invisible duration-350 [&.is-active]:scale-100 [&.is-active]:opacity-100 [&.is-active]:visible" style="left: <?= $item['left'] ?>%; top: <?= $item['top'] ?>%;" data-continent="<?= $item['continent'] ?>">
-                                            <div class="icon icon-marker text-[25px] h-[25px] text-blue leading-normal flex duration-350 pointer-events-none group-hover/dot:text-white sm:text-[20px] sm:h-[20px]"></div>
-                                            <div class="dot-visible-content absolute rounded-[10px] px-[5px] py-[0] left-[calc(100%)] -translate-y-1/2 top-1/2 sm:hidden opacity-0 invisible duration-450 translate-x-10 group-hover/dot:opacity-100 group-hover/dot:visible group-hover/dot:translate-x-0 group-[&.active]/dot:opacity-100 group-[&.active]/dot:visible group-[&.active]/dot:translate-x-0">
-                                                <p class="text text-[16px] text-white leading-tight whitespace-nowrap text-center">Örnek Ülke <?= $key ?></p>
-                                            </div>
+                                    <a href="#popup-project" data-fancybox class="dot-field is-active absolute pointer-events-auto group/dot opacity-0 scale-0 invisible duration-350 [&.is-active]:scale-100 [&.is-active]:opacity-100 [&.is-active]:visible" style="left: <?= $item['left'] ?>%; top: <?= $item['top'] ?>%;" data-continent="<?= $item['continent'] ?>">
+                                        <div class="icon icon-marker text-[25px] h-[25px] text-blue [-webkit-text-stroke:1px_rgba(3,36,107,0)] leading-normal flex duration-350 pointer-events-none group-hover/dot:text-white group-hover/dot:[-webkit-text-stroke:1px_rgba(3,36,107,1)] sm:text-[20px] sm:h-[20px]"></div>
+                                            <div class="dot-visible-content absolute rounded-[10px] px-[10px] py-[5px] left-[calc(100%)] -translate-y-1/2 top-1/2 bg-blue/20 backdrop-blur-lg sm:hidden opacity-0 invisible duration-450 translate-x-10 group-hover/dot:opacity-100 group-hover/dot:visible group-hover/dot:translate-x-0 group-[&.active]/dot:opacity-100 group-[&.active]/dot:visible group-[&.active]/dot:translate-x-0">
+                                            <p class="text text-[16px] text-white leading-tight whitespace-nowrap text-center">{{$item['country_title']}} </p>
                                         </div>
+                                    </a>
                                     <?php endforeach; ?>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <?php $list = [['image' => 'image-3.jpg', 'continent' => 'europe'], ['image' => 'image-15.jpg', 'continent' => 'north-america'], ['image' => 'image-14.jpg', 'continent' => 'south-america'], ['image' => 'image-13.jpg', 'continent' => 'australia'], ['image' => 'image-12.jpg', 'continent' => 'africa'], ['image' => 'image-4.jpg', 'continent' => 'europe'], ['image' => 'image-10.jpg', 'continent' => 'africa'], ['image' => 'image-9.jpg', 'continent' => 'africa'],]; ?>
                     <div class="project-field grid grid-cols-2 gap-y-[66px] gap-x-[90px] 2xl:gap-[80px] xl:gap-[50px] lg:gap-[40px] md:gap-[30px] xsm:grid-cols-1">
                         <?php foreach ($projects as $key => $item) : ?>
-                            <div class="project-item active group/item hidden relative overflow-hidden w-full h-max p-[50px] rounded-[20px] duration-350 hover:[box-shadow:_10px_10px_40px_0px_rgba(117,_191,_0,_0.20);] [&.active]:block md:p-[30px]" data-continent="<?= $item->country->continent->class ?>">
-                                <a href="{{ env('HTTP_DOMAIN') .'/'. getUrl('project_url'). '/' . $item->seo_url }}" class="flex justify-end">
+                            <div class="project-item active group/item hidden relative overflow-hidden w-full h-max p-[50px] rounded-[20px] duration-350 min-md:hover:[box-shadow:_10px_10px_40px_0px_rgba(117,_191,_0,_0.20);] [&.active]:block md:p-[30px]" data-continent="<?= $item['continent'] ?>">
+                                <a href="project-detail.php" class="flex justify-end">
                                     <div class="project-image absolute left-0 top-0 size-full before:absolute before:left-0 before:top-0 before:size-full before:[background:_linear-gradient(180deg,_rgba(3,_36,_107,_0.00)_36.72%,_#03246B_100%);] before:opacity-100 before:duration-350 after:absolute after:left-0 after:top-0 after:size-full after:[background:_linear-gradient(180deg,_rgba(3,_36,_107,_0.00)_43.88%,_#03246B_100%);] after:opacity-0 after:duration-350 group-hover/item:after:opacity-100 group-hover/item:before:opacity-0">
-                                        <img src="{{ asset( getFolder(['uploads_folder', 'project_images_folder'], $item->lang) . '/' . $item->image ) }}" alt="" class="w-full h-[150%] object-cover object-center delay-150 duration-500 group-[&.active]/item:h-full"  loading="lazy">
+                                        <img src="{{ asset(getFolder( ['uploads_folder', 'project_images_folder'], $item->lang ) . '/' . $item->image) }}" alt="" class="w-full h-[150%] object-cover object-center delay-150 duration-500 group-[&.active]/item:h-full"  loading="lazy">
                                         <div class="overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar group-[&.active]/item:translate-y-full"></div>
                                     </div>
-                                    <div class="project-content min-sm:relative flex flex-col gap-[20px]" dir="rtl">
+                                    <div class="project-content min-sm:relative flex flex-col gap-[20px]" >
                                         <div class="fx-hover-repulse anim-button group/button w-fit ml-auto min-sm:opacity-0 min-sm:scale-50 duration-350 min-sm:group-hover/item:opacity-100 min-sm:group-hover/item:scale-100 sm:absolute sm:right-[-15px] sm:top-0">
                                             <div class="inner">
-                                                <button class="button item relative size-[66px] p-[20px] rounded-full bg-green flex items-center justify-end before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:scale-0 before:rounded-full before:bg-blue before:duration-350 min-sm:group-hover/button:before:scale-[2] before:size-[33px] sm:before:hidden sm:w-[70px] sm:h-[40px] sm:justify-center sm:items-center sm:p-0 sm:rounded-t-none sm:rounded-b-[8px]">
-                                                    <i class="icon icon-arrow-top relative z-2 text-[10px] size-[24px] text-white leading-normal flex justify-center items-center duration-350 min-sm:group-hover/button:rotate-45 sm:size-[12px] sm:ml-[-10px]"></i>
+                                            <!-- min-sm:group-hover/button:before:scale-[2] -->
+                                                <button class="button item relative size-[66px] p-[20px] rounded-full bg-green flex items-center justify-end before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:scale-0 before:rounded-full before:bg-blue before:duration-350 before:size-[33px] sm:before:hidden sm:w-[70px] sm:h-[40px] sm:justify-center sm:items-center sm:p-0 sm:rounded-t-none sm:rounded-b-[8px]">
+                                                 <!-- min-sm:group-hover/button:rotate-45 -->
+                                                    <i class="icon icon-arrow-top relative z-2 text-[10px] size-[24px] text-white leading-normal flex justify-center items-center duration-350 sm:size-[12px] sm:ml-[-10px]"></i>
                                                 </button>
                                             </div>
                                         </div>
@@ -332,14 +330,62 @@
                                             </div>
                                             <h3 class="project-title text-[32px] text-white font-semibold leading-[40px] uppercase max-w-[610px] line-clamp-2 mr-0 xl:text-[27px] lg:text-[25px] md:text-[20px] md:leading-normal sm:line-clamp-3 sm:text-[18px]">{{ $item->title_1 }}</h3>
                                         </div>
-                                        <p class="project-expo text-[18px] text-white leading-[28px] max-w-[610px] mr-0 opacity-0 line-clamp-2 duration-350 group-hover/item:opacity-100 lg:text-[16px] md:leading-normal sm:hidden">{{ $item->short_description }}</p>
+                                        <p class="project-expo text-[18px] text-white leading-[28px] max-w-[610px] mr-0 opacity-0 line-clamp-2 duration-350 group-hover/item:opacity-100 lg:text-[16px] md:leading-normal sm:hidden">{{ strip_tags( $item->description ) }}</p>
                                     </div>
                                 </a>
                             </div>
                         <?php endforeach; ?>
                     </div>
+                    <div class="max-w-[600px] mx-auto py-4 min-md:hidden">
+	                    <div id="load-more" class="button group/button cursor-pointer fx fx-text-hover-with-child relative bg-green flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[6] md:h-[60px] sm:h-[50px] sm:px-[15px]">
+	                        <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px]">Load More</small>
+	                        <i class="icon relative z-2 icon-chevron-right text-white text-[10px] h-[10px] flex items-center leading-normal duration-350 min-sm:group-hover/button:rotate-90"></i>
+	                    </a>
+                    </div>	
                 </div>
             </div>
+    </section>
+      <!-- POPUP | PROJECT -->
+      <section id="popup-project" class="hidden !bg-white !rounded-none !m-0 !p-[60px] md:!p-[30px] sm:!px-[15px] !max-w-[1280px] w-full">
+        <div class="inner w-full" dir="ltr">
+            <div class="popup-project-title-field mb-[50px] 2xl:mb-[40px] xl:mb-[30px] lg:mb-[20px] md:mb-[15px] flex gap-[10px]">
+                <p class="title popup-project-title text-[40px] 2xl:text-[36px] xl:text-[32px] lg:text-[28px] md:text-[24px] sm:text-[20px] leading-tight text-[#1E1E1E] font-semibold">ASIA</p>
+                <p class="count text-[40px] 2xl:text-[36px] xl:text-[32px] lg:text-[28px] md:text-[24px] sm:text-[20px] leading-tight text-primary-500 font-semibold">(<span class="popup-project-count">5</span>)</p>
+            </div>
+            <div class="content-field">
+                <div class="popup-project-wrapper grid grid-cols-2 gap-[30px] md:grid-cols-1 scrollbar scrollbar-w-[5px] scrollbar-track-rounded-[5px] scrollbar-thumb-rounded-[5px] scrollbar-thumb-primary scrollbar-track-primary/10 overflow-x-hidden overflow-y-auto pr-[20px]">
+                    <?php foreach($projects as $key => $item) : ?>
+                        <div class="popup-project-item item relative group/item">
+                            <div class="content bg-white duration-350 min-md:group-hover/item:bg-primary-500">
+                                <div class="image-field aspect-[460/275]">
+                                    <a href="project-detail.php" class="block w-full h-full image overflow-hidden translate-z-0 group/image">
+                                        <img src="../assets/image/jpg/image-3.jpg" class="full-cover min-md:group-hover/image:scale-105 duration-350" alt="">
+                                    </a>
+                                </div>
+                                <div class="text-field">
+                                    <div class="content px-[20px] py-[25px] lg:p-[20px]">
+                                        <div class="location">
+                                            <p class="text text-[15px] sm:text-[14px] leading-tight text-[#454545]/50 duration-350 min-md:group-hover/item:text-white tracking-[0.1rem] min-md:group-hover/item:group-hover/link:text-white/70">Russia</p>
+                                        </div>
+                                        <div class="title mt-[15px]">
+                                            <a href="project-detail.php" class="block w-fit group/link">
+                                                <span class="text text-[20px] lg:text-[18px] md:text-[16px] leading-tight text-[#1E1E1E] duration-350 min-md:group-hover/item:text-white font-semibold min-md:group-hover/item:group-hover/link:text-white/70">RUSSIA Origin Discover Padel Construction</span>
+                                            </a>
+                                        </div>
+                                        <div class="button-field mt-[24px] lg:mt-[20px] md:mt-[15px]">
+                                            <a href="project-detail.php" class="flex items-center gap-[15px] w-fit group/link opacity-65 duration-350 min-md:hover:opacity-100">
+                                                <span class="text text-[16px] sm:text-[14px] leading-tight text-[#1E1E1E] font-medium duration-350 min-md:group-hover/item:text-white tracking-[0.25rem]">VIEW</span>
+                                                <i class="icon icon-arrow-right text-[27px] h-[27px] text-[#1E1E1E] min-md:group-hover/item:text-white group-hover/link:translate-x-[3px] block leading-none duration-350"></i>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+            </div>
+        </div>
     </section>
 </main>
 @endsection
