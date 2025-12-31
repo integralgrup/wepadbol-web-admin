@@ -41,9 +41,9 @@
                             </div>
                             <div class="page-information-field flex items-center justify-between w-full absolute left-0 bottom-0 pb-[60px] px-[90px] xl:pt-0 xl:px-[30px]" dir="ltr">
                                 <div class="page-navigation flex items-center gap-[5px]">
-                                    <a href="index.php" class="text text-[18px] text-white/80 leading-[28px]">Home</a>
+                                    <a href="index.php" class="text text-[18px] text-white/80 leading-[28px]">{{getStaticText(23)}}</a>
                                     <div class="text text-[18px] text-white/80 leading-[28px]">/</div>
-                                    <a href="blogs.php" class="text text-[18px] text-white/80 leading-[28px]"><?= $page ?></a>
+                                    <a href="{{env('http_domaın') . '/' . getUrl('projects_url')}}" class="text text-[18px] text-white/80 leading-[28px]"><?= $page ?></a>
                                 </div>
                                 <div class="vote-field flex items-center gap-[20px]" x-data="{ count: parseInt(localStorage.getItem('likeCount')) || 0, clicked: localStorage.getItem('likeClicked') === 'true' || false }">
                                     <button class="hearth-field cursor-pointer" x-on:click="if(!clicked) { count++; clicked = true; localStorage.setItem('likeCount', count); localStorage.setItem('likeClicked', true) }" :disabled="clicked">
@@ -80,7 +80,7 @@
                             <small class="text relative z-2 text-[24px] text-[#52555C] opacity-65 font-medium leading-[30px] duration-350">{{ $project->country->title }}</small>
                         </div>
                         <h2 class="title text-blue text-[48px] font-bold leading-[64px] opacity-90 mb-[50px] uppercase xl:text-[40px] lg:text-2xl lg:mb-[15px]">{{ $project->title_1 }}</h2>
-                        <p class="expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mb-[60px] lg:mb-[15px] lg:text-base md:[&>_br]:hidden">{{ $project->short_description }}</p>
+                        <p class="expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mb-[60px] lg:mb-[15px] lg:text-base md:[&>_br]:hidden">{!! $project->short_description !!}</p>
                         <div class="buttons-field flex items-center gap-[40px] mb-[60px] lg:mb-[30px] xs:flex-col xs:gap-[15px] md:mb-0">
                             <a href="#contact-form" data-fancybox class="button group/button fx fx-text-hover-with-child relative bg-green flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[5.5] md:h-[60px] sm:h-[50px] sm:px-[15px] sm:w-full">
                                 <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px]">{{getStaticText(25)}}</small>
