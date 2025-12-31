@@ -54,11 +54,11 @@
                         <div class="buttons-field flex items-center gap-[40px] xs:gap-[15px]">
                             <!-- VARSAYILAN MAP URL -->
                             <a href="<?= $offices[0]['map_url'] ?>" class="button fx fx-text-hover-with-child direction-button group/button relative bg-white border-[4px] border-solid border-blue border-opacity-6 flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] duration-350 before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[45px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[4.8] min-sm:hover:border-transparent md:h-[60px] sm:h-[50px] sm:px-[15px] lg:w-full">
-                                <small class="text fx-child relative z-2 text-blue text-[16px] font-bold leading-[19px] lg:whitespace-nowrap duration-350 min-sm:group-hover/button:text-white">Get Direction</small>
+                                <small class="text fx-child relative z-2 text-blue text-[16px] font-bold leading-[19px] lg:whitespace-nowrap duration-350 min-sm:group-hover/button:text-white">{{getStaticText(46)}}</small>
                                 <i class="icon relative z-2 icon-map text-green text-[20px] h-[20px] flex items-center leading-normal duration-350"></i>
                             </a>
                             <a href="#contact-form" data-fancybox class="button fx fx-text-hover-with-child group/button relative bg-green flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[6.9] md:h-[60px] sm:h-[50px] sm:px-[15px] lg:w-full">
-                                <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px] lg:whitespace-nowrap">Contact Form</small>
+                                <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px] lg:whitespace-nowrap">{{getStaticText(47)}}</small>
                                 <i class="icon relative z-2 icon-mail-2 text-white text-[20px] h-[20px] flex items-center leading-normal duration-350"></i>
                             </a>
                         </div>
