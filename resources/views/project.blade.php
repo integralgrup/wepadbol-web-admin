@@ -59,7 +59,7 @@
                                             </defs>
                                         </svg>
                                     </button>
-                                    <div class="text text-[14px] text-white/75 leading-[28px]"><span class="font-bold text-white all-vote" x-text="count">0</span> Beğenme</div>
+                                    <div class="text text-[14px] text-white/75 leading-[28px]"><span class="font-bold text-white all-vote" x-text="count">0</span> {{getStaticText(34)}}</div>
                                 </div>
                             </div>
                         </div>
@@ -83,11 +83,11 @@
                         <p class="expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mb-[60px] lg:mb-[15px] lg:text-base md:[&>_br]:hidden">{{ $project->short_description }}</p>
                         <div class="buttons-field flex items-center gap-[40px] mb-[60px] lg:mb-[30px] xs:flex-col xs:gap-[15px] md:mb-0">
                             <a href="#contact-form" data-fancybox class="button group/button fx fx-text-hover-with-child relative bg-green flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[5.5] md:h-[60px] sm:h-[50px] sm:px-[15px] sm:w-full">
-                                <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px]">Get Offer</small>
+                                <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px]">{{getStaticText(25)}}</small>
                                 <i class="icon relative z-2 icon-chevron-right text-white text-[10px] h-[10px] flex items-center leading-normal duration-350 min-sm:group-hover/button:rotate-90"></i>
                             </a>
                             <a href="projects.php" class="button group/button fx fx-text-hover-with-child relative bg-white border-[4px] border-solid border-blue border-opacity-6 flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] duration-350 before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[45px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[5] min-sm:hover:border-transparent md:h-[60px] sm:h-[50px] sm:px-[15px] sm:w-full">
-                                <small class="text fx-child relative z-2 text-blue text-[16px] font-bold leading-[19px] duration-350 min-sm:group-hover/button:text-white">Next Project</small>
+                                <small class="text fx-child relative z-2 text-blue text-[16px] font-bold leading-[19px] duration-350 min-sm:group-hover/button:text-white">{{getStaticText(33)}}</small>
                                 <i class="icon relative z-2 icon-arrow-right text-green text-[20px] h-[20px] flex items-center leading-normal duration-350 min-sm:group-hover/button:text-white min-sm:group-hover/button:translate-x-3"></i>
                             </a>
                         </div>
