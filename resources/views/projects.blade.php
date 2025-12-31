@@ -24,7 +24,7 @@
                 <ul class="flex gap-[5px] flex-wrap">
                     <li>
                         <a href="index.php" class="flex items-center group/link">
-                            <span class="text text-[18px] leading-[28px] font-light text-[#eee] tracking-[-0.18px] duration-350 group-hover/link:text-white">Home</span>
+                            <span class="text text-[18px] leading-[28px] font-light text-[#eee] tracking-[-0.18px] duration-350 group-hover/link:text-white">{{getStaticText(23)}}</span>
                         </a>
                     </li>
                     <li>
@@ -32,15 +32,7 @@
                     </li>
                     <li>
                         <a href="index.php" class="flex items-center group/link">
-                            <span class="text text-[18px] leading-[28px] font-light text-[#eee] tracking-[-0.18px] duration-350 group-hover/link:text-white">Products</span>
-                        </a>
-                    </li>
-                    <li>
-                        <p class="split text-[18px] leading-[28px] font-light text-[#eee] tracking-[-0.18px] duration-350 group-hover/link:text-white">/</p>
-                    </li>
-                    <li>
-                        <a href="javscript:;" class="flex items-center group/link">
-                            <span class="text text-[18px] leading-[28px] font-light text-[#eee] tracking-[-0.18px] duration-350 group-hover/link:text-white">We Origins</span>
+                            <span class="text text-[18px] leading-[28px] font-light text-[#eee] tracking-[-0.18px] duration-350 group-hover/link:text-white">{{getStaticText(35)}}</span>
                         </a>
                     </li>
                 </ul>
