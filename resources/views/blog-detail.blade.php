@@ -52,9 +52,9 @@
                                 </div>
                                 <div class="page-information-field flex items-center justify-between w-full absolute left-0 bottom-0 pb-[60px] px-[90px] xl:pt-0 xl:px-[30px]" dir="ltr">
                                     <div class="page-navigation flex items-center gap-[5px]">
-                                        <a href="index.php" class="text text-[18px] text-white/80 leading-[28px]">Home</a>
+                                        <a href="{{env('HTTP_DOMAIN')}}" class="text text-[18px] text-white/80 leading-[28px]">{{getStaticText(23)}}</a>
                                         <div class="text text-[18px] text-white/80 leading-[28px]">/</div>
-                                        <a href="blogs.php" class="text text-[18px] text-white/80 leading-[28px]"><?= $page ?></a>
+                                        <a href="{{env('HTTP_DOMAIN') . '/' . getUrl('blog_url')}}" class="text text-[18px] text-white/80 leading-[28px]">{{getStaticText(40)}}</a>
                                     </div>
                                     <div class="vote-field flex items-center gap-[20px]" x-data="{ count: parseInt(localStorage.getItem('likeCount')) || 0, clicked: localStorage.getItem('likeClicked') === 'true' || false }">
                                         <button class="hearth-field cursor-pointer" x-on:click="if(!clicked) { count++; clicked = true; localStorage.setItem('likeCount', count); localStorage.setItem('likeClicked', true) }" :disabled="clicked">
@@ -70,7 +70,7 @@
                                                 </defs>
                                             </svg>
                                         </button>
-                                        <div class="text text-[14px] text-white/75 leading-[28px]"><span class="font-bold text-white all-vote" x-text="count">0</span> Beğenme</div>
+                                        <div class="text text-[14px] text-white/75 leading-[28px]"><span class="font-bold text-white all-vote" x-text="count">0</span> {{getStaticText(34)}}</div>
                                     </div>
                                 </div>
                             </div>
@@ -89,7 +89,7 @@
                         <div class="heading-wrapper translate-z-0 srt-all flex items-center gap-[60px] mb-[30px] sm:mb-[15px]">
                             <div class="blog-date flex justify-center items-center gap-[10px] p-[10px] bg-green/5 rounded-[8px] w-fit">
                                 <i class="icon icon-calendar text-[16px] h-[16px] text-green flex leading-normal"></i>
-                                <small class="date text-green text-[18px] font-medium leading-[28px] w-max">11 Ekim 2023</small>
+                                <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d/m/Y', strtotime($item->created_at)) }}</small>
                             </div>
                             <div class="blog-stars">
                                 <svg width="115" height="21" viewBox="0 0 115 21" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -137,7 +137,7 @@
                     <div class="swiper-wrapper">
                         <?php foreach ($blogs as $key => $item) : ?>
                             <div class="swiper-slide group/slide min-md:!pointer-events-none duration-350 [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto">
-                                <a href="blog-detail.php" class="blog-item flex relative min-md:opacity-0 min-md:pointer-events-none min-md:scale-75 duration-350 min-md:group-[&.swiper-slide-active]/slide:scale-100 min-md:group-[&.swiper-slide-active]/slide:pointer-events-auto min-md:group-[&.swiper-slide-active]/slide:opacity-100 min-md:group-[&.swiper-slide-next]/slide:blur-[5px] group-[&.swiper-slide-next]/slide:pointer-events-auto group-[&.swiper-slide-next]/slide:opacity-100 md:h-full md:flex-col md:gap-[15px]" dir="ltr">
+                                <a href="{{env('HTTP_DOMAIN') . '/' . getUrl('blog_url') . '/' . $item->seo_url}}" class="blog-item flex relative min-md:opacity-0 min-md:pointer-events-none min-md:scale-75 duration-350 min-md:group-[&.swiper-slide-active]/slide:scale-100 min-md:group-[&.swiper-slide-active]/slide:pointer-events-auto min-md:group-[&.swiper-slide-active]/slide:opacity-100 min-md:group-[&.swiper-slide-next]/slide:blur-[5px] group-[&.swiper-slide-next]/slide:pointer-events-auto group-[&.swiper-slide-next]/slide:opacity-100 md:h-full md:flex-col md:gap-[15px]" dir="ltr">
                                     <div class="blog-image aspect-[13/10] size-full rounded-[14px] relative overflow-hidden xsm:aspect-video sm:aspect-square md:aspect-video">
                                         <img src="{{asset( getFolder(['uploads_folder', 'blog_images_folder'], $item->lang) .'/'. $item->image )}}" alt="" class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
                                         <div class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full"></div>
@@ -168,7 +168,7 @@
                     <div class="title-field srr relative min-md:w-fit min-md:mb-[90px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-full before:mt-[45px] before:size-[26px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[26px] md:before:hidden">
                         <h1 class="title text-[64px] text-blue leading-[80px] whitespace-nowrap min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 xsm:text-[30px] sm:leading-normal md:[&>_br]:hidden xl:text-[50px]">{!!getStaticText(5)!!}</h1>
                     </div>
-                    <a href="blogs.php" class="button srr group/button relative border border-solid border-blue/6 bg-transparent flex flex-col justify-center items-center gap-[15px] px-[34px] py-[20px] min-md:h-auto min-md:min-h-[150px] w-auto overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-green before:rounded-full before:translate-z-0 before:duration-350 min-md:hover:before:scale-[5.5] sm:h-[50px] md:flex-row lg:p-[30px] xl:p-[35px]">
+                    <a href="{{env('HTTP_DOMAIN') . '/' . getUrl('blog_url')}}" class="button srr group/button relative border border-solid border-blue/6 bg-transparent flex flex-col justify-center items-center gap-[15px] px-[34px] py-[20px] min-md:h-auto min-md:min-h-[150px] w-auto overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-green before:rounded-full before:translate-z-0 before:duration-350 min-md:hover:before:scale-[5.5] sm:h-[50px] md:flex-row lg:p-[30px] xl:p-[35px]">
                         <i class="icon relative z-2 translate-z-0 icon-chevron-right text-green text-[10px] h-[10px] flex items-center leading-normal min-md:-rotate-90 duration-350 min-md:group-hover/button:text-white min-md:group-hover/button:rotate-90 md:order-2"></i>
                         <small class="text relative z-2 translate-z-0 text-blue text-[16px] font-medium leading-[19px] min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 duration-350 min-md:group-hover/button:text-white md:order-1">{{getStaticText(6)}}</small>
                     </a>
