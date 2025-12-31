@@ -199,17 +199,25 @@
                     </li>
                 <?php endforeach; ?>
             </ul>
-            <div class="language-field group/lang relative">
+
+            <div class="language-field group/lang relative"> 
+                <div class="absolute top-full left-0 w-full h-[60px] opacity-0 pointer-events-none group-hover/lang:pointer-events-auto"></div>
                 <div class="flex items-center gap-[10px]">
-                    <i class="icon icon-earth text-green text-[26px] h-[26px] leading-normal flex duration-350 group-[&.is-fixed]/header:text-blue"></i>
-                    <div class="language text-white opacity-85 text-[20px] leading-[28px] group-[&.is-fixed]/header:opacity-100 group-[&.is-fixed]/header:text-blue group-[&.blue]/header:text-blue">{{ strtoupper(app()->getLocale()) }} </div>
-                    <i class="icon icon-chevron-down2 text-white opacity-50 text-[9px] h-[9px] leading-normal flex duration-350 group-[&.is-fixed]/header:text-blue group-[&.blue]/header:text-blue group-[&.blue]/header:group-hover/lang:text-green group-hover/lang:opacity-100 group-hover/lang:rotate-180"></i>
+                    <i
+                        class="icon icon-earth text-green text-[26px] h-[26px] leading-normal flex duration-350 group-[&.is-fixed]/header:text-blue"></i>
+                    <div
+                        class="language text-white opacity-85 text-[20px] leading-[28px] group-[&.is-fixed]/header:opacity-100 group-[&.is-fixed]/header:text-blue group-[&.blue]/header:text-blue">
+                        {{ strtoupper(app()->getLocale()) }} </div>
+                    <i
+                        class="icon icon-chevron-down2 text-white opacity-50 text-[9px] h-[9px] leading-normal flex duration-350 group-[&.is-fixed]/header:text-blue group-[&.blue]/header:text-blue group-[&.blue]/header:group-hover/lang:text-green group-hover/lang:opacity-100 group-hover/lang:rotate-180"></i>
                 </div>
-                <ul class="options bg-green group-[&.is-fixed]/header:bg-black/75 p-[20px] sm:p-[15px] grid grid-cols-2 gap-[10px] sm:gap-[5px] absolute top-full left-[50%] translate-x-[-50%] mt-[30px] w-max rounded-[20px] backdrop-blur-xl before:absolute before:left-0 before:top-[-50px] before:w-full before:h-[50px] before:bg-transparent after:absolute after:left-0 after:top-0 after:size-full after:pointer-events-none after:border-[1px] after:border-white after:border-solid after:bg-transparent after:rounded-[20px] after:[mask-image:linear-gradient(0deg,transparent,black)] after:opacity-40 duration-350 opacity-0 pointer-events-none invisible translate-y-[15px] group-hover/lang:opacity-100 group-hover/lang:pointer-events-auto group-hover/lang:visible group-hover/lang:translate-y-0 group-hover/lang:delay-250">
+                <div class="absolute top-full mt-[40px] left-1/2 -translate-x-1/2 bg-black/40 border border-white/20 border-solid backdrop-blur-xs w-[200px] opacity-0 pointer-events-none group-hover/lang:pointer-events-auto group-hover/lang:opacity-100 duration-300">
+                <ul
+                    class="gap-[8px] p-[20px] grid grid-cols-2 md:grid-cols-1">
                     <?php $languagesArray = App\Models\Language::all(); 
-                    // get URL segments
-                    $segments = explode('/', url()->current());
-                    //$lang = ['tr', 'en', 'ar', 'ru', 'es', 'fr'];
+                        // get URL segments
+                        $segments = explode('/', url()->current());
+                        //$lang = ['tr', 'en', 'ar', 'ru', 'es', 'fr'];
                         foreach ($languagesArray as $language) { ?>
                             <?php 
                                 if(isset($segments[3]) && isset($segments[4])):
@@ -254,16 +262,19 @@
                                 if(!isset($segments[3]) && !isset($segments[4])):
                                     $url = $language->domain . '/';
                                 endif;
-                            ?>
-                            <li class="option group/option">
-                                <a href="<?=$url?>" class="flex items-center gap-[10px] rounded-[12px] bg-black/10 px-[12.5px] py-[10px] sm:px-[10px] sm:py-[7.5px] relative">
-                                    <div class="image w-[20px] aspect-square shrink-0"><img class="size-full object-cover
-                                    object-center" src="{{ $language->domain  .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'. $language->flag_image}}" alt="" loading="lazy"></div>
-                                    <div class="text text-white/70 duration-350 group-hover/option:text-white sm:text-[14px]">{{strtoupper($language->lang_code)}}</div>
-                                </a>
-                            </li>
+                            
+                        ?>
+                        <li class="group/o">
+                           <a href="<?=$url?>" class="flex items-center justify-center gap-[10px] border border-solid border-white/10 px-[5px] py-[6px] backdrop-blur-xs min-md:transition-colors min-md:duration-300 min-md:group-hover/o:bg-white/80">
+                              <div class="size-[15px] overflow-hidden rounded-full shrink-0">
+                                 <img src="{{ $language->domain  .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'. $language->flag_image}}" alt="" loading="lazy" class="size-full object-cover object-center" />
+                              </div>
+                              <div class="text-from-14 text-to-16 font-medium text-white uppercase min-md:transition-colors min-md:duration-300 min-md:group-hover/o:text-black">TR</div>
+                           </a>
+                        </li>
                     <?php } ?>
                 </ul>
+                </div>
             </div>
          
         </div>
