@@ -28,7 +28,7 @@ $breadcrumbImage = 'image-32.jpg';
                             <ul class="flex gap-[10px] flex-wrap">
                                 <li>
                                     <a href="index.php" class="flex items-center group/link">
-                                        <span class="text text-[18px] leading-[28px] font-light text-[#eee] tracking-[-0.18px] duration-350 group-hover/link:text-white">Home</span>
+                                        <span class="text text-[18px] leading-[28px] font-light text-[#eee] tracking-[-0.18px] duration-350 group-hover/link:text-white">{{getStaticText(23) }}</span>
                                     </a>
                                 </li>
                                 <li>
@@ -84,11 +84,11 @@ $breadcrumbImage = 'image-32.jpg';
                                 </div>
                                 <div class="buttons-field flex items-center gap-[25px] sm:gap-[10px] xsm:flex-col xsm:gap-[15px] xsm:w-full">
                                     <a href="#contact-form" data-fancybox class="button group/button fx fx-text-hover-with-child relative bg-green flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[5.5] md:h-[60px] sm:h-[50px] sm:px-[15px] sm:w-full">
-                                        <small class="text relative fx-child z-2 text-white text-[16px] font-medium leading-[19px] sm:whitespace-nowrap">Get Offer</small>
+                                        <small class="text relative fx-child z-2 text-white text-[16px] font-medium leading-[19px] sm:whitespace-nowrap">{{getStaticText(25)}}</small>
                                         <i class="icon relative z-2 icon-chevron-right text-white text-[10px] h-[10px] flex items-center leading-normal duration-350 min-sm:group-hover/button:rotate-90"></i>
                                     </a>
                                     <a href="{{  asset(getFolder(['uploads_folder','club_images_folder'], $club->lang) .'/'. $club->pdf_file) }}" data-fancybox class="button fx fx-text-hover-with-child group/button relative bg-white/10 border-[4px] border-solid border-blue border-opacity-14 flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] duration-350 before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[45px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[5.5] min-sm:hover:border-transparent md:h-[60px] sm:h-[50px] sm:px-[15px] sm:w-full">
-                                        <small class="text relative fx-child z-2 text-white text-[16px] font-bold leading-[19px] sm:whitespace-nowrap">PDF Catalog</small>
+                                        <small class="text relative fx-child z-2 text-white text-[16px] font-bold leading-[19px] sm:whitespace-nowrap">{{getStaticText(26)}}</small>
                                         <i class="icon relative z-2 icon-pdf text-green text-[20px] h-[20px] flex items-center leading-normal duration-350 min-sm:group-hover/button:rotate-90"></i>
                                     </a>
                                 </div>
