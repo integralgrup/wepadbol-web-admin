@@ -89,7 +89,7 @@
                         <div class="heading-wrapper translate-z-0 srt-all flex items-center gap-[60px] mb-[30px] sm:mb-[15px]">
                             <div class="blog-date flex justify-center items-center gap-[10px] p-[10px] bg-green/5 rounded-[8px] w-fit">
                                 <i class="icon icon-calendar text-[16px] h-[16px] text-green flex leading-normal"></i>
-                                <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d/m/Y', strtotime($item->created_at)) }}</small>
+                                <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d/m/Y', strtotime($blog->created_at)) }}</small>
                             </div>
                             <div class="blog-stars">
                                 <svg width="115" height="21" viewBox="0 0 115 21" fill="none" xmlns="http://www.w3.org/2000/svg">

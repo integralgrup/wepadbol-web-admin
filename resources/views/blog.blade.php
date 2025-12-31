@@ -92,48 +92,97 @@
         </div>
     </section>
 
-    <section class="blog-section pb-[120px] 2xl:pb-[80px] xl:pb-[60px] lg:pb-[45px] md:pb-[30px]">
-        <div class="container max-w-[1800px] group/container animContainer 2xl:max-w-[1600px]">
+    <section class="blog-section relative overflow-hidden pt-[100px] pb-[220px] 2xl:py-[50px] lg:py-[45px] md:py-[30px]">
+        <div class="max-w-[1920px] container group/container animContainer">
+            <div class="rectangle absolute left-[130px] top-0 size-[70px]">
+                <img src="../assets/svg/rectangle.svg" alt="" class="size-full object-contain object-center rotate-anim">
+            </div>
+            <div class="triangle absolute right-[400px] top-[-4px] size-[130px] md:size-[100px] sm:right-0">
+                <img src="../assets/svg/triangle.svg" alt="" class="size-full object-contain object-center rotate-anim">
+            </div>
             <div class="wrapper">
-                <div class="inner-wrapper relative flex flex-col gap-[65px] mt-[60px] xl:gap-[60px] lg:mt-[40px] lg:gap-[40px] md:mt-[45px]">
-                    <div class="second-filter-field relative flex justify-between items-center xs:flex-col">
-                        <div class="total-field srl text text-[18px] text-[#52555C]/50 leading-[28px] xsm:text-[16px]">{{getStaticText(42)}} <span class="text-green"> {{ $blogs->count() }} </span></div>
-                        <div class="date-filter-field srr group/date relative flex items-center gap-[15px]">
-                            <div class="date-title text-[18px] text-[#52555C] font-medium leading-[28px] opacity-65 duration-350 group-hover/date:opacity-100 xsm:text-[16px]">{{getStaticText(43)}} :</div>
-                            <select name="" id="" class="text relative z-2 text-[18px] text-green leading-[30px] pr-[50px] xsm:text-[16px] xs:pr-0">
-                                <option value="" selected>{{getStaticText(44)}}</option>
-                            </select>
-                            <i class="icon icon-chevron-down2 text-[10px] h-[10px] text-[#52555CA6] flex leading-normal absolute right-[30px] top-[50%] translate-y-[-50%] z-2 duration-350 group-hover/date:rotate-180 group-hover/date:text-green xs:right-[-20px]"></i>
-                        </div>
-                    </div>
-                    <div class="blog-field grid grid-cols-3 gap-x-[45px] gap-y-[80px] 2xl:gap-[75px] xl:gap-[60px] xl:grid-cols-2 lg:gap-[40px] md:gap-[30px] xsm:grid-cols-1">
-                        <?php foreach ($blogs as $key => $item) : ?>
-                            <div class="blog-item focus group/item w-full h-max">
-                                <a href="{{ env('HTTP_DOMAIN') . '/' . getUrl('blog_url') .'/'. $item->seo_url }}" class="flex flex-col items-center">
-                                    <div class="image relative size-full aspect-[55/42] overflow-hidden rounded-[14px] sm:rounded-b-none">
-                                        <img src="{{asset( getFolder(['uploads_folder', 'blog_images_folder'], $item->lang) .'/'. $item->image )}}" alt="" class="size-full object-cover object-center animImage scale-125 duration-500 [&.is-active]:scale-100 grayscale group-[&.focus]/item:grayscale-0">
-                                        <div class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full"></div>
-                                    </div>
-                                    <div class="blog-content size-auto relative bg-gradient-to-b from-green to-blue p-[2px] rounded-[14px] max-w-[470px] z-10 mt-[-80px] [box-shadow:_0px_25px_75px_0px_rgba(3,_36,_107,_0.15);] min-md:scale-50 min-md:opacity-0 min-md:delay-300 group-[&.is-active]/item:opacity-100 group-[&.is-active]/item:scale-100 duration-350 group-hover/item:[box-shadow:_0px_25px_75px_0px_rgba(117,_191,_0,_0.15);] xl:max-w-[550px] md:max-w-[440px] sm:max-w-full sm:mt-0 sm:rounded-t-none sm:pt-0">
-                                        <div class="content bg-white size-auto py-[25px] px-[40px] rounded-[12px] md:p-[30px] sm:rounded-t-none">
-                                            <div class="fx-hover-repulse anim-button group/button absolute right-[30px] top-[-30px] duration-350 min-sm:opacity-0 min-sm:scale-0 min-sm:group-hover/item:opacity-100 min-sm:group-hover/item:scale-100 sm:hidden">
-                                                <div class="inner">
-                                                    <button class="button item relative overflow-hidden translate-z-0 size-[66px] p-[20px] rounded-full bg-green flex items-center justify-end before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:scale-0 before:rounded-full before:translate-z-0 before:bg-blue before:duration-350 group-hover/button:before:scale-[2] before:size-[33px] sm:before:hidden sm:w-[70px] sm:h-[40px] sm:justify-center sm:items-center sm:p-0 sm:rounded-t-none sm:rounded-b-[8px]">
-                                                        <i class="icon icon-arrow-top relative z-2 text-[10px] size-[24px] text-white leading-normal flex justify-center items-center duration-350 group-hover/button:rotate-45 sm:size-[12px] sm:text-[8px]"></i>
-                                                    </button>
+                <div
+                    class="grid grid-cols-[minmax(0,7fr)_minmax(0,5fr)] justify-center relative md:grid-cols-1 md:gap-[15px] lg:gap-[30px]">
+                    <div class="blog-general-carousel swiper size-full min-md:overflow-visible md:order-3 rtl:order-2">
+                        <div class="swiper-wrapper">
+                            <?php foreach ($blogs as $key => $item) : ?>
+                                <div
+                                    class="swiper-slide group/slide min-md:!pointer-events-none duration-350 [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto">
+                                    <a href="{{ env('HTTP_DOMAIN') . '/' . getUrl('blog_url') . '/' . $item['seo_url'] }}"
+                                        class="blog-item flex relative min-md:opacity-0 min-md:pointer-events-none min-md:scale-75 duration-350 min-md:group-[&.swiper-slide-active]/slide:scale-100 min-md:group-[&.swiper-slide-active]/slide:pointer-events-auto min-md:group-[&.swiper-slide-active]/slide:opacity-100 min-md:group-[&.swiper-slide-next]/slide:blur-[5px] group-[&.swiper-slide-next]/slide:pointer-events-auto group-[&.swiper-slide-next]/slide:opacity-100 md:h-full md:flex-col md:gap-[15px]">
+                                        <div
+                                            class="blog-image aspect-[13/10] size-full rounded-[14px] relative overflow-hidden xsm:aspect-video sm:aspect-square md:aspect-video">
+                                            <img src="{{ asset( getFolder(['uploads_folder', 'blog_images_folder'], $item['lang']) . '/'. $item['image']) }}" alt=""
+                                                class="size-full object-cover object-center animImage scale-125 delay-500 duration-500 [&.is-active]:scale-100">
+                                            <div
+                                                class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full">
+                                            </div>
+                                        </div>
+                                        <div
+                                            class="blog-content size-auto bg-gradient-to-b from-green to-blue p-[2px] rounded-[14px] absolute top-[20px] right-[20px] lg:top-[0px] lg:right-[0px] max-w-[500px] min-md:opacity-0 min-md:invisible duration-350 group-[&.swiper-slide-active]/slide:scale-100 group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:visible group-[&.swiper-slide-active]/slide:pointer-events-auto [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto md:left-0 md:top-0 md:translate-y-0 md:max-w-full md:relative z-10">
+                                            <div
+                                                class="content bg-white size-auto [box-shadow:_0px_25px_75px_0px_rgba(3,_36,_107,_0.15);] pt-[34px] pr-[34px] pb-[50px] pl-[55px] lg:py-[10px] lg:px-[10px] rounded-[12px] md:p-[30px] z-10">
+                                                <div class="fx-hover-repulse group/button pointer-events-auto w-fit ml-auto">
+                                                    <div class="inner">
+                                                        <button
+                                                            class="button item relative overflow-hidden translate-z-0 size-[66px] p-[20px] rounded-full bg-green flex items-center justify-end before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:scale-0 before:rounded-full before:bg-blue before:duration-350 before:size-[33px] group-hover/button:before:scale-[2] lg:before:size-[20px] lg:size-[33px] lg:p-[10px] xl:before:size-[25px] xl:size-[44px] xl:p-[15px]">
+                                                            <i
+                                                                class="icon item icon-arrow-top relative z-2 text-[10px] size-[24px] text-white leading-normal flex justify-center items-center duration-350 group-hover/button:rotate-45 xl:size-[12px] xl:text-[8px]"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <div
+                                                    class="blog-date flex justify-center items-center gap-[10px] p-[10px] bg-green/5 rounded-[8px] min-lg:mb-[15px] w-fit">
+                                                    <i
+                                                        class="icon icon-calendar text-[16px] h-[16px] text-green flex leading-normal"></i>
+                                                    <small
+                                                        class="date text-green text-[18px] lg:text-[16px] font-medium leading-[28px] w-max">{{ date('d/m/Y', strtotime($item['created_at'])) }}</small>
+                                                </div>
+                                                <div
+                                                    class="blog-title text-blue text-[24px] font-bold leading-[36px] opacity-90 line-clamp-2 lg:text-[20px]">
+                                                    {{ $item['title'] }}</div>
+                                                <div
+                                                    class="blog-expo text-[#52555C] text-[18px] lg:text-[16px font-normal leading-[28px] opacity-65 min-lg:mt-[20px] max-w-[390px] line-clamp-2 md:max-w-full">
+                                                    {!! mb_substr($item['description'], 0, 100) !!}...
                                                 </div>
                                             </div>
-                                            <div class="blog-date flex justify-center items-center gap-[10px] p-[10px] bg-green/5 rounded-[8px] mb-[15px] w-fit">
-                                                <i class="icon icon-calendar text-[16px] h-[16px] text-green flex leading-normal"></i>
-                                                <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d/m/Y', strtotime($item->created_at)) }}</small>
-                                            </div>
-                                            <div class="blog-title text-blue text-[24px] font-bold leading-[36px] opacity-90 line-clamp-2 sm:text-[17px] sm:leading-normal">{{ $item->title }}</div>
-                                            <div class="blog-expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mt-[20px] max-w-[390px] line-clamp-2 lg:max-w-full sm:text-[16px]">{!! mb_substr($item->description, 0, 100) !!}...</div>
                                         </div>
-                                    </div>
-                                </a>
+                                    </a>
+                                </div>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
+                    <div
+                        class="blog-title-wrapper flex items-center justify-end gap-[60px] relative z-2 w-fit min-md:ml-[530px] md:mx-auto md:order-1 md:flex-col md:justify-center md:w-full md:gap-[15px] lg:ml-[290px] xl:relative xl:ml-[370px] xl:gap-[30px] 2xl:ml-[430px]">
+                        <div
+                            class="title-field srr relative min-md:w-fit min-md:mb-[90px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-full before:mt-[45px] before:size-[26px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[26px] md:before:hidden">
+                            <h1
+                                class="title text-[64px] text-blue leading-[80px] whitespace-nowrap min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 xsm:text-[30px] sm:leading-normal md:[&>_br]:hidden xl:text-[50px]">
+                                {!! getStaticText(5) !!}
+                            </h1>
+                        </div>
+                        <a href="blogs.php"
+                            class="button srr group/button relative border border-solid border-blue/6 bg-transparent flex flex-col justify-center items-center gap-[15px] px-[34px] py-[20px] min-md:h-auto min-md:min-h-[150px] w-auto overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-green before:rounded-full before:translate-z-0 before:duration-350 min-md:hover:before:scale-[5.5] sm:h-[50px] md:flex-row lg:p-[30px] xl:p-[35px]">
+                            <i
+                                class="icon relative z-2 translate-z-0 icon-chevron-right text-green text-[10px] h-[10px] flex items-center leading-normal min-md:-rotate-90 duration-350 min-md:group-hover/button:text-white min-md:group-hover/button:rotate-90 md:order-2"></i>
+                            <small
+                                class="text relative z-2 translate-z-0 text-blue text-[16px] font-medium leading-[19px] min-md:[writing-mode:_vertical-rl;] min-md:rotate-180 duration-350 min-md:group-hover/button:text-white md:order-1">{{getStaticText(6)}}</small>
+                        </a>
+                    </div>
+                    <div
+                        class="blog-controller srb absolute right-[600px] bottom-[50px] z-2 flex items-center gap-[125px] max-w-[100px] mx-auto md:relative md:left-0 md:top-0 md:!translate-x-0 md:order-2 xl:max-w-full xl:right-0 xl:left-[50%] xl:translate-x-[-20%] xl:bottom-0 xl:justify-center xl:items-center">
+                        <div class="carousel-navigation flex min-md:flex-col items-center md:gap-[15px]">
+                            <div
+                                class="blog-prev cursor-pointer size-[40px] leading-normal min-md:ml-[-90px] min-md:[&.swiper-button-disabled_.icon]:text-white/70 min-md:[&.swiper-button-disabled_.icon]:scale-x-100">
+                                <i
+                                    class="icon icon-arrow-left text-[40px] size-[40px] flex text-green scale-x-[1.2] duration-350"></i>
                             </div>
-                        <?php endforeach; ?> 
+                            <div
+                                class="blog-next cursor-pointer size-[40px] leading-normal min-md:[&.swiper-button-disabled_.icon]:text-white/70 min-md:[&.swiper-button-disabled_.icon]:scale-x-100">
+                                <i
+                                    class="icon icon-arrow-right text-[40px] size-[40px] flex text-green scale-x-[1.2] duration-350"></i>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
