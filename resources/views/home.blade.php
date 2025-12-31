@@ -540,8 +540,8 @@
     <section id="popup-project" class="hidden !bg-white !rounded-none !m-0 !p-[60px] md:!p-[30px] sm:!px-[15px] !max-w-[1280px] w-full">
         <div class="inner w-full" dir="ltr">
             <div class="popup-project-title-field mb-[50px] 2xl:mb-[40px] xl:mb-[30px] lg:mb-[20px] md:mb-[15px] flex gap-[10px]">
-                <p class="title popup-project-title text-[40px] 2xl:text-[36px] xl:text-[32px] lg:text-[28px] md:text-[24px] sm:text-[20px] leading-tight text-[#1E1E1E] font-semibold">ASIA</p>
-                <p class="count text-[40px] 2xl:text-[36px] xl:text-[32px] lg:text-[28px] md:text-[24px] sm:text-[20px] leading-tight text-primary-500 font-semibold">(<span class="popup-project-count">5</span>)</p>
+                <p class="title popup-project-title text-[40px] 2xl:text-[36px] xl:text-[32px] lg:text-[28px] md:text-[24px] sm:text-[20px] leading-tight text-[#1E1E1E] font-semibold">{{$projects[0]->country->continent->title}}</p>
+                <p class="count text-[40px] 2xl:text-[36px] xl:text-[32px] lg:text-[28px] md:text-[24px] sm:text-[20px] leading-tight text-primary-500 font-semibold">(<span class="popup-project-count">{{  count($projects) }}</span>)</p>
             </div>
             <div class="content-field">
                 <div class="popup-project-wrapper grid grid-cols-2 gap-[30px] md:grid-cols-1 scrollbar scrollbar-w-[5px] scrollbar-track-rounded-[5px] scrollbar-thumb-rounded-[5px] scrollbar-thumb-primary scrollbar-track-primary/10 overflow-x-hidden overflow-y-auto pr-[20px]">
