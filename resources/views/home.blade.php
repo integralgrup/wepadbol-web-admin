@@ -545,26 +545,26 @@
             </div>
             <div class="content-field">
                 <div class="popup-project-wrapper grid grid-cols-2 gap-[30px] md:grid-cols-1 scrollbar scrollbar-w-[5px] scrollbar-track-rounded-[5px] scrollbar-thumb-rounded-[5px] scrollbar-thumb-primary scrollbar-track-primary/10 overflow-x-hidden overflow-y-auto pr-[20px]">
-                    <?php for ($i = 1; $i <= 6; $i++) : ?>
+                    <?php foreach($projects as $key => $item) : ?>
                         <div class="popup-project-item item relative group/item">
                             <div class="content bg-white duration-350 min-md:group-hover/item:bg-primary-500">
                                 <div class="image-field aspect-[460/275]">
-                                    <a href="project-detail.php" class="block w-full h-full image overflow-hidden translate-z-0 group/image">
-                                        <img src="../assets/image/jpg/image-3.jpg" class="full-cover min-md:group-hover/image:scale-105 duration-350" alt="">
+                                    <a href="{{ env('HTTP_DOMAIN') . '/' . getUrl('project_url') . '/' . $item->seo_url }}" class="block w-full h-full image overflow-hidden translate-z-0 group/image">
+                                        <img src="{{ asset(getFolder( ['uploads_folder', 'project_images_folder'], $item->lang ) . '/' . $item->image) }}" class="full-cover min-md:group-hover/image:scale-105 duration-350" alt="">
                                     </a>
                                 </div>
                                 <div class="text-field">
                                     <div class="content px-[20px] py-[25px] lg:p-[20px]">
                                         <div class="location">
-                                            <p class="text text-[15px] sm:text-[14px] leading-tight text-[#454545]/50 duration-350 min-md:group-hover/item:text-white tracking-[0.1rem] min-md:group-hover/item:group-hover/link:text-white/70">Russia</p>
+                                            <p class="text text-[15px] sm:text-[14px] leading-tight text-[#454545]/50 duration-350 min-md:group-hover/item:text-white tracking-[0.1rem] min-md:group-hover/item:group-hover/link:text-white/70">{{$project->country->title}}</p>
                                         </div>
                                         <div class="title mt-[15px]">
-                                            <a href="project-detail.php" class="block w-fit group/link">
-                                                <span class="text text-[20px] lg:text-[18px] md:text-[16px] leading-tight text-[#1E1E1E] duration-350 min-md:group-hover/item:text-white font-semibold min-md:group-hover/item:group-hover/link:text-white/70">RUSSIA Origin Discover Padel Construction</span>
+                                            <a href="{{ env('HTTP_DOMAIN') . '/' . getUrl('project_url') . '/' . $item->seo_url }}" class="block w-fit group/link">
+                                                <span class="text text-[20px] lg:text-[18px] md:text-[16px] leading-tight text-[#1E1E1E] duration-350 min-md:group-hover/item:text-white font-semibold min-md:group-hover/item:group-hover/link:text-white/70">{{$project->title_1}}</span>
                                             </a>
                                         </div>
                                         <div class="button-field mt-[24px] lg:mt-[20px] md:mt-[15px]">
-                                            <a href="project-detail.php" class="flex items-center gap-[15px] w-fit group/link opacity-65 duration-350 min-md:hover:opacity-100">
+                                            <a href="{{ env('HTTP_DOMAIN') . '/' . getUrl('project_url') . '/' . $item->seo_url }}" class="flex items-center gap-[15px] w-fit group/link opacity-65 duration-350 min-md:hover:opacity-100">
                                                 <span class="text text-[16px] sm:text-[14px] leading-tight text-[#1E1E1E] font-medium duration-350 min-md:group-hover/item:text-white tracking-[0.25rem]">VIEW</span>
                                                 <i class="icon icon-arrow-right text-[27px] h-[27px] text-[#1E1E1E] min-md:group-hover/item:text-white group-hover/link:translate-x-[3px] block leading-none duration-350"></i>
                                             </a>
@@ -573,7 +573,7 @@
                                 </div>
                             </div>
                         </div>
-                    <?php endfor; ?>
+                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
