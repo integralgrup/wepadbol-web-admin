@@ -41,9 +41,9 @@
                             </div>
                             <div class="page-information-field flex items-center justify-between w-full absolute left-0 bottom-0 pb-[60px] px-[90px] xl:pt-0 xl:px-[30px]" dir="ltr">
                                 <div class="page-navigation flex items-center gap-[5px]">
-                                    <a href="index.php" class="text text-[18px] text-white/80 leading-[28px]">{{getStaticText(23)}}</a>
+                                    <a href="{{env('HTTP_DOMAIN') }}" class="text text-[18px] text-white/80 leading-[28px]">{{getStaticText(23)}}</a>
                                     <div class="text text-[18px] text-white/80 leading-[28px]">/</div>
-                                    <a href="{{env('http_domaın') . '/' . getUrl('projects_url')}}" class="text text-[18px] text-white/80 leading-[28px]"><?= $page ?></a>
+                                    <a href="{{env('HTTP_DOMAIN') . '/' . getUrl('project_url')}}" class="text text-[18px] text-white/80 leading-[28px]"><?= $page ?></a>
                                 </div>
                                 <div class="vote-field flex items-center gap-[20px]" x-data="{ count: parseInt(localStorage.getItem('likeCount')) || 0, clicked: localStorage.getItem('likeClicked') === 'true' || false }">
                                     <button class="hearth-field cursor-pointer" x-on:click="if(!clicked) { count++; clicked = true; localStorage.setItem('likeCount', count); localStorage.setItem('likeClicked', true) }" :disabled="clicked">
