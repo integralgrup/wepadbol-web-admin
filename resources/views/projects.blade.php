@@ -76,14 +76,11 @@
                 </div>
                 <div class="inner-wrapper relative flex flex-col gap-[65px] mt-[60px] xl:gap-[60px] lg:mt-[40px] lg:gap-[40px]">
                     <div class="second-filter-field relative flex justify-between items-center max-w-[1400px] w-full mx-auto xs:flex-col xs:gap-[15px]" dir="ltr">
-                        <div class="total-field srl text text-[18px] text-[#52555C]/50 leading-[28px] xsm:text-[16px]">Total <span class="text-green"> 30 </span> project found.</div>
+                        <div class="total-field srl text text-[18px] text-[#52555C]/50 leading-[28px] xsm:text-[16px]">{{getStaticText(50)}} <span class="text-green"> {{ count($projects)}} </span></div>
                         <div class="date-filter-field srr group/date relative flex items-center gap-[15px]">
-                            <div class="date-title text-[18px] text-[#52555C] font-medium leading-[28px] opacity-65 duration-350 group-hover/date:opacity-100 xsm:text-[16px]">Short by :</div>
+                            <div class="date-title text-[18px] text-[#52555C] font-medium leading-[28px] opacity-65 duration-350 group-hover/date:opacity-100 xsm:text-[16px]">{{getStaticText(43)}} :</div>
                             <select name="" id="" class="text relative z-2 text-[18px] text-green leading-[30px] pr-[50px] xsm:text-[16px] xs:pr-0">
-                                <option value="" selected>Latest</option>
-                                <option value="">2024</option>
-                                <option value="">2023</option>
-                                <option value="">2022</option>
+                                <option value="" selected>{{getStaticText(44)}}</option>
                             </select>
                             <i class="icon icon-chevron-down2 text-[10px] h-[10px] text-[#52555CA6] flex leading-normal absolute right-[30px] top-[50%] translate-y-[-50%] z-2 duration-350 group-hover/date:rotate-180 group-hover/date:text-green xs:right-[-20px]"></i>
                         </div>
