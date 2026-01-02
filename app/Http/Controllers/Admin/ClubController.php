@@ -264,14 +264,20 @@ class ClubController extends Controller
         return view('admin.club.slider1.edit', compact('sliders'));
     }
 
-    public function slider1Destroy($id)
+    public function slider1Destroy($club_id, $slider_id)
     {
-        $slider = ClubSlider1::find($id);
-        if (!$slider) {
-            return redirect()->route('admin.club.index')->withErrors(['error' => 'Slider bulunamadı.']);
+        try {
+             $slider = ClubSlider1::where('slider_id', $slider_id)->where('club_id', $club_id)->get();
+            foreach ($slider as $item) {
+                $item->delete();
+            }
+            
+            
+            return redirect()->route('admin.club.slider1.index', $club_id)->with('success', 'Slider başarıyla silindi.');
+        } catch (\Throwable $th) {
+            throw $th;
         }
-        $slider->delete();
-        return redirect()->route('admin.club.slider1.index', $slider->club_id)->with('success', 'Slider başarıyla silindi.');
+       
     }
 
     // Similar methods for ClubSlider2, ClubSlider3, ClubFeatures, and ClubFaq can be implemented here
@@ -351,14 +357,20 @@ class ClubController extends Controller
         return view('admin.club.slider2.edit', compact('sliders'));
     }
 
-    public function slider2Destroy($id)
+    public function slider2Destroy($club_id, $slider_id)
     {
-        $slider = ClubSlider2::find($id);
-        if (!$slider) {
-            return redirect()->route('admin.club.index')->withErrors(['error' => 'Slider bulunamadı.']);
+        try {
+             $slider = ClubSlider2::where('slider_id', $slider_id)->where('club_id', $club_id)->get();
+            foreach ($slider as $item) {
+                $item->delete();
+            }
+            
+            
+            return redirect()->route('admin.club.slider2.index', $club_id)->with('success', 'Slider başarıyla silindi.');
+        } catch (\Throwable $th) {
+            throw $th;
         }
-        $slider->delete();
-        return redirect()->route('admin.club.slider2.index', $slider->club_id)->with('success', 'Slider başarıyla silindi.');
+       
     }
 
     public function slider3Index($club_id)
@@ -437,14 +449,20 @@ class ClubController extends Controller
         return view('admin.club.slider3.edit', compact('sliders'));
     }
 
-    public function slider3Destroy($id)
+    public function slider3Destroy($club_id, $slider_id)
     {
-        $slider = ClubSlider3::find($id);
-        if (!$slider) {
-            return redirect()->route('admin.club.index')->withErrors(['error' => 'Slider bulunamadı.']);
+        try {
+             $slider = ClubSlider3::where('slider_id', $slider_id)->where('club_id', $club_id)->get();
+            foreach ($slider as $item) {
+                $item->delete();
+            }
+            
+            
+            return redirect()->route('admin.club.slider3.index', $club_id)->with('success', 'Slider başarıyla silindi.');
+        } catch (\Throwable $th) {
+            throw $th;
         }
-        $slider->delete();
-        return redirect()->route('admin.club.slider3.index', $slider->club_id)->with('success', 'Slider başarıyla silindi.');
+       
     }
 
     // Club Features methods would go here
