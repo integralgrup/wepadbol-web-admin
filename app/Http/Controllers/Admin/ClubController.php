@@ -544,10 +544,11 @@ class ClubController extends Controller
         return view('admin.club.features.edit', compact('features'));
     }
 
-    public function featuresDestroy($id)
+    public function featuresDestroy($id,$feature_id)
     {
+        
         try {
-            $features = ClubFeatures::where('feature_id', $id)->get();
+            $features = ClubFeatures::where('feature_id', $feature_id)->get();
             foreach($features as $feature ){
                 $feature->delete();
             }
@@ -556,9 +557,6 @@ class ClubController extends Controller
         } catch (\Throwable $th) {
             return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $th->getMessage()]);
         }
-
-        
-        
         
         
     }
