@@ -643,14 +643,14 @@
                     'text' => '+90 212 678 13 13'
                 ],
             ]; ?>
-            <li class="contact-field flex flex-col gap-[15px] mt-[30px] -translate-x-[15px] opacity-0 px-[30px] duration-350 group-[&.menu-active]/menu:translate-x-0 group-[&.menu-active]/menu:opacity-100" style="transition-delay: calc(<?= $key ?>*0.6s)">
+            <!--<li class="contact-field flex flex-col gap-[15px] mt-[30px] -translate-x-[15px] opacity-0 px-[30px] duration-350 group-[&.menu-active]/menu:translate-x-0 group-[&.menu-active]/menu:opacity-100" style="transition-delay: calc(<?= $key ?>*0.6s)">
                 <?php foreach ($list as $key => $item) : ?>
                     <div class="item flex flex-col ease-manidar -translate-x-[15px] opacity-0 duration-350 group-[&.menu-active]/menu:translate-x-0 group-[&.menu-active]/menu:opacity-100">
                         <small class="text text-[24px] text-white font-medium leading-normal uppercase"><?= $item['title'] ?></small>
                         <a href="javascript:;" class="language text-[16px] text-white font-normal leading-normal"><?= $item['text'] ?></a>
                     </div>
                 <?php endforeach; ?>
-            </li>
+            </li>-->
         </ul>
     </div>
 </div>
