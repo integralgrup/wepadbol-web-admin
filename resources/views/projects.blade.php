@@ -322,7 +322,7 @@
                                             </div>
                                             <h3 class="project-title text-[32px] text-white font-semibold leading-[40px] uppercase max-w-[610px] line-clamp-2 mr-0 xl:text-[27px] lg:text-[25px] md:text-[20px] md:leading-normal sm:line-clamp-3 sm:text-[18px]">{{ $item->title_1 }}</h3>
                                         </div>
-                                        <p class="project-expo text-[18px] text-white leading-[28px] max-w-[610px] mr-0 opacity-0 line-clamp-2 duration-350 group-hover/item:opacity-100 lg:text-[16px] md:leading-normal sm:hidden">{{ strip_tags( $item->description ) }}</p>
+                                        <p class="project-expo text-[18px] text-white leading-[28px] max-w-[610px] mr-0 opacity-0 line-clamp-2 duration-350 group-hover/item:opacity-100 lg:text-[16px] md:leading-normal sm:hidden">{{ strip_tags( $item->short_description ) }}</p>
                                     </div>
                                 </a>
                             </div>
