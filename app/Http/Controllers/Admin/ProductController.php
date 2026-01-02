@@ -692,14 +692,22 @@ class ProductController extends Controller
         $features = ProductFeature::where('product_id', $product_id)->where('feature_id', $id)->get();
         $languages = Language::all();
         return view('admin.product.feature.edit', compact('features', 'languages', 'product_id'));
+        
     }
 
     public function featuresDestroy($product_id, $id)
     {
-        $feature = ProductFeature::findOrFail($id);
-        $feature->delete();
-
-        return redirect()->route('admin.product.features.index', $product_id)->with('success', 'Özellik başarıyla silindi!');
+        try {
+             $features = ProductFeature::where('feature_id', $id)->where('product_id', $product_id)->get();
+            foreach ($features as $feature) {
+                $features->delete();
+            }
+            
+            
+            return redirect()->route('admin.product.features.index', $product_id)->with('success', 'Özellik başarıyla silindi!');
+        } catch (\Throwable $th) {
+            throw $th;
+        }
     }
 
 }
