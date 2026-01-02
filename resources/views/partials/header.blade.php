@@ -547,17 +547,29 @@
                     <a href="<?= $item['url'] ?>"
                         class="page inline-block text-[18px] text-black leading-normal px-[30px] py-[10px]"><?= $item['title'] ?></a>
                     <?php if (isset($item['mega'])) : ?>
-                        <div class="mega-menu z-3 hidden duration-350 w-full h-full py-[10px] bg-green group-[&.is-active]/item:block 2xs:py-[5px]">
-                            <ul class="flex flex-col gap-[15px] pointer-events-auto 2xs:gap-[10px]">
+                        <div class="absolute right-[30px] top-[10px] size-[30px] bg-primary-600 grid place-items-center">
+                            <i
+                                class="icon-chevron-down text-[15px] leading-none h-[15px] text-white group-[&.is-active]/item:scale-y-[-1]"></i>
+                        </div>
+                        <div
+                            class="mega-menu z-3 hidden duration-350 w-full h-full py-[5px] border-0 !border-y border-solid border-black/10 group-[&.is-active]/item:block">
+                            <ul class="flex flex-col gap-[5px] pointer-events-auto 2xs:gap-[10px]">
                                 <?php foreach ($item['mega'] as $key => $mega) : ?>
-                                    <li class="sub-menu-item group/sub group-[&.is-active]/item:pointer-events-auto">
-                                        <a href="<?= $mega['url'] ?>" class="flex w-full text-[30px] text-white leading-normal ease-manidar uppercase px-[40px] 2xs:text-[20px]"><?= $mega['title'] ?></a>
+                                    <li class="sub-menu-item group/sub relative group-[&.is-active]/item:pointer-events-auto">
+                                        <a href="<?= $mega['url'] ?>"
+                                            class="flex w-full text-[18px] text-black leading-normal ease-manidar px-[40px] py-[5px] 2xs:text-[20px]"><?= $mega['title'] ?></a>
                                         <?php if (isset($mega['sub-menu'])) : ?>
-                                            <div class="sub-menu relative z-3 hidden w-full h-full p-[10px] mt-[15px] bg-secondary-700 group-[&.is-active]/sub:block 2xs:p-[5px] 2xs:mt-[10px]">
+                                            <div class="absolute right-[30px] top-0 size-[30px] bg-primary-600 grid place-items-center">
+                                                <i
+                                                    class="icon-chevron-down text-[15px] leading-none h-[15px] text-white group-[&.is-active]/sub:scale-y-[-1]"></i>
+                                            </div>
+                                            <div
+                                                class="sub-menu relative z-3 hidden w-full h-full px-[30px] mt-[15px] group-[&.is-active]/sub:block 2xs:p-[5px] 2xs:mt-[10px]">
                                                 <ul class="flex flex-col gap-[15px]">
                                                     <?php foreach ($mega['sub-menu'] as $key => $sub) : ?>
                                                         <li class="group/sub group-[&.is-active]/sub:pointer-events-auto">
-                                                            <a href="<?= $sub['url'] ?>" class="flex w-full text-[25px] text-white leading-normal ease-manidar uppercase px-[30px] 2xs:text-[16px]"><?= $sub['title'] ?></a>
+                                                            <a href="<?= $sub['url'] ?>"
+                                                                class="flex w-full text-[18px] text-black leading-normal ease-manidar px-[30px] 2xs:text-[16px]"><?= $sub['title'] ?></a>
                                                         </li>
                                                     <?php endforeach; ?>
                                                 </ul>
