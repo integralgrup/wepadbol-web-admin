@@ -51,7 +51,7 @@
             <div class="wrapper">
                 <div class="heading-wrapper srt relative z-3 flex items-center justify-between max-w-[1460px] w-full mx-auto gap-[45px] bg-white [box-shadow:_0px_10px_40px_0px_rgba(14,_42,_67,_0.15);] p-[25px] mt-[-180px] rounded-[8px] 2xl:mt-[-150px] xl:mt-[-130px] lg:mt-[-110px] md:mt-0 sm:p-[10px] sm:flex-col sm:gap-[10px]">
                     <?php $list = [
-                        ['title' => 'All Country', 'continent' => 'all',]
+                        ['title' => getStaticText(49), 'continent' => 'all',]
                     ];
                     foreach($continents as $key => $item) {
                         $list[] = [
