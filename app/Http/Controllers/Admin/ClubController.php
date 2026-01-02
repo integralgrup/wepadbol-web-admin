@@ -546,11 +546,14 @@ class ClubController extends Controller
 
     public function featuresDestroy($id)
     {
-        $feature = ClubFeatures::find($id);
-        if (!$feature) {
-            return redirect()->route('admin.club.index')->withErrors(['error' => 'Özellik bulunamadı.']);
+        
+
+        $features = ClubFeatures::where('feature_id', $id)->get();
+        foreach($features as $feature ){
+            $feature->delete();
         }
-        $feature->delete();
+        
+        
         return redirect()->route('admin.club.features.index', $feature->club_id)->with('success', 'Özellik başarıyla silindi.');
     }
 
