@@ -546,15 +546,21 @@ class ClubController extends Controller
 
     public function featuresDestroy($id)
     {
-        
+        try {
+            $features = ClubFeatures::where('feature_id', $id)->get();
+            foreach($features as $feature ){
+                $feature->delete();
+            }
 
-        $features = ClubFeatures::where('feature_id', $id)->get();
-        foreach($features as $feature ){
-            $feature->delete();
+            return redirect()->route('admin.club.features.index', $feature->club_id)->with('success', 'Özellik başarıyla silindi.');
+        } catch (\Throwable $th) {
+            return redirect()->back()->withErrors(['error' => 'Hata oluştu: ' . $th->getMessage()]);
         }
+
         
         
-        return redirect()->route('admin.club.features.index', $feature->club_id)->with('success', 'Özellik başarıyla silindi.');
+        
+        
     }
 
     // Club FAQ methods would go here
