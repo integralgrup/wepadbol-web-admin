@@ -513,38 +513,62 @@
             </div>
          
         </div>
-        <div class="mobile-menu-wrapper relative w-[50px] h-[50px] hidden z-100 duration-350 lg:block">
-                <div class="open-mobile-menu-trigger absolute right-0 bottom-0 group/trigger cursor-pointer size-[50px] bg-white shadow-lg opacity-100 pointer-events-auto duration-350 [&.in-active]:pointer-events-none [&.in-active]:opacity-0">
-                    <div class="line absolute left-[50%] translate-x-[-50%] top-[40%] translate-y-[-50%] w-[30px] h-[2px] bg-green duration-350 group-[&.is-active]/trigger:bg-white"></div>
-                    <div class="line absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] w-[30px] h-[2px] bg-green duration-350 group-[&.is-active]/trigger:bg-white"></div>
-                    <div class="line absolute left-[50%] translate-x-[-50%] top-[60%] translate-y-[-50%] w-[30px] h-[2px] bg-green duration-350 group-[&.is-active]/trigger:bg-white"></div>
+         <div class="mobile-menu-wrapper relative w-[50px] h-[50px] hidden z-100 duration-350 lg:block">
+            <div
+                class="open-mobile-menu-trigger absolute right-0 bottom-0 group/trigger cursor-pointer size-[50px] bg-white shadow-lg opacity-100 pointer-events-auto duration-350 [&.in-active]:pointer-events-none [&.in-active]:opacity-0">
+                <div
+                    class="line absolute left-[50%] translate-x-[-50%] top-[40%] translate-y-[-50%] w-[30px] h-[2px] bg-green duration-350 group-[&.is-active]/trigger:bg-white">
                 </div>
-                <div class="close-mobile-menu-trigger absolute right-0 bottom-0 group/trigger cursor-pointer size-[50px] rounded-full bg-secondary-700 shadow-lg opacity-0 pointer-events-none duration-350 [&.is-active]:pointer-events-auto [&.is-active]:opacity-100">
-                    <div class="line absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] w-[30px] rotate-45 h-[1px] bg-green duration-350 group-[&.is-active]/trigger:bg-white"></div>
-                    <div class="line absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] w-[30px] -rotate-45 h-[1px] bg-green duration-350 group-[&.is-active]/trigger:bg-white"></div>
+                <div
+                    class="line absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] w-[30px] h-[2px] bg-green duration-350 group-[&.is-active]/trigger:bg-white">
+                </div>
+                <div
+                    class="line absolute left-[50%] translate-x-[-50%] top-[60%] translate-y-[-50%] w-[30px] h-[2px] bg-green duration-350 group-[&.is-active]/trigger:bg-white">
                 </div>
             </div>
+            <div
+                class="close-mobile-menu-trigger absolute right-0 bottom-0 group/trigger cursor-pointer size-[50px] rounded-full bg-secondary-700 shadow-lg opacity-0 pointer-events-none duration-350 [&.is-active]:pointer-events-auto [&.is-active]:opacity-100">
+                <div
+                    class="line absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] w-[30px] rotate-45 h-[1px] bg-green duration-350 group-[&.is-active]/trigger:bg-white">
+                </div>
+                <div
+                    class="line absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%] w-[30px] -rotate-45 h-[1px] bg-green duration-350 group-[&.is-active]/trigger:bg-white">
+                </div>
+            </div>
+        </div>
     </div>
 </header>
 
-<div class="mobile-menu-field group/menu w-full h-auto invisible pointer-events-none opacity-0 overflow-y-scroll max-h-[630px] fixed left-0 top-[100px] z-90 duration-350 [&.menu-active]:pointer-events-auto [&.menu-active]:visible [&.menu-active]:opacity-100 xs:max-h-[590px] md:max-h-[800px]">
-    <div class="wrapper">
-         <ul class="flex flex-col py-[30px] -z-2">
-            <?php foreach ($menuList as $key => $item) : ?>
-                <li class="page group/item -translate-x-[15px] opacity-0 duration-350 [&.is-active]:pointer-events-none [&.is-active]:z-10 group-[&.menu-active]/menu:translate-x-0 group-[&.menu-active]/menu:opacity-100" style="transition-delay: calc(<?= $key ?>*0.3s)">
-                    <a href="<?= $item['url'] ?>" class="page text-[45px] text-white font-bold leading-normal uppercase px-[30px] 2xs:text-[30px]"><?= $item['title'] ?></a>
-                    <?php if (isset($item['mega'])) : ?>
-                        <div class="mega-menu z-3 hidden duration-350 w-full h-full py-[10px] bg-green group-[&.is-active]/item:block 2xs:py-[5px]">
-                            <ul class="flex flex-col gap-[15px] pointer-events-auto 2xs:gap-[10px]">
-                                <?php foreach ($item['mega'] as $key => $mega) : ?>
-                                    <li class="sub-menu-item group/sub group-[&.is-active]/item:pointer-events-auto">
-                                        <a href="<?= $mega['url'] ?>" class="flex w-full text-[30px] text-white leading-normal ease-manidar uppercase px-[40px] 2xs:text-[20px]"><?= $mega['title'] ?></a>
-                                        <?php if (isset($mega['sub-menu'])) : ?>
-                                            <div class="sub-menu relative z-3 hidden w-full h-full p-[10px] mt-[15px] bg-secondary-700 group-[&.is-active]/sub:block 2xs:p-[5px] 2xs:mt-[10px]">
+<div class="mobile-menu-field group/menu w-full h-auto invisible pointer-events-none opacity-0 overflow-auto max-h-[calc(100svh-80px)] fixed left-0 top-[80px] z-90 duration-350 [&.menu-active]:pointer-events-auto [&.menu-active]:visible [&.menu-active]:opacity-100 ">
+    <div class="wrapper bg-white">
+        <?php foreach ($list as $key => $item): ?>
+                <li class="page group/item -translate-x-[15px] relative opacity-0 duration-350 [&.is-active]:min-md:pointer-events-none [&.is-active]:z-10 group-[&.menu-active]/menu:translate-x-0 group-[&.menu-active]/menu:opacity-100">
+                    <a href="<?= $item['url'] ?>"
+                        class="page inline-block text-[18px] text-black leading-normal px-[30px] py-[10px]"><?= $item['title'] ?></a>
+                    <?php if (isset($item['mega'])): ?>
+                        <div class="absolute right-[30px] top-[10px] size-[30px] bg-primary-600 grid place-items-center">
+                            <i
+                                class="icon-chevron-down text-[15px] leading-none h-[15px] text-white group-[&.is-active]/item:scale-y-[-1]"></i>
+                        </div>
+                        <div
+                            class="mega-menu z-3 hidden duration-350 w-full h-full py-[5px] border-0 !border-y border-solid border-black/10 group-[&.is-active]/item:block">
+                            <ul class="flex flex-col gap-[5px] pointer-events-auto 2xs:gap-[10px]">
+                                <?php foreach ($item['mega'] as $key => $mega): ?>
+                                    <li class="sub-menu-item group/sub relative group-[&.is-active]/item:pointer-events-auto">
+                                        <a href="<?= $mega['url'] ?>"
+                                            class="flex w-full text-[18px] text-black leading-normal ease-manidar px-[40px] py-[5px] 2xs:text-[20px]"><?= $mega['title'] ?></a>
+                                        <?php if (isset($mega['sub-menu'])): ?>
+                                            <div class="absolute right-[30px] top-0 size-[30px] bg-primary-600 grid place-items-center">
+                                                <i
+                                                    class="icon-chevron-down text-[15px] leading-none h-[15px] text-white group-[&.is-active]/sub:scale-y-[-1]"></i>
+                                            </div>
+                                            <div
+                                                class="sub-menu relative z-3 hidden w-full h-full px-[30px] mt-[15px] group-[&.is-active]/sub:block 2xs:p-[5px] 2xs:mt-[10px]">
                                                 <ul class="flex flex-col gap-[15px]">
-                                                    <?php foreach ($mega['sub-menu'] as $key => $sub) : ?>
+                                                    <?php foreach ($mega['sub-menu'] as $key => $sub): ?>
                                                         <li class="group/sub group-[&.is-active]/sub:pointer-events-auto">
-                                                            <a href="<?= $sub['url'] ?>" class="flex w-full text-[25px] text-white leading-normal ease-manidar uppercase px-[30px] 2xs:text-[16px]"><?= $sub['title'] ?></a>
+                                                            <a href="<?= $sub['url'] ?>"
+                                                                class="flex w-full text-[18px] text-black leading-normal ease-manidar px-[30px] 2xs:text-[16px]"><?= $sub['title'] ?></a>
                                                         </li>
                                                     <?php endforeach; ?>
                                                 </ul>
@@ -557,76 +581,6 @@
                     <?php endif; ?>
                 </li>
             <?php endforeach; ?>
-            
-            <li class="language-field flex gap-[15px] mt-[30px] -translate-x-[15px] opacity-0 px-[30px] duration-350 group-[&.menu-active]/menu:translate-x-0 group-[&.menu-active]/menu:opacity-100 2xs:mt-[15px]" style="transition-delay: calc(<?= $key ?>*0.4s)">
-                <?php foreach ($languagesArray as $language) { ?>
-                <?php 
-                    if(isset($segments[3]) && isset($segments[4])):
-                        $segments[3] = urldecode($segments[3]);
-                        $segments[4] = urldecode($segments[4]);
-                        $langParam0 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[3]])->first();
-                        if(isset($blog)):
-                            $langParam1 = App\Models\Blog::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
-                        elseif(isset($careerJob)):
-                            $langParam1 = App\Models\CareerJob::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
-                        elseif(isset($project)):
-                            $langParam1 = App\Models\Project::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
-                        else:
-                            $langParam1 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[4]])->first();
-                        endif;
-                        $langParam0_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam0->menu_id])->first();
-                        if(isset($blog)):
-                            $langParam1_new = App\Models\Blog::where(['lang' => $language->lang_code, 'blog_id' => $langParam1->blog_id])->first();
-                        elseif(isset($careerJob)):
-                            $langParam1_new = App\Models\CareerJob::where(['lang' => $language->lang_code, 'job_id' => $langParam1->job_id])->first();
-                        elseif(isset($project)):
-                            $langParam1_new = App\Models\Project::where(['lang' => $language->lang_code, 'project_id' => $langParam1->project_id])->first();
-                        else:
-                            $langParam1_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam1->menu_id])->first();
-                        endif;
-                        //dd($langParam0, $langParam1);
-                        if($langParam0 && $langParam1):
-                            $url = $language->domain . '/' . $langParam0_new->seo_url . '/' . $langParam1_new->seo_url;
-                        endif;
-                    endif;
-                    if(isset($segments[3]) && !isset($segments[4])):
-                        //set $segment[3] as utf8 string
-                        $segments[3] = urldecode($segments[3]);
-                        $langParam0 = App\Models\Menu::where(['lang' => app()->getLocale(), 'seo_url' => $segments[3]])->first();
-
-                        $langParam0_new = App\Models\Menu::where(['lang' => $language->lang_code, 'menu_id' => $langParam0->menu_id])->first();
-                        //dd($langParam0, $langParam1);
-                        if($langParam0 && $langParam0_new):
-                            $url = $language->domain . '/' . $langParam0_new->seo_url;
-                        endif;
-                    endif;
-                    if(!isset($segments[3]) && !isset($segments[4])):
-                        $url = $language->domain . '/';
-                    endif;
-                ?>
-                    <a href="{{$url}}" class="language text-[20px] text-green font-normal leading-normal ease-manidar uppercase -translate-x-[15px] opacity-0 duration-350 group-[&.menu-active]/menu:translate-x-0 group-[&.menu-active]/menu:opacity-100"><?= strtoupper($language->lang_code) ?></a>
-                <?php }; ?>
-            </li>
-            
-            <?php $list = [
-                [
-                    'title' => 'Contact Emaıl',
-                    'text' => 'info@wepadbol.com.tr'
-                ],
-                [
-                    'title' => 'Contact Phone',
-                    'text' => '+90 212 678 13 13'
-                ],
-            ]; ?>
-            <li class="contact-field flex flex-col gap-[15px] mt-[30px] -translate-x-[15px] opacity-0 px-[30px] duration-350 group-[&.menu-active]/menu:translate-x-0 group-[&.menu-active]/menu:opacity-100" style="transition-delay: calc(<?= $key ?>*0.6s)">
-                <?php foreach ($list as $key => $item) : ?>
-                    <div class="item flex flex-col ease-manidar -translate-x-[15px] opacity-0 duration-350 group-[&.menu-active]/menu:translate-x-0 group-[&.menu-active]/menu:opacity-100">
-                        <small class="text text-[24px] text-white font-medium leading-normal uppercase"><?= $item['title'] ?></small>
-                        <a href="javascript:;" class="language text-[16px] text-white font-normal leading-normal"><?= $item['text'] ?></a>
-                    </div>
-                <?php endforeach; ?>
-            </li>
-        </ul>
     </div>
 </div>
 <script>
