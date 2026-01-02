@@ -544,7 +544,8 @@
          <ul class="flex flex-col py-[30px] -z-2">
             <?php foreach ($menuList as $key => $item) : ?>
                 <li class="page group/item -translate-x-[15px] opacity-0 duration-350 [&.is-active]:pointer-events-none [&.is-active]:z-10 group-[&.menu-active]/menu:translate-x-0 group-[&.menu-active]/menu:opacity-100" style="transition-delay: calc(<?= $key ?>*0.3s)">
-                    <a href="<?= $item['url'] ?>" class="page text-[45px] text-white font-bold leading-normal uppercase px-[30px] 2xs:text-[30px]"><?= $item['title'] ?></a>
+                    <a href="<?= $item['url'] ?>"
+                        class="page inline-block text-[18px] text-black leading-normal px-[30px] py-[10px]"><?= $item['title'] ?></a>
                     <?php if (isset($item['mega'])) : ?>
                         <div class="mega-menu z-3 hidden duration-350 w-full h-full py-[10px] bg-green group-[&.is-active]/item:block 2xs:py-[5px]">
                             <ul class="flex flex-col gap-[15px] pointer-events-auto 2xs:gap-[10px]">
