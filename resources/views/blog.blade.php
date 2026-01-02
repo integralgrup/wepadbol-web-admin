@@ -92,7 +92,63 @@
         </div>
     </section>
 
-    <section class="blog-section relative overflow-hidden pt-[100px] pb-[220px] 2xl:py-[50px] lg:py-[45px] md:py-[30px]">
+    <section class="blog-section pb-[120px] 2xl:pb-[80px] xl:pb-[60px] lg:pb-[45px] md:pb-[30px]">
+        <div class="container max-w-[1800px] group/container animContainer 2xl:max-w-[1600px]">
+            <div class="wrapper">
+                <div class="inner-wrapper relative flex flex-col gap-[65px] mt-[60px] xl:gap-[60px] lg:mt-[40px] lg:gap-[40px] md:mt-[45px]">
+                    <div class="second-filter-field relative flex justify-between items-center xs:flex-col">
+                        <div class="total-field srl text text-[18px] text-[#52555C]/50 leading-[28px] xsm:text-[16px]">{{getStaticText(42) }} <span class="text-green"> {{ count($blogs)}} </span> </div>
+                        <div class="date-filter-field srr group/date relative flex items-center gap-[15px]">
+                            <div class="date-title text-[18px] text-[#52555C] font-medium leading-[28px] opacity-65 duration-350 group-hover/date:opacity-100 xsm:text-[16px]">{{getStaticText(43) }} :</div>
+                            <select name="" id="" class="text relative z-2 text-[18px] text-green leading-[30px] pr-[50px] xsm:text-[16px] xs:pr-0">
+                                <option value="" selected>{{ getStaticText(44) }}</option>
+                            </select>
+                            <i class="icon icon-chevron-down2 text-[10px] h-[10px] text-[#52555CA6] flex leading-normal absolute right-[30px] top-[50%] translate-y-[-50%] z-2 duration-350 group-hover/date:rotate-180 group-hover/date:text-green xs:right-[-20px]"></i>
+                        </div>
+                    </div>
+                    <div class="blog-field grid grid-cols-3 gap-x-[45px] gap-y-[80px] 2xl:gap-[75px] xl:gap-[60px] xl:grid-cols-2 lg:gap-[40px] md:gap-[30px] xsm:grid-cols-1">
+                        <?php foreach ($blogs as $key => $item) : ?>
+                            <div class="blog-item focus group/item w-full h-max">
+                                <a href="{{ env('HTTP_DOMAIN') . '/' . getUrl('blog_url') . '/' . $item['seo_url'] }}" class="flex flex-col items-center">
+                                    <div class="image relative size-full aspect-[55/42] overflow-hidden rounded-[14px] sm:rounded-b-none">
+                                        <img src="{{ asset( getFolder(['uploads_folder', 'blog_images_folder'], $item['lang']) . '/'. $item['image']) }}" alt="" class="size-full object-cover object-center animImage scale-125 duration-500 [&.is-active]:scale-100 grayscale group-[&.focus]/item:grayscale-0">
+                                        <div class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full"></div>
+                                    </div>
+                                    <div class="blog-content size-auto relative bg-gradient-to-b from-green to-blue p-[2px] rounded-[14px] max-w-[470px] z-10 mt-[-80px] [box-shadow:_0px_25px_75px_0px_rgba(3,_36,_107,_0.15);] min-md:scale-50 min-md:opacity-0 min-md:delay-300 group-[&.is-active]/item:opacity-100 group-[&.is-active]/item:scale-100 duration-350 group-hover/item:[box-shadow:_0px_25px_75px_0px_rgba(117,_191,_0,_0.15);] xl:max-w-[550px] md:max-w-[440px] sm:max-w-full sm:mt-0 sm:rounded-t-none sm:pt-0">
+                                        <div class="content bg-white size-auto py-[25px] px-[40px] rounded-[12px] md:p-[30px] sm:rounded-t-none">
+                                            <div class="fx-hover-repulse anim-button group/button absolute right-[30px] top-[-30px] duration-350 min-sm:opacity-0 min-sm:scale-0 min-sm:group-hover/item:opacity-100 min-sm:group-hover/item:scale-100 sm:hidden">
+                                                <div class="inner">
+                                                <!-- group-hover/button:before:scale-[2] -->
+                                                    <button class="button item relative overflow-hidden translate-z-0 size-[66px] p-[20px] rounded-full bg-green flex items-center justify-end before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:scale-0 before:rounded-full before:translate-z-0 before:bg-blue before:duration-350  before:size-[33px] sm:before:hidden sm:w-[70px] sm:h-[40px] sm:justify-center sm:items-center sm:p-0 sm:rounded-t-none sm:rounded-b-[8px]">
+                                                    <!-- group-hover/button:rotate-45 -->
+                                                        <i class="icon icon-arrow-top relative z-2 text-[10px] size-[24px] text-white leading-normal flex justify-center items-center duration-350  sm:size-[12px] sm:text-[8px]"></i>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="blog-date flex justify-center items-center gap-[10px] p-[10px] bg-green/5 rounded-[8px] mb-[15px] w-fit">
+                                                <i class="icon icon-calendar text-[16px] h-[16px] text-green flex leading-normal"></i>
+                                                <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d/m/Y', strtotime($item['created_at'])) }}</small>
+                                            </div>
+                                            <div class="blog-title text-blue text-[24px] font-bold leading-[36px] opacity-90 line-clamp-2 sm:text-[17px] sm:leading-normal">{{ $item['title'] }}</div>
+                                            <div class="blog-expo text-[#52555C] text-[18px] font-normal leading-[28px] opacity-65 mt-[20px] max-w-[390px] line-clamp-2 lg:max-w-full sm:text-[16px]">{!! mb_substr($item['description'], 0, 100) !!}... </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
+                        <?php endforeach; ?>
+                    </div>
+                    <div class="max-w-[600px] mx-auto py-4 min-md:hidden">
+	                    <div id="load-more" class="button group/button cursor-pointer fx fx-text-hover-with-child relative bg-green flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-blue before:rounded-full before:duration-350 min-sm:hover:before:scale-[6] md:h-[60px] sm:h-[50px] sm:px-[15px]">
+	                        <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px]">{{getStaticText(48)}}</small>
+	                        <i class="icon relative z-2 icon-chevron-right text-white text-[10px] h-[10px] flex items-center leading-normal duration-350 min-sm:group-hover/button:rotate-90"></i>
+	                    </a>
+                    </div>	
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!--<section class="blog-section relative overflow-hidden pt-[100px] pb-[220px] 2xl:py-[50px] lg:py-[45px] md:py-[30px]">
         <div class="max-w-[1920px] container group/container animContainer">
             <div class="rectangle absolute left-[130px] top-0 size-[70px]">
                 <img src="../assets/svg/rectangle.svg" alt="" class="size-full object-contain object-center rotate-anim">
@@ -187,6 +243,6 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section>-->
 </main>
 @endsection 
