@@ -276,7 +276,7 @@
         </div>
 
         <!-- Önbellek tutmasın diye ekledim '?id<?= rand(); ?>' yazısını silersin -->
-        <script src="../assets/js/script.js"></script>
+        <script src="../assets/js/script.js?v=123"></script>
         
         {!! $code->bitrix_widget_code !!}
     </body>
