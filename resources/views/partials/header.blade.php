@@ -20,7 +20,7 @@
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset( getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) . '/' . $static_images['favicon']->image )  }}">
     <!-- Önbellek tutmasın diye ekledim; '?id<?= rand(); ?>' yazısını silersin -->
     <link rel="stylesheet" href="{{ asset('assets/css/style.css?v=1234') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css?id=1234') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css?id=12345') }}">
     <?php $code = \App\Models\Code::where('lang', app()->getLocale())->first(); ?>
     <?php $language = App\Models\Language::where('lang_code', app()->getLocale())->first(); 
         //dd($language);
