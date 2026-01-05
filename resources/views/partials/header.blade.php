@@ -32,7 +32,7 @@
     {!! $code->google_tag_manager_head_code !!}
 </head>
 
-<body class="antialiased font-sans">
+<body class="antialiased font-sans" @if(app()->getLocale() == 'ae') dir="rtl" @endif >
 
 <header class="group/header header-field peer h-[90px] z-100 mt-[55px] border border-solid border-blue border-opacity-0 bg-white/0 fixed w-full left-0 top-0 duration-500 will-change-[height,transform] [&.is-fixed]:!top-0 [&.is-fixed]:mt-0 [&.is-fixed]:shadow-2xl [&.is-fixed]:!translate-y-0 [&.is-fixed]:bg-white [&.is-fixed]:backdrop-blur-[30px] sm:[&.is-fixed]:bg-blue [&.is-fixed]:shadow-header [&.is-hidden.is-fixed]:!-translate-y-full [&.is-hidden.is-fixed]:mt-0 [&.is-hidden.is-fixed]:shadow-none [&.no-scroll]:absolute [&.no-scroll]:!transform-none [&.no-scroll]:!shadow-none md:mt-0 [&.header-hidden]:!-translate-y-full lg:[&.is-fixed]:opacity-0 lg:[&.is-fixed]:invisible lg:[&.is-fixed]:pointer-events-none sm:relative sm:bg-blue lg:h-[80px]">
     <div class="wrapper max-w-[1740px] mx-auto size-full px-[30px] flex items-center justify-between sm:h-auto">
