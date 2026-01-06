@@ -278,9 +278,12 @@ $breadcrumbTitle = $product->title;
     </section>
 
     <!-- PRODUCT SECTION -->
-    <?php $productTitle = 'OTHER'; ?>
-        <section class="product-section relative overflow-hidden pt-[90px] pb-[140px] 2xl:py-[50px] lg:py-[45px] md:py-[30px]">
-        <?php if ($shape  ?? true == 'true') : ?>
+    <?php
+    $shape = 'true';
+    $productTitle = 'OTHER';
+    ?>
+    <section class="product-section relative overflow-hidden pt-[90px] pb-[140px] 2xl:py-[50px] lg:py-[45px] md:py-[30px]">
+        <?php if ($shape == 'true') : ?>
             <div class="left-shape srl size-full max-w-[180px] ml-auto rounded-r-[14px] bg-blue absolute left-0 top-0 sm:hidden"></div>
         <?php endif; ?>
         <div class="max-w-[1920px] relative overflow-visible container group/container animContainer">
@@ -290,10 +293,10 @@ $breadcrumbTitle = $product->title;
                     <div class="product-image-field flex flex-col gap-[85px] md:hidden xl:gap-[30px]">
                         <div class="product-image-carosuel swiper size-full overflow-hidden rounded-[14px] flex flex-col gap-[85px]">
                             <div class="swiper-wrapper [&>*:swiper-slide-next_.swiper-slide_.item]">
-                                <?php foreach ($list as $key => $item) : ?>
+                                <?php foreach ($products as $key => $item) : ?>
                                     <div class="swiper-slide">
                                         <div class="image relative size-full aspect-[52/47] overflow-hidden">
-                                            <img src="../assets/image/jpg/<?= $item ?>" alt="" class="size-full object-cover object-center" data-swiper-parallax-x="50%">
+                                            <img src="{{ getFolder(['uploads_folder', 'product_images_folder'], $item->lang) . '/' . $item->slider_image }}" alt="{{$item->alt}}" class="size-full object-cover object-center" data-swiper-parallax-x="50%">
                                             <div class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full"></div>
                                         </div>
                                     </div>
@@ -340,20 +343,18 @@ $breadcrumbTitle = $product->title;
                         </div>
                         <div class="product-carousel swiper w-full h-fit overflow-visible ml-[-200px] xsm:overflow-hidden xl:ml-0">
                             <div class="swiper-wrapper">
-                                <?php for ($d = 0; $d < 10; $d++) : ?>
+                                <?php foreach ($products as $item) : ?>
                                     <div class="swiper-slide group/slide duration-350">
                                         <div class="item group/item translate-z-0 min-md:opacity-0 relative bg-gradient-to-b from-green to-blue md:!p-[2px] rounded-[14px] overflow-hidden min-md:group-[&.swiper-slide-active]/slide:p-[2px] min-md:[box-shadow:_0px_25px_75px_0px_rgba(3,_36,_107,_0.15);] duration-350 min-md:group-[&.swiper-slide-next]/slide:opacity-100 min-md:group-[&.swiper-slide-active]/slide:opacity-100 min-md:group-[&.swiper-slide-next+.swiper-slide]/slide:!opacity-100 md:shadow-lg">
                                             <div class="content bg-white size-full pb-[60px] rounded-[12px]">
                                                 <a href="" class="flex flex-col items-center duration-350">
                                                     <div class="product-detail-carousel swiper size-full overflow-hidden">
                                                         <div class="swiper-wrapper">
-                                                            <?php for ($i = 0; $i < 3; $i++) : ?>
-                                                                <div class="swiper-slide duration-350 [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto">
-                                                                    <div class="image size-full aspect-[23/18] md:aspect-video">
-                                                                        <img src="../assets/image/png/image-6.png" alt="" class="size-full object-contain object-center">
-                                                                    </div>
+                                                            <div class="swiper-slide duration-350 [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto">
+                                                                <div class="image size-full aspect-[23/18] md:aspect-video">
+                                                                    <img src="{{ getFolder(['uploads_folder', 'product_images_folder'], $item->lang) . '/' . $item->image }}" alt="" class="size-full object-contain object-center">
                                                                 </div>
-                                                            <?php endfor; ?>
+                                                            </div>
                                                         </div>
                                                     </div>
                                                     <div class="pag-and-button-field w-full grid grid-cols-3 items-center gap-[65px]">
@@ -368,14 +369,14 @@ $breadcrumbTitle = $product->title;
                                                         </div>
                                                     </div>
                                                     <div class="content flex flex-col items-center pointer-events-auto">
-                                                        <a href="" class="text text-[#52555C] text-[18px] leading-[28px] opacity-65">We Origins</a>
-                                                        <h4 class="title text-blue text-[24px] font-bold leading-[36px] opacity-90 xl:text-[20px]">Origin Discover Padel Court</h4>
+                                                        <a href="" class="text text-[#52555C] text-[18px] leading-[28px] opacity-65">{{ $item->category->title }}</a>
+                                                        <h4 class="title text-blue text-[24px] font-bold leading-[36px] opacity-90 xl:text-[20px]">{{ $item->title }}</h4>
                                                     </div>
                                                 </a>
                                             </div>
                                         </div>
                                     </div>
-                                <?php endfor; ?>
+                                <?php endforeach; ?>
                                 <div class="swiper-slide"></div>
                             </div>
                         </div>

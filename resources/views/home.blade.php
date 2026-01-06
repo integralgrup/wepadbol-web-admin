@@ -189,7 +189,7 @@
     $productTitle = 'OUR';
     ?>
 
-        <section class="product-section relative overflow-hidden pt-[90px] pb-[140px] 2xl:py-[50px] lg:py-[45px] md:py-[30px]">
+    <section class="product-section relative overflow-hidden pt-[90px] pb-[140px] 2xl:py-[50px] lg:py-[45px] md:py-[30px]">
         <?php if ($shape == 'true') : ?>
             <div class="left-shape srl size-full max-w-[180px] ml-auto rounded-r-[14px] bg-blue absolute left-0 top-0 sm:hidden"></div>
         <?php endif; ?>

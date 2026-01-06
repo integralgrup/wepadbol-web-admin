@@ -137,20 +137,30 @@ class HomeController extends Controller
 
             } else {
                 $product = Product::where(['seo_url' => $slug2, 'lang' => app()->getLocale()])->with(['category', 'gallery', 'faqs', 'types', 'images', 'features'])->firstOrFail();
-                
+                $products = // Get products with related category
+                Product::where('lang', app()->getLocale())
+                ->with(['category' => function ($q) {
+                    $q->where('lang', app()->getLocale());
+                }])
+                ->get();
                 $seo = $product;
                 //dd($product);
-                return view('product', compact('product', 'seo'));
+                return view('product', compact('product', 'seo', 'products'));
             }
         }
 
         if($menu->page_type == 'product') {
             
                 $product = Product::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->with(['category', 'gallery', 'faqs', 'types', 'images', 'features'])->firstOrFail();
-                
+                $products = // Get products with related category
+                Product::where('lang', app()->getLocale())
+                ->with(['category' => function ($q) {
+                    $q->where('lang', app()->getLocale());
+                }])
+                ->get();
                 $seo = $product;
                 //dd($product);
-                return view('product', compact('product', 'seo'));
+                return view('product', compact('product', 'seo', 'products'));
             
         }
 
