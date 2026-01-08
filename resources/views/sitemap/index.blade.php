@@ -13,25 +13,11 @@
 
     <!-- Dynamic Posts -->
     @foreach ($menus as $menu)
-    <?php if($menu->page_type == 'blog'){ 
-            $pageParam = getUrl('blog_url'). '/';
-        }elseif($menu->page_type == 'about'){
-            $pageParam = getUrl('about_url') . '/';
-        }elseif($menu->page_type == 'contact'){
-            $pageParam = null;
-        }elseif($menu->page_type == 'product'){
-            $pageParam = null;
-        }elseif($menu->page_type == 'club'){
-            $pageParam = null;
-        }elseif($menu->page_type == 'page'){
-            $pageParam = null;
-        }
-       
-    ?>
+    
         
 
         <url>
-            <loc>{{ url('/' . $pageParam . $menu->seo_url) }}</loc>
+            <loc>{{ url('/' . $menu->seo_url) }}</loc>
             <lastmod>{{ date('Y-m-d', strtotime($menu->created_at)) }}</lastmod>
             <changefreq>weekly</changefreq>
             <priority>0.9</priority>
