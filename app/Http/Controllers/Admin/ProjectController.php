@@ -20,7 +20,7 @@ class ProjectController extends Controller
     public function __construct()
     {
         $this->languages = Language::all();
-        $this->products = Product::all();
+        $this->products = Product::where('lang', app()->getLocale())->get();
         $this->countries = Country::where('lang', 'en')->get();
         view()->share('languages', $this->languages);
         view()->share('products', $this->products);
@@ -81,6 +81,11 @@ class ProjectController extends Controller
                     $imageName = $request->input('old_image_' . $language->lang_code, null); // Use old image if no new image is uploaded
                 }
 
+                $usedProductsInput = $request->input('used_products_en');
+                $usedProductsInput = implode(',', $usedProductsInput);
+
+                //dd($usedProductsInput);
+
                 $data = [
                     'lang' => $language->lang_code,
                     'title_1' => $request->input('title_1_'.$language->lang_code) ?? $request->input('title_1_en'),
@@ -90,7 +95,7 @@ class ProjectController extends Controller
                     'seo_url' => $request->input('seo_url_'.$language->lang_code) ?? $request->input('seo_url_en'),
                     'image' => $imageName,
                     'alt' => $request->input('alt_'.$language->lang_code) ?? $request->input('alt_en'),
-                    'used_products' => implode(',', $request->input('used_products_'.$language->lang_code) ) ?? implode(',', $request->input('used_products_en') ),
+                    'used_products' => $usedProductsInput,
                     'country_id' => $request->input('country_id_'.$language->lang_code) ?? $request->input('country_id_en'),
                     'seo_title' => $request->input('seo_title_'.$language->lang_code) ?? $request->input('seo_title_en'),
                     'seo_description' => $request->input('seo_description_'.$language->lang_code) ?? $request->input('seo_description_en'),
