@@ -14,14 +14,16 @@
     <!-- Dynamic Posts -->
     @foreach ($menus as $menu)
     
-        
+        @if($menu->seo_url != 'javascript:;')
 
-        <url>
-            <loc>{{ url('/' . $menu->seo_url) }}</loc>
-            <lastmod>{{ date('Y-m-d', strtotime($menu->created_at)) }}</lastmod>
-            <changefreq>weekly</changefreq>
-            <priority>0.9</priority>
-        </url>
+            <url>
+                <loc>{{ url('/' . $menu->seo_url) }}</loc>
+                <lastmod>{{ date('Y-m-d', strtotime($menu->created_at)) }}</lastmod>
+                <changefreq>weekly</changefreq>
+                <priority>0.9</priority>
+            </url>
+
+        @endif
     @endforeach
 
     <!-- Dynamic Blogs -->
