@@ -43,7 +43,7 @@ class Project extends Model
      */
     public function gallery()
     {
-        return $this->hasMany(ProjectGallery::class, 'project_id', 'project_id')->orderBy('sort');
+        return $this->hasMany(ProjectGallery::class, 'project_id', 'project_id')->where('lang', app()->getLocale())->orderBy('sort');
     }
 
     public function country()

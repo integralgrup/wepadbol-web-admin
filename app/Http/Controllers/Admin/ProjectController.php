@@ -143,7 +143,7 @@ class ProjectController extends Controller
     public function galleryIndex($id)
     {
         $project = Project::where('project_id', $id)->where('lang', app()->getLocale())->firstOrFail();
-        $gallery = ProjectGallery::where('project_id', $id)->get();
+        $gallery = ProjectGallery::where('project_id', $id)->where('lang', app()->getLocale())->get();
         return view('admin.project.gallery.index', compact('project', 'gallery'));
     }
 
@@ -223,13 +223,15 @@ class ProjectController extends Controller
     public function galleryDestroy($id, $galleryId)
     {
         try {
-            $gallery = ProjectGallery::findOrFail($galleryId);
+            $gallery = ProjectGallery::where('project_id', $id)->where('image_id', $galleryId)->get();
             // Delete the image file from storage if needed
             // Storage::delete('path/to/image/' . $gallery->image);
-            $gallery->delete();
-            return redirect()->route('admin.project.galleries.index', $id)->with('success', 'Gallery image deleted successfully!');
+            foreach ($gallery as $item) {
+                $item->delete();
+            }
+            return redirect()->route('admin.project.gallery.index', $id)->with('success', 'Gallery image deleted successfully!');
         } catch (\Throwable $th) {
-            return redirect()->route('admin.project.galleries.index', $id)->with('error', 'An error occurred while deleting the gallery image.');
+            return redirect()->route('admin.project.gallery.index', $id)->with('error', 'An error occurred while deleting the gallery image.');
         }
     }
 
