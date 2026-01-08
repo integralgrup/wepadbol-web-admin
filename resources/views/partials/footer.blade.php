@@ -269,9 +269,9 @@
                 </button>
             </div>
             <div class="link-field mt-[30px]">
-                <a href="page.php" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium">{{getStaticText(55)}}</a>
+                <a href="javascript:;" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium">{{getStaticText(55)}}</a>
                 <span class="mx-[10px] text-black/50">|</span>
-                <a href="page.php" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium">{{getStaticText(56)}}</a>
+                <a href="javascript:;" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium">{{getStaticText(56)}}</a>
             </div>
         </div>
 
