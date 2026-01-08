@@ -14,7 +14,7 @@
     <!-- Dynamic Posts -->
     @foreach ($menus as $menu)
     
-        @if($menu->seo_url != 'javascript:;')
+        @if($menu->seo_url != 'javascript:;' && $menu->seo_url != '-')
 
             <url>
                 <loc>{{ url('/' . $menu->seo_url) }}</loc>
