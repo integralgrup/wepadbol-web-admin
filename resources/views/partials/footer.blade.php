@@ -256,22 +256,22 @@
                 <div class="icon icon-cross icon-close group-hover/close:text-green group-hover/close:rotate-90 text-white text-[14px] h-[14px] block leading-none duration-350"></div>
             </div>
             <div class="text-field text-white">
-                <div class="title font-medium text-[18px] mb-[15px]">Çerez Ayarları</div>
-                <div class="expo text-[14px] sm:text-[12px] text-white/50">Bu web sitesinde, cihaz bilgilerini ve kişisel verileri işlemek için çerezleri ve benzer işlevleri kullanıyoruz. İşleme, içeriğin, harici hizmetlerin ve üçüncü şahısların unsurlarının, istatistiksel analiz/ölçümün, kişiselleştirilmiş reklamcılığın ve sosyal medyanın entegrasyonunun entegrasyonuna hizmet eder. İşleve bağlı olarak, veriler üçüncü taraflara aktarılır ve onlar tarafından işlenir. Bu onay isteğe bağlıdır, web sitemizin kullanımı için gerekli değildir ve sol alttaki simge kullanılarak herhangi bir zamanda iptal edilebilir.</div>
+                <div class="title font-medium text-[18px] mb-[15px]">{{getStaticText(51)}}</div>
+                <div class="expo text-[14px] sm:text-[12px] text-white/50">{{getStaticText(52)}}</div>
             </div>
             <div class="split my-[20px] sm:my-[10px] bg-white/5 w-full h-[1px]"></div>
             <div class="action-field flex items-center justify-between gap-[20px] sm:flex-col">
                 <button class="accept-cookie close-cookie button group/button w-full flex justify-center items-center gap-[20px] bg-green px-[20px] hover:bg-primary-600 h-[45px] md:h-[50px] duration-350">
-                    <div class="text text-[13px] text-white font-medium relative z-2 whitespace-nowrap duration-350">Çerezleri Kabul Et</div>
+                    <div class="text text-[13px] text-white font-medium relative z-2 whitespace-nowrap duration-350">{{getStaticText(53)}}</div>
                 </button>
                 <button class="button group/button w-full flex justify-center items-center gap-[20px] bg-transparent px-[20px] h-[45px] md:h-[50px] duration-350 border border-solid border-green">
-                    <div class="text text-[13px] text-white/50 duration-350 font-medium relative z-2 whitespace-nowrap group-hover/button:text-white">Reddet</div>
+                    <div class="text text-[13px] text-white/50 duration-350 font-medium relative z-2 whitespace-nowrap group-hover/button:text-white">{{getStaticText(54)}}</div>
                 </button>
             </div>
             <div class="link-field mt-[30px]">
-                <a href="page.php" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium">Kişisel Verilerin Korunması</a>
+                <a href="page.php" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium">{{getStaticText(55)}}</a>
                 <span class="mx-[10px] text-black/50">|</span>
-                <a href="page.php" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium">Gizlilik</a>
+                <a href="page.php" class="text-white/50 duration-350 hover:text-white underline text-[13px] font-medium">{{getStaticText(56)}}</a>
             </div>
         </div>
 
