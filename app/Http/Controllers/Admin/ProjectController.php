@@ -66,7 +66,6 @@ class ProjectController extends Controller
                         'seo_url_'.$language->lang_code => 'required|string|max:255',
                         'image_'.$language->lang_code => 'nullable|image',
                         'alt_'.$language->lang_code => 'required|string|max:255',
-                        'used_products_'.$language->lang_code => 'required|array',
                         'country_id_'.$language->lang_code => 'nullable|integer',
                         'seo_title_'.$language->lang_code => 'nullable|string|max:255',
                         'seo_description_'.$language->lang_code => 'nullable|string|max:255',
