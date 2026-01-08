@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 
+use App\Http\Controllers\SitemapController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -308,6 +309,8 @@ Route::post('/admin/update-order', 'App\Http\Controllers\Admin\FooterInfoControl
 
 }); // End of Auth middleware group
 //Project Front End routes
+
+Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 //Home route
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('{slug}/{slug2?}', 'App\Http\Controllers\HomeController@route')->name('page.route');
