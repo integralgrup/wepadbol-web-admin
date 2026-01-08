@@ -111,13 +111,13 @@
         <!-- BG OVERLAY -->
         <div class="bg-overlay-general-footer fixed left-0 top-0 z-[80] opacity-0 invisible backdrop-blur-[5px] duration-500 [&.active]:opacity-100 [&.active]:visible [&.black]:bg-black/60 size-full group"></div>
         <!-- COOKIE -->
-        <div class="cookie-box fixed top-auto bottom-[20px] right-[20px] left-[20px] mr-0 ml-auto w-fit max-w-[550px] md:max-w-full z-[200] duration-450 xs:w-full xs:left-0 xs:bottom-0 xs:right-0 bg-cookie p-[30px] rounded-[20px] xs:rounded-none translate-y-[150%] [&.accepted]:opacity-0 [&.accepted]:invisible [&.accepted]:translate-y-[250%] sm:sm:max-h-[calc(100dvh-40px)] sm:scrollbar sm:scrollbar-w-[5px] sm:scrollbar-track-rounded-[5px] sm:scrollbar-thumb-rounded-[5px] sm:scrollbar-thumb-green sm:scrollbar-track-green/10 sm:overflow-x-hidden sm:overflow-y-auto">
+        <div class="cookie-box fixed top-auto bottom-[20px] right-[20px] left-[20px] mr-auto ml-0 w-fit max-w-[550px] md:max-w-full z-[200] duration-450 xs:w-full xs:left-0 xs:bottom-0 xs:right-0 bg-cookie p-[30px] rounded-[20px] xs:rounded-none translate-y-[150%] [&.accepted]:opacity-0 [&.accepted]:invisible [&.accepted]:translate-y-[250%] sm:sm:max-h-[calc(100dvh-40px)] sm:scrollbar sm:scrollbar-w-[5px] sm:scrollbar-track-rounded-[5px] sm:scrollbar-thumb-rounded-[5px] sm:scrollbar-thumb-green sm:scrollbar-track-green/10 sm:overflow-x-hidden sm:overflow-y-auto">
             <div class="close close-cookie absolute right-[20px] top-[20px] cursor-pointer group/close">
                 <div class="icon icon-cross icon-close group-hover/close:text-green group-hover/close:rotate-90 text-white text-[14px] h-[14px] block leading-none duration-350"></div>
             </div>
             <div class="text-field text-white">
-                <div class="title font-medium text-[18px] mb-[15px]">Çerez Ayarları</div>
-                <div class="expo text-[14px] sm:text-[12px] text-white/50">Bu web sitesinde, cihaz bilgilerini ve kişisel verileri işlemek için çerezleri ve benzer işlevleri kullanıyoruz. İşleme, içeriğin, harici hizmetlerin ve üçüncü şahısların unsurlarının, istatistiksel analiz/ölçümün, kişiselleştirilmiş reklamcılığın ve sosyal medyanın entegrasyonunun entegrasyonuna hizmet eder. İşleve bağlı olarak, veriler üçüncü taraflara aktarılır ve onlar tarafından işlenir. Bu onay isteğe bağlıdır, web sitemizin kullanımı için gerekli değildir ve sol alttaki simge kullanılarak herhangi bir zamanda iptal edilebilir.</div>
+                <div class="title font-medium text-[18px] mb-[15px]">{{getStaticText(51)}}</div>
+                <div class="expo text-[14px] sm:text-[12px] text-white/50">{{getStaticText(52)}}</div>
             </div>
             <div class="split my-[20px] sm:my-[10px] bg-white/5 w-full h-[1px]"></div>
             <div class="action-field flex items-center justify-between gap-[20px] sm:flex-col">

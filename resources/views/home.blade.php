@@ -165,7 +165,7 @@
                                         <div class="expo-and-button flex flex-col gap-[60px] mt-[20px] min-sm:h-0 min-sm:opacity-0 duration-500">
                                             <p class="text text-[18px] text-white leading-[28px] md:text-[16px] sm:hidden">{{ $item['description_1'] }}</p>
                                             <div class="button group/button relative fx fx-text-hover-with-child bg-green flex justify-center items-center gap-[15px] py-[30px] w-full max-w-[175px] overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-white before:rounded-full before:duration-350 min-sm:hover:before:scale-[6.2] sm:p-0 sm:!h-[50px]" dir="ltr">
-                                                <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px] duration-350 min-sm:group-hover/button:text-blue">Read More</small>
+                                                <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px] duration-350 min-sm:group-hover/button:text-blue">{{getStaticText(41)}}</small>
                                                 <i class="icon relative z-2 icon-chevron-right text-white text-[10px] h-[10px] flex items-center leading-normal duration-350 min-sm:group-hover/button:rotate-90 min-sm:group-hover/button:text-blue"></i>
                                             </div>
                                         </div>
