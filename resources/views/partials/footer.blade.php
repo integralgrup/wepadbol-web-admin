@@ -251,7 +251,7 @@
  <!-- BG OVERLAY -->
     <div class="bg-overlay-general-footer fixed left-0 top-0 z-[80] opacity-0 invisible backdrop-blur-[5px] duration-500 [&.active]:opacity-100 [&.active]:visible [&.black]:bg-black/60 size-full group"></div>
         <!-- COOKIE -->
-        <div class="cookie-box fixed top-auto bottom-[20px] left-[20px] mr-auto ml-0 w-fit max-w-[550px] md:max-w-full z-[200] duration-450 xs:w-full xs:left-0 xs:bottom-0 xs:right-0 bg-cookie p-[30px] rounded-[20px] xs:rounded-none translate-y-[150%] [&.accepted]:opacity-0 [&.accepted]:invisible [&.accepted]:translate-y-[250%] sm:sm:max-h-[calc(100dvh-40px)] sm:scrollbar sm:scrollbar-w-[5px] sm:scrollbar-track-rounded-[5px] sm:scrollbar-thumb-rounded-[5px] sm:scrollbar-thumb-green sm:scrollbar-track-green/10 sm:overflow-x-hidden sm:overflow-y-auto">
+        <div class="cookie-box fixed top-auto bottom-[20px] right-[20px] left-[20px] mr-auto ml-0 w-fit max-w-[550px] md:max-w-full z-[200] duration-450 xs:w-full xs:left-0 xs:bottom-0 xs:right-0 bg-cookie p-[30px] rounded-[20px] xs:rounded-none translate-y-[150%] [&.accepted]:opacity-0 [&.accepted]:invisible [&.accepted]:translate-y-[250%] sm:sm:max-h-[calc(100dvh-40px)] sm:scrollbar sm:scrollbar-w-[5px] sm:scrollbar-track-rounded-[5px] sm:scrollbar-thumb-rounded-[5px] sm:scrollbar-thumb-green sm:scrollbar-track-green/10 sm:overflow-x-hidden sm:overflow-y-auto">
             <div class="close close-cookie absolute right-[20px] top-[20px] cursor-pointer group/close">
                 <div class="icon icon-cross icon-close group-hover/close:text-green group-hover/close:rotate-90 text-white text-[14px] h-[14px] block leading-none duration-350"></div>
             </div>
