@@ -9,7 +9,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- robots noindex, npfollow -->
-    <meta name="robots" content="noindex, nofollow">
+    <meta name="robots" content="index, follow">
 
     @if(isset($seo))
     <meta name="keywords" content="{{ $seo->seo_keywords }}">
@@ -19,8 +19,8 @@
     <title><?php echo !empty($pageTitle) ? $pageTitle : $nameofProject ?></title>
     <link rel="icon" type="image/png" sizes="16x16" href="{{ asset( getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) . '/' . $static_images['favicon']->image )  }}">
     <!-- Önbellek tutmasın diye ekledim; '?id<?= rand(); ?>' yazısını silersin -->
-    <link rel="stylesheet" href="{{ asset('assets/css/style.css?v=1234') }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css?id=12345') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/style.css?v=12345') }}">
+    <link rel="stylesheet" href="{{ asset('assets/css/tailwind.css?id=123456') }}">
     <?php $code = \App\Models\Code::where('lang', app()->getLocale())->first(); ?>
     <?php $language = App\Models\Language::where('lang_code', app()->getLocale())->first(); 
         //dd($language);
@@ -300,8 +300,7 @@
                                 <?= $item['title'] ?>
                             </div>
                             <?php if (isset($item['submenu'])): ?>
-                                <i
-                                    class="icon icon-chevron-down text-white opacity-25 text-[9px] h-[9px] leading-normal flex duration-350 group-[&.is-fixed]/header:text-blue group-[&.blue]/header:group-[&.is-active]/menu:text-white group-[&.blue]/header:text-blue group-hover/menu:opacity-100 group-[&.is-fixed]/header:group-[&.is-active]/menu:text-white group-[&.is-active]/menu:-rotate-180 group-[&.is-active]/menu:opacity-100"></i>
+                                <i class="icon icon-chevron-down text-white opacity-25 text-[9px] h-[9px] leading-normal flex duration-350 group-[&.is-fixed]/header:text-blue group-[&.blue]/header:group-[&.is-active]/menu:text-white group-[&.blue]/header:text-blue group-hover/menu:opacity-100 group-[&.is-fixed]/header:group-[&.is-active]/menu:text-white group-[&.is-active]/menu:-rotate-180 group-[&.is-active]/menu:opacity-100"></i>
                             <?php endif; ?>
                         </a>
                         <?php if (!empty($item['submenu']) && $item['submenu'] == 'submenu-1'): ?>
@@ -330,7 +329,6 @@
                                                 <?php endforeach; ?>
                                             </div>
                                             <!-- IMAGES -->
-                                            <?php $list = ['image-1.jpg', 'image-2.jpg', 'image-3.jpg', 'image-5.jpg', 'image-5.jpg']; ?>
                                             <div class="image-field relative flex flex-col items-end">
                                                 <div class="header-image-carousel swiper max-h-[530px] size-full">
                                                     <div class="swiper-wrapper">
@@ -435,20 +433,18 @@
                 <?php endforeach; ?>
             </ul>
 
-            <div class="language-field group/lang relative"> 
-                <div class="absolute top-full left-0 w-full h-[60px] opacity-0 pointer-events-none group-hover/lang:pointer-events-auto"></div>
+             <div class="language-field group/lang relative">
                 <div class="flex items-center gap-[10px]">
                     <i
                         class="icon icon-earth text-green text-[26px] h-[26px] leading-normal flex duration-350 group-[&.is-fixed]/header:text-blue"></i>
                     <div
                         class="language text-white opacity-85 text-[20px] leading-[28px] group-[&.is-fixed]/header:opacity-100 group-[&.is-fixed]/header:text-blue group-[&.blue]/header:text-blue">
-                        {{ strtoupper(app()->getLocale()) }} </div>
+                        Tr</div>
                     <i
                         class="icon icon-chevron-down2 text-white opacity-50 text-[9px] h-[9px] leading-normal flex duration-350 group-[&.is-fixed]/header:text-blue group-[&.blue]/header:text-blue group-[&.blue]/header:group-hover/lang:text-green group-hover/lang:opacity-100 group-hover/lang:rotate-180"></i>
                 </div>
-                <div class="absolute top-full mt-[40px] left-1/2 -translate-x-1/2 bg-black/40 border border-white/20 border-solid backdrop-blur-xs w-[200px] opacity-0 pointer-events-none group-hover/lang:pointer-events-auto group-hover/lang:opacity-100 duration-300">
                 <ul
-                    class="gap-[8px] p-[20px] grid grid-cols-2 md:grid-cols-1">
+                    class="options bg-black/25 group-[&.is-fixed]/header:bg-black/75 p-[20px] sm:p-[15px] grid grid-cols-2 gap-[10px] sm:gap-[5px] absolute top-[calc(100%+15px)] left-[50%] translate-x-[-50%] mt-[30px] w-max backdrop-blur-2xl before:absolute before:left-0 before:top-[-50px] before:w-full before:h-[50px] before:bg-transparent after:absolute after:left-0 after:top-0 after:size-full after:pointer-events-none after:border-[1px] after:border-white after:border-solid after:bg-transparent after:[mask-image:linear-gradient(0deg,transparent,black)] after:opacity-40 duration-350 opacity-0 pointer-events-none invisible translate-y-[15px] group-hover/lang:opacity-100 group-hover/lang:pointer-events-auto group-hover/lang:visible group-hover/lang:translate-y-0 group-hover/lang:delay-250">
                     <?php $languagesArray = App\Models\Language::all(); 
                         // get URL segments
                         $segments = explode('/', url()->current());
@@ -499,13 +495,14 @@
                                 endif;
                             
                         ?>
-                        <li class="group/o">
-                           <a href="<?=$url?>" class="flex items-center justify-center gap-[10px] border border-solid border-white/10 px-[5px] py-[6px] backdrop-blur-xs min-md:transition-colors min-md:duration-300 min-md:group-hover/o:bg-white/80">
-                              <div class="size-[15px] overflow-hidden rounded-full shrink-0">
-                                 <img src="{{ $language->domain  .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'. $language->flag_image}}" alt="" loading="lazy" class="size-full object-cover object-center" />
-                              </div>
-                              <div class="text-from-14 text-to-16 font-medium text-white uppercase min-md:transition-colors min-md:duration-300 min-md:group-hover/o:text-black">{{ strtoupper($language->lang_code ) }}</div>
-                           </a>
+                        <li class="option group/option">
+                            <a href="<?=$url?>"
+                                class="flex items-center gap-[10px] bg-black/10 px-[12.5px] py-[10px] sm:px-[10px] sm:py-[7.5px] relative border border-solid border-white/0 ease-in-out duration-350 group-hover/option:border-white">
+                                <div class="image w-[20px] aspect-square shrink-0">
+                                    <img class="size-full object-cover object-center" src="{{ $language->domain  .'/'. getFolder(['uploads_folder', 'images_folder'], $language->lang_code) .'/'. $language->flag_image}}" alt=""
+                                        loading="lazy"></div>
+                                <div class="text text-white/70 duration-350 group-hover/option:text-white sm:text-[14px]">{{ strtoupper($language->lang_code ) }} </div>
+                            </a>
                         </li>
                     <?php } ?>
                 </ul>
