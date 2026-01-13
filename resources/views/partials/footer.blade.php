@@ -83,7 +83,7 @@
                         <i class="icon icon-phone text-[30px] h-[30px] text-white/35 duration-450 group-hover/item:text-green"></i>
                         <div class="flex flex-col">
                             <h5 class="text text-white text-[20px] font-bold leading-[30px]">{{getStaticText(8)}}</h5>
-                            <span class="text text-white text-[18px] font-normal leading-[28px] opacity-75"><?= $footerInfo->phone ?></span>
+                            <a href="tel:<?= $footerInfo->phone ?>"><span class="text text-white text-[18px] font-normal leading-[28px] opacity-75"><?= $footerInfo->phone ?></span></a>
                         </div>
                     </a>
                 </div>
@@ -92,7 +92,7 @@
                         <i class="icon icon-mail text-[30px] h-[30px] text-white/35 duration-450 group-hover/item:text-green"></i>
                         <div class="flex flex-col">
                             <h5 class="text text-white text-[20px] font-bold leading-[30px]">{{getStaticText(9)}}</h5>
-                            <span class="text text-white text-[18px] font-normal leading-[28px] opacity-75"><?= $footerInfo->email ?></span>
+                            <a href="mailto:<?= $footerInfo->email ?>"><span class="text text-white text-[18px] font-normal leading-[28px] opacity-75"><?= $footerInfo->email ?></span></a>
                         </div>
                     </a>
                 </div>
