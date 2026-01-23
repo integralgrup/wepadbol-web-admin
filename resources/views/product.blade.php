@@ -271,7 +271,7 @@ $breadcrumbTitle = $product->title;
                             </div>
                         </div>
                         <div class="product-controller relative z-2 flex items-center gap-[125px] max-w-[333px] mx-auto xl:mr-0">
-                            <div class="product-pagination text-[24px] text-[#52555C]/30 font-medium leading-[36px] [&_.swiper-pagination-current]:text-[32px] [&_.swiper-pagination-current]:text-green">
+                            <div  style="white-space:nowrap"  class="product-pagination text-[24px] text-[#52555C]/30 font-medium leading-[36px] [&_.swiper-pagination-current]:text-[32px] [&_.swiper-pagination-current]:text-green">
                             </div>
                             <div class="carousel-navigation flex items-center gap-[40px]">
                                 <div class="product-prev cursor-pointer size-[40px] leading-normal [&.swiper-button-disabled_.icon]:text-[#52555C]/35 [&.swiper-button-disabled_.icon]:scale-x-100">
