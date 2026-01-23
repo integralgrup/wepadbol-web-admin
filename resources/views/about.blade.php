@@ -122,23 +122,30 @@ $breadcrumbImage = $about->image;
     </div>
 </section>
 
-    <!-- REFERANCE SECTION -->
-    <?php
-        $moduleId = 'id="c"';
-    ?>
-    <section class="referance-section py-[120px] 2xl:py-[50px] lg:py-[45px] md:py-[30px]" <?= $moduleId ?>>
-    <div class="max-w-[1800px] container">
-        <div class="wrapper">
-            <div class="grid grid-cols-5 justify-between srb-all">
-                <?php foreach ($certificates as $key => $item) : ?>
-                    <div class="item w-full h-[50px] opacity-50 flex justify-center items-center duration-350 hover:opacity-100">
-                        <img src="{{ asset(getFolder( ['uploads_folder', 'images_folder'], $about->lang ) . '/' . $item->image) }}" alt="{{ $item->alt }}" class="size-full object-contain object-center">
-                    </div>
-                <?php endforeach; ?>
+<!-- REFERANCE SECTION -->
+    <?php $moduleId = 'id="c"';?>
+    <section class="referance-section py-[120px] 2xl:py-[50px] lg:py-[45px] md:py-[30px]" <?= isset($moduleId) ? $moduleId : '' ?>>
+        <div class="max-w-[1800px] container">
+            <div class="wrapper about-certificates ">
+                <div class="swiper-wrapper srb-all">
+                    <?php foreach ($certificates as $key => $item) : ?>
+                        <div class="item swiper-slide">
+                            <div class="inner h-[50px] opacity-50 flex justify-center items-center duration-350 hover:opacity-100">
+                            <img src="{{ asset( getFolder(['uploads_folder', 'images_folder'], $item->lang) .'/'. $item->image ) }}" alt="" class="size-full object-contain object-center">
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                    <?php foreach ($certificates as $key => $item) : ?>
+                        <div class="item swiper-slide">
+                            <div class="inner h-[50px] opacity-50 flex justify-center items-center duration-350 hover:opacity-100">
+                            <img src="{{ asset( getFolder(['uploads_folder', 'images_folder'], $item->lang) .'/'. $item->image ) }}" alt="" class="size-full object-contain object-center">
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
     
 
     <!-- HOW WE DO IT SECTION -->
