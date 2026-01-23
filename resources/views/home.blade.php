@@ -125,7 +125,6 @@
     <section class="referance-section py-[120px] 2xl:py-[50px] lg:py-[45px] md:py-[30px]" <?= isset($moduleId) ? $moduleId : '' ?>>
         <div class="max-w-[1800px] container">
             <div class="wrapper sm-certificates-slider sm:overflow-hidden">
-                <?php $list = ['image-1.png', 'image-2.png', 'image-4.png', 'image-5.png', 'image-3.png',]; ?>
                 <div class="min-sm:grid min-sm:grid-cols-5 min-sm:justify-between swiper-wrapper srb-all">
                     <?php foreach ($about_certificates as $key => $item) : ?>
                         <div class="item swiper-slide w-full">
@@ -741,4 +740,36 @@
 </section>
 
 </main>
+@endsection
+
+@section('scripts')
+<script>
+  const swiper = new Swiper(".sm-certificates-slider", {
+    slidesPerView: 1,
+    spaceBetween: 20,
+    loop: false,
+
+    pagination: {
+      el: ".swiper-pagination",
+      clickable: true,
+    },
+
+    navigation: {
+      nextEl: ".swiper-button-next",
+      prevEl: ".swiper-button-prev",
+    },
+
+    breakpoints: {
+      640: {
+        slidesPerView: 1,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+      1024: {
+        slidesPerView: 5,
+      },
+    },
+  });
+</script>
 @endsection

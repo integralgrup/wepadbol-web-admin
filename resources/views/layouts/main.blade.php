@@ -9,3 +9,5 @@
 
 </penta-yazilim>
 @include('partials.footer')
+
+@yield('scripts')
