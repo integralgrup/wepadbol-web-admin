@@ -341,7 +341,7 @@ $breadcrumbImage = $about->image;
                             <?php endforeach; ?>
                         </div>
                     </div>
-                    <div class="brand-content-wrapper flex items-center justify-end gap-[60px] -z-2 relative w-full md:order-1 md:justify-center md:flex-col">
+                    <div class="brand-content-wrapper flex items-center justify-end -z-2 relative w-full md:order-1 md:justify-center md:flex-col">
                         <!-- BU YAPININ DÜZGÜN ÇALIŞABİLMESİ İÇİN EN AZ 4 ADETTEN BAŞLAMALIDIR -->
                         <div class="brand-content-carousel swiper overflow-visible max-w-[370px] size-full md:order-2">
                             <div class="swiper-wrapper">
