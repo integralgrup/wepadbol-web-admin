@@ -5,6 +5,7 @@
 $pageTitle = $product->title;
 $breadcrumbTitle = $product->title;
 ?>
+<?php $code = \App\Models\Code::where('lang', app()->getLocale())->first(); ?>
 
 <main class="main-field header-space blue-menu sm:!mt-[-80px]">
 
@@ -221,47 +222,7 @@ $breadcrumbTitle = $product->title;
                                             <i class="icon icon-paper text-[30px] text-white h-[30px] leading-normal flex"></i>
                                             <h3 class="title text-[24px] text-white font-medium leading-[19px]">Contact Form</h3>
                                         </div>
-                                        <form action="">
-                                            <div class="form-wrapper grid grid-cols-2 mt-[40px] sm:grid-cols-1 gap-x-[26px] gap-y-[30px]">
-                                                <div class="form-el group/form relative col-span-1 sm:col-span-1"> <!-- error için bu div'e class="error" eklenecek -->
-                                                    <input type="text" placeholder="Adınız Soyadınız" required="" class="w-full h-[60px] sm:h-[50px] rounded-[10px] bg-transparent outline-none px-[24px] sm:px-[20px] text-[16px] leading-[19px] sm:text-[14px] text-white duration-350 placeholder:text-white hover:bg-blue/15 border-[2px] border-solid border-white/15 group-hover/form:border-green group-focus/form:border-green group-[&.error]/form:border-red-500">
-                                                    <div class="tooltip text-red-500 text-[12px] mt-[5px] hidden group-[&.error]/form:block">Lütfen alanı boş bırakmayın.</div>
-                                                </div>
-                                                <div class="form-el group/form relative col-span-1 sm:col-span-1"> <!-- error için bu div'e class="error" eklenecek -->
-                                                    <input type="text" placeholder="E-Postanız" required="" class="w-full h-[60px] sm:h-[50px] rounded-[10px] bg-transparent outline-none px-[24px] sm:px-[20px] text-[16px] leading-[19px] sm:text-[14px] text-white duration-350 placeholder:text-white hover:bg-blue/15 border-[2px] border-solid border-white/15 group-hover/form:border-green group-focus/form:border-green group-[&.error]/form:border-red-500">
-                                                    <div class="tooltip text-red-500 text-[12px] mt-[5px] hidden group-[&.error]/form:block">Lütfen alanı boş bırakmayın.</div>
-                                                </div>
-                                                <div class="form-el group/form relative col-span-1 sm:col-span-1"> <!-- error için bu div'e class="error" eklenecek -->
-                                                    <input type="tel" placeholder="Telefon Numaranız" required="" class="w-full h-[60px] sm:h-[50px] rounded-[10px] bg-transparent outline-none px-[24px] sm:px-[20px] text-[16px] leading-[19px] sm:text-[14px] text-white duration-350 placeholder:text-white hover:bg-blue/15 border-[2px] border-solid border-white/15 group-hover/form:border-green group-focus/form:border-green group-[&.error]/form:border-red-500">
-                                                    <div class="tooltip text-red-500 text-[12px] mt-[5px] hidden group-[&.error]/form:block">Lütfen alanı boş bırakmayın.</div>
-                                                </div>
-                                                <div class="form-el group/form relative col-span-1 sm:col-span-1"> <!-- error için bu div'e class="error" eklenecek -->
-                                                    <input type="mail" placeholder="Firma Adınız" required="" class="w-full h-[60px] sm:h-[50px] rounded-[10px] bg-transparent outline-none px-[24px] sm:px-[20px] text-[16px] leading-[19px] sm:text-[14px] text-white duration-350 placeholder:text-white hover:bg-blue/15 border-[2px] border-solid border-white/15 group-hover/form:border-green group-focus/form:border-green group-[&.error]/form:border-red-500">
-                                                    <div class="tooltip text-red-500 text-[12px] mt-[5px] hidden group-[&.error]/form:block">Lütfen alanı boş bırakmayın.</div>
-                                                </div>
-                                                <div class="form-el group/form relative col-span-2 sm:col-span-1"> <!-- error için bu div'e class="error" eklenecek -->
-                                                    <textarea name="" id="" placeholder="Mesajınız" class="w-full min-h-[170px] rounded-[10px] bg-transparent outline-none px-[24px] py-[15px] sm:px-[20px] text-[16px] leading-[19px] sm:text-[14px] text-white duration-350 placeholder:text-white hover:bg-blue/15 border-[2px] border-solid border-white/15 resize-none group-hover/form:border-green group-focus/form:border-green group-[&.error]/form:border-red-500"></textarea>
-                                                    <div class="tooltip text-red-500 text-[12px] mt-[5px] hidden group-[&.error]/form:block">Lütfen alanı boş bırakmayın.</div>
-                                                </div>
-                                            </div>
-                                            <div class="submit-field flex justify-between items-center max-w-[465px] ml-[30px] gap-[60px] mt-[50px] lg:gap-[20px] sm:mx-0 sm:justify-between sm:max-w-full xsm:items-start xsm:flex-col">
-                                                <div class="item group/item lg:col-span-2 relative">
-                                                    <div class="form-el flex items-center gap-[15px] h-full">
-                                                        <input type="checkbox" class="peer cursor-pointer absolute left-0 top-0 w-[20px] h-full opacity-0 z-10">
-                                                        <div class="box relative shrink-0 h-[21px] w-[21px] rounded-[3px] overflow-hidden before:absolute before:duration-350 peer-checked:before:!opacity-100 peer-checked:before:!scale-100 before:scale-0 before:opacity-0 before:left-[50%] before:top-[50%] before:translate-x-[-50%] before:translate-y-[-50%] before:w-[40%] before:h-[40%] before:bg-[#fff] duration-350 shadow-[0_0_0_1px_rgb(0_0_0/.0)] bg-transparent border border-solid border-white/16"></div>
-                                                        <label for="acceptance" class="text-[15px] text-white leading-normal font-light"><a href="#popup-gdpr" class="inline-block relative text-white underline font-normal underline-offset-8" data-fancybox="">Aydınlatma Metni</a>’ni Okudum. Kabul ediyorum.</label>
-                                                    </div>
-                                                </div>
-                                                <div class="item group/item col-span-1 xsm:w-full lg:col-span-2 relative">
-                                                    <div class="button-field flex justify-end">
-                                                        <button class="button group/button relative fx fx-text-hover-with-child bg-green flex justify-center items-center gap-[15px] px-[34px] py-[20px] w-fit overflow-hidden rounded-[8px] before:absolute before:left-[50%] before:translate-x-[-50%] before:top-[50%] before:translate-y-[-50%] before:size-[30px] before:scale-0 before:bg-white before:rounded-full before:duration-350 min-sm:hover:before:scale-[5.5] md:h-[60px] sm:h-[50px]">
-                                                            <small class="text fx-child relative z-2 text-white text-[16px] font-medium leading-[19px] duration-350 min-md:group-hover/button:text-green">Send</small>
-                                                            <i class="icon relative z-2 icon-chevron-right text-white text-[10px] h-[10px] flex items-center leading-normal duration-350 min-sm:group-hover/button:translate-x-[5px] min-md:group-hover/button:text-green"></i>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </form>
+                                        {!! $code->bitrix_form_code !!} 
                                     </div>
                                 </div>
                             </div>
