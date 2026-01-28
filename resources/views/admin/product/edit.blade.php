@@ -54,6 +54,7 @@
                     <?php 
                         foreach($products as $product){
                             $product_id[$product->lang] = $product->product_id;
+                            $category_id[$product->lang] = $product->category_id;
                             $seo_url[$product->lang] = $product->seo_url;
                             $title[$product->lang] = $product->title;
                             $description[$product->lang] = $product->description;
@@ -110,7 +111,7 @@
                                             <select class="form-select" id="category_id" name="category_id" required >
                                                 <option value="">Kategori Seçiniz</option>
                                                 @foreach($categories as $category)
-                                                    <option value="{{ $category->category_id }}" {{ $category->category_id == $product->category_id ? 'selected' : '' }}>{{ $category->title }}</option>
+                                                    <option value="{{ $category->category_id }}" {{ $category->category_id == $category_id[$language->lang_code] ? 'selected' : '' }}>{{ $category->title }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
