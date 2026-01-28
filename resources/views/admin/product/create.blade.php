@@ -82,8 +82,8 @@
                                             </div>
                                         </div>
                                         <div class="mb-3">
-                                            <label for="category_id{{ $language->lang_code }}" class="form-label">Kategori ({{ $language->lang_code }})</label>
-                                            <select class="form-select" id="category_id{{ $language->lang_code }}" name="category_id_{{ $language->lang_code }}" {{ $required }}>
+                                            <label for="category_id_{{ $language->lang_code }}" class="form-label">Kategori ({{ $language->lang_code }})</label>
+                                            <select class="form-select" id="category_id_{{ $language->lang_code }}" name="category_id_{{ $language->lang_code }}" {{ $required }}>
                                                 <option value="">Kategori Seçiniz</option>
                                                 @foreach($categories as $category)
                                                     <option value="{{ $category->category_id }}">{{ $category->title }}</option>
