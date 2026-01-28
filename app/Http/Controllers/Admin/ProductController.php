@@ -563,6 +563,7 @@ class ProductController extends Controller
     public function categoryCreate()
     {
         $categories = ProductCategory::where('lang', app()->getLocale())->get();
+        dd($categories);
         return view('admin.product.category.create', compact('categories'));
     }
     public function categoryStore(Request $request)
