@@ -65,13 +65,13 @@
         </a>
         <div class="menu-wrapper h-full flex items-center gap-[50px] py-[30px] px-[50px] border border-solid border-white/20 bg-white/4 backdrop-blur-[10px] rounded-[8px] duration-350 group-[&.is-fixed]/header:backdrop-blur-0 group-[&.is-fixed]/header:bg-white/0 group-[&.is-fixed]/header:border-white/0 lg:hidden xl:p-[15px] xl:gap-[15px]">
             <?php 
-            $menu = App\Models\Menu::where(['lang' => app()->getLocale(), 'menu_type' => 'header'])->with('children')
-            ->where('parent_menu_id', 0) // only root menus
-            ->get();
+                $menu = App\Models\Menu::where(['lang' => app()->getLocale(), 'menu_type' => 'header'])->with('children')
+                ->where('parent_menu_id', 0) // only root menus
+                ->get();
             ?>
             <?php 
-            $menuList = [];
-            $i = 1;
+                $menuList = [];
+                $i = 1;
             foreach ($menu as $item) :
                 $menuItem = [
                     'title' => $item->title,
@@ -322,8 +322,8 @@
                 </div>
             </div>
          
-        </div>
-         <div class="mobile-menu-wrapper relative w-[50px] h-[50px] hidden z-100 duration-350 lg:block">
+        
+        <div class="mobile-menu-wrapper relative w-[50px] h-[50px] hidden z-100 duration-350 lg:block">
             <div
                 class="open-mobile-menu-trigger absolute right-0 bottom-0 group/trigger cursor-pointer size-[50px] bg-white shadow-lg opacity-100 pointer-events-auto duration-350 [&.in-active]:pointer-events-none [&.in-active]:opacity-0">
                 <div
