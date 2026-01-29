@@ -138,13 +138,6 @@
                             </div>
                         </div>
                     <?php endforeach; ?>
-                    <?php foreach ($about_certificates as $key => $item) : ?>
-                        <div class="item swiper-slide">
-                            <div class="inner h-[50px] opacity-50 flex justify-center items-center duration-350 hover:opacity-100">
-                            <img src="{{ asset( getFolder(['uploads_folder', 'images_folder'], $item->lang) .'/'. $item->image ) }}" alt="" class="size-full object-contain object-center">
-                            </div>
-                        </div>
-                    <?php endforeach; ?>
                 </div>
             </div>
         </div>
