@@ -127,10 +127,12 @@
 
     <!-- REFERANCE SECTION -->
     <?php $moduleId = 'id="c"';?>
+
     <section class="referance-section py-[120px] 2xl:py-[50px] lg:py-[45px] md:py-[30px]" <?= isset($moduleId) ? $moduleId : '' ?>>
         <div class="max-w-[1800px] container">
-            <div class="wrapper about-certificates ">
-                <div class="swiper-wrapper srb-all">
+            <div class="wrapper sm-certificates-slider sm:overflow-hidden">
+                <?php $list = ['image-1.png', 'image-2.png', 'image-4.png', 'image-5.png', 'image-3.png',]; ?>
+                <div class="min-sm:grid min-sm:grid-cols-5 min-sm:justify-between swiper-wrapper srb-all">
                     <?php foreach ($about_certificates as $key => $item) : ?>
                         <div class="item swiper-slide">
                             <div class="inner h-[50px] opacity-50 flex justify-center items-center duration-350 hover:opacity-100">
