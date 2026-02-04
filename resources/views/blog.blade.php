@@ -85,7 +85,7 @@
                     <i class="icon icon-chevron-down2 text-[10px] h-[10px] text-white flex leading-normal absolute right-[30px] top-[50%] translate-y-[-50%] z-2 duration-350 group-hover/select:rotate-180"></i>
                 </div>
                 <div class="search-field w-full relative sm:order-1">
-                    <input type="text" name="" id="" placeholder="{{getStaticText(45)}}" class="search-bar w-full h-[70px] bg-[#F7F7F7] rounded-[8px] pl-[35px] pr-[60px] md:h-[60px] xsm:pl-[27px]">
+                    <input type="text" name="blog_search" id="blog_search" placeholder="{{getStaticText(45)}}" class="search-bar w-full h-[70px] bg-[#F7F7F7] rounded-[8px] pl-[35px] pr-[60px] md:h-[60px] xsm:pl-[27px]">
                     <i class="icon icon-search text-[25px] h-[25px] text-black absolute right-[30px] top-[50%] translate-y-[-50%] flex leading-normal cursor-pointer xsm:text-[20px] xsm:h-[20px] xsm:right-[27px]"></i>
                 </div>
             </div>
@@ -151,3 +151,25 @@
     
 </main>
 @endsection 
+
+@section('scripts')
+    <script>
+    // blog_search id inputuna yazılan değere göre blogları filtreleme işlemi
+    document.getElementById('blog_search').addEventListener('input', function() {
+        const searchTerm = this.value.toLowerCase();
+        const blogItems = document.querySelectorAll('.blog-item');
+
+        blogItems.forEach(item => {
+            const title = item.querySelector('.blog-title').textContent.toLowerCase();
+            const description = item.querySelector('.blog-expo').textContent.toLowerCase();
+
+            if (title.includes(searchTerm) || description.includes(searchTerm)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
+        });
+    });
+
+    </script>
+@endsection

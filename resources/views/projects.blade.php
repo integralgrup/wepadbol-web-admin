@@ -14,7 +14,7 @@
         <div class="content relative h-full">
             <div class="background [background:_linear-gradient(180deg,_rgba(0,_0,_0,_0.50)_0%,_rgba(0,_0,_0,_0.15)_100%);] absolute top-0 left-0 size-full z-2 translate-z-0 overflow-hidden"></div>
             <div class="image size-full overflow-hidden translate-z-0">
-                <img src="../assets/image/jpg/<?= $breadcrumbImage ?>" alt="" class="size-full object-cover object-center" />
+                <img src="{{ asset( getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) . '/' . $static_images['project_header_image']->image )  }}" alt="" class="size-full object-cover object-center" />
             </div>
         </div>
     </div>

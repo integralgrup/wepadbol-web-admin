@@ -45,7 +45,6 @@ class HomeController extends Controller
             $imagesByTitle[$image->title] = $image;
         }
 
-
         view()->share('static_images', $imagesByTitle);
 
         //dd($imagesByTitle);
