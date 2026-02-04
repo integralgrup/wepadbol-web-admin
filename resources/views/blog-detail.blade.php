@@ -106,10 +106,15 @@
                             <div id="#printPage" class="text-editor gap-[40px] max-w-[600px] 2xl:max-w-full editor-p:opacity-65 editor-p:text-[#52555C] md:gap-[20px]">
                                 {!! $blog->description !!}
                             </div>
-                            <?php $list = ['facebook2', 'whatsapp', 'linkedin2', 'x',]; ?>
+                            <?php $list = [
+                                ['icon' => 'facebook2', 'url' => 'https://www.facebook.com/sharer/sharer.php?u='.urlencode(url()->current())], 
+                                ['icon' => 'whatsapp', 'url' => 'https://wa.me/?text='.urlencode(url()->current())], 
+                                ['icon' => 'linkedin2', 'url' => 'https://www.linkedin.com/sharing/share-offsite/?url='.urlencode(url()->current())], 
+                                ['icon' => 'twitter2', 'url' => 'https://twitter.com/intent/tweet?url='.urlencode(url()->current())]
+                            ]; ?>
                             <div class="blog-social-media flex min-sm:flex-col items-center gap-[30px] h-fit md:gap-[15px]">
                                 <?php foreach ($list as $key => $item) : ?>
-                                    <a href="" class="icon icon-<?= $item ?> text-[25px] h-[25px] text-[#B0B0B0] leading-normal flex duration-350 hover:text-green"></a>
+                                    <a target="_blank" href="<?= $item['url'] ?? '#' ?>" class="icon icon-<?= $item['icon'] ?? $item ?> text-[25px] h-[25px] text-[#B0B0B0] leading-normal flex duration-350 hover:text-green"></a>
                                 <?php endforeach; ?>
                                 <a href="javascript:;" class="icon icon-copy-link copy-link text-[25px] h-[25px] text-[#B0B0B0] leading-normal flex duration-350 hover:text-green"></a>
                                 <a href="javascript:;" class="icon icon-print printer-button text-[25px] h-[25px] text-[#B0B0B0] leading-normal flex duration-350 hover:text-green"></a>
