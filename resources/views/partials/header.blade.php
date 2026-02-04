@@ -147,22 +147,22 @@
                                                     <div class="swiper-wrapper">
                                                         <!-- EN AZ 6 ADET OLACAK FOREACH YAPILMALI -->
 
-                                                        <?php foreach ($item['mega'] as $key => $item): ?>
+                                                        <?php foreach ($item['mega'] as $key => $item_2): ?>
                                                             <div
                                                                 class="swiper-slide group/slide duration-350 [&.swiper-slide-active]:z-10">
                                                                 <div
                                                                     class="image w-full ml-auto max-w-[260px] h-[205px] aspect-[13/10] blur-[3.5px] opacity-0 overflow-hidden rounded-[16px] duration-350 group-[&.swiper-slide-prev]/slide:opacity-100 group-[&.swiper-slide-prev]/slide:mt-[5px] group-[&.swiper-slide-next]/slide:opacity-100 group-[&.swiper-slide-next]/slide:mt-[-50px] group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:scale-y-[1.75] group-[&.swiper-slide-active]/slide:blur-0 group-[&.swiper-slide-active]/slide:mr-[240px] group-[&.swiper-slide-active]/slide:mt-[-50px] group-[&.swiper-slide-active]/slide:scale-x-[1.75] xl:h-[175px]">
-                                                                    <img src="<?= asset( getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) . '/' . $item['image'] ) ?>"
+                                                                    <img src="<?= asset( getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) . '/' . $item_2['image'] ) ?>"
                                                                         class="size-full object-cover object-center">
                                                                 </div>
                                                             </div>
                                                         <?php endforeach; ?>
-                                                        <?php foreach ($item['mega'] as $key => $item): ?>
+                                                        <?php foreach ($item['mega'] as $key => $item_3): ?>
                                                             <div
                                                                 class="swiper-slide group/slide duration-350 [&.swiper-slide-active]:z-10">
                                                                 <div
                                                                     class="image w-full ml-auto max-w-[260px] h-[205px] aspect-[13/10] blur-[3.5px] opacity-0 overflow-hidden rounded-[16px] duration-350 group-[&.swiper-slide-prev]/slide:opacity-100 group-[&.swiper-slide-prev]/slide:mt-[5px] group-[&.swiper-slide-next]/slide:opacity-100 group-[&.swiper-slide-next]/slide:mt-[-50px] group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:scale-y-[1.75] group-[&.swiper-slide-active]/slide:blur-0 group-[&.swiper-slide-active]/slide:mr-[240px] group-[&.swiper-slide-active]/slide:mt-[-50px] group-[&.swiper-slide-active]/slide:scale-x-[1.75] xl:h-[175px]">
-                                                                    <img src="<?= asset( getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) . '/' . $item['image'] ) ?>"
+                                                                    <img src="<?= asset( getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) . '/' . $item_3['image'] ) ?>"
                                                                         class="size-full object-cover object-center">
                                                                 </div>
                                                             </div>
