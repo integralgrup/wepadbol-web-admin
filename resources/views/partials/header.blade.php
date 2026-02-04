@@ -83,6 +83,7 @@
                         $subChild = [
                             'title' => $child->title,
                             'url' => $child->seo_url == 'javascript:;' ? 'javascript:;' : env('HTTP_DOMAIN') .'/'. $child->seo_url,
+                            'image' => $child->image ??  null,
                         ];
                         if( $child->children->isNotEmpty() ) {
                             $subChild['sub-menu'] = $child->children->map(function($subChild) {
@@ -124,15 +125,15 @@
                                         <div
                                             class="grid grid-cols-[minmax(0,330px)_minmax(0,710px)] relative xl:grid-cols-[minmax(0,330px)_minmax(0,570px)] rtl:gap-[100px]">
                                             <div class="pages-field flex flex-col justify-center gap-[50px]">
-                                                <?php foreach ($item['mega'] as $key => $item): ?>
+                                                <?php foreach ($item['mega'] as $key => $item_): ?>
                                                     <div class="item group/item <?= $key == 0 ? 'is-active' : '' ?>">
                                                         <h2
                                                             class="title text-[#98A2B7] text-[48px] font-normal leading-[48px] relative cursor-pointer before:absolute before:left-[-30px] before:top-[50%] before:translate-y-[-50%] before:w-[12px] before:h-[12px] before:bg-[#98A2B7] before:duration-350 duration-350 group-hover/item:text-black group-hover/item:before:bg-black group-[&.is-active]/item:before:bg-green group-[&.is-active]/item:text-green">
-                                                            <?= $item['title'] ?>
+                                                            <?= $item_['title'] ?>
                                                         </h2>
                                                         <div
                                                             class="sub-pages flex-col gap-[24px] hidden bg-white  mt-[30px] pb-[10px] duration-350 group-[&.is-active]/item:mt-[30px] group-[&.is-active]/item:flex">
-                                                            <?php foreach ($item['sub-menu'] as $key => $page): ?>
+                                                            <?php foreach ($item_['sub-menu'] as $key => $page): ?>
                                                                 <a href="<?= $page['url'] ?>"
                                                                     class="text text-[#B7BCC7] text-[24px] font-medium leading-[36px] duration-350 hover:text-black"><?= $page['title'] ?></a>
                                                             <?php endforeach; ?>
@@ -146,18 +147,16 @@
                                                     <div class="swiper-wrapper">
                                                         <!-- EN AZ 6 ADET OLACAK FOREACH YAPILMALI -->
 
-                                                        <?php
-                                                        for ($i = 1; $i <= 6; $i++):
-                                                            ?>
+                                                        <?php foreach ($item['mega'] as $key => $item): ?>
                                                             <div
                                                                 class="swiper-slide group/slide duration-350 [&.swiper-slide-active]:z-10">
                                                                 <div
                                                                     class="image w-full ml-auto max-w-[260px] h-[205px] aspect-[13/10] blur-[3.5px] opacity-0 overflow-hidden rounded-[16px] duration-350 group-[&.swiper-slide-prev]/slide:opacity-100 group-[&.swiper-slide-prev]/slide:mt-[5px] group-[&.swiper-slide-next]/slide:opacity-100 group-[&.swiper-slide-next]/slide:mt-[-50px] group-[&.swiper-slide-active]/slide:opacity-100 group-[&.swiper-slide-active]/slide:scale-y-[1.75] group-[&.swiper-slide-active]/slide:blur-0 group-[&.swiper-slide-active]/slide:mr-[240px] group-[&.swiper-slide-active]/slide:mt-[-50px] group-[&.swiper-slide-active]/slide:scale-x-[1.75] xl:h-[175px]">
-                                                                    <img src="../assets/image/jpg/image-<?php echo $i; ?>.jpg"
+                                                                    <img src="<?= asset( getFolder(['uploads_folder', 'images_folder'], app()->getLocale()) . '/' . $item['image'] ) ?>"
                                                                         class="size-full object-cover object-center">
                                                                 </div>
                                                             </div>
-                                                        <?php endfor; ?>
+                                                        <?php endforeach; ?>
 
                                                     </div>
                                                 </div>

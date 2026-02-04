@@ -95,11 +95,14 @@ class MenuController extends Controller
                     // save image if it exists
                     if ($request->hasFile('image_en') || $request->hasFile('image_' . $language->lang_code)) {
                         $tmpImgPath = createTmpFile($request, 'image_en', $languages[0]);
+                        //dd($tmpImgPath);
                         $imageName = moveFile($request,$language,'image_' . $language->lang_code, 'image_en', 'title_' . $language->lang_code, 'title_en', $language->images_folder, $tmpImgPath);
                         //dd($imageName);
                     }else{
                         $imageName = $request->input('old_image_' . $language->lang_code, null) ?? null; // Use old image if no new image is uploaded
                     }
+
+                    //dd($imageName);
 
                     // Update or create the menu item for the specific language
                     Menu::updateOrCreate(
