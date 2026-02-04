@@ -287,7 +287,7 @@
                     dots.forEach(function(dot) {
                         dot.addEventListener('click', function() {
                             const continent = this.getAttribute('data-continent');  
-                            alert(continent); // For testing purposes
+                            
                             document.querySelector('.popup-project-title').textContent = continent.charAt(0).toUpperCase() + continent.slice(1);
                             let count = 0;
                             const items = document.querySelectorAll('.popup-project-item');
