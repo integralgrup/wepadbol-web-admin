@@ -7,6 +7,7 @@ use App\Models\Slider;
 use App\Models\Language;
 use App\Models\Blog;
 use App\Models\BlogSlider;
+use App\Models\Rating;
 use App\Models\About;
 use App\Models\Menu;
 use App\Models\Office;
@@ -215,7 +216,7 @@ class HomeController extends Controller
                 // Get blog posts limit 5 as array
                 $blogs = Blog::where(['lang' => app()->getLocale()])->limit(5)->get();
                 //dd($blogs);
-                $blog = Blog::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->firstOrFail();
+                $blog = Blog::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->with('ratings')->firstOrFail();
                 $seo = $blog;
                 $blogSlider = BlogSlider::where(['lang' => app()->getLocale(), 'blog_id' => $blog->blog_id])->get();
                 //dd($blogSlider);

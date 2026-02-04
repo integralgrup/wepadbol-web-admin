@@ -33,4 +33,20 @@ class Blog extends Model
         'deleted_at',
     ];
 
+    public function ratings()
+    {
+        return $this->hasMany(Rating::class, 'blog_id', 'blog_id');
+    }
+
+    public function averageRating()
+    {
+        return round($this->ratings()->avg('rating'), 1);
+    }
+
+    public function ratingsCount()
+    {
+        return $this->ratings()->count();
+    }
+
+
 }

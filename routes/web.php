@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 
 use App\Http\Controllers\SitemapController;
+use App\Http\Controllers\RatingController;
 use Illuminate\Support\Facades\Route;
 
 
@@ -314,3 +315,5 @@ Route::get('/sitemap.xml', [SitemapController::class, 'index']);
 //Home route
 Route::get('/', 'App\Http\Controllers\HomeController@index')->name('home');
 Route::get('{slug}/{slug2?}', 'App\Http\Controllers\HomeController@route')->name('page.route');
+
+Route::post('/rate-blog', [RatingController::class, 'store'])->name('blog.rate');

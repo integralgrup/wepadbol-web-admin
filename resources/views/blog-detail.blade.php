@@ -8,7 +8,21 @@
         $pageLink = "page-corporate.php";
         $imageOrVideo = "image";
     ?> 
+<style>
+    .star {
+        cursor: pointer;
+    }
 
+    .star path {
+        transition: fill .2s;
+    }
+    .rating-box {
+        display: flex;
+        gap: 3px;
+        align-items: center;
+    }
+
+</style>
 <main class="main-field header-space blue-menu sm:!mt-[-10px]">
 
     <!-- CONTENT -->
@@ -92,13 +106,29 @@
                                 <small class="date text-green text-[18px] font-medium leading-[28px] w-max">{{ date('d/m/Y', strtotime($blog->created_at)) }}</small>
                             </div>
                             <div class="blog-stars">
-                                <svg width="115" height="21" viewBox="0 0 115 21" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M10.4545 0L12.8017 7.22391L20.3974 7.22391L14.2524 11.6885L16.5996 18.9124L10.4545 14.4478L4.30952 18.9124L6.65671 11.6885L0.511682 7.22391L8.10735 7.22391L10.4545 0Z" fill="#FFCD18" />
-                                    <path d="M33.9775 0L36.3247 7.22391L43.9204 7.22391L37.7753 11.6885L40.1225 18.9124L33.9775 14.4478L27.8325 18.9124L30.1797 11.6885L24.0346 7.22391L31.6303 7.22391L33.9775 0Z" fill="#FFCD18" />
-                                    <path d="M57.5 0L59.8471 7.22391L67.4428 7.22391L61.2978 11.6885L63.645 18.9124L57.5 14.4478L51.3549 18.9124L53.7021 11.6885L47.5571 7.22391L55.1528 7.22391L57.5 0Z" fill="#FFCD18" />
-                                    <path d="M81.0229 0L83.3701 7.22391L90.9658 7.22391L84.8207 11.6885L87.1679 18.9124L81.0229 14.4478L74.8779 18.9124L77.2251 11.6885L71.08 7.22391L78.6757 7.22391L81.0229 0Z" fill="#FFCD18" />
-                                    <path d="M104.545 0L106.893 7.22391L114.488 7.22391L108.343 11.6885L110.69 18.9124L104.545 14.4478L98.4003 18.9124L100.748 11.6885L94.6025 7.22391L102.198 7.22391L104.545 0Z" fill="#D9D9D9" />
-                                </svg>
+                                <div class="rating-box" data-blog="{{ $blog->blog_id }}">
+
+                                    @for ($i = 1; $i <= 5; $i++)
+                                    <svg class="star"
+                                        data-value="{{ $i }}"
+                                        width="22"
+                                        height="19"
+                                        viewBox="0 0 21 19"
+                                        xmlns="http://www.w3.org/2000/svg">
+
+                                        <path d="M10.4545 0L12.8017 7.22391L20.3974 7.22391L14.2524 11.6885L16.5996 18.9124L10.4545 14.4478L4.30952 18.9124L6.65671 11.6885L0.511682 7.22391L8.10735 7.22391L10.4545 0Z"
+                                            fill="#ccc"/>
+
+                                    </svg>
+                                    @endfor
+
+                                    </div>
+
+                                    <div class="rating-info" style="display: none">
+                                        Average: <span id="avg">{{ $blog->averageRating() }}</span>
+                                        (<span id="count">{{ $blog->ratingsCount() }}</span>)
+                                    </div>
+
                             </div>
                         </div>
                         <h2 class="title srt text-blue text-[48px] font-bold leading-[64px] opacity-90 uppercase mb-[50px] xl:text-[40px] lg:text-[30px] lg:leading-normal lg:mb-[15px]">{{ $blog->title }}</h2>
@@ -193,5 +223,71 @@
     </div>
 </section>
 </main>
+
+@endsection
+
+@section('scripts')
+<script>
+
+document.addEventListener('DOMContentLoaded', function () {
+    const avg = Math.round({{ $blog->averageRating() }});
+    paintStars(avg);
+});
+
+
+const stars = document.querySelectorAll('.star');
+const box = document.querySelector('.rating-box');
+
+function paintStars(value) {
+    stars.forEach(star => {
+        const v = star.dataset.value;
+        star.querySelector('path').setAttribute(
+            'fill',
+            v <= value ? '#FFCD18' : '#ccc'
+        );
+    });
+}
+
+stars.forEach(star => {
+
+    // Hover preview
+    star.addEventListener('mouseenter', function () {
+        paintStars(this.dataset.value);
+    });
+
+    // Restore on leave
+    box.addEventListener('mouseleave', function () {
+        paintStars(box.dataset.selected || 0);
+    });
+
+    // Click rating
+    star.addEventListener('click', function () {
+
+        const rating = this.dataset.value;
+        const blogId = box.dataset.blog;
+
+        box.dataset.selected = rating;
+
+        fetch("{{ route('blog.rate') }}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRF-TOKEN": "{{ csrf_token() }}"
+            },
+            body: JSON.stringify({
+                blog_id: blogId,
+                rating: rating
+            })
+        })
+        .then(r => r.json())
+        .then(data => {
+            document.getElementById('avg').innerText = data.average;
+            document.getElementById('count').innerText = data.count;
+        });
+
+    });
+
+});
+</script>
 
 @endsection
