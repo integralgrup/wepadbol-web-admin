@@ -275,6 +275,7 @@
                                         $list[] = [
                                             'country_title' => $project->country->title,
                                             'continent' => $project->country->continent->class,
+                                            'continentLocale' => $project->country->continent->title,
                                             'top' => $project->country->top,
                                             'left' => $project->country->left,
                                         ];
@@ -282,7 +283,7 @@
                                 ?>
                                 <div class="map-dot-wrapper absolute left-[50%] translate-x-[-50%] top-0 size-full xsm:h-[275px] xs:w-[130%] pointer-events-none">
                                     <?php foreach ($list as $key => $item) : ?>
-                                    <a href="#popup-project" data-fancybox class="dot-field is-active absolute pointer-events-auto group/dot opacity-0 scale-0 invisible duration-350 [&.is-active]:scale-100 [&.is-active]:opacity-100 [&.is-active]:visible" style="left: <?= $item['left'] ?>%; top: <?= $item['top'] ?>%;" data-continent="<?= $item['continent'] ?>">
+                                    <a href="#popup-project" data-fancybox class="dot-field is-active absolute pointer-events-auto group/dot opacity-0 scale-0 invisible duration-350 [&.is-active]:scale-100 [&.is-active]:opacity-100 [&.is-active]:visible" style="left: <?= $item['left'] ?>%; top: <?= $item['top'] ?>%;" data-continent="<?= $item['continent'] ?>" data-continentLocale="<?= $item['continentLocale'] ?>">
                                         <div class="icon icon-marker text-[25px] h-[25px] text-blue [-webkit-text-stroke:1px_rgba(3,36,107,0)] leading-normal flex duration-350 pointer-events-none group-hover/dot:text-white group-hover/dot:[-webkit-text-stroke:1px_rgba(3,36,107,1)] sm:text-[20px] sm:h-[20px]"></div>
                                             <div class="dot-visible-content absolute rounded-[10px] px-[10px] py-[5px] left-[calc(100%)] -translate-y-1/2 top-1/2 bg-blue/20 backdrop-blur-lg sm:hidden opacity-0 invisible duration-450 translate-x-10 group-hover/dot:opacity-100 group-hover/dot:visible group-hover/dot:translate-x-0 group-[&.active]/dot:opacity-100 group-[&.active]/dot:visible group-[&.active]/dot:translate-x-0">
                                             <p class="text text-[16px] text-white leading-tight whitespace-nowrap text-center">{{$item['country_title']}} </p>
@@ -344,7 +345,7 @@
             <div class="content-field">
                 <div class="popup-project-wrapper grid grid-cols-2 gap-[30px] md:grid-cols-1 scrollbar scrollbar-w-[5px] scrollbar-track-rounded-[5px] scrollbar-thumb-rounded-[5px] scrollbar-thumb-primary scrollbar-track-primary/10 overflow-x-hidden overflow-y-auto pr-[20px]">
                     <?php foreach($projects as $key => $item) : ?>
-                        <div class="popup-project-item item relative group/item" data-continent="{{ strtolower($item->country->continent->title) }}">
+                        <div class="popup-project-item item relative group/item" data-continent="{{ strtolower($item->country->continent->class) }}">
                             <div class="content bg-white duration-350 min-md:group-hover/item:bg-primary-500">
                                 <div class="image-field aspect-[460/275]">
                                     <a href="{{ env('HTTP_DOMAIN') . '/' . getUrl('project_url') . '/' . $item->seo_url }}" class="block w-full h-full image overflow-hidden translate-z-0 group/image">
