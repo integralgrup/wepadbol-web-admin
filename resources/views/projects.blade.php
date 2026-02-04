@@ -344,7 +344,7 @@
             <div class="content-field">
                 <div class="popup-project-wrapper grid grid-cols-2 gap-[30px] md:grid-cols-1 scrollbar scrollbar-w-[5px] scrollbar-track-rounded-[5px] scrollbar-thumb-rounded-[5px] scrollbar-thumb-primary scrollbar-track-primary/10 overflow-x-hidden overflow-y-auto pr-[20px]">
                     <?php foreach($projects as $key => $item) : ?>
-                        <div class="popup-project-item item relative group/item">
+                        <div class="popup-project-item item relative group/item" data-continent="{{ strtolower($item->country->continent->title) }}">
                             <div class="content bg-white duration-350 min-md:group-hover/item:bg-primary-500">
                                 <div class="image-field aspect-[460/275]">
                                     <a href="{{ env('HTTP_DOMAIN') . '/' . getUrl('project_url') . '/' . $item->seo_url }}" class="block w-full h-full image overflow-hidden translate-z-0 group/image">
@@ -363,7 +363,7 @@
                                         </div>
                                         <div class="button-field mt-[24px] lg:mt-[20px] md:mt-[15px]">
                                             <a href="{{ env('HTTP_DOMAIN') . '/' . getUrl('project_url') . '/' . $item->seo_url }}" class="flex items-center gap-[15px] w-fit group/link opacity-65 duration-350 min-md:hover:opacity-100">
-                                                <span class="text text-[16px] sm:text-[14px] leading-tight text-[#1E1E1E] font-medium duration-350 min-md:group-hover/item:text-white tracking-[0.25rem]">{{getStaticText(36)}}</span>
+                                                <span class="text text-[16px] sm:text-[14px] leading-tight text-[#1E1E1E] font-medium duration-350 min-md:group-hover/item:text-white tracking-[0.25rem]">{{ getStaticText(57) }}</span>
                                                 <i class="icon icon-arrow-right text-[27px] h-[27px] text-[#1E1E1E] min-md:group-hover/item:text-white group-hover/link:translate-x-[3px] block leading-none duration-350"></i>
                                             </a>
                                         </div>

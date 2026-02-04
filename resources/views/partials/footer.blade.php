@@ -279,6 +279,31 @@
         <script src="../assets/js/script.js?v=1234"></script>
         
         {!! $code->bitrix_widget_code !!}
+
+        <script>
+                document.addEventListener('DOMContentLoaded', function() {
+                    // Map dot click event
+                    const dots = document.querySelectorAll('.dot-field');
+                    dots.forEach(function(dot) {
+                        dot.addEventListener('click', function() {
+                            const continent = this.getAttribute('data-continent');  
+                            alert(continent); // For testing purposes
+                            document.querySelector('.popup-project-title').textContent = continent.charAt(0).toUpperCase() + continent.slice(1);
+                            let count = 0;
+                            const items = document.querySelectorAll('.popup-project-item');
+                            items.forEach(function(item) {
+                                if (item.getAttribute('data-continent') === continent) {
+                                    item.style.display = 'block';
+                                    count++;
+                                } else {
+                                    item.style.display = 'none';
+                                }
+                            });
+                            document.querySelector('.popup-project-count').textContent = count;
+                        });
+                    });
+                });
+    </script>
     </body>
 
 </html>
