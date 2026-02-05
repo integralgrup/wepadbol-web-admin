@@ -226,6 +226,7 @@ class HomeController extends Controller
                 $seo = SeoSettings::where('page', 'news')->where('lang', app()->getLocale())->first();
                 $blogs = Blog::where(['lang' => app()->getLocale()])->limit(5)->get();
                 //dd($blogs);
+                dd($blogs);
                 return view('blog', compact('blogs', 'seo'));
             }
         }
