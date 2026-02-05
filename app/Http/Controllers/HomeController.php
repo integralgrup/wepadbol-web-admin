@@ -94,7 +94,7 @@ class HomeController extends Controller
     public function route($slug, $slug2 = null)
     {
         
-        dd($slug, $slug2);
+        //dd($slug, $slug2);
 
         if($slug == 'copy-db') {
 
@@ -110,6 +110,9 @@ class HomeController extends Controller
         }
 
         $menu = Menu::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->firstOrFail();
+
+
+        dd($menu);
 
         
         // If the menu item has a page_type of 'about', fetch the about data
@@ -218,7 +221,7 @@ class HomeController extends Controller
                 $blogs = Blog::where(['lang' => app()->getLocale()])->limit(5)->get();
                 //dd($blogs);
                 $blog = Blog::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->with('ratings')->firstOrFail();
-                dd($slug2, $blog);
+                //dd($slug2, $blog);
                 $seo = $blog;
                 $blogSlider = BlogSlider::where(['lang' => app()->getLocale(), 'blog_id' => $blog->blog_id])->get();
                 //dd($blogSlider);
@@ -227,7 +230,7 @@ class HomeController extends Controller
                 $seo = SeoSettings::where('page', 'news')->where('lang', app()->getLocale())->first();
                 $blogs = Blog::where(['lang' => app()->getLocale()])->limit(5)->get();
                 //dd($blogs);
-                dd($blogs);
+                //dd($blogs);
                 return view('blog', compact('blogs', 'seo'));
             }
         }
