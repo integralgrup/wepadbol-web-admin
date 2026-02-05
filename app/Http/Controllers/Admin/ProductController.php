@@ -547,10 +547,12 @@ class ProductController extends Controller
     public function typeDestroy($id, $typeId)
     {
         try {
-            $type = ProductType::findOrFail($typeId);
+            $type = ProductType::where(['product_id' => $id, 'type_id' => $typeId])->get();
             // Delete the image file from storage if needed
             // Storage::delete('path/to/image/' . $type->image);
-            $type->delete();
+            foreach($type as $t){
+                $t->delete();
+            }
             return redirect()->route('admin.product.type.index', $id)->with('success', 'Product type deleted successfully!');
         } catch (\Throwable $th) {
             return redirect()->route('admin.product.type.index', $id)->with('error', 'An error occurred while deleting the product type.');
