@@ -94,6 +94,7 @@ class HomeController extends Controller
     public function route($slug, $slug2 = null)
     {
         
+        dd($slug, $slug2);
 
         if($slug == 'copy-db') {
 
