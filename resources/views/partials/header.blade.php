@@ -82,14 +82,14 @@
                     $menuItem['mega'] = $item->children->map(function($child) {
                         $subChild = [
                             'title' => $child->title,
-                            'url' => $child->seo_url == 'javascript:;' ? 'javascript:;' : env('HTTP_DOMAIN') .'/'. $child->seo_url,
+                            'url' => $child->seo_url == 'javascript:;' ? 'javascript:;' : $child->seo_url,
                             'image' => $child->image ??  null,
                         ];
                         if( $child->children->isNotEmpty() ) {
                             $subChild['sub-menu'] = $child->children->map(function($subChild) {
                                 return [
                                     'title' => $subChild->title,
-                                    'url' => $subChild->seo_url == 'javascript:;' ? 'javascript:;' : env('HTTP_DOMAIN') .'/'. $subChild->seo_url,
+                                    'url' => $subChild->seo_url == 'javascript:;' ? 'javascript:;' : $subChild->seo_url,
                                 ];
                             })->toArray();
                         }else{
@@ -128,13 +128,14 @@
                                                 <?php foreach ($item['mega'] as $key => $item_): ?>
                                                     <div class="item group/item <?= $key == 0 ? 'is-active' : '' ?>">
                                                         <h2
+                                                            data-url="<?= $item_['url'] ?>"
                                                             class="title text-[#98A2B7] text-[48px] font-normal leading-[48px] relative cursor-pointer before:absolute before:left-[-30px] before:top-[50%] before:translate-y-[-50%] before:w-[12px] before:h-[12px] before:bg-[#98A2B7] before:duration-350 duration-350 group-hover/item:text-black group-hover/item:before:bg-black group-[&.is-active]/item:before:bg-green group-[&.is-active]/item:text-green">
                                                             <?= $item_['title'] ?>
                                                         </h2>
                                                         <div
                                                             class="sub-pages flex-col gap-[24px] hidden bg-white  mt-[30px] pb-[10px] duration-350 group-[&.is-active]/item:mt-[30px] group-[&.is-active]/item:flex">
                                                             <?php foreach ($item_['sub-menu'] as $key => $page): ?>
-                                                                <a href="<?= $page['url'] ?>"
+                                                                <a href="<?= env('HTTP_URL') .'/'. $item_['url'].'/'.$page['url'] ?>" data-parent-url="<?= $item_['url'] ?>"
                                                                     class="text text-[#B7BCC7] text-[24px] font-medium leading-[36px] duration-350 hover:text-black"><?= $page['title'] ?></a>
                                                             <?php endforeach; ?>
                                                         </div>
