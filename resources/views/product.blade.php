@@ -84,16 +84,18 @@ $breadcrumbTitle = $product->title;
                                 <i class="icon relative z-2 icon-pdf text-green text-[20px] h-[20px] flex items-center leading-normal duration-350 min-sm:group-hover/button:rotate-90"></i>
                             </a>
                         </div>
-                        <div class="product-customization-field flex flex-col gap-[25px] xsm:flex-col sm:flex-row sm:items-center sm:justify-between">
-                            <div class="product-customization-content text-[#52555C]/50 text-[18px] font-semibold leading-[28px]">{{getStaticText(27)}} : <span class="product-theme text-green font-semibold">Padel Turf Red</span> </div>
-                            <div class="product-customization-image flex items-center gap-[20px]">
-                                <?php foreach ($product->types as $key => $item) : ?>
-                                    <div data-code="<?= $item['title'] ?>" class="customization-item <?= $key == 2 ? 'is-active' : '' ?> size-[85px] rounded-full overflow-hidden border-[2px] border-solid border-transparent p-[7px] flex justify-center items-center cursor-pointer duration-350 hover:border-blue/5 [&.is-active]:border-green sm:size-[70px]">
-                                        <img src="{{ asset(getFolder(['uploads_folder', 'product_images_folder'], $product->lang) .'/'. $item['image']) }}" alt="" class="size-full object-cover object-center rounded-full overflow-hidden">
-                                    </div>
-                                <?php endforeach; ?>
+                        @if(count($product->types) > 0)
+                            <div class="product-customization-field flex flex-col gap-[25px] xsm:flex-col sm:flex-row sm:items-center sm:justify-between">
+                                <div class="product-customization-content text-[#52555C]/50 text-[18px] font-semibold leading-[28px]">{{getStaticText(27)}} : <span class="product-theme text-green font-semibold">Padel Turf Red</span> </div>
+                                <div class="product-customization-image flex items-center gap-[20px]">
+                                    <?php foreach ($product->types as $key => $item) : ?>
+                                        <div data-code="<?= $item['title'] ?>" class="customization-item <?= $key == 2 ? 'is-active' : '' ?> size-[85px] rounded-full overflow-hidden border-[2px] border-solid border-transparent p-[7px] flex justify-center items-center cursor-pointer duration-350 hover:border-blue/5 [&.is-active]:border-green sm:size-[70px]">
+                                            <img src="{{ asset(getFolder(['uploads_folder', 'product_images_folder'], $product->lang) .'/'. $item['image']) }}" alt="" class="size-full object-cover object-center rounded-full overflow-hidden">
+                                        </div>
+                                    <?php endforeach; ?>
+                                </div>
                             </div>
-                        </div>
+                        @endif
                     </div>
                 </div>
             </div>
