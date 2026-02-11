@@ -260,7 +260,7 @@ $breadcrumbTitle = $product->title;
                                 <?php foreach ($products as $key => $item) : ?>
                                     <div class="swiper-slide">
                                         <div class="image relative size-full aspect-[52/47] overflow-hidden">
-                                            <img src="{{ getFolder(['uploads_folder', 'product_images_folder'], $item->lang) . '/' . $item->slider_image }}" alt="{{$item->alt}}" class="size-full object-cover object-center" data-swiper-parallax-x="50%">
+                                            <img src="{{ env('HTTP_DOMAIN') . '/' . getFolder(['uploads_folder', 'product_images_folder'], $item->lang) . '/' . $item->slider_image }}" alt="{{$item->alt}}" class="size-full object-cover object-center" data-swiper-parallax-x="50%">
                                             <div class="blue-overlay size-full absolute left-0 top-0 bg-blue z-2 pointer-events-none duration-1000 ease-manidar [&.in-active]:translate-y-full"></div>
                                         </div>
                                     </div>
