@@ -267,7 +267,7 @@ $breadcrumbImage = 'image-32.jpg';
          </div>
          <div class="wrapper">
              <div class="faq-section max-w-[1200px] mx-auto">
-                 <h2 class="title w-fit relative mx-auto mb-[80px] text-blue text-[32px] leading-[48px] uppercase text-center before:absolute before:left-[-30px] before:top-[50%] before:translate-y-[-50%] before:size-[15px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[15px] xsm:text-[30px] sm:before:hidden sm:ml-0 sm:text-[40px] sm:leading-normal md:[&>_br]:hidden md:mb-[30px] xl:text-[35px]"><strong>Wepadbol</strong> Frequently Asked Questions</h2>
+                 <h2 class="title w-fit relative mx-auto mb-[80px] text-blue text-[32px] leading-[48px] uppercase text-center before:absolute before:left-[-30px] before:top-[50%] before:translate-y-[-50%] before:size-[15px] before:h-0 before:bg-green before:duration-350 group-[&.is-active]/container:before:h-[15px] xsm:text-[30px] sm:before:hidden sm:ml-0 sm:text-[40px] sm:leading-normal md:[&>_br]:hidden md:mb-[30px] xl:text-[35px]"><strong>Wepadbol</strong> getStaticText(58)</h2>
                  <div class="faq-container flex flex-col gap-[40px]">
                      <?php foreach ($club->faqs as $key => $item) : ?>
                          <div class="faq-item group/faq cursor-pointer w-full px-[70px] h-auto py-[32px] rounded-[8px] overflow-hidden ease-manidar border border-solid border-blue/10 flex flex-col justify-center gap-0 duration-350 [&.is-active]:gap-[40px] [&.is-active]:[box-shadow:_10px_10px_20px_0px_rgba(117,_191,_0,_0.15);] [&.is-active]:border-green [&.is-active]:bg-white/10 lg:px-[15px]">
