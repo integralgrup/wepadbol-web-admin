@@ -316,7 +316,7 @@ $breadcrumbTitle = $product->title;
                                                         <div class="swiper-wrapper">
                                                             <div class="swiper-slide duration-350 [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto">
                                                                 <div class="image size-full aspect-[23/18] md:aspect-video">
-                                                                    <img src="{{ getFolder(['uploads_folder', 'product_images_folder'], $item->lang) . '/' . $item->image }}" alt="" class="size-full object-contain object-center">
+                                                                    <img src="{{ env('HTTP_DOMAIN') . '/' . getFolder(['uploads_folder', 'product_images_folder'], $item->lang) . '/' . $item->image }}" alt="" class="size-full object-contain object-center">
                                                                 </div>
                                                             </div>
                                                         </div>
