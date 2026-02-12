@@ -154,7 +154,10 @@ class HomeController extends Controller
         }
 
         if($menu->page_type == 'product') {
-            
+            //abort 404
+            if($slug2 == null) {
+                abort(404);
+            }
                 $product = Product::where(['seo_url' => $slug, 'lang' => app()->getLocale()])->with(['category', 'gallery', 'faqs', 'types', 'images', 'features'])->firstOrFail();
                 $products = // Get products with related category
                 Product::where('lang', app()->getLocale())
