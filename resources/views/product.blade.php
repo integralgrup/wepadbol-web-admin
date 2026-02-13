@@ -311,7 +311,7 @@ $breadcrumbTitle = $product->title;
                                     <div class="swiper-slide group/slide duration-350">
                                         <div class="item group/item translate-z-0 min-md:opacity-0 relative bg-gradient-to-b from-green to-blue md:!p-[2px] rounded-[14px] overflow-hidden min-md:group-[&.swiper-slide-active]/slide:p-[2px] min-md:[box-shadow:_0px_25px_75px_0px_rgba(3,_36,_107,_0.15);] duration-350 min-md:group-[&.swiper-slide-next]/slide:opacity-100 min-md:group-[&.swiper-slide-active]/slide:opacity-100 min-md:group-[&.swiper-slide-next+.swiper-slide]/slide:!opacity-100 md:shadow-lg">
                                             <div class="content bg-white size-full pb-[60px] rounded-[12px]">
-                                                <a href="{{env('HTTP_DOMAIN') . '/' . $item->seo_url}}" class="flex flex-col items-center duration-350">
+                                                <a href="{{env('HTTP_DOMAIN') . '/' . $item->category->seo_url . '/' . $item->seo_url}}" class="flex flex-col items-center duration-350">
                                                     <div class="product-detail-carousel swiper size-full overflow-hidden">
                                                         <div class="swiper-wrapper">
                                                             <div class="swiper-slide duration-350 [&.swiper-slide-active]:!pointer-events-auto [&.swiper-slide-next]:!pointer-events-auto">
@@ -333,7 +333,7 @@ $breadcrumbTitle = $product->title;
                                                         </div>
                                                     </div>
                                                     <div class="content flex flex-col items-center pointer-events-auto">
-                                                        <a href="{{env('HTTP_DOMAIN') . '/' . $item->seo_url}}" class="text text-[#52555C] text-[18px] leading-[28px] opacity-65">{{ $item->category->title }}</a>
+                                                        <a href="{{env('HTTP_DOMAIN') . '/' . $item->category->seo_url . '/' . $item->seo_url}}" class="text text-[#52555C] text-[18px] leading-[28px] opacity-65">{{ $item->category->title }}</a>
                                                         <h4 class="title text-blue text-[24px] font-bold leading-[36px] opacity-90 xl:text-[20px]">{{ $item->title }}</h4>
                                                     </div>
                                                 </a>

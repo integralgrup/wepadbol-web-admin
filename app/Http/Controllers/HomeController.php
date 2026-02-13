@@ -65,6 +65,7 @@ class HomeController extends Controller
                 $q->where('lang', app()->getLocale());
             }])
             ->get();
+        
         $clubs = Club::where('lang', app()->getLocale())->get();
         $countries = Country::where('lang', app()->getLocale())// with continent data
             ->with('continent')
