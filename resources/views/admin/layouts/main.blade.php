@@ -335,11 +335,20 @@
 
 
     <script>
-      document.addEventListener("DOMContentLoaded", function(){
-        document.querySelectorAll('.editor').forEach(function(el){
-          CKEDITOR.replace(el);
+      document.addEventListener("DOMContentLoaded", function () {
+        const csrfToken = document
+          .querySelector('meta[name="csrf-token"]')
+          .getAttribute('content');
+
+        document.querySelectorAll('.editor').forEach(function (el) {
+          CKEDITOR.replace(el, {
+            extraPlugins: 'image',
+            filebrowserImageUploadUrl:
+              '/upload-editor-image?_token=' + csrfToken
+          });
         });
       });
+
     </script>
 
     <script>
