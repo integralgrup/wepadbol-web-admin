@@ -125,7 +125,7 @@
                     <span class="text text-[16px] text-[#52555C]">{!!getStaticText(10)!!}</span>
                 </div>
                 <div class="copyright-field md:text-center">
-                    <span class="text text-[16px] text-[#52555C]"> © {{date('Y')}} <!-- get domain without https:// --> <a href="{{env('HTTP_DOMAIN')}}">{{parse_url(env('HTTP_DOMAIN'), PHP_URL_HOST)}}</a> | {{getStaticText(11)}}</span>
+                    <span class="text text-[16px] text-[#52555C]"> © {{date('Y')}} <!-- get domain without https:// --> <a href="{{env('HTTP_DOMAIN')}}">{{parse_url(env('HTTP_DOMAIN'), PHP_URL_HOST)}}</a> | {!!getStaticText(11)!!}</span>
                 </div>
                 <div class="right-field">
                     <a href="{{ $static_images['footer_integralgroup_logo']->url }}" title="İntegral Group" target="_blank" class="group flex justify-center max-w-[105px] w-full h-[40px] items-center gap-[9px]">
