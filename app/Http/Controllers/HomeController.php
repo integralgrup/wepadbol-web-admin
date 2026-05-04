@@ -222,7 +222,7 @@ class HomeController extends Controller
         if($menu->page_type == 'blog') {
             if($slug2!= null) {
                 // Get blog posts limit 5 as array
-                $blogs = Blog::where(['lang' => app()->getLocale()])->limit(5)->get();
+                $blogs = Blog::where(['lang' => app()->getLocale()])->get();
                 //dd($blogs);
                 $blog = Blog::where(['lang' => app()->getLocale(), 'seo_url' => $slug2])->with('ratings')->firstOrFail();
                 //dd($slug2, $blog);
@@ -232,7 +232,7 @@ class HomeController extends Controller
                 return view('blog-detail', compact('blog', 'blogs', 'blogSlider', 'seo'));
             }else{
                 $seo = SeoSettings::where('page', 'news')->where('lang', app()->getLocale())->first();
-                $blogs = Blog::where(['lang' => app()->getLocale()])->limit(5)->get();
+                $blogs = Blog::where(['lang' => app()->getLocale()])->get();
                 //dd($blogs);
                 //dd($blogs);
                 return view('blog', compact('blogs', 'seo'));
